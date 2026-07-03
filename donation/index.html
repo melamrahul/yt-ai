@@ -24,8 +24,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-    <link rel="stylesheet" href="/yt-ai/donation/index.css?v=1.2">
-    <script src="https://www.ruvs.in/resos/common/scripts/sentinel.js?v=1.2" defer></script>
+    <link rel="stylesheet" href="/yt-ai/donation/index.css?v=1.3">
+    <script src="https://www.ruvs.in/resos/common/scripts/sentinel.js?v=1.3" defer></script>
     <style>
         *,
         *::before,
@@ -1098,10 +1098,14 @@
             chip.addEventListener('click', () => {
                 document.querySelectorAll('#inr-chips .chip').forEach(c => c.classList.remove('active'));
                 chip.classList.add('active');
+
                 const label = chip.textContent.trim();
+
                 document.getElementById('inr-pay-btn').href = chip.dataset.url;
                 document.getElementById('inr-btn-label').textContent =
-                    label === 'Custom' ? 'Custom Amount — via Cashfree' : `${label} — via Cashfree`;
+                    label === 'Custom'
+                        ? 'Custom Amount — via Cashfree'
+                        : `${label} — via Cashfree`;
             });
         });
         document.querySelectorAll('#usd-chips .chip').forEach(chip => {
@@ -1110,19 +1114,38 @@
                 chip.classList.add('active');
                 const label = chip.textContent.trim();
                 const isCustom = label === 'Custom';
-
                 document.getElementById('kofi-btn').href = chip.dataset.kofi;
                 document.getElementById('kofi-label').textContent =
-                    isCustom ? 'Custom Amount — via Ko-fi' : `${label} — via Ko-fi`;
-
+                    isCustom
+                        ? 'Custom Amount — via Ko-fi'
+                        : `${label} — via Ko-fi`;
                 document.getElementById('paypal-btn').href = chip.dataset.paypal;
                 document.getElementById('paypal-label').textContent =
-                    isCustom ? 'Custom Amount — via PayPal' : `${label} — via PayPal`;
+                    isCustom
+                        ? 'Custom Amount — via PayPal'
+                        : `${label} — via PayPal`;
             });
         });
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('https://ruvs.in/tools/geo', {
+                    cache: 'no-store'
+                });
+                if (!response.ok) return;
+                const geo = await response.json();
+                if (geo.success !== false && geo.country_code !== 'IN') {
+                    switchTab('usd');
+                } else {
+                    switchTab('inr');
+                }
+            } catch (err) {
+                console.error('Geo lookup failed:', err);
+                switchTab('inr');
+            }
+        });
     </script>
-    <script src="https://www.ruvs.in/resos/react/boom.js?v=1.5"></script>
-    <script src="/yt-ai/donation/a.js?v=1.5"></script>
+    <script src="https://www.ruvs.in/resos/react/boom.js?v=1.6"></script>
+    <script src="/yt-ai/donation/a.js?v=1.6"></script>
 </body>
 
 </html>
