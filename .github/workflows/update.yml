@@ -1,0 +1,43 @@
+name: update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: update
+        uses: actions/checkout@v4
+
+      - name: update
+        run: |
+          find . -type f -name "*.html" | while read file; do
+            perl -0pi -e '
+              # exp-btn:
+              # background-color: <color>;
+              # ->
+              # border: 2px solid <color>;
+              s#(<button\b[^>]*class="[^"]*\bexp-btn\b[^"]*"[^>]*style="[^"]*)background-color\s*:\s*([^;"]+);#$1border: 2px solid $2;#gi;
+
+              # donate-btn:
+              # replace any background with #0360fd
+              s#(<a\b[^>]*class="[^"]*\bdonate-btn\b[^"]*"[^>]*style="[^"]*)background\s*:\s*[^;"]+;#$1background: #0360fd;#gi;
+            ' "$file"
+          done
+
+      - name: update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+
+          git commit -m "update"
+          git push
