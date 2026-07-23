@@ -1,0 +1,158 @@
+name: Inject new regions and flag-icons into HTML pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Inject regions, then convert flags to flag-icons
+        run: |
+          node <<'EOF'
+          const fs = require("fs");
+          const path = require("path");
+
+          // ---- Step 1 data: new regions to inject (hreflang + menu items) ----
+          const regions = [
+            {"code":"kw","flag":"🇰🇼","label":"Kuwait","hreflang":"ar-KW","href":"/yt-ai/kw"},
+            {"code":"bh","flag":"🇧🇭","label":"Bahrain","hreflang":"ar-BH","href":"/yt-ai/bh"},
+            {"code":"om","flag":"🇴🇲","label":"Oman","hreflang":"ar-OM","href":"/yt-ai/om"},
+            {"code":"jo","flag":"🇯🇴","label":"Jordan","hreflang":"ar-JO","href":"/yt-ai/jo"},
+            {"code":"gb","flag":"🇬🇧","label":"United Kingdom","hreflang":"en-GB","href":"/yt-ai/gb"},
+            {"code":"eu","flag":"🇪🇺","label":"Eurozone","hreflang":"en-150","href":"/yt-ai/eu"},
+            {"code":"us","flag":"🇺🇸","label":"United States","hreflang":"en-US","href":"/yt-ai/us"},
+            {"code":"ae","flag":"🇦🇪","label":"United Arab Emirates","hreflang":"ar-AE","href":"/yt-ai/ae"},
+            {"code":"qa","flag":"🇶🇦","label":"Qatar","hreflang":"ar-QA","href":"/yt-ai/qa"},
+            {"code":"ca","flag":"🇨🇦","label":"Canada","hreflang":"en-CA","href":"/yt-ai/ca"},
+            {"code":"au","flag":"🇦🇺","label":"Australia","hreflang":"en-AU","href":"/yt-ai/au"},
+            {"code":"sg","flag":"🇸🇬","label":"Singapore","hreflang":"en-SG","href":"/yt-ai/sg"}
+          ];
+
+          // ---- Step 2 data: ISO codes for flag-icons (fi-xx), keyed by data-code ----
+          const isoMap = {
+            en: "us", fr: "fr", es: "es", de: "de", it: "it", pt: "pt",
+            ru: "ru", ja: "jp", ko: "kr", zh: "cn", ar: "sa", hi: "in",
+            id: "id", tr: "tr", pl: "pl", nl: "nl", th: "th", vi: "vn", ms: "my",
+            kw: "kw", bh: "bh", om: "om", jo: "jo", gb: "gb", eu: "eu",
+            us: "us", ae: "ae", qa: "qa", ca: "ca", au: "au", sg: "sg"
+          };
+
+          function findFiles(dir, ext, out = []) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              if (entry.name.startsWith(".") || entry.name === "node_modules") continue;
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) findFiles(full, ext, out);
+              else if (entry.name.endsWith(ext)) out.push(full);
+            }
+            return out;
+          }
+
+          // ===== STEP 1: inject missing region hreflang tags + menu <li>s =====
+          function injectHead(html) {
+            const anchor = '<link rel="alternate" hreflang="ms" href="https://melamrahul.github.io/yt-ai/ms">';
+            if (!html.includes(anchor)) return html;
+            const missing = regions.filter(r => !html.includes(`hreflang="${r.hreflang}"`));
+            if (missing.length === 0) return html;
+            const tags = missing.map(r =>
+              `\n<link rel="alternate" hreflang="${r.hreflang}" href="https://melamrahul.github.io/yt-ai${r.href}">`
+            ).join("");
+            return html.replace(anchor, anchor + tags);
+          }
+
+          function injectBody(html) {
+            const anchor = "🇲🇾 Melayu</li></ul>";
+            if (!html.includes(anchor)) return html;
+            const missing = regions.filter(r => !html.includes(`data-code="${r.code}"`));
+            if (missing.length === 0) return html;
+            const lis = missing.map(r =>
+              `<li data-code="${r.code}" data-flag="${r.flag}" data-href="${r.href}">${r.flag} ${r.label}</li>`
+            ).join("");
+            return html.replace(anchor, "🇲🇾 Melayu</li>" + lis + "</ul>");
+          }
+
+          // ===== STEP 2: convert emoji flags to flag-icons spans =====
+          const CDN_LINK = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">';
+
+          function injectCdn(html) {
+            if (html.includes("flag-icons")) return html;
+            if (!html.includes("</head>")) return html;
+            return html.replace("</head>", CDN_LINK + "\n</head>");
+          }
+
+          function replaceMenuLis(html) {
+            const liRegex = /<li data-code="([a-z]+)" data-flag="[^"]*" data-href="([^"]*)">[^<]*?([A-Za-zÀ-ÿ\u0400-\u04FF\u0600-\u06FF\u4e00-\u9fff\u3040-\u30ff\u0900-\u097F].*?)<\/li>/gu;
+            return html.replace(liRegex, (match, code, href, label) => {
+              const iso = isoMap[code] || code;
+              return `<li data-code="${code}" data-flagclass="fi-${iso}" data-href="${href}"><span class="fi fi-${iso}"></span> ${label}</li>`;
+            });
+          }
+
+          function updateLangButtonMarkup(html) {
+            return html.replace(
+              /<span id="langFlag">[^<]*<\/span>/,
+              '<span id="langFlag"><span class="fi fi-us"></span></span>'
+            );
+          }
+
+          // ===== Run pipeline: regions first, then flag-icons conversion =====
+          let changedHtml = 0;
+          for (const file of findFiles(".", ".html")) {
+            const original = fs.readFileSync(file, "utf8");
+            let updated = injectHead(original);
+            updated = injectBody(updated);
+            updated = injectCdn(updated);
+            updated = replaceMenuLis(updated);
+            updated = updateLangButtonMarkup(updated);
+            if (updated !== original) {
+              fs.writeFileSync(file, updated, "utf8");
+              changedHtml++;
+              console.log("Updated HTML:", file);
+            }
+          }
+
+          const CSS_RULE = "\n.fi{border-radius:2px;margin-right:6px;vertical-align:middle}";
+          let changedCss = 0;
+          for (const file of findFiles(".", ".css")) {
+            const original = fs.readFileSync(file, "utf8");
+            if (original.includes(".fi{") || original.includes(".fi {")) continue;
+            fs.writeFileSync(file, original + CSS_RULE, "utf8");
+            changedCss++;
+            console.log("Updated CSS:", file);
+          }
+
+          const NEW_LANG_JS = `document.addEventListener("DOMContentLoaded",function(){const sel=document.getElementById("langSelector"),btn=document.getElementById("langBtn"),menu=document.getElementById("langMenu"),flag=document.getElementById("langFlag"),code=document.getElementById("langCode");btn.addEventListener("click",function(e){e.stopPropagation();sel.classList.toggle("open");btn.setAttribute("aria-expanded",sel.classList.contains("open"))});menu.querySelectorAll("li").forEach(function(li){li.addEventListener("click",function(){const fiSpan=li.querySelector(".fi");flag.innerHTML=fiSpan?fiSpan.outerHTML:"";code.textContent=li.dataset.code.toUpperCase();sel.classList.remove("open");window.location.href=li.dataset.href})});document.addEventListener("click",function(e){if(!sel.contains(e.target))sel.classList.remove("open")})});`;
+
+          let changedJs = 0;
+          for (const file of findFiles(".", ".js")) {
+            if (!file.includes("lang")) continue;
+            const original = fs.readFileSync(file, "utf8");
+            if (original.trim() === NEW_LANG_JS.trim()) continue;
+            fs.writeFileSync(file, NEW_LANG_JS, "utf8");
+            changedJs++;
+            console.log("Updated JS:", file);
+          }
+
+          console.log(`Done. ${changedHtml} HTML, ${changedCss} CSS, ${changedJs} JS file(s) modified.`);
+          EOF
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: inject new regions and convert flags to flag-icons"
+          git push
