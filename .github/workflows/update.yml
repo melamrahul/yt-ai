@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: update
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Update HTML files
+      - name: update
         shell: bash
         run: |
           set -euxo pipefail
@@ -26,19 +26,18 @@ jobs:
 
             perl -0pi -e '
               # exp-btn:
-              # Replace:
               # background-color: COLOR;
-              # with:
+              # ->
               # border: 2px solid COLOR;
-              s#(<button\b[^>]*class="[^"]*\bexp-btn\b[^"]*"[^>]*style="[^"]*)background-color\s*:\s*([^;"]+);#$1border: 2px solid $2;#gi;
+              s!(<button\b[^>]*class="[^"]*\bexp-btn\b[^"]*"[^>]*style="[^"]*)background-color\s*:\s*([^;"]+);!$1border: 2px solid $2;!gi;
 
               # donate-btn:
-              # Replace any background value with #0360fd
-              s#(<a\b[^>]*class="[^"]*\bdonate-btn\b[^"]*"[^>]*style="[^"]*)background\s*:\s*[^;"]+;#$1background: #0360fd;#gi;
+              # replace any background with #0360fd
+              s!(<a\b[^>]*class="[^"]*\bdonate-btn\b[^"]*"[^>]*style="[^"]*)background\s*:\s*[^;"]+;!$1background: #0360fd;!gi;
             ' "$file"
           done
 
-      - name: Commit and push changes
+      - name: update
         shell: bash
         run: |
           set -euxo pipefail
@@ -49,7 +48,7 @@ jobs:
           git add .
 
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No changes"
             exit 0
           fi
 
