@@ -3,39 +3,53 @@ name: update
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-      - name: update
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: update
+      - name: Update HTML files
+        shell: bash
         run: |
-          find . -type f -name "*.html" | while read file; do
+          set -euxo pipefail
+
+          find . -type f -name "*.html" -print0 | while IFS= read -r -d '' file; do
+            echo "Processing: $file"
+
             perl -0pi -e '
               # exp-btn:
-              # background-color: <color>;
-              # ->
-              # border: 2px solid <color>;
+              # Replace:
+              # background-color: COLOR;
+              # with:
+              # border: 2px solid COLOR;
               s#(<button\b[^>]*class="[^"]*\bexp-btn\b[^"]*"[^>]*style="[^"]*)background-color\s*:\s*([^;"]+);#$1border: 2px solid $2;#gi;
 
               # donate-btn:
-              # replace any background with #0360fd
+              # Replace any background value with #0360fd
               s#(<a\b[^>]*class="[^"]*\bdonate-btn\b[^"]*"[^>]*style="[^"]*)background\s*:\s*[^;"]+;#$1background: #0360fd;#gi;
             ' "$file"
           done
 
-      - name: update
+      - name: Commit and push changes
+        shell: bash
         run: |
+          set -euxo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add .
 
           if git diff --cached --quiet; then
-            echo "No changes"
+            echo "No changes to commit."
             exit 0
           fi
 
