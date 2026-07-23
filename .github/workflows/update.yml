@@ -25,7 +25,7 @@ jobs:
             echo "Processing: $file"
 
             perl -0pi -e '
-              s/\?v=1\.0\b/?v={{ site.github.build_revision }}/g;
+              s/index\.v1\.css/colors.css/g;
             ' "$file"
           done
 
