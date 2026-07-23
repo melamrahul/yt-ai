@@ -61,7 +61,7 @@ jobs:
             sg: { iso: "sg", label: "Singapore", hreflang: "en-SG" }
           };
 
-          const regionCodes = ["kw", "bh", "om", "jo", "gb", "eu", "us", "ae", "qa", "ca", "au", "sg"];
+          const regionCodes = Object.keys(langData).filter(c => langData[c].hreflang);
 
           function findFiles(dir, ext, out = []) {
             for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -73,21 +73,38 @@ jobs:
             return out;
           }
 
-          // ===== Step 1: repair any already-duplicated hreflang hrefs =====
+          // ===== Step 1: repair any duplicated path segment in hrefs, wherever it occurs =====
           function fixHreflangDupes(html) {
-            return html.split("https://melamrahul.github.io/yt-ai/yt-ai/").join("https://melamrahul.github.io/yt-ai/");
+            // Collapses any accidental repeat of the yt-ai/ segment, not just one hardcoded spot
+            return html.replace(/(https:\/\/melamrahul\.github\.io\/yt-ai\/)(yt-ai\/)+/g, "$1");
           }
 
-          // ===== Step 2: inject any missing region hreflang tags (correct path, no dupe) =====
+          // ===== Step 2: inject any missing region hreflang <link> tags, detected structurally =====
+          // Instead of anchoring to the literal "ms" line, insert relative to the closing </head>,
+          // right after the last existing hreflang alternate tag if one exists.
           function injectHead(html) {
-            const anchor = '<link rel="alternate" hreflang="ms" href="https://melamrahul.github.io/yt-ai/ms">';
-            if (!html.includes(anchor)) return html;
-            const missing = regionCodes.filter(code => !html.includes(`hreflang="${langData[code].hreflang}"`));
+            if (!html.includes("</head>")) return html;
+            const missing = regionCodes.filter(
+              code => !html.includes(`hreflang="${langData[code].hreflang}"`)
+            );
             if (missing.length === 0) return html;
-            const tags = missing.map(code =>
-              `\n<link rel="alternate" hreflang="${langData[code].hreflang}" href="https://melamrahul.github.io/yt-ai/${code}">`
-            ).join("");
-            return html.replace(anchor, anchor + tags);
+
+            const tags = missing
+              .map(code => `\n<link rel="alternate" hreflang="${langData[code].hreflang}" href="https://melamrahul.github.io/yt-ai/${code}">`)
+              .join("");
+
+            // Find the last alternate-hreflang <link> tag in the document and insert after it.
+            const linkRe = /<link rel="alternate" hreflang="[^"]*" href="[^"]*">/g;
+            let lastMatch = null;
+            let m;
+            while ((m = linkRe.exec(html)) !== null) lastMatch = m;
+
+            if (lastMatch) {
+              const insertAt = lastMatch.index + lastMatch[0].length;
+              return html.slice(0, insertAt) + tags + html.slice(insertAt);
+            }
+            // Fallback: no existing alternate tags found at all, insert before </head>
+            return html.replace("</head>", tags + "\n</head>");
           }
 
           // ===== Step 3: add flag-icons CDN if missing =====
@@ -99,39 +116,33 @@ jobs:
           }
 
           // ===== Step 4: ensure every language <li> exists and is in canonical form =====
-          // Rebuilds by data-code lookup instead of parsing emoji — immune to the ko/th corruption bug.
-          function normalizeMenuLis(html) {
-            let updated = html;
+          // Rebuilds by data-code lookup instead of parsing emoji/flag text — immune to corruption bugs.
+          // Also INSERTS any <li> that's missing entirely, not just fixes malformed ones.
+          function normalizeAndFillMenuLis(html) {
+            const ulRe = /(<ul class="lang-menu"[^>]*>)([\s\S]*?)(<\/ul>)/;
+            const match = html.match(ulRe);
+            if (!match) return html; // no lang menu on this page at all
+
+            const [, openTag, innerOriginal, closeTag] = match;
+            let inner = innerOriginal;
+
             for (const [code, d] of Object.entries(langData)) {
-              const re = new RegExp(`<li data-code="${code}"[^>]*>.*?</li>`, "su");
+              const liRe = new RegExp(`<li data-code="${code}"[^>]*>[\\s\\S]*?</li>`);
               const canonical = `<li data-code="${code}" data-flagclass="fi-${d.iso}" data-href="/yt-ai/${code}"><span class="fi fi-${d.iso}"></span> ${d.label}</li>`;
-              if (re.test(updated)) {
-                updated = updated.replace(re, canonical);
+              if (liRe.test(inner)) {
+                inner = inner.replace(liRe, canonical);
+              } else {
+                // Missing entirely (e.g. brand-new region not yet added to this page) — append it.
+                inner = inner + canonical;
               }
             }
-            return updated;
-          }
 
-          // Add any missing region <li>s (if a region wasn't injected into this page yet)
-          function injectMissingRegionLis(html) {
-            const anchor = "🇲🇾 Melayu</li></ul>";
-            const anchorNew = `<li data-code="ms" data-flagclass="fi-my" data-href="/yt-ai/ms"><span class="fi fi-my"></span> Melayu</li>`;
-            let updated = html;
-            const closeTag = updated.includes(anchor) ? anchor
-                            : (updated.includes(anchorNew + "</ul>") ? anchorNew + "</ul>" : null);
-            if (!closeTag) return updated;
-            const missing = regionCodes.filter(code => !updated.includes(`data-code="${code}"`));
-            if (missing.length === 0) return updated;
-            const lis = missing.map(code => {
-              const d = langData[code];
-              return `<li data-code="${code}" data-flagclass="fi-${d.iso}" data-href="/yt-ai/${code}"><span class="fi fi-${d.iso}"></span> ${d.label}</li>`;
-            }).join("");
-            return updated.replace(closeTag, closeTag.replace("</ul>", "") + lis + "</ul>");
+            return html.slice(0, match.index) + openTag + inner + closeTag + html.slice(match.index + match[0].length);
           }
 
           function updateLangButtonMarkup(html) {
             return html.replace(
-              /<span id="langFlag">.*?<\/span><\/span>|<span id="langFlag">[^<]*<\/span>/s,
+              /<span id="langFlag">[\s\S]*?<\/span>(<\/span>)?/,
               '<span id="langFlag"><span class="fi fi-us"></span></span>'
             );
           }
@@ -141,8 +152,7 @@ jobs:
             const original = fs.readFileSync(file, "utf8");
             let updated = fixHreflangDupes(original);
             updated = injectHead(updated);
-            updated = injectMissingRegionLis(updated);
-            updated = normalizeMenuLis(updated);
+            updated = normalizeAndFillMenuLis(updated);
             updated = injectCdn(updated);
             updated = updateLangButtonMarkup(updated);
             if (updated !== original) {
@@ -182,5 +192,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "fix: repair broken hreflang/menu entries and normalize flag-icons"
+          git diff --cached --quiet || git commit -m "fix: repair broken hreflang/menu entries and normalize flag-icons across all pages"
           git push
