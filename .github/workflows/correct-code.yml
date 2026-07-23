@@ -140,10 +140,15 @@ jobs:
             return html.slice(0, match.index) + openTag + inner + closeTag + html.slice(match.index + match[0].length);
           }
 
+          // Determine this page's own language code from <html lang="xx">, and use THAT
+          // language's flag for the top button — instead of hardcoding fi-us on every page.
           function updateLangButtonMarkup(html) {
+            const htmlLangMatch = html.match(/<html[^>]*\blang="([a-zA-Z-]+)"/);
+            const pageCode = htmlLangMatch ? htmlLangMatch[1].toLowerCase().split("-")[0] : "en";
+            const d = langData[pageCode] || langData.en; // fallback if code not recognized
             return html.replace(
               /<span id="langFlag">[\s\S]*?<\/span>(<\/span>)?/,
-              '<span id="langFlag"><span class="fi fi-us"></span></span>'
+              `<span id="langFlag"><span class="fi fi-${d.iso}"></span></span>`
             );
           }
 
