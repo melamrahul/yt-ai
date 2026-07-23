@@ -25,15 +25,7 @@ jobs:
             echo "Processing: $file"
 
             perl -0pi -e '
-              # exp-btn:
-              # background-color: COLOR;
-              # ->
-              # border: 2px solid COLOR;
-              s!(<button\b[^>]*class="[^"]*\bexp-btn\b[^"]*"[^>]*style="[^"]*)background-color\s*:\s*([^;"]+);!$1border: 2px solid $2;!gi;
-
-              # donate-btn:
-              # replace any background with #0360fd
-              s!(<a\b[^>]*class="[^"]*\bdonate-btn\b[^"]*"[^>]*style="[^"]*)background\s*:\s*[^;"]+;!$1background: #0360fd;!gi;
+              s/\?v=1\.0\b/?v={{ site.github.build_revision }}/g;
             ' "$file"
           done
 
