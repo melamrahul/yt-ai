@@ -3,6 +3,9 @@ name: Update
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-dates:
     runs-on: ubuntu-latest
