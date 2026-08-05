@@ -1,48 +1,31 @@
-name: update
+name: Update
 
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  update:
+  update-dates:
     runs-on: ubuntu-latest
 
     steps:
-      - name: update
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: update
-        shell: bash
+      - name: Update
         run: |
-          set -euxo pipefail
-
-          find . -type f -name "*.html" -print0 | while IFS= read -r -d '' file; do
-            echo "Processing: $file"
-
-            perl -0pi -e '
-              s/index\.v1\.css/colors.css/g;
-            ' "$file"
+          find . -type f \( -name "*.html" -o -name "*.json" -o -name "*.xml" \) | while read file; do
+            sed -i 's/2026-07-23T13:10:00+05:30/2026-08-05T12:00:00+05:30/g' "$file"
+            sed -i 's/"dateModified":"2026-07-23"/"dateModified":"2026-08-05"/g' "$file"
+            sed -i 's/2026-07-23T16:10/2026-08-05T12:00/g' "$file"
           done
 
-      - name: update
-        shell: bash
+      - name: Commit changes
         run: |
-          set -euxo pipefail
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add .
+          git commit -m "Update modified dates" || echo "No changes"
 
-          if git diff --cached --quiet; then
-            echo "No changes"
-            exit 0
-          fi
-
-          git commit -m "update"
-          git push
+      - name: Push changes
+        run: git push
