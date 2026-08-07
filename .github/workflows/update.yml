@@ -17,13 +17,19 @@ jobs:
         run: |
           find . -type f \
             ! -path "./.git/*" \
+            ! -path "./.github/workflows/*" \
             -exec sed -i 's@https://ruvs.in/melamrahul.github.io@https://rahul.serv00.net/melamrahul.github.io@g' {} +
 
       - name: Commit
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
           git add .
-          git diff --cached --quiet || git commit -m "Update"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Update"
+            git push
+          fi
