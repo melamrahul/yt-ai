@@ -1,4 +1,4 @@
-name: Update
+name: Restore Header Logo
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  update:
+  restore:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,36 +17,20 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - name: Update files
+      - name: Restore header logo
         shell: bash
         run: |
           set -e
 
-          echo "Updating old URL..."
+          echo "Restoring header logo..."
 
           find . -type f \
             ! -path "./.git/*" \
             ! -path "./.github/workflows/*" \
             -exec sed -i \
-            's@https://ruvs.in/melamrahul.github.io@https://rahul.serv00.net/melamrahul.github.io@g' {} +
+            's@<div class="logo"></div>@<div class="logo"><img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" /></div>@g' {} +
 
-          echo "Removing unwanted image..."
-
-          find . -type f \
-            ! -path "./.git/*" \
-            ! -path "./.github/workflows/*" \
-            -exec sed -i \
-            's@<img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" />@@g' {} +
-
-          echo "Replacing converter iframe..."
-
-          find . -type f \
-            ! -path "./.git/*" \
-            ! -path "./.github/workflows/*" \
-            -exec sed -i \
-            's@<iframe id="converterFrame" src="https://rahul.serv00.net/melamrahul.github.io" scrolling="no"></iframe>@<iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="eager"></iframe>@g' {} +
-
-          echo "Changes completed."
+          echo "Header logo restored."
 
       - name: Commit changes
         shell: bash
@@ -63,19 +47,13 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Update"
-
-      - name: Rebase with latest main
-        shell: bash
-        run: |
-          set -e
-
-          git fetch origin main
-          git rebase origin/main
+          git commit -m "Restore header logo"
 
       - name: Push changes
         shell: bash
         run: |
           set -e
 
+          git fetch origin main
+          git rebase origin/main
           git push origin main
