@@ -13,36 +13,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update
+      - name: Update files
         run: |
           # Replace old URL
           find . -type f \
             ! -path "./.git/*" \
             ! -path "./.github/workflows/*" \
-            -exec sed -i 's@https://ruvs.in/melamrahul.github.io@https://rahul.serv00.net/melamrahul.github.io@g' {} +
+            -exec sed -i \
+              's@https://ruvs.in/melamrahul.github.io@https://rahul.serv00.net/melamrahul.github.io@g' {} +
 
-          SCRIPT1='<script src="https://pl30765169.effectivecpmnetwork.com/32/e1/5f/32e15f2082a75880a1c2e691c2bbf8db.js"></script>'
-          SCRIPT2='<script src="https://pl30765168.effectivecpmnetwork.com/44/3b/42/443b42c34d2f923bcaedf407008b098c.js"></script>'
-
-          # Add scripts before </body>, except us, en, th
-          find . -type f -name "index.html" \
+          # Remove unwanted YouTube AI icon
+          find . -type f \
             ! -path "./.git/*" \
-            ! -path "*/us/*" \
-            ! -path "*/en/*" \
-            ! -path "*/th/*" \
-            -print0 | while IFS= read -r -d '' file; do
+            ! -path "./.github/workflows/*" \
+            -exec sed -i \
+              's@<img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" />@@g' {} +
 
-              if grep -qF "$SCRIPT1" "$file" || grep -qF "$SCRIPT2" "$file"; then
-                echo "Already injected: $file"
-                continue
-              fi
+          # Replace converter iframe
+          find . -type f \
+            ! -path "./.git/*" \
+            ! -path "./.github/workflows/*" \
+            -exec sed -i \
+              's@<iframe id="converterFrame" src="https://rahul.serv00.net/melamrahul.github.io" scrolling="no"></iframe>@<iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="eager"></iframe>@g' {} +
 
-              sed -i "s@</body>@$SCRIPT1\n$SCRIPT2\n</body>@" "$file"
-
-              echo "Injected before </body>: $file"
-            done
-
-      - name: Commit
+      - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
