@@ -7,45 +7,75 @@ permissions:
   contents: write
 
 jobs:
-  inject:
+  update:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
 
       - name: Update files
+        shell: bash
         run: |
-          # Replace old URL
-          find . -type f \
-            ! -path "./.git/*" \
-            ! -path "./.github/workflows/*" \
-            -exec sed -i \
-              's@https://ruvs.in/melamrahul.github.io@https://rahul.serv00.net/melamrahul.github.io@g' {} +
+          set -e
 
-          # Remove unwanted YouTube AI icon
-          find . -type f \
-            ! -path "./.git/*" \
-            ! -path "./.github/workflows/*" \
-            -exec sed -i \
-              's@<img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" />@@g' {} +
+          echo "Updating old URL..."
 
-          # Replace converter iframe
           find . -type f \
             ! -path "./.git/*" \
             ! -path "./.github/workflows/*" \
             -exec sed -i \
-              's@<iframe id="converterFrame" src="https://rahul.serv00.net/melamrahul.github.io" scrolling="no"></iframe>@<iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="eager"></iframe>@g' {} +
+            's@https://ruvs.in/melamrahul.github.io@https://rahul.serv00.net/melamrahul.github.io@g' {} +
+
+          echo "Removing unwanted image..."
+
+          find . -type f \
+            ! -path "./.git/*" \
+            ! -path "./.github/workflows/*" \
+            -exec sed -i \
+            's@<img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" />@@g' {} +
+
+          echo "Replacing converter iframe..."
+
+          find . -type f \
+            ! -path "./.git/*" \
+            ! -path "./.github/workflows/*" \
+            -exec sed -i \
+            's@<iframe id="converterFrame" src="https://rahul.serv00.net/melamrahul.github.io" scrolling="no"></iframe>@<iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="eager"></iframe>@g' {} +
+
+          echo "Changes completed."
 
       - name: Commit changes
+        shell: bash
         run: |
+          set -e
+
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
           git add .
 
           if git diff --cached --quiet; then
-            echo "No changes."
-          else
-            git commit -m "Update"
-            git push
+            echo "No changes to commit."
+            exit 0
           fi
+
+          git commit -m "Update"
+
+      - name: Rebase with latest main
+        shell: bash
+        run: |
+          set -e
+
+          git fetch origin main
+          git rebase origin/main
+
+      - name: Push changes
+        shell: bash
+        run: |
+          set -e
+
+          git push origin main
