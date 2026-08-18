@@ -1,4 +1,4 @@
-name: Restore Header Logo
+name: Update
 
 on:
   workflow_dispatch:
@@ -7,53 +7,28 @@ permissions:
   contents: write
 
 jobs:
-  restore:
+  update-dates:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: main
 
-      - name: Restore header logo
-        shell: bash
+      - name: Update
         run: |
-          set -e
-
-          echo "Restoring header logo..."
-
-          find . -type f \
-            ! -path "./.git/*" \
-            ! -path "./.github/workflows/*" \
-            -exec sed -i \
-            's@<div class="logo"></div>@<div class="logo"><img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" /></div>@g' {} +
-
-          echo "Header logo restored."
+          find . -type f \( -name "*.html" -o -name "*.json" -o -name "*.xml" \) | while read file; do
+            sed -i 's/2026-07-23T13:10:00+05:30/2026-08-18T06:00:00+05:30/g' "$file"
+            sed -i 's/"dateModified":"2026-07-23"/"dateModified":"2026-08-18"/g' "$file"
+            sed -i 's/2026-07-23T16:10/2026-08-18T06:00/g' "$file"
+          done
 
       - name: Commit changes
-        shell: bash
         run: |
-          set -e
-
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add .
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          git commit -m "Restore header logo"
+          git commit -m "Update modified dates" || echo "No changes"
 
       - name: Push changes
-        shell: bash
-        run: |
-          set -e
-
-          git fetch origin main
-          git rebase origin/main
-          git push origin main
+        run: git push
