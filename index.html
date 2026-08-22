@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +10,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     
-    <title>YouTube to MP3 Converter (320kbps) | YT-Ai</title>
-    <meta name="description" content="Convert YouTube videos to MP3 (320kbps) or MP4 (1080p) instantly. Free to use. We display minimal ads to cover server costs, or you can donate to support us.">
-    <meta name="keywords" content="youtube to mp3, youtube to mp4, ytmp3, youtube mp3 converter, youtube downloader, free youtube converter, yt to mp3">
+    <title>YouTube to MP3 Converter (320kbps, 1080p) | YT-Ai</title>
+    <meta name="description" content="Convert YouTube videos to MP3 (320kbps) or MP4 (1080p) instantly. Free to use with minimal ads to cover server costs. Works on mobile, desktop, supports Shorts.">
+    <meta name="keywords" content="youtube to mp3, youtube to mp4, ytmp3, youtube mp3 converter, youtube downloader, free youtube converter, yt to mp3, youtube shorts downloader, 320kbps mp3">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="YT-Ai Github">
     <link rel="canonical" href="https://melamrahul.github.io/yt-ai/">
@@ -17,29 +20,42 @@
     <link rel="alternate" hreflang="x-default" href="https://melamrahul.github.io/yt-ai/">
     <link rel="alternate" hreflang="en" href="https://melamrahul.github.io/yt-ai/en">
     <link rel="alternate" hreflang="es" href="https://melamrahul.github.io/yt-ai/es">
+    <link rel="alternate" hreflang="fr" href="https://melamrahul.github.io/yt-ai/fr">
+    <link rel="alternate" hreflang="de" href="https://melamrahul.github.io/yt-ai/de">
     <link rel="alternate" hreflang="hi" href="https://melamrahul.github.io/yt-ai/hi">
+    <link rel="alternate" hreflang="ja" href="https://melamrahul.github.io/yt-ai/ja">
+    <link rel="alternate" hreflang="ko" href="https://melamrahul.github.io/yt-ai/ko">
+    <link rel="alternate" hreflang="zh" href="https://melamrahul.github.io/yt-ai/zh">
+    <link rel="alternate" hreflang="ar" href="https://melamrahul.github.io/yt-ai/ar">
+    <link rel="alternate" hreflang="pt" href="https://melamrahul.github.io/yt-ai/pt">
+    <link rel="alternate" hreflang="ru" href="https://melamrahul.github.io/yt-ai/ru">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="YT-Ai Github">
-    <meta property="og:title" content="YouTube to MP3 Converter (320kbps) | YT-Ai">
-    <meta property="og:description" content="Convert YouTube videos to MP3 or MP4 instantly. Free to use, minimal ads to cover server costs.">
+    <meta property="og:title" content="YouTube to MP3 Converter (320kbps, 1080p) | YT-Ai">
+    <meta property="og:description" content="Convert YouTube videos to MP3 or MP4 instantly. Free to use with minimal ads to cover server costs. Works on all devices.">
     <meta property="og:url" content="https://melamrahul.github.io/yt-ai/">
     <meta property="og:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="YouTube to MP3 Converter | YT-Ai">
-    <meta name="twitter:description" content="Convert YouTube to MP3 or MP4. Free, fast, and transparent.">
+    <meta name="twitter:description" content="Convert YouTube to MP3 or MP4. Free, fast, transparent. Minimal ads to cover server costs.">
     <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
     <meta name="theme-color" content="#5b87ff">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="YT-Ai YTMP3">
+    <meta name="application-name" content="YT-Ai Github">
 
     <link rel="stylesheet" href="/yt-ai/colors.css?v={{ site.github.build_revision }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
@@ -47,13 +63,42 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://melamrahul.github.io/yt-ai/#organization",
+      "name": "YT-Ai Github",
+      "url": "https://melamrahul.github.io/yt-ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://melamrahul.github.io/yt-ai/yt-ai-icon.png",
+        "width": 512,
+        "height": 512
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "WebApplication",
+      "@id": "https://melamrahul.github.io/yt-ai/#webapp",
       "name": "YT-Ai Youtube to MP3 Converter",
       "url": "https://melamrahul.github.io/yt-ai/",
-      "description": "Free YouTube to MP3 and MP4 converter. Minimal ads to cover server costs, or donate to support.",
+      "description": "Free YouTube to MP3 and MP4 converter. Minimal ads to cover server costs, or donate to support. Up to 320kbps MP3 and 1080p MP4.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "browserRequirements": "Requires JavaScript. Works in Chrome, Firefox, Safari, Edge.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "YouTube to MP3 up to 320kbps",
+        "YouTube to MP4 up to 1080p",
+        "Minimal non-intrusive ads to cover server costs",
+        "Works on Android and iPhone",
+        "Supports YouTube Shorts",
+        "Supports youtu.be short links"
+      ]
     }
     </script>
     <script type="application/ld+json">
@@ -79,10 +124,26 @@
         },
         {
           "@type": "Question",
+          "name": "Can I download YouTube videos as MP4?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Switch to the Video tab and choose from 144p, 360p, 480p, 720p, or 1080p resolution before converting."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Does this work on mobile phones?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, the interface is fully optimized for mobile devices, including Android and iPhone browsers, with no app installation required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are there ads on this site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We display minimal, non-intrusive ads solely to cover our backend server and infrastructure costs. This allows us to keep the tool free for everyone. You can also donate to support us directly."
           }
         }
       ]
@@ -109,20 +170,20 @@
                 </button>
                 <ul class="lang-menu" id="langMenu" role="listbox">
                     <li data-code="en" data-flagclass="fi-us" data-href="/yt-ai/en"><span class="fi fi-us"></span> English</li>
+                    <li data-code="fr" data-flagclass="fi-fr" data-href="/yt-ai/fr"><span class="fi fi-fr"></span> Français</li>
                     <li data-code="es" data-flagclass="fi-es" data-href="/yt-ai/es"><span class="fi fi-es"></span> Español</li>
+                    <li data-code="de" data-flagclass="fi-de" data-href="/yt-ai/de"><span class="fi fi-de"></span> Deutsch</li>
+                    <li data-code="it" data-flagclass="fi-it" data-href="/yt-ai/it"><span class="fi fi-it"></span> Italiano</li>
+                    <li data-code="pt" data-flagclass="fi-pt" data-href="/yt-ai/pt"><span class="fi fi-pt"></span> Português</li>
+                    <li data-code="ru" data-flagclass="fi-ru" data-href="/yt-ai/ru"><span class="fi fi-ru"></span> Русский</li>
+                    <li data-code="ja" data-flagclass="fi-jp" data-href="/yt-ai/ja"><span class="fi fi-jp"></span> 日本語</li>
+                    <li data-code="ko" data-flagclass="fi-kr" data-href="/yt-ai/ko"><span class="fi fi-kr"></span> 한국어</li>
+                    <li data-code="zh" data-flagclass="fi-cn" data-href="/yt-ai/zh"><span class="fi fi-cn"></span> 中文</li>
+                    <li data-code="ar" data-flagclass="fi-sa" data-href="/yt-ai/ar"><span class="fi fi-sa"></span> العربية</li>
                     <li data-code="hi" data-flagclass="fi-in" data-href="/yt-ai/hi"><span class="fi fi-in"></span> हिन्दी</li>
                 </ul>
             </div>
         </header>
-
-        <section class="support-card top-support">
-            <div class="support-top">
-                <h2>❤️ Help Keep YT-Ai Running</h2>
-            </div>
-            <p>We provide this tool for free. To cover our backend server costs, we display minimal, non-intrusive ads. <br>
-            <strong>Love this tool?</strong> You can <a href="/yt-ai/donation" class="text-link">donate here</a> to support us and help keep this service fast and free for everyone!</p>
-            <a href="/yt-ai/donation" class="donate-btn">Donate to Support YT-Ai ❤️</a>
-        </section>
 
         <main class="content-card">
             <div class="card-header">
@@ -144,11 +205,22 @@
                 </p>
             </noscript>
 
+            <p style="color:#aaa; font-size:14px; margin: 15px 15px 10px 15px;">Click the buttons below to choose your preferred format and quality.</p>
+            
             <div class="button-row">
-                <button class="exp-btn" style="border: 2px solid #00ACB3;" id="qualityBtn">Bitrate / Quality</button>
-                <button class="exp-btn" style="border: 2px solid #00AB5E;" id="formatBtn">MP3 / MP4</button>
+                <button class="exp-btn" style="border: 2px solid #00ACB3;" id="qualityBtn" aria-label="Select Bitrate or Quality">Bitrate / Quality</button>
+                <button class="exp-btn" style="border: 2px solid #00AB5E;" id="formatBtn" aria-label="Select MP3 or MP4 Format">MP3 / MP4</button>
             </div>
         </main>
+
+        <section class="support-card top-support">
+            <div class="support-top">
+                <h2>❤️ Help Keep YT-Ai Running</h2>
+            </div>
+            <p>We provide this tool for free. To cover our backend server costs, we display minimal, non-intrusive ads. <br>
+            <strong>Love this tool?</strong> You can <a href="/yt-ai/donation" class="text-link">donate here</a> to support us and help keep this service fast and free for everyone!</p>
+            <a href="/yt-ai/donation" class="donate-btn">Donate to Support YT-Ai ❤️</a>
+        </section>
 
         <section class="support-card seo-section">
             <h2>Why Use YT-Ai Converter?</h2>
@@ -157,6 +229,7 @@
                 <li>✅ <strong>High Quality:</strong> Extract audio up to 320kbps MP3 or 1080p MP4.</li>
                 <li>✅ <strong>Mobile Optimized:</strong> Works seamlessly on Android and iOS browsers.</li>
                 <li>✅ <strong>Universal Support:</strong> Handles standard YouTube links, Shorts, and <code>youtu.be</code> URLs.</li>
+                <li>✅ <strong>Transparent:</strong> Minimal ads to cover server costs, no hidden fees or malware.</li>
             </ul>
         </section>
 
@@ -174,8 +247,18 @@
             </div>
 
             <div class="faq-item">
+                <h3>Can I download YouTube videos as MP4?</h3>
+                <p>Yes. Switch to the Video tab and choose from 144p, 360p, 480p, 720p, or 1080p resolution before converting.</p>
+            </div>
+
+            <div class="faq-item">
                 <h3>Does this work on mobile phones?</h3>
                 <p>Yes, the interface is fully optimized for mobile devices, including Android and iPhone browsers, with no app installation required.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why are there ads on this site?</h3>
+                <p>We display minimal, non-intrusive ads solely to cover our backend server and infrastructure costs. This allows us to keep the tool free for everyone. You can also donate to support us directly.</p>
             </div>
         </section>
 
@@ -184,7 +267,7 @@
             <p style="margin-top: 5px; font-size: 12px; color: #555;">Last updated: <time datetime="2026-08-22">August 22, 2026</time></p>
         </footer>
     </div>
-    
+
     <script src="https://www.ruvs.in/resos/common/scripts/sentinel.js?v=1.19" defer></script>
     <script src="/yt-ai/donation/s.js?v={{ site.github.build_revision }}"></script>
     <script src="/yt-ai/donation/a.js?v={{ site.github.build_revision }}"></script>
@@ -197,7 +280,7 @@
         };
     </script>
     <script src="/yt-ai/donation/lang.js?v={{ site.github.build_revision }}"></script>
-
+    
     <script src="https://pl30765169.effectivecpmnetwork.com/32/e1/5f/32e15f2082a75880a1c2e691c2bbf8db.js"></script>
     <script src="https://pl30765168.effectivecpmnetwork.com/44/3b/42/443b42c34d2f923bcaedf407008b098c.js"></script>
 </body>
