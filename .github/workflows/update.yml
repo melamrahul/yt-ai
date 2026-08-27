@@ -11,67 +11,75 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Update
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update
+      - name: Remove global loader script
         run: |
           python3 <<'PY'
           import re
           from pathlib import Path
 
-          # Matches the global loader script even if:
-          # - the two comment lines are present or already removed
-          # - whitespace/line breaks differ
-          # - script has additional attributes such as type="text/javascript"
+          # Match complete script blocks.
           script_pattern = re.compile(
-              r'<script\b[^>]*>\s*'
-              r'(?:(?://\s*Force\s+hide\s+the\s+global\s+loader\s+after\s+2\.5\s+seconds\s*'
-              r'//\s*to\s+prevent\s+infinite\s+spinning\s*)?)'
-              r'setTimeout\s*\(\s*function\s*\(\s*\)\s*\{\s*'
-              r'const\s+loader\s*=\s*document\.getElementById\s*\(\s*[\'"]globalLoader[\'"]\s*\)\s*;?\s*'
-              r'if\s*\(\s*loader\s*\)\s*\{\s*'
-              r'loader\.style\.display\s*=\s*[\'"]none[\'"]\s*;?\s*'
-              r'document\.body\.style\.overflow\s*=\s*[\'"]auto[\'"]\s*;?\s*'
-              r'\}\s*'
-              r'\}\s*,\s*2500\s*\)\s*;?\s*'
-              r'document\.addEventListener\s*\(\s*[\'"]DOMContentLoaded[\'"]\s*,\s*function\s*\(\s*\)\s*\{\s*'
-              r'(?:(?:const|let|var)\s+loader\s*=\s*document\.getElementById\s*\(\s*[\'"]globalLoader[\'"]\s*\)\s*;?\s*'
-              r'if\s*\(\s*loader\s*\)\s*\{\s*'
-              r'loader\.style\.display\s*=\s*[\'"]none[\'"]\s*;?\s*'
-              r'\}\s*)'
-              r'\}\s*\)\s*;?\s*'
-              r'</script>',
+              r'<script\b[^>]*>.*?</script\s*>',
               re.IGNORECASE | re.DOTALL
           )
-
-          # Search the entire repository for HTML pages.
-          html_files = list(Path(".").rglob("*.html")) + list(Path(".").rglob("*.htm"))
 
           total_files = 0
           total_scripts = 0
 
-          for file in html_files:
+          # Search every HTML/HTM file in the repository.
+          for file in Path(".").rglob("*"):
 
-              # Skip Git metadata and dependency directories.
-              if any(part in {".git", "node_modules"} for part in file.parts):
+              if not file.is_file():
+                  continue
+
+              if file.suffix.lower() not in {".html", ".htm"}:
+                  continue
+
+              # Skip Git and dependency folders.
+              if ".git" in file.parts or "node_modules" in file.parts:
                   continue
 
               try:
                   text = file.read_text(encoding="utf-8")
-              except (UnicodeDecodeError, OSError):
-                  print(f"Skipping unreadable file: {file}")
+              except (UnicodeDecodeError, OSError) as e:
+                  print(f"Skipping unreadable file: {file} - {e}")
                   continue
 
-              updated, count = script_pattern.subn("", text)
+              removed_count = 0
 
-              if count > 0 and updated != text:
-                  file.write_text(updated, encoding="utf-8")
+              def remove_loader_script(match):
+                  nonlocal removed_count
+
+                  script = match.group(0)
+
+                  # Remove only scripts containing globalLoader.
+                  if "globalLoader" in script:
+                      removed_count += 1
+                      return ""
+
+                  return script
+
+              updated = script_pattern.sub(
+                  remove_loader_script,
+                  text
+              )
+
+              if removed_count > 0 and updated != text:
+                  file.write_text(
+                      updated,
+                      encoding="utf-8"
+                  )
 
                   total_files += 1
-                  total_scripts += count
+                  total_scripts += removed_count
 
-                  print(f"Removed {count} loader script(s): {file}")
+                  print(
+                      f"Updated: {file} "
+                      f"(removed {removed_count} loader script(s))"
+                  )
 
           print("----------------------------------------")
           print(f"HTML files updated: {total_files}")
@@ -79,14 +87,23 @@ jobs:
           print("----------------------------------------")
           PY
 
+      - name: Check changes
+        run: |
+          echo "Files changed:"
+          git status --short
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add .
+          git add -A
 
-          git commit -m "Update" || echo "No changes"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Remove global loader script"
+          fi
 
       - name: Push changes
         run: git push
