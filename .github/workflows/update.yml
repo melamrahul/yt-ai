@@ -20,7 +20,7 @@ jobs:
           import re
           from pathlib import Path
 
-          # Match complete script blocks.
+          # Match complete <script>...</script> blocks.
           script_pattern = re.compile(
               r'<script\b[^>]*>.*?</script\s*>',
               re.IGNORECASE | re.DOTALL
@@ -28,19 +28,23 @@ jobs:
 
           total_files = 0
           total_scripts = 0
+          total_html_files = 0
 
-          # Search every HTML/HTM file in the repository.
+          # Search the entire repository.
           for file in Path(".").rglob("*"):
 
               if not file.is_file():
                   continue
 
+              # Only process HTML files.
               if file.suffix.lower() not in {".html", ".htm"}:
                   continue
 
-              # Skip Git and dependency folders.
+              # Never process these directories.
               if ".git" in file.parts or "node_modules" in file.parts:
                   continue
+
+              total_html_files += 1
 
               try:
                   text = file.read_text(encoding="utf-8")
@@ -48,30 +52,31 @@ jobs:
                   print(f"Skipping unreadable file: {file} - {e}")
                   continue
 
+              # Find all script blocks in this HTML file.
+              matches = list(script_pattern.finditer(text))
+
+              if not matches:
+                  continue
+
+              updated = text
               removed_count = 0
 
-              def remove_loader_script(match):
-                  nonlocal removed_count
-
+              # Process from the end so string positions remain valid.
+              for match in reversed(matches):
                   script = match.group(0)
 
                   # Remove only scripts containing globalLoader.
                   if "globalLoader" in script:
+                      updated = (
+                          updated[:match.start()]
+                          + updated[match.end():]
+                      )
+
                       removed_count += 1
-                      return ""
 
-                  return script
-
-              updated = script_pattern.sub(
-                  remove_loader_script,
-                  text
-              )
-
+              # Write only if something was actually removed.
               if removed_count > 0 and updated != text:
-                  file.write_text(
-                      updated,
-                      encoding="utf-8"
-                  )
+                  file.write_text(updated, encoding="utf-8")
 
                   total_files += 1
                   total_scripts += removed_count
@@ -81,15 +86,16 @@ jobs:
                       f"(removed {removed_count} loader script(s))"
                   )
 
-          print("----------------------------------------")
+          print()
+          print("========================================")
+          print(f"HTML files found: {total_html_files}")
           print(f"HTML files updated: {total_files}")
           print(f"Loader scripts removed: {total_scripts}")
-          print("----------------------------------------")
-          PY
+          print("========================================")
 
       - name: Check changes
         run: |
-          echo "Files changed:"
+          echo "Git changes:"
           git status --short
 
       - name: Commit changes
@@ -100,10 +106,11 @@ jobs:
           git add -A
 
           if git diff --cached --quiet; then
-            echo "No changes to commit"
+            echo "No changes to commit."
           else
             git commit -m "Remove global loader script"
           fi
 
       - name: Push changes
-        run: git push
+        run: |
+          git push
