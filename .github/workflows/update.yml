@@ -25,8 +25,10 @@ jobs:
           # Current date/time in India (IST)
           now = datetime.now(ZoneInfo("Asia/Kolkata"))
 
+          # Example: 2026-08-27T16:37
           datetime_value = now.strftime("%Y-%m-%dT%H:%M")
 
+          # Language folders
           languages = [
               "ae", "ar", "au", "bh", "ca", "de", "en", "es", "eu",
               "fr", "gb", "hi", "id", "it", "ja", "jo", "ko", "kw",
@@ -34,6 +36,7 @@ jobs:
               "tr", "us", "vi", "zh"
           ]
 
+          # Month names
           months = {
               "en": [
                   "January", "February", "March", "April", "May", "June",
@@ -79,10 +82,6 @@ jobs:
                   "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
                   "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
               ],
-              "vi": [
-                  "tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6",
-                  "tháng 7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12"
-              ],
               "id": [
                   "Januari", "Februari", "Maret", "April", "Mei", "Juni",
                   "Juli", "Agustus", "September", "Oktober", "November", "Desember"
@@ -90,7 +89,7 @@ jobs:
               "ms": [
                   "Januari", "Februari", "Mac", "April", "Mei", "Jun",
                   "Julai", "Ogos", "September", "Oktober", "November", "Disember"
-              ],
+              ]
           }
 
           arabic_months = [
@@ -103,6 +102,12 @@ jobs:
               "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"
           ]
 
+          thai_months = [
+              "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+              "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+              "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+          ]
+
           def localized_date(lang):
               year = now.year
               month = now.month
@@ -112,17 +117,11 @@ jobs:
 
               # Arabic
               if lang in {"ae", "ar", "qa"}:
-                  return (
-                      f"{day} {arabic_months[month - 1]} {year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{day} {arabic_months[month - 1]} {year} – {hour:02d}:{minute:02d}"
 
               # Hindi
               if lang == "hi":
-                  return (
-                      f"{day} {hindi_months[month - 1]} {year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{day} {hindi_months[month - 1]} {year} – {hour:02d}:{minute:02d}"
 
               # Japanese
               if lang == "ja":
@@ -138,80 +137,46 @@ jobs:
 
               # Thai
               if lang == "th":
-                  thai_year = year + 543
-                  thai_months = [
-                      "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
-                      "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
-                      "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-                  ]
-                  return (
-                      f"{day} {thai_months[month - 1]} {thai_year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{day} {thai_months[month - 1]} {year + 543} – {hour:02d}:{minute:02d}"
 
               # Basque
               if lang == "eu":
-                  return (
-                      f"{year}ko {months['eu'][month - 1]} {day} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{year}ko {months['eu'][month - 1]} {day} – {hour:02d}:{minute:02d}"
 
               # Polish
               if lang == "pl":
-                  return (
-                      f"{day} {months['pl'][month - 1]} {year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{day} {months['pl'][month - 1]} {year} – {hour:02d}:{minute:02d}"
 
               # Russian
               if lang == "ru":
-                  return (
-                      f"{day} {months['ru'][month - 1]} {year} г. – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
-
-              # Vietnamese
-              if lang == "vi":
-                  return (
-                      f"{day} {months['vi'][month - 1]} {year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
-
-              # Turkish
-              if lang == "tr":
-                  return (
-                      f"{day} {months['tr'][month - 1]} {year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{day} {months['ru'][month - 1]} {year} г. – {hour:02d}:{minute:02d}"
 
               # Portuguese
               if lang == "pt":
-                  return (
-                      f"{day} de {months['pt'][month - 1]} de {year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{day} de {months['pt'][month - 1]} de {year} – {hour:02d}:{minute:02d}"
+
+              # Turkish
+              if lang == "tr":
+                  return f"{day} {months['tr'][month - 1]} {year} – {hour:02d}:{minute:02d}"
+
+              # Vietnamese
+              if lang == "vi":
+                  return f"{day} tháng {month} năm {year} – {hour:02d}:{minute:02d}"
 
               # English
               if lang in {"en", "au", "gb", "us", "ca", "bh", "sg", "kw", "jo"}:
-                  return (
-                      f"{months['en'][month - 1]} {day}, {year} – "
-                      f"{hour:02d}:{minute:02d}"
-                  )
+                  return f"{months['en'][month - 1]} {day}, {year} – {hour:02d}:{minute:02d}"
 
-              # Default: day month year
+              # Other languages
               lang_months = months.get(lang, months["en"])
+              return f"{day} {lang_months[month - 1]} {year} – {hour:02d}:{minute:02d}"
 
-              return (
-                  f"{day} {lang_months[month - 1]} {year} – "
-                  f"{hour:02d}:{minute:02d}"
-              )
 
-          # Match:
-          # <time datetime="anything">anything</time>
+          # Match only <time> elements that contain a datetime attribute.
           time_pattern = re.compile(
-              r'<time\b([^>]*?)\bdatetime\s*=\s*["\'][^"\']*["\']([^>]*)>'
-              r'(.*?)'
-              r'</time>',
+              r'(<time\b[^>]*\bdatetime\s*=\s*)["\'][^"\']*["\']([^>]*>)'
+              r'.*?'
+              r'(</time>)',
               re.IGNORECASE | re.DOTALL
           )
 
@@ -227,11 +192,12 @@ jobs:
               visible_date = localized_date(lang)
 
               for file in directory.rglob("*"):
+
                   if not file.is_file():
                       continue
 
                   if file.suffix.lower() not in {
-                      ".html", ".htm", ".json", ".xml", ".svg"
+                      ".html", ".htm", ".xml", ".svg"
                   }:
                       continue
 
@@ -240,28 +206,30 @@ jobs:
                   except (UnicodeDecodeError, OSError):
                       continue
 
+                  file_updated = [False]
+
                   def replace_time(match):
-                      nonlocal total_updated
-
-                      before = match.group(1)
-                      after = match.group(2)
-
-                      total_updated += 1
+                      file_updated[0] = True
 
                       return (
-                          f'<time{before}datetime="{datetime_value}"{after}>'
+                          f'{match.group(1)}"{datetime_value}"'
+                          f'{match.group(2)}'
                           f'{visible_date}'
-                          f'</time>'
+                          f'{match.group(3)}'
                       )
 
                   updated = time_pattern.sub(replace_time, text)
 
-                  if updated != text:
+                  if file_updated[0] and updated != text:
                       file.write_text(updated, encoding="utf-8")
+                      total_updated += 1
                       print(f"Updated: {file}")
 
-          print(f"Updated {total_updated} <time> elements.")
-          print(f"Current IST time: {datetime_value}")
+          print("----------------------------------------")
+          print(f"Updated files: {total_updated}")
+          print(f"IST datetime: {datetime_value}")
+          print(f"IST time: {now.strftime('%H:%M')}")
+          print("----------------------------------------")
           PY
 
       - name: Commit changes
