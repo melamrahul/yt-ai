@@ -230,7 +230,7 @@ jobs:
                       total_updated += 1
                       print(f"Updated: {file}")
 
-          print("----------------------------------------")
+          print("------------------------------")
           print(f"Updated files: {total_updated}")
           print(f"IST datetime: {datetime_value}")
           print(f"IST time: {now.strftime('%H:%M')}")
