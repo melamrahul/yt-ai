@@ -1,4 +1,4 @@
-name: Update Performance Fixes
+name: Update
 
 on:
   workflow_dispatch:
@@ -7,115 +7,235 @@ permissions:
   contents: write
 
 jobs:
-  apply-performance-fixes:
+  update-time:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Apply Performance Fixes to All HTML Files
+      - name: Update
         run: |
-          python3 << 'EOF'
-          import os
+          python3 <<'PY'
           import re
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          from pathlib import Path
 
-          # Walk through all directories and files in the repository
-          for root, dirs, files in os.walk('.'):
-              # Skip the .git directory
-              if '.git' in root:
+          # Current date in India (IST), fixed time at 6:30 PM
+          now = datetime.now(ZoneInfo("Asia/Kolkata")).replace(
+              hour=18,
+              minute=30,
+              second=0,
+              microsecond=0
+          )
+
+          # Example: 2026-08-27T18:30
+          datetime_value = now.strftime("%Y-%m-%dT%H:%M")
+
+          # Language folders
+          languages = [
+              "ae", "ar", "au", "bh", "ca", "de", "en", "es", "eu",
+              "fr", "gb", "hi", "id", "it", "ja", "jo", "ko", "kw",
+              "ms", "nl", "om", "pl", "pt", "qa", "ru", "sg", "th",
+              "tr", "us", "vi", "zh"
+          ]
+
+          # Month names
+          months = {
+              "en": [
+                  "January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"
+              ],
+              "de": [
+                  "Januar", "Februar", "März", "April", "Mai", "Juni",
+                  "Juli", "August", "September", "Oktober", "November", "Dezember"
+              ],
+              "es": [
+                  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+              ],
+              "eu": [
+                  "urtarrila", "otsaila", "martxoa", "apirila", "maiatza", "ekaina",
+                  "uztaila", "abuztua", "iraila", "urria", "azaroa", "abendua"
+              ],
+              "fr": [
+                  "janvier", "février", "mars", "avril", "mai", "juin",
+                  "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+              ],
+              "it": [
+                  "gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
+                  "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"
+              ],
+              "nl": [
+                  "januari", "februari", "maart", "april", "mei", "juni",
+                  "juli", "augustus", "september", "oktober", "november", "december"
+              ],
+              "pl": [
+                  "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
+                  "lipca", "sierpnia", "września", "października", "listopada", "grudnia"
+              ],
+              "pt": [
+                  "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                  "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+              ],
+              "ru": [
+                  "января", "февраля", "марта", "апреля", "мая", "июня",
+                  "июля", "августа", "сентября", "октября", "ноября", "декабря"
+              ],
+              "tr": [
+                  "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                  "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+              ],
+              "id": [
+                  "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                  "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+              ],
+              "ms": [
+                  "Januari", "Februari", "Mac", "April", "Mei", "Jun",
+                  "Julai", "Ogos", "September", "Oktober", "November", "Disember"
+              ]
+          }
+
+          arabic_months = [
+              "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+              "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+          ]
+
+          hindi_months = [
+              "जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून",
+              "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"
+          ]
+
+          thai_months = [
+              "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+              "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+              "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+          ]
+
+          def localized_date(lang):
+              year = now.year
+              month = now.month
+              day = now.day
+              hour = now.hour
+              minute = now.minute
+
+              # Arabic
+              if lang in {"ae", "ar", "qa"}:
+                  return f"{day} {arabic_months[month - 1]} {year} – {hour:02d}:{minute:02d}"
+
+              # Hindi
+              if lang == "hi":
+                  return f"{day} {hindi_months[month - 1]} {year} – {hour:02d}:{minute:02d}"
+
+              # Japanese
+              if lang == "ja":
+                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
+
+              # Korean
+              if lang == "ko":
+                  return f"{year}년 {month}월 {day}일 – {hour:02d}:{minute:02d}"
+
+              # Chinese
+              if lang == "zh":
+                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
+
+              # Thai
+              if lang == "th":
+                  return f"{day} {thai_months[month - 1]} {year + 543} – {hour:02d}:{minute:02d}"
+
+              # Basque
+              if lang == "eu":
+                  return f"{year}ko {months['eu'][month - 1]} {day} – {hour:02d}:{minute:02d}"
+
+              # Polish
+              if lang == "pl":
+                  return f"{day} {months['pl'][month - 1]} {year} – {hour:02d}:{minute:02d}"
+
+              # Russian
+              if lang == "ru":
+                  return f"{day} {months['ru'][month - 1]} {year} г. – {hour:02d}:{minute:02d}"
+
+              # Portuguese
+              if lang == "pt":
+                  return f"{day} de {months['pt'][month - 1]} de {year} – {hour:02d}:{minute:02d}"
+
+              # Turkish
+              if lang == "tr":
+                  return f"{day} {months['tr'][month - 1]} {year} – {hour:02d}:{minute:02d}"
+
+              # Vietnamese
+              if lang == "vi":
+                  return f"{day} tháng {month} năm {year} – {hour:02d}:{minute:02d}"
+
+              # English
+              if lang in {"en", "au", "gb", "us", "ca", "bh", "sg", "kw", "jo"}:
+                  return f"{months['en'][month - 1]} {day}, {year} – {hour:02d}:{minute:02d}"
+
+              # Other languages
+              lang_months = months.get(lang, months["en"])
+              return f"{day} {lang_months[month - 1]} {year} – {hour:02d}:{minute:02d}"
+
+
+          # Match only <time> elements that contain a datetime attribute.
+          time_pattern = re.compile(
+              r'(<time\b[^>]*\bdatetime\s*=\s*)["\'][^"\']*["\']([^>]*>)'
+              r'.*?'
+              r'(</time>)',
+              re.IGNORECASE | re.DOTALL
+          )
+
+          total_updated = 0
+
+          for lang in languages:
+              directory = Path(lang)
+
+              if not directory.exists():
+                  print(f"Skipping missing directory: {directory}")
                   continue
 
-              for file in files:
-                  if file.endswith('.html'):
-                      filepath = os.path.join(root, file)
+              visible_date = localized_date(lang)
 
-                      try:
-                          with open(filepath, 'r', encoding='utf-8') as f:
-                              content = f.read()
+              for file in directory.rglob("*"):
 
-                          original_content = content
+                  if not file.is_file():
+                      continue
 
-                          # 1. Add Preconnect & DNS-Prefetch before </head>
-                          if '<link rel="preconnect" href="https://mr.ruvs.in"' not in content:
-                              preconnect_block = """<link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
-          <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-          <link rel="preconnect" href="https://www.ruvs.in" crossorigin>
-          <link rel="dns-prefetch" href="https://pl30765169.effectivecpmnetwork.com">
-          <link rel="dns-prefetch" href="https://pl31033916.profitableratecpmnetwork.com">
-          </head>"""
+                  if file.suffix.lower() not in {
+                      ".html", ".htm", ".xml", ".svg"
+                  }:
+                      continue
 
-                              content = content.replace('</head>', preconnect_block)
+                  try:
+                      text = file.read_text(encoding="utf-8")
+                  except (UnicodeDecodeError, OSError):
+                      continue
 
-                          # 2. Update Iframe:
-                          # ONLY change loading="eager" to loading="lazy"
-                          if 'loading="eager"' in content:
-                              content = content.replace(
-                                  'loading="eager"',
-                                  'loading="lazy"'
-                              )
+                  file_updated = [False]
 
-                          # 3. Add async to ad/tracking network scripts
-                          # Prevents render-blocking
-                          content = re.sub(
-                              r'(<script)\s+'
-                              r'(src="https://pl\d+\.(?:effectivecpmnetwork|profitableratecpmnetwork)\.com/[^"]+")',
-                              r'\1 async \2',
-                              content
-                          )
+                  def replace_time(match):
+                      file_updated[0] = True
 
-                          # Clean up redundant async="async"
-                          content = content.replace(
-                              'async="async"',
-                              'async'
-                          )
+                      return (
+                          f'{match.group(1)}"{datetime_value}"'
+                          f'{match.group(2)}'
+                          f'{visible_date}'
+                          f'{match.group(3)}'
+                      )
 
-                          # 4. Add Global Loader Timeout before </body>
-                          # Prevents infinite spinning
-                          if (
-                              'globalLoader' in content
-                              and 'setTimeout(function()' not in content
-                          ):
-                              loader_script = """<script>
-          // Force hide the global loader after 2.5 seconds
-          // to prevent infinite spinning
-          setTimeout(function() {
-              const loader = document.getElementById('globalLoader');
+                  updated = time_pattern.sub(replace_time, text)
 
-              if (loader) {
-                  loader.style.display = 'none';
-                  document.body.style.overflow = 'auto';
-              }
-          }, 2500);
+                  if file_updated[0] and updated != text:
+                      file.write_text(updated, encoding="utf-8")
+                      total_updated += 1
+                      print(f"Updated: {file}")
 
-          // Also hide it immediately when the HTML is ready
-          document.addEventListener('DOMContentLoaded', function() {
-              const loader = document.getElementById('globalLoader');
-
-              if (loader) {
-                  loader.style.display = 'none';
-              }
-          });
-          </script>
-          </body>"""
-
-                              content = content.replace(
-                                  '</body>',
-                                  loader_script
-                              )
-
-                          # Write back only if changes were made
-                          if content != original_content:
-                              with open(filepath, 'w', encoding='utf-8') as f:
-                                  f.write(content)
-
-                              print(f"✅ Updated: {filepath}")
-                          else:
-                              print(f"⏭️ Skipped (no changes needed): {filepath}")
-
-                      except Exception as e:
-                          print(f"❌ Error processing {filepath}: {e}")
-          EOF
+          print("----------------------------------------")
+          print(f"Updated files: {total_updated}")
+          print(f"IST datetime: {datetime_value}")
+          print(f"IST time: {now.strftime('%H:%M')}")
+          print("----------------------------------------")
+          PY
 
       - name: Commit changes
         run: |
@@ -124,9 +244,7 @@ jobs:
 
           git add .
 
-          git commit \
-            -m "chore: apply performance fixes to all HTML files (lazy iframe, async scripts, preconnect, loader timeout)" \
-            || echo "No changes to commit"
+          git commit -m "Update" || echo "No changes"
 
       - name: Push changes
         run: git push
