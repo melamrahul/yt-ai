@@ -7,18 +7,262 @@ permissions:
   contents: write
 
 jobs:
-  update-sentinel:
+  update-time:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update
+      - name: Update date and time
         run: |
-          find . -type f \( -name "*.html" -o -name "*.json" -o -name "*.xml" \) | while read file; do
-            sed -i 's#<script src="https://www.ruvs.in/resos/common/scripts/sentinel.js?v=1.18" defer></script>#<script src="https://www.ruvs.in/resos/react/sentinel.js?v=1.0.0" defer></script>#g' "$file"
-          done
+          python3 <<'PY'
+          import re
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          from pathlib import Path
+
+          # Current date/time in India (IST)
+          now = datetime.now(ZoneInfo("Asia/Kolkata"))
+
+          datetime_value = now.strftime("%Y-%m-%dT%H:%M")
+
+          languages = [
+              "ae", "ar", "au", "bh", "ca", "de", "en", "es", "eu",
+              "fr", "gb", "hi", "id", "it", "ja", "jo", "ko", "kw",
+              "ms", "nl", "om", "pl", "pt", "qa", "ru", "sg", "th",
+              "tr", "us", "vi", "zh"
+          ]
+
+          months = {
+              "en": [
+                  "January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"
+              ],
+              "de": [
+                  "Januar", "Februar", "März", "April", "Mai", "Juni",
+                  "Juli", "August", "September", "Oktober", "November", "Dezember"
+              ],
+              "es": [
+                  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+              ],
+              "eu": [
+                  "urtarrila", "otsaila", "martxoa", "apirila", "maiatza", "ekaina",
+                  "uztaila", "abuztua", "iraila", "urria", "azaroa", "abendua"
+              ],
+              "fr": [
+                  "janvier", "février", "mars", "avril", "mai", "juin",
+                  "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+              ],
+              "it": [
+                  "gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
+                  "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"
+              ],
+              "nl": [
+                  "januari", "februari", "maart", "april", "mei", "juni",
+                  "juli", "augustus", "september", "oktober", "november", "december"
+              ],
+              "pl": [
+                  "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
+                  "lipca", "sierpnia", "września", "października", "listopada", "grudnia"
+              ],
+              "pt": [
+                  "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                  "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+              ],
+              "ru": [
+                  "января", "февраля", "марта", "апреля", "мая", "июня",
+                  "июля", "августа", "сентября", "октября", "ноября", "декабря"
+              ],
+              "tr": [
+                  "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                  "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+              ],
+              "vi": [
+                  "tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6",
+                  "tháng 7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12"
+              ],
+              "id": [
+                  "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                  "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+              ],
+              "ms": [
+                  "Januari", "Februari", "Mac", "April", "Mei", "Jun",
+                  "Julai", "Ogos", "September", "Oktober", "November", "Disember"
+              ],
+          }
+
+          arabic_months = [
+              "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
+              "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+          ]
+
+          hindi_months = [
+              "जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून",
+              "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"
+          ]
+
+          def localized_date(lang):
+              year = now.year
+              month = now.month
+              day = now.day
+              hour = now.hour
+              minute = now.minute
+
+              # Arabic
+              if lang in {"ae", "ar", "qa"}:
+                  return (
+                      f"{day} {arabic_months[month - 1]} {year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Hindi
+              if lang == "hi":
+                  return (
+                      f"{day} {hindi_months[month - 1]} {year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Japanese
+              if lang == "ja":
+                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
+
+              # Korean
+              if lang == "ko":
+                  return f"{year}년 {month}월 {day}일 – {hour:02d}:{minute:02d}"
+
+              # Chinese
+              if lang == "zh":
+                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
+
+              # Thai
+              if lang == "th":
+                  thai_year = year + 543
+                  thai_months = [
+                      "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+                      "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+                      "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                  ]
+                  return (
+                      f"{day} {thai_months[month - 1]} {thai_year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Basque
+              if lang == "eu":
+                  return (
+                      f"{year}ko {months['eu'][month - 1]} {day} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Polish
+              if lang == "pl":
+                  return (
+                      f"{day} {months['pl'][month - 1]} {year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Russian
+              if lang == "ru":
+                  return (
+                      f"{day} {months['ru'][month - 1]} {year} г. – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Vietnamese
+              if lang == "vi":
+                  return (
+                      f"{day} {months['vi'][month - 1]} {year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Turkish
+              if lang == "tr":
+                  return (
+                      f"{day} {months['tr'][month - 1]} {year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Portuguese
+              if lang == "pt":
+                  return (
+                      f"{day} de {months['pt'][month - 1]} de {year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # English
+              if lang in {"en", "au", "gb", "us", "ca", "bh", "sg", "kw", "jo"}:
+                  return (
+                      f"{months['en'][month - 1]} {day}, {year} – "
+                      f"{hour:02d}:{minute:02d}"
+                  )
+
+              # Default: day month year
+              lang_months = months.get(lang, months["en"])
+
+              return (
+                  f"{day} {lang_months[month - 1]} {year} – "
+                  f"{hour:02d}:{minute:02d}"
+              )
+
+          # Match:
+          # <time datetime="anything">anything</time>
+          time_pattern = re.compile(
+              r'<time\b([^>]*?)\bdatetime\s*=\s*["\'][^"\']*["\']([^>]*)>'
+              r'(.*?)'
+              r'</time>',
+              re.IGNORECASE | re.DOTALL
+          )
+
+          total_updated = 0
+
+          for lang in languages:
+              directory = Path(lang)
+
+              if not directory.exists():
+                  print(f"Skipping missing directory: {directory}")
+                  continue
+
+              visible_date = localized_date(lang)
+
+              for file in directory.rglob("*"):
+                  if not file.is_file():
+                      continue
+
+                  if file.suffix.lower() not in {
+                      ".html", ".htm", ".json", ".xml", ".svg"
+                  }:
+                      continue
+
+                  try:
+                      text = file.read_text(encoding="utf-8")
+                  except (UnicodeDecodeError, OSError):
+                      continue
+
+                  def replace_time(match):
+                      nonlocal total_updated
+
+                      before = match.group(1)
+                      after = match.group(2)
+
+                      total_updated += 1
+
+                      return (
+                          f'<time{before}datetime="{datetime_value}"{after}>'
+                          f'{visible_date}'
+                          f'</time>'
+                      )
+
+                  updated = time_pattern.sub(replace_time, text)
+
+                  if updated != text:
+                      file.write_text(updated, encoding="utf-8")
+                      print(f"Updated: {file}")
+
+          print(f"Updated {total_updated} <time> elements.")
+          print(f"Current IST time: {datetime_value}")
+          PY
 
       - name: Commit changes
         run: |
@@ -26,7 +270,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add .
-          git commit -m "Update" || echo "No changes"
+
+          git commit -m "Update date and time" || echo "No changes"
 
       - name: Push changes
         run: git push
