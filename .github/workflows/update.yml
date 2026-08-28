@@ -20,9 +20,9 @@ jobs:
         run: |
           python3 <<'PY'
           from pathlib import Path
+          import re
 
-          old_script = '<script src="https://www.ruvs.in/resos/react/sentinel.js?v=1.0.0" defer></script>'
-          new_script = '<script src="/chunk/scripts/sentinel.js?v={{ site.github.build_revision }}" defer></script>'
+          adsense_script = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110" crossorigin="anonymous"></script>'
 
           languages = [
               "ae", "ar", "au", "bh", "ca", "de", "en", "es", "eu",
@@ -53,10 +53,18 @@ jobs:
                       print(f"Skipping {file}: {error}")
                       continue
 
-                  if old_script not in text:
+                  # Do not add the script if it already exists.
+                  if adsense_script in text:
                       continue
 
-                  updated = text.replace(old_script, new_script)
+                  # Add AdSense immediately after the opening <head> tag.
+                  updated = re.sub(
+                      r"(<head\b[^>]*>)",
+                      rf"\1\n{adsense_script}",
+                      text,
+                      count=1,
+                      flags=re.IGNORECASE
+                  )
 
                   if updated != text:
                       file.write_text(updated, encoding="utf-8")
