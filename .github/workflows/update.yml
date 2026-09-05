@@ -1,5 +1,5 @@
 name: Update
-# Working Update Date and Time Code
+# Working Update
 on:
   workflow_dispatch:
   schedule:
