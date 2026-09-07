@@ -14,47 +14,73 @@ root_files_to_ignore = {
     "youtube-video-to-mp3-converter-github.html"
 }
 
-link_pattern = re.compile(
-    r'(<link\s+[^>]*?\bhref\s*=\s*["\'])([^"\']+)(["\'][^>]*?>)',
+# Match hreflang tags (order-independent using lookaheads)
+hreflang_pattern = re.compile(
+    r'(<link\b(?=[^>]*\brel\s*=\s*["\']alternate["\'])'
+    r'(?=[^>]*\bhreflang\s*=\s*["\'][^"\']+["\'])'
+    r'[^>]*\bhref\s*=\s*["\'])([^"\']+)(["\'][^>]*>)',
     re.IGNORECASE
 )
 
+# Match canonical tags (order-independent)
+canonical_pattern = re.compile(
+    r'(<link\b(?=[^>]*\brel\s*=\s*["\']canonical["\'])'
+    r'[^>]*\bhref\s*=\s*["\'])([^"\']+)(["\'][^>]*>)',
+    re.IGNORECASE
+)
+
+def add_trailing_slash(url):
+    match = re.match(r'^([^?#]*)(.*)$', url)
+    path = match.group(1)
+    suffix = match.group(2)
+
+    if not path.startswith(("http://", "https://")):
+        return url
+
+    if not path.endswith("/"):
+        path += "/"
+
+    return path + suffix
+
 total_updated = 0
+files_checked = 0
 
 def process_file(file):
-    global total_updated
+    global total_updated, files_checked
+    files_checked += 1
     try:
         text = file.read_text(encoding="utf-8")
     except (UnicodeDecodeError, OSError):
         return
-    
-    file_updated = False
-    
-    def replace_href(match):
-        nonlocal file_updated
-        prefix = match.group(1)
-        url = match.group(2)
-        suffix = match.group(3)
-        full_match = prefix + url + suffix
-        
-        if re.search(r'\brel\s*=\s*["\'](?:alternate|canonical)["\']', full_match, re.IGNORECASE):
-            if not url.endswith('/'):
-                url += '/'
-                file_updated = True
-        
-        return prefix + url + suffix
 
-    updated_text = link_pattern.sub(replace_href, text)
-    
-    if file_updated and updated_text != text:
-        file.write_text(updated_text, encoding="utf-8")
+    original = text
+
+    def replace_hreflang(match):
+        old_url = match.group(2)
+        new_url = add_trailing_slash(old_url)
+        if old_url != new_url:
+            print(f"  hreflang: {old_url} -> {new_url}")
+        return match.group(1) + new_url + match.group(3)
+
+    def replace_canonical(match):
+        old_url = match.group(2)
+        new_url = add_trailing_slash(old_url)
+        if old_url != new_url:
+            print(f"  canonical: {old_url} -> {new_url}")
+        return match.group(1) + new_url + match.group(3)
+
+    text = hreflang_pattern.sub(replace_hreflang, text)
+    text = canonical_pattern.sub(replace_canonical, text)
+
+    if text != original:
+        file.write_text(text, encoding="utf-8")
         total_updated += 1
         print(f"Updated: {file}")
 
+# 1. Process language folders
 for lang in languages:
     directory = Path(lang)
     if not directory.exists():
-        print(f"Skipping missing directory: {directory}")
         continue
     
     for file in directory.rglob("*"):
@@ -62,11 +88,14 @@ for lang in languages:
             continue
         if file.suffix.lower() not in {".html", ".htm", ".xml", ".svg"}:
             continue
-        if file.name in root_files_to_ignore:
+        
+        # Only ignore specific files if they are in the ROOT directory
+        if file.parent == Path(".") and file.name in root_files_to_ignore:
             continue
             
         process_file(file)
 
+# 2. Process root directory (ignoring the 3 specific files)
 root_dir = Path(".")
 for file in root_dir.iterdir():
     if not file.is_file():
@@ -81,5 +110,7 @@ for file in root_dir.iterdir():
     process_file(file)
 
 print("----------------------------------------")
+print(f"Files checked: {files_checked}")
 print(f"Updated files: {total_updated}")
 print("----------------------------------------")
+
