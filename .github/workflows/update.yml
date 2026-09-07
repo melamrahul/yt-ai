@@ -14,109 +14,17 @@ jobs:
       - name: Checkout repository  
         uses: actions/checkout@v4  
 
-      - name: Update  
+      - name: Update trailing slashes in meta tags  
         run: |  
-          python3 <<'PY'  
-          import re  
-          from pathlib import Path  
-
-          languages = [  
-              "ae", "ar", "au", "bh", "ca", "de", "en", "es", "eu",  
-              "fr", "gb", "hi", "id", "it", "ja", "jo", "ko", "kw",  
-              "ms", "nl", "om", "pl", "pt", "qa", "ru", "sg", "th",  
-              "tr", "us", "vi", "zh"  
-          ]  
-
-          root_files_to_ignore = {  
-              "index.html",  
-              "youtube-to-mp3-converter-github.html",  
-              "youtube-video-to-mp3-converter-github.html"  
-          }  
-
-          # Pattern to match <link ... href="..." ...>  
-          # Group 1: <link ... href="  
-          # Group 2: the URL  
-          # Group 3: " ... >  
-          link_pattern = re.compile(  
-              r'(<link\s+[^>]*?\bhref\s*=\s*["\'])([^"\']+)(["\'][^>]*?>)',  
-              re.IGNORECASE  
-          )  
-
-          total_updated = 0  
-
-          def process_file(file):  
-              global total_updated  
-              try:  
-                  text = file.read_text(encoding="utf-8")  
-              except (UnicodeDecodeError, OSError):  
-                  return  
-              
-              file_updated = False  
-              
-              def replace_href(match):  
-                  nonlocal file_updated  
-                  prefix = match.group(1)  
-                  url = match.group(2)  
-                  suffix = match.group(3)  
-                  full_match = prefix + url + suffix  
-                  
-                  # Check if this link is rel="alternate" or rel="canonical"  
-                  if re.search(r'\brel\s*=\s*["\'](?:alternate|canonical)["\']', full_match, re.IGNORECASE):  
-                      if not url.endswith('/'):  
-                          url += '/'  
-                          file_updated = True  
-                  
-                  return prefix + url + suffix  
-
-              updated_text = link_pattern.sub(replace_href, text)  
-              
-              if file_updated and updated_text != text:  
-                  file.write_text(updated_text, encoding="utf-8")  
-                  total_updated += 1  
-                  print(f"Updated: {file}")  
-
-          # 1. Process language folders  
-          for lang in languages:  
-              directory = Path(lang)  
-              if not directory.exists():  
-                  print(f"Skipping missing directory: {directory}")  
-                  continue  
-              
-              for file in directory.rglob("*"):  
-                  if not file.is_file():  
-                      continue  
-                  if file.suffix.lower() not in {".html", ".htm", ".xml", ".svg"}:  
-                      continue  
-                  if file.name in root_files_to_ignore:  
-                      continue  
-                      
-                  process_file(file)  
-
-          # 2. Process root directory, but ignore the 3 specific root pages  
-          root_dir = Path(".")  
-          for file in root_dir.iterdir():  
-              if not file.is_file():  
-                  continue  
-              if file.suffix.lower() not in {".html", ".htm", ".xml", ".svg"}:  
-                  continue  
-              
-              if file.name in root_files_to_ignore:  
-                  print(f"Ignoring root file: {file.name}")  
-                  continue  
-                  
-              process_file(file)  
-
-          print("----------------------------------------")  
-          print(f"Updated files: {total_updated}")  
-          print("----------------------------------------")  
-          PY  
+          echo "aW1wb3J0IHJlCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKbGFuZ3VhZ2VzID0gWwogICAgImFlIiwgImFyIiwgImF1IiwgImJoIiwgImNhIiwgImRlIiwgImVuIiwgImVzIiwgImV1IiwKICAgICJmciIsICJnYiIsICJoaSIsICJpZCIsICJpdCIsICJqYSIsICJqbyIsICJrbyIsICJrdyIsCiAgICAibXMiLCAibmwiLCAib20iLCAicGwiLCAicHQiLCAicWEiLCAicnUiLCAic2ciLCAidGgiLAogICAgInRyIiwgInVzIiwgInZpIiwgInpoIgpdCgpyb290X2ZpbGVzX3RvX2lnbm9yZSA9IHsKICAgICJpbmRleC5odG1sIiwKICAgICJ5b3V0dWJlLXRvLW1wMy1jb252ZXJ0ZXItZ2l0aHViLmh0bWwiLAogICAgInlvdXR1YmUtdmlkZW8tdG8tbXAzLWNvbnZlcnRlci1naXRodWIuaHRtbCIKfQoKbGlua19wYXR0ZXJuID0gcmUuY29tcGlsZSgKICAgIHInKDxsaW5rXHMrW14+XSo/XGJocmVmXHMqPVxzKlsiXCddKShbXiJcJ10rKShbIlwnXVtePl0qPz4pJywKICAgIHJlLklHTk9SRUNBU0UKKQoKdG90YWxfdXBkYXRlZCA9IDAKCmRlZiBwcm9jZXNzX2ZpbGUoZmlsZSk6CiAgICBnbG9iYWwgdG90YWxfdXBkYXRlZAogICAgdHJ5OgogICAgICAgIHRleHQgPSBmaWxlLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQogICAgZXhjZXB0IChVbmljb2RlRGVjb2RlRXJyb3IsIE9TRXJyb3IpOgogICAgICAgIHJldHVybgogICAgCiAgICBmaWxlX3VwZGF0ZWQgPSBGYWxzZQogICAgCiAgICBkZWYgcmVwbGFjZV9ocmVmKG1hdGNoKToKICAgICAgICBub25sb2NhbCBmaWxlX3VwZGF0ZWQKICAgICAgICBwcmVmaXggPSBtYXRjaC5ncm91cCgxKQogICAgICAgIHVybCA9IG1hdGNoLmdyb3VwKDIpCiAgICAgICAgc3VmZml4ID0gbWF0Y2guZ3JvdXAoMykKICAgICAgICBmdWxsX21hdGNoID0gcHJlZml4ICsgdXJsICsgc3VmZml4CiAgICAgICAgCiAgICAgICAgaWYgcmUuc2VhcmNoKHInXGJyZWxccyo9XHMqWyJcJ10oPzphbHRlcm5hdGV8Y2Fub25pY2FsKVsiXCddJywgZnVsbF9tYXRjaCwgcmUuSUdOT1JFQ0FTRSk6CiAgICAgICAgICAgIGlmIG5vdCB1cmwuZW5kc3dpdGgoJy8nKToKICAgICAgICAgICAgICAgIHVybCArPSAnLycKICAgICAgICAgICAgICAgIGZpbGVfdXBkYXRlZCA9IFRydWUKICAgICAgICAKICAgICAgICByZXR1cm4gcHJlZml4ICsgdXJsICsgc3VmZml4CgogICAgdXBkYXRlZF90ZXh0ID0gbGlua19wYXR0ZXJuLnN1YihyZXBsYWNlX2hyZWYsIHRleHQpCiAgICAKICAgIGlmIGZpbGVfdXBkYXRlZCBhbmQgdXBkYXRlZF90ZXh0ICE9IHRleHQ6CiAgICAgICAgZmlsZS53cml0ZV90ZXh0KHVwZGF0ZWRfdGV4dCwgZW5jb2Rpbmc9InV0Zi04IikKICAgICAgICB0b3RhbF91cGRhdGVkICs9IDEKICAgICAgICBwcmludChmIlVwZGF0ZWQ6IHtmaWxlfSIpCgpmb3IgbGFuZyBpbiBsYW5ndWFnZXM6CiAgICBkaXJlY3RvcnkgPSBQYXRoKGxhbmcpCiAgICBpZiBub3QgZGlyZWN0b3J5LmV4aXN0cygpOgogICAgICAgIHByaW50KGYiU2tpcHBpbmcgbWlzc2luZyBkaXJlY3Rvcnk6IHtkaXJlY3Rvcnl9IikKICAgICAgICBjb250aW51ZQogICAgCiAgICBmb3IgZmlsZSBpbiBkaXJlY3Rvcnkucmdsb2IoIioiKToKICAgICAgICBpZiBub3QgZmlsZS5pc19maWxlKCk6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgaWYgZmlsZS5zdWZmaXgubG93ZXIoKSBub3QgaW4geyIuaHRtbCIsICIuaHRtIiwgIi54bWwiLCAiLnN2ZyJ9OgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIGlmIGZpbGUubmFtZSBpbiByb290X2ZpbGVzX3RvX2lnbm9yZToKICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgCiAgICAgICAgcHJvY2Vzc19maWxlKGZpbGUpCgpyb290X2RpciA9IFBhdGgoIi4iKQpmb3IgZmlsZSBpbiByb290X2Rpci5pdGVyZGlyKCk6CiAgICBpZiBub3QgZmlsZS5pc19maWxlKCk6CiAgICAgICAgY29udGludWUKICAgIGlmIGZpbGUuc3VmZml4Lmxvd2VyKCkgbm90IGluIHsiLmh0bWwiLCAiLmh0bSIsICIueG1sIiwgIi5zdmcifToKICAgICAgICBjb250aW51ZQogICAgCiAgICBpZiBmaWxlLm5hbWUgaW4gcm9vdF9maWxlc190b19pZ25vcmU6CiAgICAgICAgcHJpbnQoZiJJZ25vcmluZyByb290IGZpbGU6IHtmaWxlLm5hbWV9IikKICAgICAgICBjb250aW51ZQogICAgICAgIAogICAgcHJvY2Vzc19maWxlKGZpbGUpCgpwcmludCgiLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSIpCnByaW50KGYiVXBkYXRlZCBmaWxlczoge3RvdGFsX3VwZGF0ZWR9IikKcHJpbnQoIi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0iKQo=" | base64 -d > update_links.py  
+          python3 update_links.py  
 
       - name: Commit changes  
         run: |  
           git config user.name "github-actions[bot]"  
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"  
           git add .  
-          git commit -m "Update" || echo "No changes"  
+          git commit -m "Add trailing slashes to alternate and canonical links" || echo "No changes"  
 
       - name: Push changes  
         run: git push
