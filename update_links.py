@@ -1,0 +1,85 @@
+import re
+from pathlib import Path
+
+languages = [
+    "ae", "ar", "au", "bh", "ca", "de", "en", "es", "eu",
+    "fr", "gb", "hi", "id", "it", "ja", "jo", "ko", "kw",
+    "ms", "nl", "om", "pl", "pt", "qa", "ru", "sg", "th",
+    "tr", "us", "vi", "zh"
+]
+
+root_files_to_ignore = {
+    "index.html",
+    "youtube-to-mp3-converter-github.html",
+    "youtube-video-to-mp3-converter-github.html"
+}
+
+link_pattern = re.compile(
+    r'(<link\s+[^>]*?\bhref\s*=\s*["\'])([^"\']+)(["\'][^>]*?>)',
+    re.IGNORECASE
+)
+
+total_updated = 0
+
+def process_file(file):
+    global total_updated
+    try:
+        text = file.read_text(encoding="utf-8")
+    except (UnicodeDecodeError, OSError):
+        return
+    
+    file_updated = False
+    
+    def replace_href(match):
+        nonlocal file_updated
+        prefix = match.group(1)
+        url = match.group(2)
+        suffix = match.group(3)
+        full_match = prefix + url + suffix
+        
+        if re.search(r'\brel\s*=\s*["\'](?:alternate|canonical)["\']', full_match, re.IGNORECASE):
+            if not url.endswith('/'):
+                url += '/'
+                file_updated = True
+        
+        return prefix + url + suffix
+
+    updated_text = link_pattern.sub(replace_href, text)
+    
+    if file_updated and updated_text != text:
+        file.write_text(updated_text, encoding="utf-8")
+        total_updated += 1
+        print(f"Updated: {file}")
+
+for lang in languages:
+    directory = Path(lang)
+    if not directory.exists():
+        print(f"Skipping missing directory: {directory}")
+        continue
+    
+    for file in directory.rglob("*"):
+        if not file.is_file():
+            continue
+        if file.suffix.lower() not in {".html", ".htm", ".xml", ".svg"}:
+            continue
+        if file.name in root_files_to_ignore:
+            continue
+            
+        process_file(file)
+
+root_dir = Path(".")
+for file in root_dir.iterdir():
+    if not file.is_file():
+        continue
+    if file.suffix.lower() not in {".html", ".htm", ".xml", ".svg"}:
+        continue
+    
+    if file.name in root_files_to_ignore:
+        print(f"Ignoring root file: {file.name}")
+        continue
+        
+    process_file(file)
+
+print("----------------------------------------")
+print(f"Updated files: {total_updated}")
+print("----------------------------------------")
