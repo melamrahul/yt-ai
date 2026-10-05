@@ -85,9 +85,9 @@ jobs:
           )
           total_updated = 0
           
-          # 1. Process language folders
+          # 1. Process language folders (FIXED: Added "leaf/" prefix)
           for lang in languages:
-              directory = Path(lang)
+              directory = Path("leaf") / lang  # <--- THIS WAS CHANGED
               if not directory.exists():
                   print(f"Skipping missing directory: {directory}")
                   continue
