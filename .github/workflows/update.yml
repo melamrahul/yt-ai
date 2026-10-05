@@ -1,0 +1,164 @@
+name: Update
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-time:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update
+        run: |
+          python3 <<'PY'
+          import re
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          from pathlib import Path
+          
+          # Current date/time in India (IST)
+          now = datetime.now(ZoneInfo("Asia/Kolkata"))
+          # Example: 2026-10-05T14:30
+          datetime_value = now.strftime("%Y-%m-%dT%H:%M")
+          
+          # Language folders (matching your repository structure)
+          languages = ["de", "en", "es", "fr", "ja", "pt", "zh"]
+          
+          # Month names for supported languages
+          months = {
+              "en": [
+                  "January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"
+              ],
+              "de": [
+                  "Januar", "Februar", "März", "April", "Mai", "Juni",
+                  "Juli", "August", "September", "Oktober", "November", "Dezember"
+              ],
+              "es": [
+                  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+              ],
+              "fr": [
+                  "janvier", "février", "mars", "avril", "mai", "juin",
+                  "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+              ],
+              "pt": [
+                  "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                  "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+              ]
+          }
+          
+          def localized_date(lang):
+              year = now.year
+              month = now.month
+              day = now.day
+              hour = now.hour
+              minute = now.minute
+              
+              # Japanese
+              if lang == "ja":
+                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
+              
+              # Chinese
+              if lang == "zh":
+                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
+              
+              # Other languages with month names
+              if lang in months:
+                  return f"{day} {months[lang][month - 1]} {year} – {hour:02d}:{minute:02d}"
+              
+              # Default to English
+              return f"{months['en'][month - 1]} {day}, {year} – {hour:02d}:{minute:02d}"
+          
+          # Match only <time> elements that contain a datetime attribute.
+          time_pattern = re.compile(
+              r'(<time\b[^>]*\bdatetime\s*=\s*)["\'][^"\']*["\']([^>]*>)'
+              r'.*?'
+              r'(</time>)',
+              re.IGNORECASE | re.DOTALL
+          )
+          total_updated = 0
+          
+          # 1. Process language folders
+          for lang in languages:
+              directory = Path(lang)
+              if not directory.exists():
+                  print(f"Skipping missing directory: {directory}")
+                  continue
+              visible_date = localized_date(lang)
+              for file in directory.rglob("*"):
+                  if not file.is_file():
+                      continue
+                  if file.suffix.lower() not in {
+                      ".html", ".htm", ".xml", ".svg"
+                  }:
+                      continue
+                  try:
+                      text = file.read_text(encoding="utf-8")
+                  except (UnicodeDecodeError, OSError):
+                      continue
+                  file_updated = [False]
+                  def replace_time(match):
+                      file_updated[0] = True
+                      return (
+                          f'{match.group(1)}"{datetime_value}"'
+                          f'{match.group(2)}'
+                          f'{visible_date}'
+                          f'{match.group(3)}'
+                      )
+                  updated = time_pattern.sub(replace_time, text)
+                  if file_updated[0] and updated != text:
+                      file.write_text(updated, encoding="utf-8")
+                      total_updated += 1
+                      print(f"Updated: {file}")
+          
+          # 2. Process specific root files (using English localization)
+          root_files = [
+              Path("index.html"),
+              Path("youtube-to-mp3-converter-github.html"),
+              Path("youtube-video-to-mp3-converter-github.html")
+          ]
+          visible_date_en = localized_date("en")
+          for file in root_files:
+              if not file.is_file():
+                  print(f"Skipping missing root file: {file}")
+                  continue
+              try:
+                  text = file.read_text(encoding="utf-8")
+              except (UnicodeDecodeError, OSError):
+                  continue
+              file_updated = [False]
+              def replace_time_root(match):
+                  file_updated[0] = True
+                  return (
+                      f'{match.group(1)}"{datetime_value}"'
+                      f'{match.group(2)}'
+                      f'{visible_date_en}'
+                      f'{match.group(3)}'
+                  )
+              updated = time_pattern.sub(replace_time_root, text)
+              if file_updated[0] and updated != text:
+                  file.write_text(updated, encoding="utf-8")
+                  total_updated += 1
+                  print(f"Updated: {file}")
+
+          print("----------------------------------------")
+          print(f"Updated files: {total_updated}")
+          print(f"IST datetime: {datetime_value}")
+          print(f"IST time: {now.strftime('%H:%M')}")
+          print("----------------------------------------")
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update" || echo "No changes"
+      - name: Push changes
+        run: git push
