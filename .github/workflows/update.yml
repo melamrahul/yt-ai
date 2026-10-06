@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update
+      - name: Update Time and Ad Codes
         run: |
           python3 <<'PY'
           import re
@@ -24,134 +24,99 @@ jobs:
           
           # Current date/time in India (IST)
           now = datetime.now(ZoneInfo("Asia/Kolkata"))
-          # Example: 2026-10-05T14:30
           datetime_value = now.strftime("%Y-%m-%dT%H:%M")
           
-          # Language folders (matching your repository structure)
+          # Language folders
           languages = ["de", "en", "es", "fr", "ja", "pt", "zh"]
           
           # Month names for supported languages
           months = {
-              "en": [
-                  "January", "February", "March", "April", "May", "June",
-                  "July", "August", "September", "October", "November", "December"
-              ],
-              "de": [
-                  "Januar", "Februar", "März", "April", "Mai", "Juni",
-                  "Juli", "August", "September", "Oktober", "November", "Dezember"
-              ],
-              "es": [
-                  "enero", "febrero", "marzo", "abril", "mayo", "junio",
-                  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-              ],
-              "fr": [
-                  "janvier", "février", "mars", "avril", "mai", "juin",
-                  "juillet", "août", "septembre", "octobre", "novembre", "décembre"
-              ],
-              "pt": [
-                  "janeiro", "fevereiro", "março", "abril", "maio", "junho",
-                  "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
-              ]
+              "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+              "de": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+              "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+              "fr": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+              "pt": ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
           }
           
           def localized_date(lang):
-              year = now.year
-              month = now.month
-              day = now.day
-              hour = now.hour
-              minute = now.minute
-              
-              # Japanese
-              if lang == "ja":
+              year, month, day, hour, minute = now.year, now.month, now.day, now.hour, now.minute
+              if lang in {"ja", "zh"}:
                   return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
-              
-              # Chinese
-              if lang == "zh":
-                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
-              
-              # Other languages with month names
               if lang in months:
                   return f"{day} {months[lang][month - 1]} {year} – {hour:02d}:{minute:02d}"
-              
-              # Default to English
               return f"{months['en'][month - 1]} {day}, {year} – {hour:02d}:{minute:02d}"
           
-          # Match only <time> elements that contain a datetime attribute.
+          # 1. Pattern for updating <time> tags
           time_pattern = re.compile(
-              r'(<time\b[^>]*\bdatetime\s*=\s*)["\'][^"\']*["\']([^>]*>)'
-              r'.*?'
-              r'(</time>)',
+              r'(<time\b[^>]*\bdatetime\s*=\s*)["\'][^"\']*["\']([^>]*>).*?(</time>)',
               re.IGNORECASE | re.DOTALL
           )
+          
+          # 2. Pattern for replacing the OLD ad code block
+          # This regex is flexible and will match regardless of attribute order or extra spaces/newlines
+          old_ad_pattern = re.compile(
+              r'<script[^>]*src="https://pl30765169\.effectivecpmnetwork\.com/32/e1/5f/32e15f2082a75880a1c2e691c2bbf8db\.js"[^>]*></script>\s*'
+              r'<script[^>]*src="https://pl30765168\.effectivecpmnetwork\.com/44/3b/42/443b42c34d2f923bcaedf407008b098c\.js"[^>]*></script>\s*'
+              r'<script[^>]*src="https://pl31033916\.profitableratecpmnetwork\.com/94bab3782cb7532f2a5ee2c403f6d27d/invoke\.js"[^>]*></script>\s*<div\s+id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>',
+              re.IGNORECASE | re.DOTALL
+          )
+          
+          # The NEW ad code to insert
+          new_ad_code = """<script data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
+<script data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>
+<script async="async" data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>
+<div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>"""
+
           total_updated = 0
           
-          # 1. Process language folders (FIXED: Added "leaf/" prefix)
+          def process_file(file, lang):
+              global total_updated
+              try:
+                  text = file.read_text(encoding="utf-8")
+              except (UnicodeDecodeError, OSError):
+                  return
+              
+              original_text = text
+              
+              # Apply Time Update
+              visible_date = localized_date(lang)
+              def replace_time(match):
+                  return f'{match.group(1)}"{datetime_value}"{match.group(2)}{visible_date}{match.group(3)}'
+              
+              new_text = time_pattern.sub(replace_time, text)
+              
+              # Apply Ad Code Replacement
+              new_text = old_ad_pattern.sub(new_ad_code, new_text)
+              
+              # Save only if changes were made
+              if new_text != original_text:
+                  file.write_text(new_text, encoding="utf-8")
+                  total_updated += 1
+                  print(f"Updated: {file}")
+          
+          # Process language folders (inside "leaf" directory)
           for lang in languages:
-              directory = Path("leaf") / lang  # <--- THIS WAS CHANGED
+              directory = Path("leaf") / lang
               if not directory.exists():
                   print(f"Skipping missing directory: {directory}")
                   continue
-              visible_date = localized_date(lang)
               for file in directory.rglob("*"):
-                  if not file.is_file():
-                      continue
-                  if file.suffix.lower() not in {
-                      ".html", ".htm", ".xml", ".svg"
-                  }:
-                      continue
-                  try:
-                      text = file.read_text(encoding="utf-8")
-                  except (UnicodeDecodeError, OSError):
-                      continue
-                  file_updated = [False]
-                  def replace_time(match):
-                      file_updated[0] = True
-                      return (
-                          f'{match.group(1)}"{datetime_value}"'
-                          f'{match.group(2)}'
-                          f'{visible_date}'
-                          f'{match.group(3)}'
-                      )
-                  updated = time_pattern.sub(replace_time, text)
-                  if file_updated[0] and updated != text:
-                      file.write_text(updated, encoding="utf-8")
-                      total_updated += 1
-                      print(f"Updated: {file}")
+                  if file.is_file() and file.suffix.lower() in {".html", ".htm", ".xml", ".svg"}:
+                      process_file(file, lang)
           
-          # 2. Process specific root files (using English localization)
+          # Process specific root files (using English localization)
           root_files = [
               Path("index.html"),
               Path("youtube-to-mp3-converter-github.html"),
               Path("youtube-video-to-mp3-converter-github.html")
           ]
-          visible_date_en = localized_date("en")
           for file in root_files:
-              if not file.is_file():
-                  print(f"Skipping missing root file: {file}")
-                  continue
-              try:
-                  text = file.read_text(encoding="utf-8")
-              except (UnicodeDecodeError, OSError):
-                  continue
-              file_updated = [False]
-              def replace_time_root(match):
-                  file_updated[0] = True
-                  return (
-                      f'{match.group(1)}"{datetime_value}"'
-                      f'{match.group(2)}'
-                      f'{visible_date_en}'
-                      f'{match.group(3)}'
-                  )
-              updated = time_pattern.sub(replace_time_root, text)
-              if file_updated[0] and updated != text:
-                  file.write_text(updated, encoding="utf-8")
-                  total_updated += 1
-                  print(f"Updated: {file}")
+              if file.is_file():
+                  process_file(file, "en")
 
           print("----------------------------------------")
-          print(f"Updated files: {total_updated}")
+          print(f"Total files updated: {total_updated}")
           print(f"IST datetime: {datetime_value}")
-          print(f"IST time: {now.strftime('%H:%M')}")
           print("----------------------------------------")
           PY
       - name: Commit changes
@@ -159,6 +124,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Update" || echo "No changes"
+          git commit -m "Update time and ad codes" || echo "No changes"
       - name: Push changes
         run: git push
