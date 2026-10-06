@@ -1,4 +1,4 @@
-name: Update
+name: Update Ad Codes
 
 on:
   workflow_dispatch:
@@ -7,55 +7,20 @@ permissions:
   contents: write
 
 jobs:
-  update-time:
+  update-ads:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update Time and Ad Codes
+      - name: Replace Ad Codes
         run: |
           python3 <<'PY'
           import re
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
           from pathlib import Path
-          
-          now = datetime.now(ZoneInfo("Asia/Kolkata"))
-          datetime_value = now.strftime("%Y-%m-%dT%H:%M")
-          
-          languages = ["de", "en", "es", "fr", "ja", "pt", "zh"]
-          
-          months = {
-              "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-              "de": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
-              "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-              "fr": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
-              "pt": ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
-          }
-          
-          def localized_date(lang):
-              year, month, day, hour, minute = now.year, now.month, now.day, now.hour, now.minute
-              if lang in {"ja", "zh"}:
-                  return f"{year}年{month}月{day}日 – {hour:02d}:{minute:02d}"
-              if lang in months:
-                  return f"{day} {months[lang][month - 1]} {year} – {hour:02d}:{minute:02d}"
-              return f"{months['en'][month - 1]} {day}, {year} – {hour:02d}:{minute:02d}"
-          
-          time_pattern = re.compile(
-              r'(<time\b[^>]*\bdatetime\s*=\s*)["\'][^"\']*["\']([^>]*>).*?(</time>)',
-              re.IGNORECASE | re.DOTALL
-          )
-          
-          old_ad_pattern = re.compile(
-              r'<script[^>]*src="https://pl30765169\.effectivecpmnetwork\.com/32/e1/5f/32e15f2082a75880a1c2e691c2bbf8db\.js"[^>]*></script>\s*'
-              r'<script[^>]*src="https://pl30765168\.effectivecpmnetwork\.com/44/3b/42/443b42c34d2f923bcaedf407008b098c\.js"[^>]*></script>\s*'
-              r'<script[^>]*src="https://pl31033916\.profitableratecpmnetwork\.com/94bab3782cb7532f2a5ee2c403f6d27d/invoke\.js"[^>]*></script>\s*<div\s+id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>',
-              re.IGNORECASE | re.DOTALL
-          )
-          
-          # YAML-safe string concatenation to avoid indentation parsing errors
+
+          # The new code block to insert
           new_ad_code = (
               '<script data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>\n'
               '<script data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>\n'
@@ -63,68 +28,74 @@ jobs:
               '<div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>'
           )
 
+          # Pattern to find ANY of the old elements (flexible with attributes/whitespace)
+          combined_pattern = re.compile(
+              r'<script[^>]*src="https://pl30765169\.effectivecpmnetwork\.com/32/e1/5f/32e15f2082a75880a1c2e691c2bbf8db\.js"[^>]*></script>\s*|'
+              r'<script[^>]*src="https://pl30765168\.effectivecpmnetwork\.com/44/3b/42/443b42c34d2f923bcaedf407008b098c\.js"[^>]*></script>\s*|'
+              r'<script[^>]*src="https://pl31033916\.profitableratecpmnetwork\.com/94bab3782cb7532f2a5ee2c403f6d27d/invoke\.js"[^>]*></script>\s*|'
+              r'<div\s*id="container-94bab3782cb7532f2a5ee2c403f6d27d"\s*></div>\s*',
+              re.IGNORECASE
+          )
+
+          # Individual patterns to clean up any remaining old elements after the first replacement
+          patterns_to_remove = [
+              re.compile(r'<script[^>]*src="https://pl30765169\.effectivecpmnetwork\.com/32/e1/5f/32e15f2082a75880a1c2e691c2bbf8db\.js"[^>]*></script>\s*', re.IGNORECASE),
+              re.compile(r'<script[^>]*src="https://pl30765168\.effectivecpmnetwork\.com/44/3b/42/443b42c34d2f923bcaedf407008b098c\.js"[^>]*></script>\s*', re.IGNORECASE),
+              re.compile(r'<script[^>]*src="https://pl31033916\.profitableratecpmnetwork\.com/94bab3782cb7532f2a5ee2c403f6d27d/invoke\.js"[^>]*></script>\s*', re.IGNORECASE),
+              re.compile(r'<div\s*id="container-94bab3782cb7532f2a5ee2c403f6d27d"\s*></div>\s*', re.IGNORECASE)
+          ]
+
           total_updated = 0
-          
-          for lang in languages:
+
+          # Gather all files to process
+          files_to_process = []
+          for lang in ["de", "en", "es", "fr", "ja", "pt", "zh"]:
               directory = Path("leaf") / lang
-              if not directory.exists():
-                  print(f"Skipping missing directory: {directory}")
+              if directory.exists():
+                  for file in directory.rglob("*"):
+                      if file.is_file() and file.suffix.lower() in {".html", ".htm", ".xml", ".svg"}:
+                          files_to_process.append(file)
+
+          for file in [Path("index.html"), Path("youtube-to-mp3-converter-github.html"), Path("youtube-video-to-mp3-converter-github.html")]:
+              if file.is_file():
+                  files_to_process.append(file)
+
+          # Process each file
+          for file in files_to_process:
+              try:
+                  text = file.read_text(encoding="utf-8")
+              except (UnicodeDecodeError, OSError):
                   continue
               
-              visible_date = localized_date(lang)
-              for file in directory.rglob("*"):
-                  if not file.is_file() or file.suffix.lower() not in {".html", ".htm", ".xml", ".svg"}:
-                      continue
+              original_text = text
+              matches = list(combined_pattern.finditer(text))
+              
+              if matches:
+                  # 1. Replace the FIRST old element found with the new complete block
+                  first_match = matches[0]
+                  text = text[:first_match.start()] + new_ad_code + text[first_match.end():]
                   
-                  try:
-                      text = file.read_text(encoding="utf-8")
-                  except (UnicodeDecodeError, OSError):
-                      continue
+                  # 2. Remove any other scattered old elements
+                  for pattern in patterns_to_remove:
+                      text = pattern.sub('', text)
                   
-                  original_text = text
-                  
-                  def replace_time(match, vd=visible_date, dv=datetime_value):
-                      return f'{match.group(1)}"{dv}"{match.group(2)}{vd}{match.group(3)}'
-                  
-                  text = time_pattern.sub(replace_time, text)
-                  text = old_ad_pattern.sub(new_ad_code, text)
-                  
-                  if text != original_text:
-                      file.write_text(text, encoding="utf-8")
-                      total_updated += 1
-                      print(f"Updated: {file}")
-          
-          root_files = [
-              Path("index.html"),
-              Path("youtube-to-mp3-converter-github.html"),
-              Path("youtube-video-to-mp3-converter-github.html")
-          ]
-          for file in root_files:
-              if file.is_file():
-                  original_text = file.read_text(encoding="utf-8")
-                  visible_date = localized_date("en")
-                  
-                  def replace_time_root(match, vd=visible_date, dv=datetime_value):
-                      return f'{match.group(1)}"{dv}"{match.group(2)}{vd}{match.group(3)}'
-                  
-                  text = time_pattern.sub(replace_time_root, original_text)
-                  text = old_ad_pattern.sub(new_ad_code, text)
-                  
+                  # 3. Save if changed
                   if text != original_text:
                       file.write_text(text, encoding="utf-8")
                       total_updated += 1
                       print(f"Updated: {file}")
 
-          print("---------------------------------------")
+          print("----------------------------------------")
           print(f"Total files updated: {total_updated}")
-          print(f"IST datetime: {datetime_value}")
           print("----------------------------------------")
           PY
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Update time and ad codes" || echo "No changes"
+          git commit -m "Update ad codes" || echo "No changes"
+          
       - name: Push changes
         run: git push
