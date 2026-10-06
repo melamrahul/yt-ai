@@ -22,14 +22,11 @@ jobs:
           from zoneinfo import ZoneInfo
           from pathlib import Path
           
-          # Current date/time in India (IST)
           now = datetime.now(ZoneInfo("Asia/Kolkata"))
           datetime_value = now.strftime("%Y-%m-%dT%H:%M")
           
-          # Language folders
           languages = ["de", "en", "es", "fr", "ja", "pt", "zh"]
           
-          # Month names for supported languages
           months = {
               "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
               "de": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
@@ -46,14 +43,11 @@ jobs:
                   return f"{day} {months[lang][month - 1]} {year} – {hour:02d}:{minute:02d}"
               return f"{months['en'][month - 1]} {day}, {year} – {hour:02d}:{minute:02d}"
           
-          # 1. Pattern for updating <time> tags
           time_pattern = re.compile(
               r'(<time\b[^>]*\bdatetime\s*=\s*)["\'][^"\']*["\']([^>]*>).*?(</time>)',
               re.IGNORECASE | re.DOTALL
           )
           
-          # 2. Pattern for replacing the OLD ad code block
-          # This regex is flexible and will match regardless of attribute order or extra spaces/newlines
           old_ad_pattern = re.compile(
               r'<script[^>]*src="https://pl30765169\.effectivecpmnetwork\.com/32/e1/5f/32e15f2082a75880a1c2e691c2bbf8db\.js"[^>]*></script>\s*'
               r'<script[^>]*src="https://pl30765168\.effectivecpmnetwork\.com/44/3b/42/443b42c34d2f923bcaedf407008b098c\.js"[^>]*></script>\s*'
@@ -61,50 +55,45 @@ jobs:
               re.IGNORECASE | re.DOTALL
           )
           
-          # The NEW ad code to insert
-          new_ad_code = """<script data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
-<script data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>
-<script async="async" data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>
-<div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>"""
+          # YAML-safe string concatenation to avoid indentation parsing errors
+          new_ad_code = (
+              '<script data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>\n'
+              '<script data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>\n'
+              '<script async="async" data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>\n'
+              '<div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>'
+          )
 
           total_updated = 0
           
-          def process_file(file, lang):
-              global total_updated
-              try:
-                  text = file.read_text(encoding="utf-8")
-              except (UnicodeDecodeError, OSError):
-                  return
-              
-              original_text = text
-              
-              # Apply Time Update
-              visible_date = localized_date(lang)
-              def replace_time(match):
-                  return f'{match.group(1)}"{datetime_value}"{match.group(2)}{visible_date}{match.group(3)}'
-              
-              new_text = time_pattern.sub(replace_time, text)
-              
-              # Apply Ad Code Replacement
-              new_text = old_ad_pattern.sub(new_ad_code, new_text)
-              
-              # Save only if changes were made
-              if new_text != original_text:
-                  file.write_text(new_text, encoding="utf-8")
-                  total_updated += 1
-                  print(f"Updated: {file}")
-          
-          # Process language folders (inside "leaf" directory)
           for lang in languages:
               directory = Path("leaf") / lang
               if not directory.exists():
                   print(f"Skipping missing directory: {directory}")
                   continue
+              
+              visible_date = localized_date(lang)
               for file in directory.rglob("*"):
-                  if file.is_file() and file.suffix.lower() in {".html", ".htm", ".xml", ".svg"}:
-                      process_file(file, lang)
+                  if not file.is_file() or file.suffix.lower() not in {".html", ".htm", ".xml", ".svg"}:
+                      continue
+                  
+                  try:
+                      text = file.read_text(encoding="utf-8")
+                  except (UnicodeDecodeError, OSError):
+                      continue
+                  
+                  original_text = text
+                  
+                  def replace_time(match, vd=visible_date, dv=datetime_value):
+                      return f'{match.group(1)}"{dv}"{match.group(2)}{vd}{match.group(3)}'
+                  
+                  text = time_pattern.sub(replace_time, text)
+                  text = old_ad_pattern.sub(new_ad_code, text)
+                  
+                  if text != original_text:
+                      file.write_text(text, encoding="utf-8")
+                      total_updated += 1
+                      print(f"Updated: {file}")
           
-          # Process specific root files (using English localization)
           root_files = [
               Path("index.html"),
               Path("youtube-to-mp3-converter-github.html"),
@@ -112,7 +101,19 @@ jobs:
           ]
           for file in root_files:
               if file.is_file():
-                  process_file(file, "en")
+                  original_text = file.read_text(encoding="utf-8")
+                  visible_date = localized_date("en")
+                  
+                  def replace_time_root(match, vd=visible_date, dv=datetime_value):
+                      return f'{match.group(1)}"{dv}"{match.group(2)}{vd}{match.group(3)}'
+                  
+                  text = time_pattern.sub(replace_time_root, original_text)
+                  text = old_ad_pattern.sub(new_ad_code, text)
+                  
+                  if text != original_text:
+                      file.write_text(text, encoding="utf-8")
+                      total_updated += 1
+                      print(f"Updated: {file}")
 
           print("----------------------------------------")
           print(f"Total files updated: {total_updated}")
