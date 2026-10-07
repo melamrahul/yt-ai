@@ -2,7 +2,7 @@
   "name": "YT-Ai 変換ツール",
   "short_name": "YT-Ai",
   "description": "YouTube動画と音声のための無料、安全、高品質な変換ツール。",
-  "start_url": "/yt-ai/leaf/ja/",
+  "start_url": "/yt-ai/pwa/app/ja/",
   "scope": "/yt-ai/",
   "display": "standalone",
   "orientation": "portrait",

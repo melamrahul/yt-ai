@@ -2,7 +2,7 @@
   "name": "YT-Ai 转换器",
   "short_name": "YT-Ai",
   "description": "免费、安全、高质量的 YouTube 视频和音频转换器。",
-  "start_url": "/yt-ai/leaf/zh/",
+  "start_url": "/yt-ai/pwa/app/zh/",
   "scope": "/yt-ai/",
   "display": "standalone",
   "orientation": "portrait",

@@ -2,7 +2,7 @@
   "name": "YT-Ai Conversor",
   "short_name": "YT-Ai",
   "description": "Conversor gratuito, seguro e de alta qualidade para vídeos e áudio do YouTube.",
-  "start_url": "/yt-ai/leaf/pt/",
+  "start_url": "/yt-ai/pwa/app/pt/",
   "scope": "/yt-ai/",
   "display": "standalone",
   "orientation": "portrait",

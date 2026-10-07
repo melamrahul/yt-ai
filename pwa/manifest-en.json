@@ -2,7 +2,7 @@
   "name": "YT-Ai Converter",
   "short_name": "YT-Ai",
   "description": "Free, secure, and high-quality YouTube video and audio converter.",
-  "start_url": "/yt-ai/",
+  "start_url": "/yt-ai/pwa/app/en/",
   "scope": "/yt-ai/",
   "display": "standalone",
   "orientation": "portrait",
