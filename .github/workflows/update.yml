@@ -19,7 +19,13 @@ jobs:
           OLD_URL="https://melamrahul.github.io/yt-ai/yt-ai-icon.png"
           NEW_URL="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png"
 
-          grep -rl --exclude-dir=.git "$OLD_URL" . | xargs -r sed -i "s|$OLD_URL|$NEW_URL|g"
+          find . \
+            -type f \
+            -not -path './.git/*' \
+            -not -path './.github/workflows/*' \
+            -print0 |
+          xargs -0 grep -Il "$OLD_URL" |
+          xargs -r sed -i "s|$OLD_URL|$NEW_URL|g"
 
       - name: Check for changes
         run: |
