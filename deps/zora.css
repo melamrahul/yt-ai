@@ -871,3 +871,76 @@ body {
     font-size: 24px;
   }
 }
+
+/* Install Card Styles */
+.install-card {
+    text-align: center;
+    padding: 24px 20px;
+}
+
+.install-icon-box {
+    width: 120px;
+    height: 120px;
+    background: #22e3c5;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.install-icon-box svg {
+    width: 64px;
+    height: 64px;
+    stroke: #000000;
+}
+
+.install-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: #22e3c5;
+    color: #000000;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 280px;
+}
+
+.install-btn:hover {
+    background: #1bc4aa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34, 227, 197, 0.3);
+}
+
+.install-btn .btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .install-card {
+        padding: 20px 16px;
+    }
+    
+    .install-icon-box {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .install-icon-box svg {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .install-btn {
+        max-width: 100%;
+    }
+}
