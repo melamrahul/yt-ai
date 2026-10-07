@@ -24,7 +24,6 @@ body {
   opacity: 1;
 }
 
-/* Header */
 .header {
   background: linear-gradient(145deg, #111111, #0a0a0a);
   padding: 20px;
@@ -572,7 +571,6 @@ body {
   margin: 0;
 }
 
-/* Resource List */
 .resource-list {
   list-style: none;
   padding: 0;
@@ -609,7 +607,6 @@ body {
   line-height: 1.5;
 }
 
-/* Footer */
 .site-footer {
   background: #050505;
   border-top: 1px solid #1a1a1a;
@@ -657,7 +654,6 @@ body {
   font-style: italic;
 }
 
-/* Language Selector */
 .lang-selector {
   margin-left: auto;
   position: relative;
@@ -762,7 +758,6 @@ body {
   }
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
   .header {
     flex-direction: column;
@@ -823,7 +818,6 @@ body {
     margin-bottom: 8px;
   }
 
-  /* Mobile Promo Card */
   .promo-card {
     width: calc(100% - 12px);
     margin: 8px auto;
@@ -858,7 +852,6 @@ body {
     line-height: 1.7;
   }
 
-  /* Mobile Buttons: Side by Side */
   .button-row {
     flex-direction: row;
     flex-wrap: wrap;
