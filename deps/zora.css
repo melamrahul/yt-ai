@@ -85,7 +85,6 @@ body {
   line-height: 1.2;
 }
 
-/* Content Cards & Tool */
 .content-card {
   background: #000000;
   border-radius: 16px;
@@ -139,7 +138,6 @@ body {
   text-align: center;
 }
 
-/* Loaders (Fixed for Mobile GPU Acceleration) */
 .loader-container {
   position: absolute;
   inset: 0;
@@ -232,7 +230,6 @@ body {
   border-color: #555555;
 }
 
-/* Support Cards */
 .support-card {
   background: #000000;
   border: 1px solid #2a2a2a;
@@ -299,7 +296,6 @@ body {
   border-bottom-style: solid;
 }
 
-/* Promo Card */
 .promo-card {
   width: 100%;
   max-width: 760px;
@@ -462,7 +458,6 @@ body {
   margin-bottom: 4px;
 }
 
-/* Stats Grid */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -498,7 +493,6 @@ body {
   line-height: 1.4;
 }
 
-/* FAQ Section */
 .faq-container {
   margin-top: 20px;
 }
