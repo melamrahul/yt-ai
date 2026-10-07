@@ -45,16 +45,15 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
 
-    <!-- 6. Preconnects -->
+    <!-- 6. Preconnects & CSS -->
     <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
+    <link rel="stylesheet" href="/yt-ai/deps/zora.css?v={{ site.github.build_revision }}">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/yt-ai/deps/zora.css?v={{ site.github.build_revision }}">
-
-    <!-- 8. CONSOLIDATED JSON-LD SCHEMA -->
+    <!-- 7. CONSOLIDATED JSON-LD SCHEMA -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -135,49 +134,78 @@
             <button class="format-btn" id="formatBtn">MP3 / MP4</button>
         </div>
 
-        <!-- NEW: Promo Card for ruvs.in (Text above, button below) -->
+        <!-- Promo Card for ruvs.in (Professional Layout) -->
         <section class="support-card promo-card">
-            <div class="support-top">
+            <div class="promo-header">
                 <h2>Experience the Ultimate Downloading Platform</h2>
+                <a href="https://www.ruvs.in/?utm_campaign=yt-ai" class="promo-btn" target="_blank" rel="noopener noreferrer">
+                    Try fast, clean, ad-free downloader
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
-            <div>
-                <a href="https://www.ruvs.in/?utm_campaign=yt-ai" class="promo-btn" target="_blank" rel="noopener noreferrer">Try fast, clean, ad-free downloader</a>
-            </div>
-            <p>Looking for a faster, cleaner, and completely ad-free experience? Visit our premium platform designed for seamless, high-speed media downloading without interruptions or clutter.</p>
+            <p class="promo-description">Looking for a faster, cleaner, and completely ad-free experience? Visit our premium platform designed for seamless, high-speed media downloading without interruptions or clutter.</p>
         </section>
 
-        <!-- SEO CONTENT: Upgraded with Feature Grid (No more boring lists) -->
+        <!-- SEO CONTENT: Professional Feature Grid -->
         <section class="support-card">
             <div class="support-top">
-                <h3>⭐ Why Choose YT-Ai for Your Downloads?</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                    Why Choose YT-Ai for Your Downloads?
+                </h3>
             </div>
-            <p>In a digital landscape cluttered with intrusive ads and misleading download buttons, YT-Ai was built with a singular focus: <strong>respecting the user</strong>. We engineered this platform to be the most reliable, frictionless media downloader available.</p>
+            <p class="intro-text">In a digital landscape cluttered with intrusive ads and misleading download buttons, YT-Ai was built with a singular focus: <strong>respecting the user</strong>. We engineered this platform to be the most reliable, frictionless media downloader available.</p>
             
             <div class="feature-grid">
                 <div class="feature-item">
-                    <div class="feature-icon"></div>
-                    <div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18V5l12-2v13"/>
+                            <circle cx="6" cy="18" r="3"/>
+                            <circle cx="18" cy="16" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
                         <h4>Studio-Grade Audio</h4>
                         <p>Download crystal-clear audio at up to 320kbps MP3 format, preserving the depth of the original track.</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">🎬</div>
-                    <div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
                         <h4>True HD Video Support</h4>
                         <p>Download your favorite content in 720p, 1080p, and even 4K MP4 formats without quality degradation.</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">📱</div>
-                    <div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
                         <h4>Universal Compatibility</h4>
                         <p>Works flawlessly on Windows, macOS, Android, or iOS directly in your browser. No software needed.</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
                         <h4>Shorts Optimized</h4>
                         <p>Our parsing engine seamlessly handles standard URLs, <code>youtu.be</code> short links, and mobile shares.</p>
                     </div>
@@ -187,103 +215,183 @@
 
         <section class="support-card">
             <div class="support-top">
-                <h3>📥 How to Download in 3 Simple Steps</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    How to Download in 3 Simple Steps
+                </h3>
             </div>
-            <ol style="color: #bdbdbd; line-height: 1.7; font-size: 15px; padding-left: 20px;">
-                <li style="margin-bottom: 12px;"><strong>Copy the Video Link:</strong> Open YouTube, find your desired video, music track, or Short, and copy the URL from your browser's address bar or the "Share" menu.</li>
-                <li style="margin-bottom: 12px;"><strong>Paste and Select Format:</strong> Paste the URL into the downloader tool above. Choose <em>Audio (MP3)</em> for listening or <em>Video (MP4)</em> for visual content.</li>
-                <li><strong>Download and Save:</strong> Click the download button, select your preferred bitrate or resolution from the generated options, and save the file directly to your device.</li>
+            <ol class="steps-list">
+                <li class="step-item">
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <strong>Copy the Video Link:</strong> Open YouTube, find your desired video, music track, or Short, and copy the URL from your browser's address bar or the "Share" menu.
+                    </div>
+                </li>
+                <li class="step-item">
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <strong>Paste and Select Format:</strong> Paste the URL into the downloader tool above. Choose <em>Audio (MP3)</em> for listening or <em>Video (MP4)</em> for visual content.
+                    </div>
+                </li>
+                <li class="step-item">
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <strong>Download and Save:</strong> Click the download button, select your preferred bitrate or resolution from the generated options, and save the file directly to your device.
+                    </div>
+                </li>
             </ol>
         </section>
 
         <section class="support-card">
             <div class="support-top">
-                <h3>📜 The Evolution of YouTube</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    The Evolution of YouTube
+                </h3>
             </div>
             <p>The story of YouTube is one of the most remarkable pivots in internet history. Founded in February 2005 by three former PayPal employees—Chad Hurley, Steve Chen, and Jawed Karim—the platform was initially conceived as a video-based dating service. When that concept failed to gain traction, the founders wisely shifted their focus to a general video-sharing platform.</p>
             <p style="margin-top: 12px;">The first video ever uploaded, "Me at the zoo," featured co-founder Jawed Karim at the San Diego Zoo and was only 18 seconds long. Despite its simplicity, it laid the groundwork for a revolution. Recognizing the platform's explosive potential, Google acquired YouTube in November 2006 for $1.65 billion in stock. Over the past two decades, YouTube has evolved from a repository of grainy, user-generated clips into the world's second-largest search engine and the backbone of the modern creator economy.</p>
         </section>
 
-        <!-- SEO CONTENT: Upgraded with Stats Grid (Visual variety) -->
+        <!-- Professional Stats Grid -->
         <section class="support-card">
             <div class="support-top">
-                <h3>📊 YouTube by the Numbers</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    YouTube by the Numbers
+                </h3>
             </div>
             <p>Understanding the scale of YouTube highlights why reliable, high-quality downloading tools are in such high demand. The platform's ecosystem is vast and continuously expanding:</p>
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="number">2.7B+</div>
-                    <div class="label">Monthly Active Users globally</div>
+                    <div class="stat-number">2.7B+</div>
+                    <div class="stat-label">Monthly Active Users globally</div>
                 </div>
                 <div class="stat-card">
-                    <div class="number">500+</div>
-                    <div class="label">Hours of video uploaded every minute</div>
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Hours of video uploaded every minute</div>
                 </div>
                 <div class="stat-card">
-                    <div class="number">70B+</div>
-                    <div class="label">Daily views on YouTube Shorts</div>
+                    <div class="stat-number">70B+</div>
+                    <div class="stat-label">Daily views on YouTube Shorts</div>
                 </div>
                 <div class="stat-card">
-                    <div class="number">100+</div>
-                    <div class="label">Countries with access to YouTube</div>
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Countries with access to YouTube</div>
                 </div>
             </div>
         </section>
 
         <section class="support-card">
             <div class="support-top">
-                <h3>✨ The Uniqueness of YT-Ai</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    The Uniqueness of YT-Ai
+                </h3>
             </div>
             <p>Most free downloader sites operate on a model of "dark patterns"—using fake download buttons, forced browser extensions, and aggressive pop-up ads to generate revenue. YT-Ai rejects this model entirely.</p>
             <p style="margin-top: 12px;">Our uniqueness lies in our <strong>transparency and minimalism</strong>. We provide a clean, dark-mode-first interface that gets out of your way. We do not log your IP address, we do not store the media you download on our servers, and we do not inject tracking pixels into your browsing session. When you use YT-Ai, you are using a tool built by developers who prioritize user privacy and software elegance over exploitative monetization.</p>
         </section>
 
-        <!-- FAQ Section (Larger, more readable answers) -->
+        <!-- Professional FAQ Section -->
         <section class="support-card">
             <div class="support-top">
-                <h3>❓ Frequently Asked Questions</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    Frequently Asked Questions
+                </h3>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Is this YouTube to MP3 downloader really free?</button>
-                <div class="faq-answer">
-                    <p>Yes, YT-Ai is 100% free to use. We do not require registration, hidden fees, or impose daily usage limits. Our goal is to provide a frictionless downloading experience for everyone.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is this YouTube to MP3 downloader really free?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, YT-Ai is 100% free to use. We do not require registration, hidden fees, or impose daily usage limits. Our goal is to provide a frictionless downloading experience for everyone.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">What is the maximum MP3 quality available?</button>
-                <div class="faq-answer">
-                    <p>You can download YouTube audio at up to 320kbps. This is the highest standard bitrate available, ensuring crystal-clear sound that is perfect for music, podcasts, and audiobooks.</p>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is the maximum MP3 quality available?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can download YouTube audio at up to 320kbps. This is the highest standard bitrate available, ensuring crystal-clear sound that is perfect for music, podcasts, and audiobooks.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Can I download YouTube videos in HD (MP4)?</button>
-                <div class="faq-answer">
-                    <p>Absolutely. Simply select the Video option in the downloader and choose your preferred resolution. We support downloads up to 1080p Full HD and 4K, depending on the source video's availability.</p>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I download YouTube videos in HD (MP4)?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Simply select the Video option in the downloader and choose your preferred resolution. We support downloads up to 1080p Full HD and 4K, depending on the source video's availability.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Does this YouTube downloader work on mobile?</button>
-                <div class="faq-answer">
-                    <p>Yes. YT-Ai is fully responsive and works seamlessly in Safari, Chrome, and Firefox on both Android and iOS devices. You do not need to install any sketchy third-party applications.</p>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Does this YouTube downloader work on mobile?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. YT-Ai is fully responsive and works seamlessly in Safari, Chrome, and Firefox on both Android and iOS devices. You do not need to install any sketchy third-party applications.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Is it safe to use this YouTube downloader?</button>
-                <div class="faq-answer">
-                    <p>Yes. Our downloading process is secure and protected. We do not store your downloaded files, track your personal data, or serve malicious advertisements. Your privacy is our top priority.</p>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is it safe to use this YouTube downloader?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Our downloading process is secure and protected. We do not store your downloaded files, track your personal data, or serve malicious advertisements. Your privacy is our top priority.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="support-card">
             <div class="support-top">
-                <h3>⚖️ Legal and Ethical Usage Guidelines</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                    Legal and Ethical Usage Guidelines
+                </h3>
             </div>
             <p>YT-Ai is designed strictly for personal, fair-use archiving and offline accessibility. We strongly encourage all users to respect intellectual property rights and <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube's Terms of Service</a>.</p>
             <p style="margin-top: 12px;">This tool should only be used to download content that you own, content that resides in the public domain, or media distributed under a <a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">Creative Commons license</a> that explicitly permits downloading. YT-Ai does not host, store, or distribute any copyrighted material on its servers.</p>
@@ -291,13 +399,46 @@
 
         <section class="support-card">
             <div class="support-top">
-                <h3>🔗 Trusted Resources & References</h3>
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                    </svg>
+                    Trusted Resources & References
+                </h3>
             </div>
             <p>We believe in transparency and empowering our users with accurate information. Explore these authoritative sources to learn more about digital media, copyright, and online privacy:</p>
-            <ul style="color: #bdbdbd; line-height: 1.7; font-size: 15px; padding-left: 20px; margin-top: 10px;">
-                <li style="margin-bottom: 8px;"><a href="https://support.google.com/youtube/answer/9384671" target="_blank" rel="noopener noreferrer">YouTube Creator Academy & Copyright Guidelines</a></li>
-                <li style="margin-bottom: 8px;"><a href="https://creativecommons.org/about/" target="_blank" rel="noopener noreferrer">Creative Commons: Understanding Open Licenses</a></li>
-                <li><a href="https://www.eff.org/issues/privacy" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation (EFF) - Digital Privacy Rights</a></li>
+            <ul class="resource-list">
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <a href="https://support.google.com/youtube/answer/9384671" target="_blank" rel="noopener noreferrer">YouTube Creator Academy & Copyright Guidelines</a>
+                </li>
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <a href="https://creativecommons.org/about/" target="_blank" rel="noopener noreferrer">Creative Commons: Understanding Open Licenses</a>
+                </li>
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <a href="https://www.eff.org/issues/privacy" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation (EFF) - Digital Privacy Rights</a>
+                </li>
             </ul>
         </section>
 
