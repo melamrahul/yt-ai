@@ -1,0 +1,26 @@
+{
+  "name": "YT-Ai 変換ツール",
+  "short_name": "YT-Ai",
+  "description": "YouTube動画と音声のための無料、安全、高品質な変換ツール。",
+  "start_url": "/yt-ai/leaf/ja/",
+  "scope": "/yt-ai/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/yt-ai/deps/icons/Icon192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/yt-ai/deps/icons/Icon512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

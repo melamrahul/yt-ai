@@ -53,9 +53,18 @@
     <meta name="twitter:image:alt" content="YT-Ai | Convertidor Gratuito de YouTube a MP3 y MP4">
 
     <link rel="icon" type="image/png" sizes="16x16" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/yt-ai/deps/icons/main-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/yt-ai/pwa/manifest-es.json">
 
     <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
     <link rel="preconnect" href="https://www.ruvs.in" crossorigin>
@@ -194,6 +203,33 @@
             <button class="format-btn" id="qualityBtn">Tasa de bits / Calidad</button>
             <button class="format-btn" id="formatBtn">MP3 / MP4</button>
         </div>
+
+        <section class="support-card promo-card" id="installCardStandard" style="display: none;">
+            <div class="support-top">
+                <h2>Instala la aplicación YT-Ai</h2>
+                <button id="installBtn" class="promo-btn" style="background: #1EA547; color: #ffffff; border: none; cursor: pointer;">
+                    Añadir a pantalla de inicio
+                </button>
+            </div>
+            <p>
+                Instala YT-Ai en tu dispositivo para obtener acceso instantáneo, una experiencia a pantalla completa 
+                y tiempos de carga más rápidos sin necesidad de abrir tu navegador.
+            </p>
+        </section>
+
+        <section class="support-card promo-card" id="installCardIOS" style="display: none;">
+            <div class="support-top">
+                <h2>Instala la aplicación YT-Ai</h2>
+                <!-- Using a span styled exactly like the button for iOS instructions -->
+                <span class="promo-btn" style="background: #1EA547; color: #ffffff; pointer-events: none; cursor: default;">
+                    Toca Compartir ➔ Añadir a pantalla de inicio
+                </span>
+            </div>
+            <p>
+                Toca el icono de <strong>Compartir</strong> en la parte inferior de Safari, 
+                y luego selecciona <strong>"Añadir a pantalla de inicio"</strong> para instalar.
+            </p>
+        </section>
 
         <section class="support-card promo-card">
             <div class="support-top">

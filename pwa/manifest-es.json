@@ -1,0 +1,26 @@
+{
+  "name": "YT-Ai Convertidor",
+  "short_name": "YT-Ai",
+  "description": "Convertidor gratuito, seguro y de alta calidad para videos y audio de YouTube.",
+  "start_url": "/yt-ai/leaf/es/",
+  "scope": "/yt-ai/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/yt-ai/deps/icons/Icon192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/yt-ai/deps/icons/Icon512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

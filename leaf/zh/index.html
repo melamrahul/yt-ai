@@ -53,9 +53,18 @@
     <meta name="twitter:image:alt" content="YT-Ai | 免费 YouTube 转 MP3 和 MP4 转换器">
 
     <link rel="icon" type="image/png" sizes="16x16" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/yt-ai/deps/icons/main-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/yt-ai/pwa/manifest-zh.json">
 
     <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
     <link rel="preconnect" href="https://www.ruvs.in" crossorigin>
@@ -194,6 +203,31 @@
             <button class="format-btn" id="qualityBtn">比特率 / 质量</button>
             <button class="format-btn" id="formatBtn">MP3 / MP4</button>
         </div>
+
+        <section class="support-card promo-card" id="installCardStandard" style="display: none;">
+            <div class="support-top">
+                <h2>安装 YT-Ai 应用</h2>
+                <button id="installBtn" class="promo-btn" style="background: #1EA547; color: #ffffff; border: none; cursor: pointer;">
+                    添加到主屏幕
+                </button>
+            </div>
+            <p>
+                将 YT-Ai 安装到您的设备上，无需打开浏览器即可快速访问、获得全屏体验并加快加载速度。
+            </p>
+        </section>
+
+        <section class="support-card promo-card" id="installCardIOS" style="display: none;">
+            <div class="support-top">
+                <h2>安装 YT-Ai 应用</h2>
+                <!-- Using a span styled exactly like the button for iOS instructions -->
+                <span class="promo-btn" style="background: #1EA547; color: #ffffff; pointer-events: none; cursor: default;">
+                    点击分享 ➔ 添加到主屏幕
+                </span>
+            </div>
+            <p>
+                点击 Safari 浏览器底部的<strong>分享</strong>图标，然后选择<strong>“添加到主屏幕”</strong>进行安装。
+            </p>
+        </section>
 
         <section class="support-card promo-card">
             <div class="support-top">

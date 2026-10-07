@@ -1,0 +1,26 @@
+{
+  "name": "YT-Ai 转换器",
+  "short_name": "YT-Ai",
+  "description": "免费、安全、高质量的 YouTube 视频和音频转换器。",
+  "start_url": "/yt-ai/leaf/zh/",
+  "scope": "/yt-ai/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "zh",
+  "icons": [
+    {
+      "src": "/yt-ai/deps/icons/Icon192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/yt-ai/deps/icons/Icon512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

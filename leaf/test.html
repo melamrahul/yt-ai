@@ -39,14 +39,14 @@
     <meta name="twitter:description" content="Download YouTube to MP3 or MP4 instantly. Free, no signup, secure. Works on mobile.">
     <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
 
-        <!-- PWA Icons -->
+    <!-- Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/yt-ai/deps/icons/main-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
     
-    <!-- PWA Manifest -->
+    <!-- Manifest -->
     <link rel="manifest" href="/yt-ai/manifest.json">
 
     <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
@@ -134,7 +134,7 @@
             <button class="format-btn" id="formatBtn">MP3 / MP4</button>
         </div>
 
-        <!-- PWA Install Card (Android / Desktop) -->
+        <!-- Install Card (Android / Desktop) -->
         <section class="support-card promo-card" id="installCardStandard" style="display: none;">
             <div class="support-top">
                 <h2>Install YT-Ai App</h2>
@@ -148,7 +148,7 @@
             </p>
         </section>
 
-        <!-- PWA Install Card (iOS) -->
+        <!-- Install Card (iOS) -->
         <section class="support-card promo-card" id="installCardIOS" style="display: none;">
             <div class="support-top">
                 <h2>Install YT-Ai App</h2>
@@ -492,69 +492,6 @@
         <div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>
 
     </div>
-
-    <script>
-    // 1. Register Service Worker
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/yt-ai/service-worker.js')
-                .then(registration => console.log('SW registered:', registration.scope))
-                .catch(error => console.log('SW registration failed:', error));
-        });
-    }
-
-    // 2. Handle Install Prompt
-    let deferredPrompt;
-    const installCardStandard = document.getElementById('installCardStandard');
-    const installCardIOS = document.getElementById('installCardIOS');
-    const installBtn = document.getElementById('installBtn');
-
-    // Detect iOS and Standalone mode
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-
-    // Only show install prompts if the user is NOT already using the installed app
-    if (!isStandalone) {
-        if (isIOS) {
-            // Show iOS specific instructions immediately
-            if (installCardIOS) {
-                installCardIOS.style.display = 'block';
-            }
-        } else {
-            // Android / Desktop: Listen for the browser's install prompt event
-            window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault(); // Prevent automatic prompt
-                deferredPrompt = e; // Stash the event
-                
-                if (installCardStandard) {
-                    installCardStandard.style.display = 'block';
-                }
-            });
-        }
-    }
-
-    // Handle Install Button Click (Android/Desktop only)
-    if (installBtn) {
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt(); // Show the native install prompt
-                const { outcome } = await deferredPrompt.userChoice;
-                
-                if (outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                
-                // Clear the saved prompt and hide the card
-                deferredPrompt = null;
-                if (installCardStandard) {
-                    installCardStandard.style.display = 'none';
-                }
-            }
-        });
-    }
-    </script>
       
 
     <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
