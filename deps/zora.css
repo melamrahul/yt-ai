@@ -1,5 +1,3 @@
-/* Colors.css v1.0.0 */
-
 * {
   margin: 0;
   padding: 0;
@@ -11,11 +9,9 @@ body {
   background: #0a0a0a;
   color: #ffffff;
   overflow-x: hidden;
-  /* Prevent fixed footer from overlapping content on small screens */
-  padding-bottom: 60px; 
+  padding-bottom: 20px;
 }
 
-/* 2. Layout & Container */
 .container {
   max-width: 650px;
   margin: 5px auto 20px;
@@ -24,29 +20,41 @@ body {
   transition: opacity 0.5s ease;
 }
 
-/* Add this class via JS when page is ready to trigger fade-in */
 .container.loaded {
   opacity: 1;
 }
 
-/* 3. Header */
 .header {
-  background: #000000;
-  padding: 15px;
+  background: linear-gradient(145deg, #111111, #0a0a0a);
+  padding: 20px;
   border-radius: 16px;
   border: 1px solid #2a2a2a;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
   margin-bottom: 25px;
   position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
 }
 
 .logo {
   width: 50px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 12px;
   flex-shrink: 0;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .logo img {
@@ -55,31 +63,41 @@ body {
   object-fit: cover;
 }
 
+.header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .header-text h1 {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #ffffff;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .header-text p {
-  color: #aaaaaa;
-  font-size: 14px;
-  margin-top: 4px;
+  color: #888888;
+  font-size: 12px;
+  margin-top: 3px;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
-/* 4. Content Cards & Converter */
 .content-card {
   background: #000000;
   border-radius: 16px;
-  border: 1px dashed #ffffff;
+  border: 1px dashed #333333;
   overflow: hidden;
   margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
   padding: 20px;
   background: #0E1113;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .iframe-wrap {
@@ -114,12 +132,12 @@ body {
 }
 
 .helper-text {
-  color: #aaaaaa;
-  font-size: 14px;
+  color: #888888;
+  font-size: 13px;
   margin: 10px 0 10px 15px;
+  text-align: center;
 }
 
-/* 5. Loaders */
 .loader-container {
   position: absolute;
   inset: 0;
@@ -147,7 +165,9 @@ body {
 }
 
 @keyframes spinLoader {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .global-loader {
@@ -170,72 +190,52 @@ body {
 }
 
 @keyframes spinGlobal {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* 6. Buttons */
 .button-row {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin: 15px 15px 20px;
   justify-content: center;
 }
 
-.exp-btn {
-  flex: 1;
-  padding: 14px;
-  background: transparent;
-  color: #ffffff;
-  border: 2px solid transparent; /* Reserves space to prevent layout shift on hover */
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
+.format-btn {
+  flex: 0 1 auto;
+  max-width: 160px;
+  padding: 10px 16px;
+  background: #111111;
+  color: #aaaaaa;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-align: center;
 }
 
-.exp-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateY(-1px);
-}
-
-.tools-btn, .donate-btn {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #ff4d8d, #8f46ff, #3d9dff, #22e3c5);
-  background-size: 200%;
-  animation: gradientFlow 6s ease infinite;
+.format-btn:hover {
+  background: #1a1a1a;
   color: #ffffff;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: center;
-  transition: filter 0.3s ease, transform 0.2s ease;
-  border: none;
-  cursor: pointer;
+  border-color: #555555;
 }
 
-.tools-btn:hover, .donate-btn:hover {
-  filter: brightness(1.15);
-  transform: translateY(-1px);
-}
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 7. Support & Info Cards */
 .support-card {
   background: #000000;
   border: 1px solid #2a2a2a;
   border-radius: 16px;
   max-width: 640px;
-  padding: 20px;
+  padding: 24px;
   margin: 15px auto;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.support-card:hover {
+  border-color: #3d9dff;
+  transform: translateY(-2px);
 }
 
 .support-top {
@@ -243,88 +243,268 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 12px;
 }
 
-.support-top h2, .support-top h3 {
+.support-top h2,
+.support-top h3 {
   font-size: 18px;
   font-weight: 700;
   margin: 0;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.support-top h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-  color: #ffffff;
-  line-height: 1.4;
-}
-
-.support-card p, .support-card ul, .support-card ol {
+.support-card p {
   color: #bdbdbd;
   line-height: 1.7;
   font-size: 15px;
   margin-top: 10px;
 }
 
-.support-card ul, .support-card ol {
-  padding-left: 20px;
-  margin-bottom: 15px;
+.support-card a {
+  color: #3d9dff;
+  text-decoration: none;
+  border-bottom: 1px dotted #3d9dff;
+  transition: color 0.2s;
 }
 
-.support-card li {
-  margin-bottom: 8px;
+.support-card a:hover {
+  color: #22e3c5;
+  border-bottom-style: solid;
 }
 
-/* FAQ Specifics */
-.faq-item {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #1a1a1a;
+.promo-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-color: #0360fd;
+  background: linear-gradient(180deg, #0a1525 0%, #000000 100%);
 }
 
-.faq-item:last-child {
+.promo-card .support-top {
+  justify-content: center;
   border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin-bottom: 10px;
 }
 
-.faq-item h3 {
-  font-size: 16px;
+.promo-card p {
+  max-width: 550px;
+  margin: 0 auto 20px;
+  font-size: 15px;
+  color: #d1d5db;
+}
+
+.promo-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 10px;
+  background: rgb(3, 96, 253);
   color: #ffffff;
-  margin-bottom: 8px;
+  text-decoration: none;
+  font-size: 14px;
   font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.faq-item p {
-  font-size: 14px;
+.promo-btn:hover {
+  background: rgb(2, 80, 210);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(3, 96, 253, 0.4);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.feature-item {
+  background: #0E1113;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  transition: border-color 0.3s;
+}
+
+.feature-item:hover {
+  border-color: #22e3c5;
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(34, 227, 197, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #22e3c5;
+  font-size: 20px;
+}
+
+.feature-item h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.feature-item p {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.5;
   margin-top: 0;
 }
 
-/* 8. Footer */
-.site-footer {
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.stat-card {
+  background: #0E1113;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px;
   text-align: center;
-  color: #aaaaaa;
-  background-color: #000000;
-  padding: 15px 0;
-  margin-top: 30px;
-  font-size: 14px;
-  border-top: 1px solid #1a1a1a;
 }
 
-.site-footer a {
-  color: #22e3c5;
-  text-decoration: none;
-  transition: color 0.2s ease;
+.stat-card .number {
+  font-size: 22px;
+  font-weight: 800;
+  color: #3d9dff;
+  margin-bottom: 5px;
 }
 
-.site-footer a:hover {
+.stat-card .label {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+.faq-item {
+  margin-bottom: 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: #444444;
+}
+
+.faq-item.active {
+  border-color: #3d9dff;
+  background: #0E1113;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+  font-size: 15px;
+  font-weight: 600;
   color: #ffffff;
-  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* 9. Language Selector */
+.faq-question::after {
+  content: '+';
+  font-size: 20px;
+  color: #3d9dff;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.faq-item.active .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+}
+
+.faq-answer p {
+  padding: 0 16px 16px;
+  font-size: 15px;
+  color: #d1d5db;
+  line-height: 1.7;
+  margin-top: 0;
+}
+
+.site-footer {
+  background: #050505;
+  border-top: 1px solid #1a1a1a;
+  padding: 40px 20px 20px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: #888888;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-copy {
+  color: #555555;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.footer-copy b {
+  color: #888888;
+}
+
+.last-updated-tag {
+  text-align: center;
+  color: #444444;
+  font-size: 12px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  font-style: italic;
+}
+
 .lang-selector {
   margin-left: auto;
   position: relative;
@@ -335,18 +515,19 @@ body {
   align-items: center;
   gap: 6px;
   background: #1a1a1a;
-  border: 1px solid #0360fd;
+  border: 1px solid #333333;
   color: #ffffff;
   padding: 8px 12px;
   border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .lang-btn:hover {
   background: #242424;
+  border-color: #3d9dff;
 }
 
 .lang-arrow {
@@ -364,20 +545,21 @@ body {
   top: calc(100% + 8px);
   right: 0;
   background: #111111;
-  border: 1px solid #0360fd;
+  border: 1px solid #333333;
   border-radius: 12px;
   list-style: none;
   padding: 6px;
   width: 180px;
   max-height: 280px;
   overflow-y: auto;
-  display: none;
-  z-index: 50;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: none !important;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
 .lang-selector.open .lang-menu {
-  display: block;
+  display: block !important;
+  animation: fadeIn 0.2s ease;
 }
 
 .lang-menu li {
@@ -389,10 +571,12 @@ body {
   white-space: nowrap;
   display: flex;
   align-items: center;
+  color: #bdbdbd;
 }
 
 .lang-menu li:hover {
   background: #242424;
+  color: #ffffff;
 }
 
 .lang-menu::-webkit-scrollbar {
@@ -409,37 +593,54 @@ body {
   margin-right: 8px;
   vertical-align: middle;
   width: 16px;
-  height: 12px; /* Standard flag aspect ratio */
+  height: 12px;
   object-fit: cover;
 }
 
-/* 10. Responsive Design */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 600px) {
   .header {
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
   }
-  
+
+  .header-row {
+    width: 100%;
+    align-items: flex-start;
+  }
+
   .header-text {
-    flex: 1;
-    min-width: 0; /* Prevent text overflow */
+    justify-content: flex-start;
   }
-  
+
   .header-text h1 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
-  
+
   .lang-selector {
     width: 100%;
     margin-left: 0;
     margin-top: 5px;
   }
-  
+
   .lang-btn {
     width: 100%;
     justify-content: center;
   }
-  
+
   .lang-menu {
     width: 100%;
     right: 0;
@@ -448,27 +649,15 @@ body {
   .support-top {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
   }
-  
-  .support-card {
-    margin: 15px 10px;
-    padding: 15px;
-  }
-  
-  .donate-btn, .tools-btn {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .button-row {
-    flex-direction: column;
-  }
-}
 
-/* 11. Utility / Ads */
-.google-auto-placed {
-  width: 100% !important;
-  max-width: 650px !important;
-  margin: 15px auto !important;
-  overflow: hidden !important;
+  .support-card {
+    margin: 15px 5px;
+    padding: 18px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
