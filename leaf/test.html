@@ -286,6 +286,52 @@
             transform: translateY(-1px);
         }
 
+        /* Premium Promo Card (NEW) */
+        .premium-card {
+            background: linear-gradient(135deg, #0d1f1b, #0a0a0a);
+            border: 1px solid #22e3c5;
+            border-radius: 16px;
+            max-width: 640px;
+            padding: 20px 24px;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 4px 15px rgba(34, 227, 197, 0.08);
+        }
+
+        .premium-text {
+            color: #ffffff;
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .premium-text strong {
+            color: #22e3c5;
+        }
+
+        .premium-btn {
+            background: #22e3c5;
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .premium-btn:hover {
+            background: #1bc4aa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 227, 197, 0.3);
+        }
+
         /* Support & Info Cards */
         .support-card {
             background: #000000;
@@ -502,7 +548,7 @@
             font-style: italic;
         }
 
-        /* Language Selector */
+        /* Language Selector (Fixed with !important and high z-index) */
         .lang-selector {
             margin-left: auto;
             position: relative;
@@ -550,13 +596,15 @@
             width: 180px;
             max-height: 280px;
             overflow-y: auto;
-            display: none;
-            z-index: 50;
+            display: none !important;
+            /* Force hide by default */
+            z-index: 9999;
+            /* Guaranteed to be on top */
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
         }
 
         .lang-selector.open .lang-menu {
-            display: block;
+            display: block !important;
             animation: fadeIn 0.2s ease;
         }
 
@@ -595,7 +643,7 @@
             object-fit: cover;
         }
 
-        /* Responsive Design (Mobile Fixes) */
+        /* Responsive Design */
         @media (max-width: 600px) {
             .header {
                 flex-direction: column;
@@ -607,7 +655,6 @@
             .header-row {
                 width: 100%;
                 align-items: flex-start;
-                /* Aligns text to top of icon */
             }
 
             .header-text {
@@ -634,6 +681,16 @@
                 right: 0;
             }
 
+            .premium-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .premium-btn {
+                width: 100%;
+            }
+
             .support-top {
                 flex-direction: column;
                 align-items: flex-start;
@@ -655,47 +712,22 @@
 
     <!-- 8. CONSOLIDATED JSON-LD SCHEMA -->
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://melamrahul.github.io/yt-ai/#organization",
-        "name": "YT-Ai",
-        "url": "https://melamrahul.github.io/yt-ai/",
-        "logo": { "@type": "ImageObject", "url": "https://melamrahul.github.io/yt-ai/yt-ai-icon.png", "width": 512, "height": 512 }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://melamrahul.github.io/yt-ai/#website",
-        "url": "https://melamrahul.github.io/yt-ai/",
-        "name": "YT-Ai Converter",
-        "publisher": { "@id": "https://melamrahul.github.io/yt-ai/#organization" }
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://melamrahul.github.io/yt-ai/#app",
-        "name": "YT-Ai YouTube to MP3/MP4 Converter",
-        "url": "https://melamrahul.github.io/yt-ai/",
-        "description": "Free, secure, and high-quality YouTube video and audio converter.",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://melamrahul.github.io/yt-ai/#faq",
-        "mainEntity": [
-          { "@type": "Question", "name": "Is this YouTube to MP3 converter really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, YT-Ai is 100% free to use with no registration, hidden fees, or usage limits." } },
-          { "@type": "Question", "name": "What is the maximum MP3 quality available?", "acceptedAnswer": { "@type": "Answer", "text": "You can extract YouTube audio at up to 320kbps, ensuring crystal-clear sound for music and podcasts." } },
-          { "@type": "Question", "name": "Can I download YouTube videos in HD (MP4)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Simply select the Video option and choose your preferred resolution, up to 1080p Full HD or 4K." } },
-          { "@type": "Question", "name": "Does this YouTube downloader work on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. YT-Ai is fully responsive and works seamlessly in Safari, Chrome, and Firefox on Android and iOS without requiring any app installation." } },
-          { "@type": "Question", "name": "Is it safe to use this YouTube downloader?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our conversion process is secure and protected. We do not store your downloaded files or track your personal data." } }
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            { "@type": "Organization", "@id": "https://melamrahul.github.io/yt-ai/#organization", "name": "YT-Ai", "url": "https://melamrahul.github.io/yt-ai/", "logo": { "@type": "ImageObject", "url": "https://melamrahul.github.io/yt-ai/yt-ai-icon.png", "width": 512, "height": 512 } },
+            { "@type": "WebSite", "@id": "https://melamrahul.github.io/yt-ai/#website", "url": "https://melamrahul.github.io/yt-ai/", "name": "YT-Ai Converter", "publisher": { "@id": "https://melamrahul.github.io/yt-ai/#organization" } },
+            { "@type": "WebApplication", "@id": "https://melamrahul.github.io/yt-ai/#app", "name": "YT-Ai YouTube to MP3/MP4 Converter", "url": "https://melamrahul.github.io/yt-ai/", "description": "Free, secure, and high-quality YouTube video and audio converter.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+            { "@type": "FAQPage", "@id": "https://melamrahul.github.io/yt-ai/#faq", "mainEntity": [
+                { "@type": "Question", "name": "Is this YouTube to MP3 converter really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, YT-Ai is 100% free to use with no registration, hidden fees, or usage limits." } },
+                { "@type": "Question", "name": "What is the maximum MP3 quality available?", "acceptedAnswer": { "@type": "Answer", "text": "You can extract YouTube audio at up to 320kbps, ensuring crystal-clear sound for music and podcasts." } },
+                { "@type": "Question", "name": "Can I download YouTube videos in HD (MP4)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Simply select the Video option and choose your preferred resolution, up to 1080p Full HD or 4K." } },
+                { "@type": "Question", "name": "Does this YouTube downloader work on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. YT-Ai is fully responsive and works seamlessly in Safari, Chrome, and Firefox on Android and iOS without requiring any app installation." } },
+                { "@type": "Question", "name": "Is it safe to use this YouTube downloader?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our conversion process is secure and protected. We do not store your downloaded files or track your personal data." } }
+            ]}
         ]
-      }
-    ]
-  }
-  </script>
+    }
+    </script>
 </head>
 
 <body>
@@ -770,6 +802,18 @@
             <button class="exp-btn" id="qualityBtn" style="border: 2px solid #00ACB3;">Select Bitrate / Quality</button>
             <button class="exp-btn" id="formatBtn" style="border: 2px solid #00AB5E;">Choose MP3 / MP4</button>
         </div>
+
+        <!-- NEW: Premium Promo Card -->
+        <section class="premium-card">
+            <div class="premium-text">
+                Experience the <strong>premium, ad-free, fast, and clean</strong> website for downloading your favorite
+                media.
+            </div>
+            <a href="https://www.ruvs.in/?utm_campaign=yt-ai" class="premium-btn" target="_blank"
+                rel="noopener noreferrer">
+                Try Premium Converter →
+            </a>
+        </section>
 
         <!-- SEO CONTENT -->
         <section class="support-card">
@@ -929,7 +973,7 @@
                 <a href="/yt-ai/privacy.html">Privacy Policy</a>
                 <a href="/yt-ai/terms.html">Terms of Service</a>
                 <a href="/yt-ai/dmca.html">DMCA / Copyright</a>
-                <a href="mailto:support@yt-ai.com">Contact Us</a>
+                <a href="https://www.ruvs.in/contact-us" target="_blank" rel="noopener noreferrer">Contact Us</a>
             </div>
             <div class="footer-copy">
                 &copy; 2026 <b>YT-Ai</b>. All rights reserved. <br>
@@ -968,33 +1012,56 @@
             }, 1500);
         });
 
-        /* Lang.js 1.0.0 (Your Exact Code) */
+        /* Lang.js 1.0.0 (Bulletproof Rewrite) */
         document.addEventListener("DOMContentLoaded", function () {
-            const sel = document.getElementById("langSelector"),
-                btn = document.getElementById("langBtn"),
-                menu = document.getElementById("langMenu"),
-                flag = document.getElementById("langFlag"),
-                code = document.getElementById("langCode");
+            const sel = document.getElementById("langSelector");
+            const btn = document.getElementById("langBtn");
+            const menu = document.getElementById("langMenu");
+            const flag = document.getElementById("langFlag");
+            const code = document.getElementById("langCode");
 
-            btn.addEventListener("click", function (e) {
-                e.stopPropagation();
-                sel.classList.toggle("open");
-                btn.setAttribute("aria-expanded", sel.classList.contains("open"))
-            });
+            if (btn && sel) {
+                btn.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    sel.classList.toggle("open");
+                    const isOpen = sel.classList.contains("open");
+                    btn.setAttribute("aria-expanded", isOpen);
+                });
+            }
 
-            menu.querySelectorAll("li").forEach(function (li) {
-                li.addEventListener("click", function () {
-                    const fiSpan = li.querySelector(".fi");
-                    flag.innerHTML = fiSpan ? fiSpan.outerHTML : "";
-                    code.textContent = li.dataset.code.toUpperCase();
-                    sel.classList.remove("open");
-                    window.location.href = li.dataset.href
-                })
-            });
+            if (menu) {
+                menu.querySelectorAll("li").forEach(function (li) {
+                    li.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const fiSpan = li.querySelector(".fi");
+                        if (flag && fiSpan) {
+                            flag.innerHTML = fiSpan.outerHTML;
+                        }
+                        if (code) {
+                            code.textContent = li.dataset.code.toUpperCase();
+                        }
+                        if (sel) {
+                            sel.classList.remove("open");
+                        }
+                        if (btn) {
+                            btn.setAttribute("aria-expanded", "false");
+                        }
+                        const href = li.dataset.href;
+                        if (href) {
+                            window.location.href = href;
+                        }
+                    });
+                });
+            }
 
             document.addEventListener("click", function (e) {
-                if (!sel.contains(e.target)) sel.classList.remove("open")
-            })
+                if (sel && !sel.contains(e.target)) {
+                    sel.classList.remove("open");
+                    if (btn) btn.setAttribute("aria-expanded", "false");
+                }
+            });
         });
     </script>
 </body>
