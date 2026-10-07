@@ -2,316 +2,534 @@
 ---
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
-  <!-- 1. Essential Meta & Performance -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- 2. SEO Title & Description (Unique for Chinese Version) -->
-  <title>免费YouTube转MP3和MP4转换器（中文）| 快速、安全、无广告 | YT-Ai</title>
-  <meta name="description" content="立即将YouTube视频转换为高品质MP3或MP4中文界面。100%免费，无需注册，无广告，Cloudflare保护。在移动设备和桌面上完美运行。">
-  <meta name="keywords" content="youtube转mp3中文, youtube转mp4, 免费youtube转换器, youtube音频下载, 无广告youtube下载, cloudflare保护转换器, ytmp3">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="author" content="YT-Ai">
-  <meta name="generator" content="YT-Ai Github">
+    <title>免费 YouTube 转 MP3 和 MP4 转换器 | 快速、安全、高质量 | YT-Ai</title>
+    <meta name="description" content="立即将 YouTube 视频转换为高质量 MP3 (320kbps) 或 MP4 (1080p/4K)。100% 免费，无需注册，安全且支持移动端。">
+    <meta name="keywords" content="youtube 转 mp3, youtube 转 mp4, 免费 youtube 转换器, 转换 youtube, ytmp3, y2mate, yt-ai, youtube 音频转换, 高质量 youtube mp3, 安全 youtube 转换器">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="YT-Ai">
+    <meta name="generator" content="YT-Ai Github">
+    <meta name="theme-color" content="#0a0a0a">
 
-  <!-- 3. Canonical & Hreflang (CRITICAL: Points to /leaf/zh/ with all 7 languages) -->
-  <link rel="canonical" href="https://melamrahul.github.io/yt-ai/leaf/zh/">
-  <link rel="alternate" hreflang="x-default" href="https://melamrahul.github.io/yt-ai/">
-  <link rel="alternate" hreflang="en" href="https://melamrahul.github.io/yt-ai/leaf/en/">
-  <link rel="alternate" hreflang="es" href="https://melamrahul.github.io/yt-ai/leaf/es/">
-  <link rel="alternate" hreflang="de" href="https://melamrahul.github.io/yt-ai/leaf/de/">
-  <link rel="alternate" hreflang="fr" href="https://melamrahul.github.io/yt-ai/leaf/fr/">
-  <link rel="alternate" hreflang="pt" href="https://melamrahul.github.io/yt-ai/leaf/pt/">
-  <link rel="alternate" hreflang="ja" href="https://melamrahul.github.io/yt-ai/leaf/ja/">
-  <link rel="alternate" hreflang="zh" href="https://melamrahul.github.io/yt-ai/leaf/zh/">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="YT-Ai 转换器">
+    <meta name="application-name" content="YT-Ai">
+    <meta name="format-detection" content="telephone=no">
 
-  <!-- 4. Open Graph (Facebook/LinkedIn) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="YT-Ai">
-  <meta property="og:title" content="免费YouTube转MP3和MP4转换器（中文）| 快速、安全、无广告">
-  <meta property="og:description" content="立即将YouTube视频转换为高品质MP3或MP4中文界面。100%免费，无需注册，无广告，Cloudflare保护。">
-  <meta property="og:url" content="https://melamrahul.github.io/yt-ai/leaf/zh/">
-  <meta property="og:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="YT-Ai | 免费YouTube转MP3转换器">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="article:modified_time" content="2026-09-26T12:00:00+05:30">
+    <link rel="canonical" href="https://melamrahul.github.io/yt-ai/leaf/zh/">
+    <link rel="alternate" hreflang="x-default" href="https://melamrahul.github.io/yt-ai/">
+    <link rel="alternate" hreflang="en" href="https://melamrahul.github.io/yt-ai/">
+    <link rel="alternate" hreflang="es" href="https://melamrahul.github.io/yt-ai/leaf/es/">
+    <link rel="alternate" hreflang="de" href="https://melamrahul.github.io/yt-ai/leaf/de/">
+    <link rel="alternate" hreflang="fr" href="https://melamrahul.github.io/yt-ai/leaf/fr/">
+    <link rel="alternate" hreflang="pt" href="https://melamrahul.github.io/yt-ai/leaf/pt/">
+    <link rel="alternate" hreflang="ja" href="https://melamrahul.github.io/yt-ai/leaf/ja/">
+    <link rel="alternate" hreflang="zh" href="https://melamrahul.github.io/yt-ai/leaf/zh/">
 
-  <!-- 5. Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="免费YouTube转MP3和MP4转换器（中文）| YT-Ai">
-  <meta name="twitter:description" content="立即将YouTube转换为MP3或MP4中文界面。免费，无需注册，Cloudflare保护。支持移动设备。">
-  <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-  <meta name="twitter:image:alt" content="YT-Ai | 免费YouTube转MP3转换器">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="YT-Ai">
+    <meta property="og:title" content="免费 YouTube 转 MP3 和 MP4 转换器 | 快速、安全、高质量">
+    <meta property="og:description" content="立即将 YouTube 视频转换为高质量 MP3 或 MP4。100% 免费，无需注册，安全。">
+    <meta property="og:url" content="https://melamrahul.github.io/yt-ai/leaf/zh/">
+    <meta property="og:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="YT-Ai | 免费 YouTube 转 MP3 和 MP4 转换器">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="article:modified_time" content="2026-10-14T12:00:00+00:00">
 
-  <!-- 6. Icons & Theme -->
-  <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-  <meta name="theme-color" content="#5b87ff">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="YT-Ai转换器">
-  <meta name="application-name" content="YT-Ai">
-  <meta name="format-detection" content="telephone=no">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="免费 YouTube 转 MP3 和 MP4 转换器 | YT-Ai">
+    <meta name="twitter:description" content="立即将 YouTube 转换为 MP3 或 MP4。免费，无需注册，安全。支持移动端。">
+    <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <meta name="twitter:image:alt" content="YT-Ai | 免费 YouTube 转 MP3 和 MP4 转换器">
 
-  <!-- 7. Stylesheets & Preconnects (Absolute paths ensure they work from any subdirectory) -->
-  <link rel="stylesheet" href="/yt-ai/deps/zora.css?v={{ site.github.build_revision }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
-  <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="https://www.ruvs.in" crossorigin>
-  <link rel="dns-prefetch" href="https://pl30765169.effectivecpmnetwork.com">
-  <link rel="dns-prefetch" href="https://pl31033916.profitableratecpmnetwork.com">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110" crossorigin="anonymous"></script>
-  <!-- 8. Consolidated JSON-LD Schema (Translated for Chinese) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://melamrahul.github.io/yt-ai/#organization",
-        "name": "YT-Ai",
-        "url": "https://melamrahul.github.io/yt-ai/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://melamrahul.github.io/yt-ai/yt-ai-icon.png",
-          "width": 512,
-          "height": 512
-        }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://melamrahul.github.io/yt-ai/#website",
-        "url": "https://melamrahul.github.io/yt-ai/",
-        "name": "YT-Ai转换器",
-        "description": "免费无广告的YouTube转MP3和MP4转换器。",
-        "publisher": { "@id": "https://melamrahul.github.io/yt-ai/#organization" },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://melamrahul.github.io/yt-ai/?url={search_term_string}"
-          },
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://melamrahul.github.io/yt-ai/leaf/zh/#webpage",
-        "url": "https://melamrahul.github.io/yt-ai/leaf/zh/",
-        "name": "免费YouTube转MP3和MP4转换器（中文）| YT-Ai",
-        "description": "立即将YouTube视频转换为高品质MP3或MP4中文界面。100%免费，无需注册，无广告，Cloudflare保护。",
-        "isPartOf": { "@id": "https://melamrahul.github.io/yt-ai/#website" },
-        "about": { "@id": "https://melamrahul.github.io/yt-ai/#organization" },
-        "datePublished": "2026-04-20",
-        "dateModified": "2026-09-26",
-        "inLanguage": "zh",
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://melamrahul.github.io/yt-ai/" },
-            { "@type": "ListItem", "position": 2, "name": "中文", "item": "https://melamrahul.github.io/yt-ai/leaf/zh/" }
-          ]
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "这个YouTube转MP3转换器真的免费吗？",
-            "acceptedAnswer": { "@type": "Answer", "text": "是的，YT-Ai的中文版本100%免费，无需注册，无隐藏费用，无广告，无使用限制。" }
-          },
-          {
-            "@type": "Question",
-            "name": "可用的最高MP3质量是多少？",
-            "acceptedAnswer": { "@type": "Answer", "text": "您可以提取高达320kbps的YouTube音频，这是清晰音乐和语音的最高标准质量。" }
-          },
-          {
-            "@type": "Question",
-            "name": "我可以下载高清（MP4）YouTube视频吗？",
-            "acceptedAnswer": { "@type": "Answer", "text": "可以。只需切换到视频选项卡，然后选择您喜欢的分辨率，从360p到1080p全高清。" }
-          },
-          {
-            "@type": "Question",
-            "name": "这个YouTube下载器在移动设备上能用吗？",
-            "acceptedAnswer": { "@type": "Answer", "text": "绝对可以。YT-Ai完全响应式，在Android和iOS的Safari、Chrome和Firefox上无缝运行，无需安装任何应用。" }
-          },
-          {
-            "@type": "Question",
-            "name": "YT-Ai安全且无恶意软件吗？",
-            "acceptedAnswer": { "@type": "Answer", "text": "是的。我们的转换过程受Cloudflare Workers保护，确保安全、私密、无病毒的体验，无侵入性跟踪。" }
-          }
+    <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
+    <link rel="preconnect" href="https://www.ruvs.in" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://abscloud.org">
+    <link rel="dns-prefetch" href="https://bauval.org">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
+    <link rel="stylesheet" href="/yt-ai/deps/zora.css?v={{ site.github.build_revision }}">
+
+    <script src="/chunk/scripts/sentinel.js?v={{ site.github.build_revision }}" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110" crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            { 
+                "@type": "Organization", 
+                "@id": "https://melamrahul.github.io/yt-ai/#organization", 
+                "name": "YT-Ai", 
+                "url": "https://melamrahul.github.io/yt-ai/", 
+                "logo": { "@type": "ImageObject", "url": "https://melamrahul.github.io/yt-ai/yt-ai-icon.png", "width": 512, "height": 512 } 
+            },
+            { 
+                "@type": "WebSite", 
+                "@id": "https://melamrahul.github.io/yt-ai/#website", 
+                "url": "https://melamrahul.github.io/yt-ai/", 
+                "name": "YT-Ai 转换器", 
+                "publisher": { "@id": "https://melamrahul.github.io/yt-ai/#organization" },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": { "@type": "EntryPoint", "urlTemplate": "https://melamrahul.github.io/yt-ai/?url={search_term_string}" },
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            { 
+                "@type": "WebPage", 
+                "@id": "https://melamrahul.github.io/yt-ai/leaf/zh/#webpage", 
+                "url": "https://melamrahul.github.io/yt-ai/leaf/zh/", 
+                "name": "免费 YouTube 转 MP3 和 MP4 转换器 | 快速、安全、高质量 | YT-Ai", 
+                "description": "立即将 YouTube 视频转换为高质量 MP3 (320kbps) 或 MP4 (1080p/4K)。100% 免费，无需注册，安全且支持移动端。", 
+                "isPartOf": { "@id": "https://melamrahul.github.io/yt-ai/#website" }, 
+                "about": { "@id": "https://melamrahul.github.io/yt-ai/#organization" }, 
+                "datePublished": "2026-04-20", 
+                "dateModified": "2026-10-14", 
+                "inLanguage": "zh", 
+                "breadcrumb": { 
+                    "@type": "BreadcrumbList", 
+                    "itemListElement": [ 
+                        { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://melamrahul.github.io/yt-ai/" },
+                        { "@type": "ListItem", "position": 2, "name": "中文", "item": "https://melamrahul.github.io/yt-ai/leaf/zh/" }
+                    ] 
+                } 
+            },
+            { 
+                "@type": "WebApplication", 
+                "@id": "https://melamrahul.github.io/yt-ai/#app", 
+                "name": "YT-Ai YouTube 转 MP3/MP4 转换器", 
+                "url": "https://melamrahul.github.io/yt-ai/", 
+                "description": "免费、安全、高质量的 YouTube 视频和音频转换器。", 
+                "applicationCategory": "MultimediaApplication", 
+                "operatingSystem": "Any", 
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } 
+            },
+            { 
+                "@type": "FAQPage", 
+                "@id": "https://melamrahul.github.io/yt-ai/#faq", 
+                "mainEntity": [
+                    { "@type": "Question", "name": "这个 YouTube 转 MP3 转换器真的是免费的吗？", "acceptedAnswer": { "@type": "Answer", "text": "是的，YT-Ai 100% 免费使用，无需注册、无隐藏费用或使用限制。" } },
+                    { "@type": "Question", "name": "可用的最高 MP3 质量是多少？", "acceptedAnswer": { "@type": "Answer", "text": "您可以将 YouTube 音频转换为高达 320kbps 的格式，确保音乐和播客拥有水晶般清晰的音质。" } },
+                    { "@type": "Question", "name": "我可以将 YouTube 视频转换为高清 (MP4) 吗？", "acceptedAnswer": { "@type": "Answer", "text": "当然可以。只需选择视频选项并选择您首选的分辨率，最高支持 1080p 全高清或 4K。" } },
+                    { "@type": "Question", "name": "这个 YouTube 转换器可以在手机上使用吗？", "acceptedAnswer": { "@type": "Answer", "text": "绝对可以。YT-Ai 完全响应式，可在 Android 和 iOS 设备的 Safari、Chrome 和 Firefox 中无缝运行，无需安装任何应用程序。" } },
+                    { "@type": "Question", "name": "使用这个 YouTube 转换器安全吗？", "acceptedAnswer": { "@type": "Answer", "text": "是的。我们的转换过程是安全受保护的。我们不会存储您转换的文件，也不会追踪您的个人数据。" } }
+                ]
+            }
         ]
-      }
-    ]
-  }
-  </script>
-
-  <script src="/chunk/scripts/sentinel.js?v={{ site.github.build_revision }}" defer></script>
+    }
+    </script>
 </head>
 
 <body>
-  <div class="global-loader" id="globalLoader">
-    <div class="global-spinner"></div>
-  </div>
-  
-  <div class="container" id="mainContent">
-    <!-- Header -->
-    <header class="header">
-      <div class="logo">
-        <a href="/yt-ai/">
-          <img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" alt="YT-Ai标志" width="40" height="40">
-        </a>
-      </div>
-      <div class="header-text">
-        <h1 style="font-size: 1.5rem; margin: 0; color: #fff;">免费YouTube转MP3和MP4转换器（中文）</h1>
-        <p style="color:#aaa; font-size:14px; margin: 0;">快速、安全、无广告下载</p>
-      </div>
-      <div class="lang-selector" id="langSelector">
-        <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="选择语言">
-          <span id="langFlag"><span class="fi fi-cn"></span></span>
-          <span id="langCode">ZH</span>
-          <span class="lang-arrow" aria-hidden="true">▾</span>
-        </button>
-        <!-- Language Menu (EXACTLY 7 requested languages pointing to /leaf/) -->
-        <ul class="lang-menu" id="langMenu" role="listbox">
-          <li data-code="en" data-flagclass="fi-us" data-href="/yt-ai/leaf/en/"><span class="fi fi-us"></span> English</li>
-          <li data-code="es" data-flagclass="fi-es" data-href="/yt-ai/leaf/es/"><span class="fi fi-es"></span> Español</li>
-          <li data-code="de" data-flagclass="fi-de" data-href="/yt-ai/leaf/de/"><span class="fi fi-de"></span> Deutsch</li>
-          <li data-code="fr" data-flagclass="fi-fr" data-href="/yt-ai/leaf/fr/"><span class="fi fi-fr"></span> Français</li>
-          <li data-code="pt" data-flagclass="fi-pt" data-href="/yt-ai/leaf/pt/"><span class="fi fi-pt"></span> Português</li>
-          <li data-code="ja" data-flagclass="fi-jp" data-href="/yt-ai/leaf/ja/"><span class="fi fi-jp"></span> 日本語</li>
-          <li data-code="zh" data-flagclass="fi-cn" data-href="/yt-ai/leaf/zh/"><span class="fi fi-cn"></span> 中文</li>
-        </ul>
-      </div>
-    </header>
+    <div class="global-loader" id="globalLoader">
+        <div class="global-spinner"></div>
+    </div>
 
-    <!-- Main Converter Tool -->
-    <main class="content-card">
-      <div class="card-header">
-        <h2 style="margin: 0; font-size: 1.25rem; color: #fff;">开始您的转换</h2>
-      </div>
-      <div class="iframe-wrap" id="iframeWrap">
-        <div class="loader-container" id="loader">
-          <div class="loader"></div>
-          <p style="margin-top:12px; color:#888;">正在加载安全转换器...</p>
-          <button id="insload" class="exp-btn" style="margin-top: 12px; margin-bottom: 18px; background-color: #238636; border: 2px solid #238636; cursor: pointer;">立即加载</button>
+    <div class="container" id="mainContent">
+
+        <header class="header">
+            <div class="header-row">
+                <div class="logo">
+                    <img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" alt="YT-Ai 标志" width="50" height="50">
+                </div>
+                <div class="header-text">
+                    <h1>YT-Ai 转换器</h1>
+                    <p>快速、安全、高保真转换</p>
+                </div>
+            </div>
+
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="选择语言">
+                    <span id="langFlag"><span class="fi fi-cn"></span></span>
+                    <span id="langCode">ZH</span>
+                    <span class="lang-arrow" aria-hidden="true">▾</span>
+                </button>
+                <ul class="lang-menu" id="langMenu" role="listbox">
+                    <li data-code="en" data-flagclass="fi-us" data-href="/yt-ai/"><span class="fi fi-us"></span> English</li>
+                    <li data-code="es" data-flagclass="fi-es" data-href="/yt-ai/leaf/es/"><span class="fi fi-es"></span> Español</li>
+                    <li data-code="de" data-flagclass="fi-de" data-href="/yt-ai/leaf/de/"><span class="fi fi-de"></span> Deutsch</li>
+                    <li data-code="fr" data-flagclass="fi-fr" data-href="/yt-ai/leaf/fr/"><span class="fi fi-fr"></span> Français</li>
+                    <li data-code="pt" data-flagclass="fi-pt" data-href="/yt-ai/leaf/pt/"><span class="fi fi-pt"></span> Português</li>
+                    <li data-code="ja" data-flagclass="fi-jp" data-href="/yt-ai/leaf/ja/"><span class="fi fi-jp"></span> 日本語</li>
+                    <li data-code="zh" data-flagclass="fi-cn" data-href="/yt-ai/leaf/zh/"><span class="fi fi-cn"></span> 中文</li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="content-card">
+            <div class="card-header">
+                <h2 style="margin: 0; font-size: 1.25rem; color: #fff; text-align: center;">开始您的转换</h2>
+            </div>
+            <div class="iframe-wrap" id="iframeWrap">
+                <div class="loader-container" id="loader">
+                    <div class="loader"></div>
+                    <p style="margin-top:12px; color:#888;">正在加载安全转换器...</p>
+                    <button id="insload" class="format-btn" style="margin-top: 12px; margin-bottom: 18px; background-color: #238636; border: 2px solid #238636; color: #fff; cursor: pointer;">立即加载</button>
+                </div>
+                <div class="zoom">
+                    <iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="lazy" title="YouTube 转 MP3/MP4 转换工具"></iframe>
+                </div>
+            </div>
+            <p class="helper-text">使用下方选项指定您首选的格式和质量。</p>
+        </main>
+
+        <div class="button-row">
+            <button class="format-btn" id="qualityBtn">比特率 / 质量</button>
+            <button class="format-btn" id="formatBtn">MP3 / MP4</button>
         </div>
-        <div class="zoom">
-          <iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="lazy" title="YouTube转MP3/MP4转换工具"></iframe>
-        </div>
-      </div>
-      <p class="helper-text">&emsp;使用下面的按钮选择您喜欢的格式和质量。</p>
-      </main>
-      <div class="button-row">
-        <button class="exp-btn" id="qualityBtn" style="border: 2px solid #00ACB3;">选择比特率/质量</button>
-        <button class="exp-btn" id="formatBtn" style="border: 2px solid #00AB5E;">选择MP3/MP4</button>
-      </div>
 
-    <!-- Support / Donation Section -->
-    <section class="support-card">
-      <div class="support-top">
-        <h3>⭐ 体验下一代无广告媒体转换</h3>
-        <a href="https://melamrahul.github.io/yt-ai/leaf/flow" target="_blank" rel="noopener noreferrer" class="donate-btn" style="background: #238636;">
-          <strong>试用高级无广告转换器</strong>
-        </a>
-      </div>
-    </section>
+        <section class="support-card promo-card">
+            <div class="support-top">
+                <h2>体验终极转换平台</h2>
+                <a href="https://www.ruvs.in/?utm_campaign=yt-ai" class="promo-btn" target="_blank" rel="noopener noreferrer">
+                    尝试快速、干净、无广告的转换器
+                </a>
+            </div>
+            <p>
+                正在寻找更快、更干净且完全无广告的体验？
+                访问我们的高级平台，专为无缝、高速的媒体转换而设计，
+                无中断，无杂乱。
+            </p>
+        </section>
 
-    <section class="support-card">
-      <div class="support-top">
-        <h2>❤️ 支持无广告YT-Ai</h2>
-        <a href="/yt-ai/leaf/gift" class="donate-btn" style="background: #0360fd;">点击此处为YT-Ai捐款 ❤️</a>
-      </div>
-      <p>YT-Ai独立维护，对所有人免费。如果这个工具帮助您节省时间、完成项目或下载重要内容，请考虑捐款帮助我们保持这个网站无广告运行。</p>
-    </section>
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    为什么选择 YT-Ai 进行转换？
+                </h3>
+            </div>
+            <p class="intro-text">在充斥着侵入性广告和误导性转换按钮的数字环境中，YT-Ai 的构建只有一个核心焦点：<strong>尊重用户</strong>。我们将此平台打造为最可靠、最流畅的媒体转换器。</p>
 
-    <!-- Long-Form SEO Content (Unique to Chinese version) -->
-    <article class="support-card">
-      <h2>欢迎来到YT-Ai中文版</h2>
-      <p>
-        欢迎来到YT-Ai的官方中文界面，这是将YouTube视频转换和下载为高品质MP3或MP4文件的最快、最安全的方式。与其他杂乱的工具不同，我们保证<strong>零侵入性广告、零强制注册、零恶意软件</strong>。我们受Cloudflare保护的基础设施确保您的下载安全、无限，并优化至高达320kbps的音频质量或1080p视频分辨率。
-      </p>
-      <ul>
-        <li>✅ <strong>高品质：</strong> 提取高达320kbps MP3或1080p MP4音频。</li>
-        <li>✅ <strong>普遍兼容性：</strong> 在Windows、Mac、Android和iOS浏览器上无缝运行。</li>
-        <li>✅ <strong>短视频支持：</strong> 完全支持标准YouTube链接、<code>youtu.be</code>短视频和嵌入URL。</li>
-        <li>✅ <strong>零摩擦：</strong> 粘贴、点击、下载。无需安装软件。</li>
-      </ul>
-    </article>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18V5l12-2v13"></path>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <circle cx="18" cy="16" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>录音室级音频</h4>
+                        <p>以高达 320kbps 的 MP3 格式转换水晶般清晰的音频，保留原始音轨的深度。</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>真正的 HD 视频支持</h4>
+                        <p>将您喜爱的内容转换为 720p、1080p 甚至 4K MP4 格式，且画质无损。</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>全平台兼容</h4>
+                        <p>直接在浏览器中完美运行于 Windows、macOS、Android 或 iOS。无需安装任何软件。</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Shorts 优化</h4>
+                        <p>我们的解析引擎无缝处理标准 URL、<code>youtu.be</code> 短链接和移动端分享链接。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <article class="support-card">
-      <h2>如何用3个简单步骤下载YouTube视频</h2>
-      <ol>
-        <li><strong>复制链接：</strong> 从浏览器的地址栏或YouTube的"分享"菜单获取URL。</li>
-        <li><strong>粘贴并选择：</strong> 将URL粘贴到上面的输入字段中，然后选择<em>音频</em>为MP3或<em>视频</em>为MP4。</li>
-        <li><strong>下载：</strong> 选择您想要的比特率或分辨率，点击转换，然后将文件直接保存到您的设备。</li>
-      </ol>
-    </article>
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    3 个简单步骤完成转换
+                </h3>
+            </div>
+            <ol class="steps-list">
+                <li class="step-item">
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <strong>复制视频链接：</strong>打开 YouTube，找到您想要的视频、音乐曲目或 Shorts，从浏览器地址栏或“分享”菜单中复制 URL。
+                    </div>
+                </li>
+                <li class="step-item">
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <strong>粘贴并选择格式：</strong>将 URL 粘贴到上方的转换工具中。选择<em>音频 (MP3)</em>用于收听，或选择<em>视频 (MP4)</em>用于视觉内容。
+                    </div>
+                </li>
+                <li class="step-item">
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <strong>转换并保存：</strong>点击转换按钮，从生成的选项中选择您首选的比特率或分辨率，并将文件直接保存到您的设备。
+                    </div>
+                </li>
+            </ol>
+        </section>
 
-    <article class="support-card">
-      <h2>合法和道德使用指南</h2>
-      <p>
-        我们强烈鼓励尊重版权法和YouTube的服务条款。YT-Ai仅用于下载您拥有的内容、公共领域的内容或明确允许下载的Creative Commons许可媒体。始终确保您拥有保留和使用转换的媒体的合法权利。此工具严格用于个人归档、合理使用和离线可访问性。
-      </p>
-    </article>
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    YouTube 的演变
+                </h3>
+            </div>
+            <p>YouTube 的历史是互联网历史上最引人注目的转折点之一。2005 年 2 月，由三位前 PayPal 员工——Chad Hurley、Steve Chen 和 Jawed Karim 创立，该平台最初被构想为一个基于视频的约会服务。当这个概念未能获得关注时，创始人明智地将重心转移到了通用的视频分享平台上。</p>
+            <p style="margin-top: 12px;">上传的第一个视频“Me at the zoo”展示了联合创始人 Jawed Karim 在圣地亚哥动物园的场景，仅有 18 秒长。尽管简单，但它为革命奠定了基础。认识到该平台的爆发潜力，Google 于 2006 年 11 月以 16.5 亿美元的股票收购了 YouTube。在过去的二十年里，YouTube 已从用户生成的粗糙视频库演变为全球第二大搜索引擎和现代创作者经济的支柱。</p>
+        </section>
 
-    <!-- Hidden Last Updated for SEO -->
-    <!-- <p class="last-update" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
-      最后更新：<time datetime="2026-10-07T22:43">2026年10月7日 – 22:43</time>
-    </p> -->
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    数字看 YouTube
+                </h3>
+            </div>
+            <p>了解 YouTube 的规模凸显了为什么可靠、高质量的转换工具如此受欢迎。该平台的生态系统庞大且不断扩张：</p>
 
-    <!-- FAQ Section (Matches JSON-LD Schema) -->
-    <section class="support-card">
-      <h2>常见问题</h2>
-      <div class="faq-item">
-        <h3>这个YouTube转MP3转换器真的免费吗？</h3>
-        <p>是的，YT-Ai的中文版本100%免费，无需注册，无隐藏费用，无广告，无使用限制。</p>
-      </div>
-      <div class="faq-item">
-        <h3>可用的最高MP3质量是多少？</h3>
-        <p>您可以提取高达320kbps的YouTube音频，这是清晰音乐和语音的最高标准质量。</p>
-      </div>
-      <div class="faq-item">
-        <h3>我可以下载高清（MP4）YouTube视频吗？</h3>
-        <p>可以。只需切换到视频选项卡，然后选择您喜欢的分辨率，从360p到1080p全高清。</p>
-      </div>
-      <div class="faq-item">
-        <h3>这个YouTube下载器在移动设备上能用吗？</h3>
-        <p>绝对可以。YT-Ai完全响应式，在Android和iOS的Safari、Chrome和Firefox上无缝运行，无需安装任何应用。</p>
-      </div>
-      <div class="faq-item">
-        <h3>YT-Ai安全且无恶意软件吗？</h3>
-        <p>是的。我们的转换过程受Cloudflare Workers保护，确保安全、私密、无病毒的体验，无侵入性跟踪。</p>
-      </div>
-    </section>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">27亿+</div>
+                    <div class="stat-label">全球月活跃用户</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">每分钟上传的视频小时数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">700亿+</div>
+                    <div class="stat-label">YouTube Shorts 每日观看次数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">可访问 YouTube 的国家/地区</div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p>&copy; 2026 YT-Ai。保留所有权利。</p>
-    </footer>
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    YT-Ai 的独特之处
+                </h3>
+            </div>
+            <p>大多数免费转换网站都采用“黑暗模式”运营——使用虚假的转换按钮、强制浏览器扩展和激进的弹出广告来产生收入。YT-Ai 完全拒绝这种模式。</p>
+            <p style="margin-top: 12px;">我们的独特性在于我们的<strong>透明度和极简主义</strong>。我们提供一个干净、默认暗模式的界面，不会妨碍您的使用。我们不记录您的 IP 地址，不在我们的服务器上存储您转换的媒体，也不在您的浏览会话中注入跟踪像素。当您使用 YT-Ai 时，您使用的是一个由优先考虑用户隐私和软件优雅而非剥削性货币化的开发者构建的工具。</p>
+        </section>
 
-    <!-- Scripts -->
-    <div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    常见问题
+                </h3>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>这个 YouTube 转 MP3 转换器真的是免费的吗？</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>是的，YT-Ai 100% 免费使用。我们不需要注册、隐藏费用，也不施加每日使用限制。我们的目标是为每个人提供无缝的转换体验。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>可用的最高 MP3 质量是多少？</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>您可以将 YouTube 音频转换为高达 320kbps 的格式。这是可用的最高标准比特率，确保音乐、播客和有声读物拥有水晶般清晰的音质。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>我可以将 YouTube 视频转换为高清 (MP4) 吗？</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>当然可以。只需在转换器中选择视频选项并选择您首选的分辨率。我们支持高达 1080p 全高清和 4K 的转换，具体取决于源视频的可用性。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>这个 YouTube 转换器可以在手机上使用吗？</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>是的。YT-Ai 完全响应式，可在 Android 和 iOS 设备的 Safari、Chrome 和 Firefox 中无缝运行。您无需安装任何可疑的第三方应用程序。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>使用这个 YouTube 转换器安全吗？</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>是的。我们的转换过程是安全受保护的。我们不会存储您转换的文件，不会追踪您的个人数据，也不会投放恶意广告。您的隐私是我们的首要任务。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                    合法和道德使用指南
+                </h3>
+            </div>
+            <p>YT-Ai 专为个人合理使用归档和离线访问而严格设计。我们强烈鼓励所有用户尊重知识产权和 <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube 的服务条款</a>。</p>
+            <p style="margin-top: 12px;">此工具仅应用于转换您拥有的内容、属于公共领域的内容，或在明确允许转换的 <a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">知识共享 (Creative Commons) 许可</a>下分发的媒体。YT-Ai 不在其服务器上托管、存储或分发任何受版权保护的材料。</p>
+        </section>
+
+        <section class="support-card">
+            <div class="support-top">
+                <h3>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    官方链接和资源
+                </h3>
+            </div>
+            <p>快速访问我们的官方平台、文档和可信资源：</p>
+            <ul class="resource-list">
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube - 官方平台</a>
+                </li>
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <a href="https://google.com" target="_blank" rel="noopener noreferrer">Google - 搜索与服务</a>
+                </li>
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <a href="https://github.com/melamrahul/youtube-to-mp3-converter/" target="_blank" rel="noopener noreferrer">GitHub - YouTube 转 MP3 转换器</a>
+                </li>
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <a href="https://github.com/melamrahul/yt-ai" target="_blank" rel="noopener noreferrer">GitHub - YT-Ai 仓库</a>
+                </li>
+                <li>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <a href="https://www.ruvs.in" target="_blank" rel="noopener noreferrer">RUVS - 高级平台</a>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="/yt-ai/">首页</a>
+                <a href="/yt-ai/privacy">隐私政策</a>
+                <a href="/yt-ai/terms">服务条款</a>
+                <a href="/yt-ai/dmca">DMCA / 版权</a>
+                <a href="https://www.ruvs.in/contact-us" target="_blank" rel="noopener noreferrer">联系我们</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 <b>YT-Ai</b>. 版权所有。 <br>
+                为速度、隐私和简洁而设计。
+            </div>
+        </footer>
+
+        <p class="last-updated-tag">
+            系统最后更新： <time datetime="2026-10-07">2026年10月7日</time>
+        </p><br>
+        <div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>
+
+    </div>
+
     <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
     <script src="/yt-ai/deps/rivo.js?v={{ site.github.build_revision }}"></script>
-    <script src="/yt-ai/deps/vela.js?v={{ site.github.build_revision }}"></script>
+
     <script async data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
     <script async data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>
     <script async data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>
-  </div>
 </body>
+
 </html>
