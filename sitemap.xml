@@ -4,49 +4,56 @@
   <!-- Root Pages -->
   <url>
     <loc>https://melamrahul.github.io/yt-ai/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://melamrahul.github.io/yt-ai/leaf/en/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://melamrahul.github.io/yt-ai/leaf/es/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://melamrahul.github.io/yt-ai/leaf/de/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://melamrahul.github.io/yt-ai/leaf/fr/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://melamrahul.github.io/yt-ai/leaf/pt/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://melamrahul.github.io/yt-ai/leaf/ja/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://melamrahul.github.io/yt-ai/leaf/zh/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
