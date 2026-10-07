@@ -1,21 +1,19 @@
+---
+updated: 2026-10-07
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 1. ESSENTIAL META & PERFORMANCE -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- REMOVED harmful cache-control headers that destroy LCP scores -->
+  <!-- Removed the no-cache meta tags: they slow repeat visits and do nothing for SEO. Set caching via headers/CDN instead. -->
 
-  <!-- 2. SEO TITLE & DESCRIPTION (Optimized for CTR & Intent) -->
-  <title>Free YouTube to MP3 & MP4 Converter (2026) | Fast, Safe & High Quality</title>
-  <meta name="description" content="Convert YouTube videos to high-quality MP3 (320kbps) or MP4 (1080p/4K) instantly. 100% free, no registration, secure, and mobile-friendly.">
-  <meta name="keywords" content="youtube to mp3, youtube to mp4, free youtube converter, yt audio downloader, high quality youtube mp3, safe youtube downloader">
+  <title>YouTube to MP3 & MP4 Converter - Free, No Signup | YT-Ai</title>
+  <meta name="description" content="Convert YouTube links to MP3 (up to 320kbps) or MP4 (up to 1080p). Free, no signup, works on Android, iPhone and desktop. Paste a link and download in seconds.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="YT-Ai">
-  <meta name="theme-color" content="#5b87ff">
 
-  <!-- 3. CANONICAL & HREFLANG (Flawless International Targeting) -->
+  <!-- Canonical + hreflang: this root page IS the English page, so en/x-default point here (self-referencing). -->
   <link rel="canonical" href="https://melamrahul.github.io/yt-ai/">
   <link rel="alternate" hreflang="x-default" href="https://melamrahul.github.io/yt-ai/">
   <link rel="alternate" hreflang="en" href="https://melamrahul.github.io/yt-ai/">
@@ -26,103 +24,51 @@
   <link rel="alternate" hreflang="ja" href="https://melamrahul.github.io/yt-ai/leaf/ja/">
   <link rel="alternate" hreflang="zh" href="https://melamrahul.github.io/yt-ai/leaf/zh/">
 
-  <!-- 4. OPEN GRAPH & TWITTER CARDS -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="YT-Ai Converter">
-  <meta property="og:title" content="Free YouTube to MP3 & MP4 Converter (2026)">
-  <meta property="og:description" content="Convert YouTube videos to high-quality MP3 or MP4 instantly. 100% free, no registration, and secure.">
+  <meta property="og:site_name" content="YT-Ai">
+  <meta property="og:title" content="YouTube to MP3 & MP4 Converter - Free, No Signup">
+  <meta property="og:description" content="Paste a YouTube link, pick MP3 or MP4, and download. Free, no signup, mobile friendly.">
   <meta property="og:url" content="https://melamrahul.github.io/yt-ai/">
   <meta property="og:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="YT-Ai YouTube to MP3 and MP4 converter">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free YouTube to MP3 & MP4 Converter | YT-Ai">
-  <meta name="twitter:description" content="Convert YouTube to MP3 or MP4 instantly. Free, no signup, secure. Works on mobile.">
+  <meta name="twitter:title" content="YouTube to MP3 & MP4 Converter | YT-Ai">
+  <meta name="twitter:description" content="Free YouTube to MP3 and MP4 converter. No signup, works on mobile.">
   <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
 
-  <!-- 5. ICONS -->
   <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/yt-ai-icon.png">
+  <meta name="theme-color" content="#5b87ff">
 
-  <!-- 6. PERFORMANCE PRECONNECTS -->
   <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="/yt-ai/deps/zora.css?v={{ site.github.build_revision }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
 
-  <!-- 7. CRITICAL INLINE CSS (Eliminates Render-Blocking, Guarantees Perfect CLS) -->
+  <!-- Styles for the new content sections only (prefixed seo-, so they can't clash with zora.css) -->
   <style>
-    :root { --primary: #5b87ff; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --muted: #94a3b8; --success: #22c55e; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    .container { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
-    
-    /* Header */
-    .header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; border-bottom: 1px solid #334155; margin-bottom: 2rem; }
-    .logo-group { display: flex; align-items: center; gap: 12px; }
-    .logo-group h1 { font-size: 1.25rem; font-weight: 700; color: #fff; }
-    .logo-group p { font-size: 0.85rem; color: var(--muted); }
-    
-    /* Language Selector */
-    .lang-selector { position: relative; }
-    .lang-btn { background: var(--card); border: 1px solid #334155; color: #fff; padding: 8px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.9rem; }
-    .lang-menu { display: none; position: absolute; right: 0; top: 100%; background: var(--card); border: 1px solid #334155; border-radius: 6px; list-style: none; min-width: 150px; z-index: 100; margin-top: 4px; }
-    .lang-menu li { padding: 10px 12px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; transition: background 0.2s; }
-    .lang-menu li:hover { background: #334155; }
-    .lang-selector:hover .lang-menu { display: block; }
+    .seo-sec{max-width:880px;margin:0 auto;padding:28px 18px;color:#d0d7de;line-height:1.7;font-size:16px}
+    .seo-sec h2{color:#fff;font-size:1.4rem;line-height:1.3;margin:0 0 12px}
+    .seo-sec h3{color:#fff;font-size:1.05rem;margin:18px 0 6px}
+    .seo-sec p,.seo-sec li{max-width:70ch}
+    .seo-sec a{color:#79b8ff}
+    .seo-sec ol,.seo-sec ul{padding-left:1.3em}
+    .seo-sec + .seo-sec{border-top:1px solid #30363d}
+    .seo-table-wrap{overflow-x:auto}
+    .seo-table{border-collapse:collapse;width:100%;min-width:480px}
+    .seo-table th,.seo-table td{border:1px solid #30363d;padding:10px 12px;text-align:left;vertical-align:top}
+    .seo-table th{background:#161b22;color:#fff}
+    .seo-faq details{border-bottom:1px solid #30363d;padding:12px 0}
+    .seo-faq summary{cursor:pointer;color:#fff;font-weight:600}
+    .seo-faq details p{margin:8px 0 0}
+    .seo-support{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .seo-footer{max-width:880px;margin:0 auto;padding:24px 18px 40px;color:#8b949e;font-size:14px;text-align:center;border-top:1px solid #30363d}
+    .seo-footer nav a{color:#79b8ff;margin:0 8px;white-space:nowrap}
+    .seo-footer a:focus-visible,.seo-faq summary:focus-visible{outline:2px solid #79b8ff;outline-offset:2px}
+  </style>
 
-    /* Tool Section (Above the Fold) */
-    .tool-card { background: var(--card); border-radius: 12px; padding: 1.5rem; border: 1px solid #334155; margin-bottom: 2rem; }
-    .tool-header { text-align: center; margin-bottom: 1rem; }
-    .tool-header h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    
-    /* IFRAME WRAPPER: Prevents Cumulative Layout Shift (CLS) */
-    .iframe-wrapper { 
-      position: relative; 
-      width: 100%; 
-      min-height: 450px; /* Locks height before iframe loads */
-      background: #0f172a; 
-      border-radius: 8px; 
-      overflow: hidden; 
-    }
-    .iframe-wrapper iframe { 
-      position: absolute; 
-      top: 0; left: 0; 
-      width: 100%; 
-      height: 100%; 
-      border: none; 
-    }
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110" crossorigin="anonymous"></script>
 
-    /* Trust Badges */
-    .trust-badges { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
-    .badge { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--success); font-weight: 600; }
-
-    /* Content Sections (Below the Fold) */
-    .content-section { background: var(--card); border-radius: 12px; padding: 2rem; border: 1px solid #334155; margin-bottom: 1.5rem; }
-    .content-section h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
-    .content-section h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #fff; }
-    .content-section p, .content-section li { color: var(--muted); margin-bottom: 0.75rem; }
-    .content-section ul, .content-section ol { padding-left: 1.5rem; color: var(--muted); }
-    
-    /* Table for Featured Snippets */
-    .specs-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    .specs-table th, .specs-table td { padding: 12px; border: 1px solid #334155; text-align: left; color: var(--muted); }
-    .specs-table th { background: #0f172a; color: #fff; font-weight: 600; }
-
-    /* Footer & Legal */
-    .site-footer { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid #334155; margin-top: 3rem; }
-    .site-footer a { color: var(--primary); text-decoration: none; margin: 0 8px; }
-    .site-footer a:hover { text-decoration: underline; }
-    .last-updated { font-size: 0.8rem; color: #64748b; margin-top: 1rem; font-style: italic; }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 600px) {
-      .header { flex-direction: column; gap: 1rem; text-align: center; }
-      .trust-badges { flex-direction: column; align-items: center; gap: 0.75rem; }
-      .iframe-wrapper { min-height: 550px; } /* Taller on mobile for tool UI */
-    }
-    </style>
-        <!-- 9. CONSOLIDATED JSON-LD SCHEMA (WebApp + FAQ + Org) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -138,186 +84,182 @@
         "@type": "WebSite",
         "@id": "https://melamrahul.github.io/yt-ai/#website",
         "url": "https://melamrahul.github.io/yt-ai/",
-        "name": "YT-Ai Converter",
+        "name": "YT-Ai",
+        "inLanguage": "en",
         "publisher": { "@id": "https://melamrahul.github.io/yt-ai/#organization" }
       },
       {
         "@type": "WebApplication",
         "@id": "https://melamrahul.github.io/yt-ai/#app",
-        "name": "YT-Ai YouTube to MP3/MP4 Converter",
+        "name": "YT-Ai YouTube to MP3 & MP4 Converter",
         "url": "https://melamrahul.github.io/yt-ai/",
-        "description": "Free, secure, and high-quality YouTube video and audio converter.",
         "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
+        "operatingSystem": "Any (web browser)",
+        "browserRequirements": "Requires JavaScript",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "1250" }
+        "publisher": { "@id": "https://melamrahul.github.io/yt-ai/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://melamrahul.github.io/yt-ai/#webpage",
+        "url": "https://melamrahul.github.io/yt-ai/",
+        "name": "YouTube to MP3 & MP4 Converter - Free, No Signup | YT-Ai",
+        "isPartOf": { "@id": "https://melamrahul.github.io/yt-ai/#website" },
+        "mainEntity": { "@id": "https://melamrahul.github.io/yt-ai/#app" },
+        "datePublished": "2026-04-20",
+        "dateModified": "{{ page.updated }}",
+        "inLanguage": "en"
       },
       {
         "@type": "FAQPage",
-        "@id": "https://melamrahul.github.io/yt-ai/#faq",
         "mainEntity": [
-          { "@type": "Question", "name": "Is this YouTube to MP3 converter free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, YT-Ai is 100% free to use with no registration, hidden fees, or usage limits." } },
-          { "@type": "Question", "name": "What is the maximum MP3 quality available?", "acceptedAnswer": { "@type": "Answer", "text": "You can extract YouTube audio at up to 320kbps, ensuring crystal-clear sound for music and podcasts." } },
-          { "@type": "Question", "name": "Can I download YouTube videos in HD (MP4)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Simply select the Video tab in the converter and choose your preferred resolution, up to 1080p Full HD or 4K." } },
-          { "@type": "Question", "", "text": "Absolutely. YT-Ai is fully responsive and works seamlessly in Safari, Chrome, and Firefox on Android and iOS without requiring any app installation." } },
-          { "@type": "Question", "name": "Is it safe to use this YouTube downloader?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our conversion process is secure and protected. We do not store your downloaded files or track your personal data." } }
+          { "@type": "Question", "name": "Is this YouTube to MP3 converter free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can convert without paying and without creating an account." } },
+          { "@type": "Question", "name": "What is the maximum MP3 quality?", "acceptedAnswer": { "@type": "Answer", "text": "Up to 320kbps, when the original video's audio supports it." } },
+          { "@type": "Question", "name": "Can I download YouTube videos as MP4 in HD?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Choose MP4 and pick a resolution from 360p up to 1080p, depending on what the original video offers." } },
+          { "@type": "Question", "name": "Does it work on iPhone and Android?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. It runs in your mobile browser (Chrome, Safari, Firefox) and needs no app." } },
+          { "@type": "Question", "name": "Is it legal to download from YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Only download content you own, content in the public domain, or content whose license allows downloading. Downloading other content may violate YouTube's Terms of Service or copyright law." } }
         ]
       }
     ]
   }
   </script>
+
+  <script src="/chunk/scripts/sentinel.js?v={{ site.github.build_revision }}" defer></script>
 </head>
 
 <body>
-  <div class="container">
-    
-    <!-- HEADER -->
+  <div class="global-loader" id="globalLoader"><div class="global-spinner"></div></div>
+
+  <div class="container" id="mainContent">
+
     <header class="header">
-      <div class="logo-group">
-        <img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" alt="YT-Ai Logo" width="40" height="40" loading="eager">
-        <div>
-          <h1>YT-Ai Converter</h1>
-          <p>Fast, Safe, and High-Quality Downloads</p>
-        </div>
+      <div class="logo">
+        <img src="https://melamrahul.github.io/yt-ai/yt-ai-icon.png" alt="YT-Ai logo" width="40" height="40">
       </div>
-      <div class="lang-selector">
-        <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select Language">
-          <span class="fi fi-us"></span> <span id="currentLang">EN</span> ▾
+      <div class="header-text">
+        <h1 style="font-size:1.5rem;margin:0;color:#fff;">YouTube to MP3 & MP4 Converter</h1>
+        <p style="color:#aaa;font-size:14px;margin:0;">Paste a link. Pick a format. Download.</p>
+      </div>
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+          <span id="langFlag"><span class="fi fi-us"></span></span>
+          <span id="langCode">EN</span>
+          <span class="lang-arrow" aria-hidden="true">▾</span>
         </button>
-        <ul class="lang-menu" role="listbox">
-          <li role="option" onclick="window.location.href='/yt-ai/'"><span class="fi fi-us"></span> English</li>
-          <li role="option" onclick="window.location.href='/yt-ai/leaf/es/'"><span class="fi fi-es"></span> Español</li>
-          <li role="option" onclick="window.location.href='/yt-ai/leaf/de/'"><span class="fi fi-de"></span> Deutsch</li>
-          <li role="option" onclick="window.location.href='/yt-ai/leaf/fr/'"><span class="fi fi-fr"></span> Français</li>
-          <li role="option" onclick="window.location.href='/yt-ai/leaf/pt/'"><span class="fi fi-pt"></span> Português</li>
-          <li role="option" onclick="window.location.href='/yt-ai/leaf/ja/'"><span class="fi fi-jp"></span> 日本語</li>
-          <li role="option" onclick="window.location.href='/yt-ai/leaf/zh/'"><span class="fi fi-cn"></span> 中文</li>
+        <ul class="lang-menu" id="langMenu" role="listbox">
+          <li data-code="en" data-flagclass="fi-us" data-href="/yt-ai/"><span class="fi fi-us"></span> English</li>
+          <li data-code="es" data-flagclass="fi-es" data-href="/yt-ai/leaf/es/"><span class="fi fi-es"></span> Español</li>
+          <li data-code="de" data-flagclass="fi-de" data-href="/yt-ai/leaf/de/"><span class="fi fi-de"></span> Deutsch</li>
+          <li data-code="fr" data-flagclass="fi-fr" data-href="/yt-ai/leaf/fr/"><span class="fi fi-fr"></span> Français</li>
+          <li data-code="pt" data-flagclass="fi-pt" data-href="/yt-ai/leaf/pt/"><span class="fi fi-pt"></span> Português</li>
+          <li data-code="ja" data-flagclass="fi-jp" data-href="/yt-ai/leaf/ja/"><span class="fi fi-jp"></span> 日本語</li>
+          <li data-code="zh" data-flagclass="fi-cn" data-href="/yt-ai/leaf/zh/"><span class="fi fi-cn"></span> 中文</li>
         </ul>
       </div>
     </header>
 
-    <!-- MAIN TOOL (ABOVE THE FOLD) -->
-    <main class="tool-card">
-      <div class="tool-header">
-        <h2>Convert YouTube to MP3 or MP4</h2>
-        <p style="color: var(--muted);">Paste your link below to get started instantly.</p>
-      </div>
-      
-      <!-- IFRAME WRAPPER: Prevents Cumulative Layout Shift (CLS) -->
-      <div class="iframe-wrapper">
-        <iframe 
-          id="converterFrame" 
-          src="https://mr.ruvs.in" 
-          title="YouTube to MP3 and MP4 Conversion Tool" 
-          loading="eager" 
-          allow="clipboard-read; clipboard-write">
-        </iframe>
-      </div>
+    <main>
+      <!-- ===== TOOL: first thing on the page. IFRAME BLOCK UNCHANGED ===== -->
+      <section class="content-card" aria-label="YouTube converter">
+        <div class="iframe-wrap" id="iframeWrap">
+          <div class="loader-container" id="loader">
+            <div class="loader"></div>
+            <p style="margin-top:12px;color:#888;">Loading secure converter...</p>
+            <button id="insload" class="exp-btn" style="margin-top:12px;margin-bottom:18px;background-color:#238636;border:2px solid #238636;cursor:pointer;">Load Instantly</button>
+          </div>
+          <div class="zoom">
+            <iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="lazy" title="YouTube to MP3/MP4 Conversion Tool"></iframe>
+          </div>
+        </div>
+        <p class="helper-text">Use the buttons below to choose your format and quality.</p>
+        <div class="button-row">
+          <button class="exp-btn" id="qualityBtn" style="border:2px solid #00ACB3;">Select Bitrate / Quality</button>
+          <button class="exp-btn" id="formatBtn" style="border:2px solid #00AB5E;">Choose MP3 / MP4</button>
+        </div>
+      </section>
+      <!-- ===== END TOOL ===== -->
 
-      <!-- TRUST SIGNALS (Directly below tool for E-E-A-T) -->
-      <div class="trust-badges">
-        <div class="badge">🔒 Secure & Private</div>
-        <div class="badge">⚡ Lightning Fast</div>
-        <div class="badge">📱 Mobile Friendly</div>
-        <div class="badge">🎵 Up to 320kbps</div>
-      </div>
+      <section class="seo-sec" id="about-tool">
+        <h2>Convert YouTube videos to MP3 or MP4</h2>
+        <p>YT-Ai turns a YouTube link into an audio file (MP3) or a video file (MP4) that you can save to your phone or computer. There is nothing to install and no account to create. It works in any modern browser on Windows, Mac, Linux, Android and iOS.</p>
+        <ul>
+          <li><strong>MP3 audio:</strong> up to 320kbps, depending on the source video.</li>
+          <li><strong>MP4 video:</strong> from 360p up to 1080p, depending on what the video offers.</li>
+          <li><strong>Link types:</strong> standard <code>youtube.com/watch</code> links, <code>youtu.be</code> short links, Shorts and embed URLs.</li>
+        </ul>
+      </section>
+
+      <section class="seo-sec" id="how-to">
+        <h2>How to convert a YouTube video in 3 steps</h2>
+        <ol>
+          <li><strong>Copy the link.</strong> Use the address bar or YouTube's Share button.</li>
+          <li><strong>Paste it and choose a format.</strong> Paste into the box above, then pick MP3 for audio or MP4 for video.</li>
+          <li><strong>Select quality and download.</strong> Choose a bitrate or resolution, press convert, then save the file.</li>
+        </ol>
+        <h3>On iPhone or Android</h3>
+        <p>Open this page in Safari or Chrome, paste the link, and convert. On iPhone, downloaded files are saved in the Files app under Downloads.</p>
+      </section>
+
+      <section class="seo-sec" id="mp3-vs-mp4">
+        <h2>MP3 or MP4: which should you choose?</h2>
+        <div class="seo-table-wrap">
+          <table class="seo-table">
+            <thead><tr><th></th><th>MP3</th><th>MP4</th></tr></thead>
+            <tbody>
+              <tr><th>Contains</th><td>Audio only</td><td>Video and audio</td></tr>
+              <tr><th>Best for</th><td>Music, podcasts, lectures you listen to</td><td>Tutorials, clips, anything you need to see</td></tr>
+              <tr><th>File size</th><td>Small (about 2.4 MB per minute at 320kbps)</td><td>Much larger, grows with resolution</td></tr>
+              <tr><th>Quality options</th><td>Bitrate, such as 128 or 320kbps</td><td>Resolution, 360p to 1080p</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Higher bitrate or resolution never exceeds the original upload, so a low-quality source stays low quality.</p>
+      </section>
+
+      <section class="seo-sec seo-faq" id="faq">
+        <h2>Frequently asked questions</h2>
+        <details><summary>Is this YouTube to MP3 converter free?</summary><p>Yes. You can convert without paying and without creating an account.</p></details>
+        <details><summary>What is the maximum MP3 quality?</summary><p>Up to 320kbps, when the original video's audio supports it.</p></details>
+        <details><summary>Can I download YouTube videos as MP4 in HD?</summary><p>Yes. Choose MP4 and pick a resolution from 360p up to 1080p, depending on what the original video offers.</p></details>
+        <details><summary>Does it work on iPhone and Android?</summary><p>Yes. It runs in your mobile browser (Chrome, Safari, Firefox) and needs no app.</p></details>
+        <details><summary>Is it legal to download from YouTube?</summary><p>Only download content you own, content in the public domain, or content whose license allows downloading. Downloading other content may violate YouTube's Terms of Service or copyright law.</p></details>
+      </section>
+
+      <section class="seo-sec" id="legal">
+        <h2>Responsible use</h2>
+        <p>Use YT-Ai only for content you own, public-domain material, or videos with a Creative Commons or similar license that allows downloading. You are responsible for following copyright law and <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube's Terms of Service</a>. Rights holders can send removal requests through our <a href="/yt-ai/leaf/dmca/">copyright (DMCA) page</a>.</p>
+      </section>
+
+      <section class="seo-sec" id="support">
+        <h2>Support YT-Ai</h2>
+        <p>YT-Ai is maintained independently. If it saved you time, you can help cover running costs.</p>
+        <div class="seo-support">
+          <a href="/yt-ai/leaf/gift" class="donate-btn" style="background:#0360fd;">Donate to YT-Ai</a>
+          <a href="https://melamrahul.github.io/yt-ai/leaf/flow" target="_blank" rel="noopener noreferrer" class="donate-btn" style="background:#238636;">Try the alternate converter</a>
+        </div>
+      </section>
     </main>
 
-    <!-- SEO CONTENT: FEATURES (Semantic HTML for Relevance) -->
-    <article class="content-section">
-      <h2>Why Choose YT-Ai for Your YouTube Conversions?</h2>
-      <p>YT-Ai is engineered to be the most reliable and user-friendly YouTube to MP3 and MP4 converter on the web. We prioritize your privacy, device compatibility, and download quality above all else.</p>
-      <ul>
-        <li><strong>High-Fidelity Audio:</strong> Extract crystal-clear audio at up to 320kbps MP3 format.</li>
-        <li><strong>HD Video Support:</strong> Download your favorite videos in 720p, 1080p, and 4K MP4 formats.</li>
-        <li><strong>Cross-Platform Compatibility:</strong> Works flawlessly on Windows, macOS, Android, and iOS directly in your browser.</li>
-        <li><strong>YouTube Shorts Ready:</strong> Fully supports standard URLs, <code>youtu.be</code> short links, and mobile share links.</li>
-      </ul>
-    </article>
-
-    <!-- SEO CONTENT: HOW-TO (Targets "How to download youtube video" queries) -->
-    <article class="content-section">
-      <h2>How to Download YouTube Videos in 3 Simple Steps</h2>
-      <ol>
-        <li><strong>Copy the Video Link:</strong> Open YouTube, find your desired video or Short, and copy the URL from the address bar or the "Share" button.</li>
-        <li><strong>Paste and Select Format:</strong> Paste the URL into the converter tool above. Choose <em>Audio (MP3)</em> for music or <em>Video (MP4)</em> for visual content.</li>
-        <li><strong>Convert and Download:</strong> Click the convert button, select your preferred quality, and save the file directly to your device's downloads folder.</li>
-      </ol>
-    </article>
-
-    <!-- SEO CONTENT: SPECS TABLE (Highly favored by Google for Featured Snippets) -->
-    <article class="content-section">
-      <h2>Supported Formats and Quality</h2>
-      <table class="specs-table">
-        <thead>
-          <tr>
-            <th>Format</th>
-            <th>Maximum Quality</th>
-            <th>Best Use Case</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>MP3</strong></td>
-            <td>320 kbps</td>
-            <td>Music, Podcasts, Audiobooks</td>
-          </tr>
-          <tr>
-            <td><strong>MP4</strong></td>
-            <td>1080p / 4K</td>
-            <td>Music Videos, Tutorials, Shorts</td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
-
-    <!-- SEO CONTENT: LEGAL / DMCA (Critical for E-E-A-T in this niche) -->
-    <article class="content-section">
-      <h2>Legal and Ethical Usage Guidelines</h2>
-      <p>YT-Ai is designed strictly for personal, fair-use archiving and offline accessibility. We strongly encourage all users to respect copyright laws and YouTube's Terms of Service.</p>
-      <p>This tool should only be used to download content that you own, content that is in the public domain, or media distributed under a Creative Commons license that explicitly permits downloading. YT-Ai does not host any copyrighted material on its servers.</p>
-    </article>
-
-    <!-- FAQ SECTION (Matches JSON-LD Schema exactly) -->
-    <section class="content-section">
-      <h2>Frequently Asked Questions</h2>
-      
-      <h3>Is this YouTube to MP3 converter free?</h3>
-      <p>Yes, YT-Ai is 100% free to use with no registration, hidden fees, or usage limits.</p>
-
-      <h3>What is the maximum MP3 quality available?</h3>
-      <p>You can extract YouTube audio at up to 320kbps, ensuring crystal-clear sound for music and podcasts.</p>
-
-      <h3>Can I download YouTube videos in HD (MP4)?</h3>
-      <p>Yes. Simply select the Video tab in the converter and choose your preferred resolution, up to 1080p Full HD or 4K.</p>
-
-      <h3>Does this YouTube downloader work on mobile?</h3>
-      <p>Absolutely. YT-Ai is fully responsive and works seamlessly in Safari, Chrome, and Firefox on Android and iOS without requiring any app installation.</p>
-
-      <h3>Is it safe to use this YouTube downloader?</h3>
-      <p>Yes. Our conversion process is secure and protected. We do not store your downloaded files or track your personal data.</p>
-    </section>
-
-    <!-- FOOTER WITH ESSENTIAL TRUST LINKS -->
-    <footer class="site-footer">
-      <p>&copy; 2026 YT-Ai. All rights reserved.</p>
-      <p style="margin-top: 12px;">
-        <a href="/yt-ai/privacy.html">Privacy Policy</a> | 
-        <a href="/yt-ai/terms.html">Terms of Service</a> | 
-        <a href="/yt-ai/dmca.html">DMCA / Copyright</a> | 
-        <a href="mailto:support@yt-ai.com">Contact Us</a>
-      </p>
-      <p class="last-updated">System Last Updated: <time datetime="2026-10-07">October 7, 2026</time></p>
+    <footer class="seo-footer">
+      <nav aria-label="Footer">
+        <a href="/yt-ai/leaf/about/">About</a>
+        <a href="/yt-ai/leaf/contact/">Contact</a>
+        <a href="/yt-ai/leaf/privacy/">Privacy Policy</a>
+        <a href="/yt-ai/leaf/terms/">Terms of Use</a>
+        <a href="/yt-ai/leaf/dmca/">DMCA</a>
+      </nav>
+      <p>Last updated: <time datetime="{{ page.updated }}">{{ page.updated | date: "%-d %B %Y" }}</time></p>
+      <p>&copy; 2026 YT-Ai. Not affiliated with YouTube or Google.</p>
     </footer>
 
+    <!-- Scripts (unchanged) -->
+    <div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>
+    <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
+    <script src="/yt-ai/deps/rivo.js?v={{ site.github.build_revision }}"></script>
+    <script src="/yt-ai/deps/vela.js?v={{ site.github.build_revision }}"></script>
+    <script async data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
+    <script async data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>
+    <script async data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>
   </div>
-
-  <!-- DEFERRED SCRIPTS (Does not block rendering) -->
-  <script src="/yt-ai/deps/nexa.js?v=2026" defer></script>
-  <script src="/yt-ai/deps/rivo.js?v=2026" defer></script>
-  <script src="/yt-ai/deps/vela.js?v=2026" defer></script>
-  
-  <!-- NOTE: If you use ad scripts, load them with 'async' and 'data-cfasync="false"' at the very bottom. 
-       Ensure your page copy does NOT say "No Ads" if ad scripts are present, to avoid Google Deceptive Practices penalties. -->
 </body>
 </html>
