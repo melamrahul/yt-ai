@@ -39,8 +39,16 @@
     <meta name="twitter:description" content="Download YouTube to MP3 or MP4 instantly. Free, no signup, secure. Works on mobile.">
     <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
+        <!-- PWA Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/yt-ai/deps/icons/main-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/yt-ai/manifest.json">
+
     <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
@@ -103,6 +111,25 @@
                 </ul>
             </div>
         </header>
+
+        <!-- PWA Install Card (Hidden by default, shown via JS) -->
+        <section class="support-card promo-card" id="installCard" style="display: none;">
+            <div class="support-top">
+                <h2>Install YT-Ai App</h2>
+                <button id="installBtn" class="promo-btn" style="background: #22e3c5; color: #000000;">
+                    Add to Home Screen
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </button>
+            </div>
+            <p>
+                Install YT-Ai on your device for instant access, a full-screen experience, 
+                and faster loading times without opening your browser.
+            </p>
+        </section>
 
         <main class="content-card">
             <div class="card-header">
@@ -455,6 +482,60 @@
         <div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>
 
     </div>
+
+    <!-- PWA Installation Logic -->
+    <script>
+        // 1. Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/yt-ai/service-worker.js')
+                    .then(registration => console.log('SW registered:', registration.scope))
+                    .catch(error => console.log('SW registration failed:', error));
+            });
+        }
+
+        // 2. Handle Install Prompt
+        let deferredPrompt;
+        const installCard = document.getElementById('installCard');
+        const installBtn = document.getElementById('installBtn');
+
+        // Check if the app is already installed/running in standalone mode
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            
+            // Only show the card if the user is NOT already in standalone mode
+            if (!isStandalone && installCard) {
+                installCard.style.display = 'block';
+            }
+        });
+
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    // Show the install prompt
+                    deferredPrompt.prompt();
+                    // Wait for the user to respond to the prompt
+                    const { outcome } = await deferredPrompt.userChoice;
+                    
+                    if (outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    
+                    // Clear the saved prompt since it can't be used again
+                    deferredPrompt = null;
+                    // Hide the card after interaction
+                    installCard.style.display = 'none';
+                }
+            });
+        }
+    </script>
       
 
     <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
