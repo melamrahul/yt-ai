@@ -112,52 +112,6 @@
             </div>
         </header>
 
-        <!-- Standard Install Card (Android / Desktop) -->
-        <section class="support-card install-card" id="installCardStandard" style="display: none;">
-            <div class="install-icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-            </div>
-            <h3 style="text-align: center; margin: 12px 0 8px; color: #ffffff; font-size: 16px;">Add to Home Screen</h3>
-            <p style="text-align: center; color: #bdbdbd; font-size: 14px; line-height: 1.6; margin: 0;">
-                Install YT-Ai on your device for instant access, a full-screen experience, 
-                and faster loading times without opening your browser.
-            </p>
-            <button id="installBtn" class="install-btn" style="margin-top: 16px; width: 100%;">
-                Install App
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-            </button>
-        </section>
-
-        <!-- iOS Specific Install Card -->
-        <section class="support-card install-card" id="installCardIOS" style="display: none;">
-            <div class="install-icon-box">
-                <!-- Share Icon for iOS -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                    <polyline points="16 6 12 2 8 6"></polyline>
-                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                </svg>
-            </div>
-            <h3 style="text-align: center; margin: 12px 0 8px; color: #ffffff; font-size: 16px;">Add to Home Screen</h3>
-            <p style="text-align: center; color: #bdbdbd; font-size: 14px; line-height: 1.6; margin: 0;">
-                Tap the <strong>Share</strong> button 
-                <svg style="width: 16px; height: 16px; vertical-align: middle; stroke: #22e3c5; fill: none; stroke-width: 2.5;" viewBox="0 0 24 24">
-                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                    <polyline points="16 6 12 2 8 6"></polyline>
-                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                </svg> 
-                at the bottom of Safari, then select <strong>"Add to Home Screen"</strong>.
-            </p>
-        </section>
-
         <main class="content-card">
             <div class="card-header">
                 <h2 style="margin: 0; font-size: 1.25rem; color: #fff; text-align: center;">Start Your Download</h2>
@@ -179,6 +133,35 @@
             <button class="format-btn" id="qualityBtn">Bitrate / Quality</button>
             <button class="format-btn" id="formatBtn">MP3 / MP4</button>
         </div>
+
+        <!-- PWA Install Card (Android / Desktop) -->
+        <section class="support-card promo-card" id="installCardStandard" style="display: none;">
+            <div class="support-top">
+                <h2>Install YT-Ai App</h2>
+                <button id="installBtn" class="promo-btn" style="background: #1EA547; color: #ffffff; border: none; cursor: pointer;">
+                    Add to Home Screen
+                </button>
+            </div>
+            <p>
+                Install YT-Ai on your device for instant access, a full-screen experience, 
+                and faster loading times without opening your browser.
+            </p>
+        </section>
+
+        <!-- PWA Install Card (iOS) -->
+        <section class="support-card promo-card" id="installCardIOS" style="display: none;">
+            <div class="support-top">
+                <h2>Install YT-Ai App</h2>
+                <!-- Using a span styled exactly like the button for iOS instructions -->
+                <span class="promo-btn" style="background: #1EA547; color: #ffffff; pointer-events: none; cursor: default;">
+                    Tap Share ➔ Add to Home Screen
+                </span>
+            </div>
+            <p>
+                Tap the <strong>Share</strong> icon at the bottom of Safari, 
+                then select <strong>"Add to Home Screen"</strong> to install.
+            </p>
+        </section>
 
         <section class="support-card promo-card">
             <div class="support-top">
@@ -510,7 +493,7 @@
 
     </div>
 
-    <<script>
+    <script>
     // 1. Register Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -571,7 +554,7 @@
             }
         });
     }
-</script>
+    </script>
       
 
     <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
