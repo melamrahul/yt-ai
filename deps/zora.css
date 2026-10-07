@@ -140,7 +140,7 @@ body {
   text-align: center;
 }
 
-/* Loaders */
+/* Loaders (Fixed for Mobile GPU Acceleration) */
 .loader-container {
   position: absolute;
   inset: 0;
@@ -165,12 +165,15 @@ body {
   border-top-color: #ff0000;
   border-radius: 50%;
   animation: spinLoader 1s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 @keyframes spinLoader {
-  to {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .global-loader {
@@ -190,12 +193,15 @@ body {
   border-top-color: #FF5700;
   border-radius: 50%;
   animation: spinGlobal 0.8s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 @keyframes spinGlobal {
-  to {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Buttons */
