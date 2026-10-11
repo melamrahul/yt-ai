@@ -148,6 +148,22 @@
 </head>
 
 <body>
+        <!-- Clipboard Permission Dialog (Required by min.js) -->
+    <div id="clipboardBackdrop" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9998;"></div>
+    <div id="clipboardDialog" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:#111; border:1px solid #333; padding:20px; border-radius:12px; z-index:9999; width:90%; max-width:400px; text-align:center;">
+        <div class="cd-header" id="cd-title" style="font-weight:bold; margin-bottom:10px; color:#fff;">Clipboard Permission</div>
+        <div class="cd-body">
+            <p id="cd-message" style="color:#ccc; font-size:14px; margin-bottom:15px;">We need permission to read your clipboard.<br>Your browser will ask — please click <strong>Allow</strong>.</p>
+            <p id="cd-help" style="display:none; color:#ccc; font-size:14px; margin-bottom:15px;">Clipboard access is denied.<br><br>1. Click the settings icon next to the address bar<br>2. Open Site settings → Allow Clipboard<br>3. Refresh the page</p>
+            <div class="cd-actions" style="display:flex; gap:10px; justify-content:center;">
+                <button id="cd-cancel" style="padding:8px 16px; background:#333; color:#fff; border:none; border-radius:6px; cursor:pointer;">Cancel</button>
+                <button id="cd-continue" style="padding:8px 16px; background:#3d9dff; color:#fff; border:none; border-radius:6px; cursor:pointer;">Continue</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Clipboard Dialog -->
+
+    <div class="global-loader" id="globalLoader">
     <div class="global-loader" id="globalLoader">
         <div class="global-spinner"></div>
     </div>
