@@ -74,7 +74,7 @@
     <link rel="dns-prefetch" href="https://bauval.org">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
-    <link rel="stylesheet" href="/yt-ai/deps/zora.css?v={{ site.github.build_revision }}">
+    <link rel="stylesheet" href="/yt-ai/deps/zoras.css?v={{ site.github.build_revision }}">
 
     <script src="/chunk/scripts/sentinel.js?v={{ site.github.build_revision }}" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110"
@@ -261,7 +261,7 @@
             <p class="helper-text">Use the options above to specify your preferred format and quality.</p>
         </main>
 
-        <!-- PWA Install Prompts (Required by a.js) -->
+        <!-- PWA Install Prompts (Required by rivo.js) -->
         <section class="support-card promo-card" id="installCardStandard" style="display: none;">
             <div class="support-top">
                 <h2>Install YT-Ai as App (&lt;1mb size only)</h2>
@@ -682,10 +682,14 @@
     </div>
 
     <!-- CORE BACKEND SCRIPTS -->
-    <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
-    <script src="/yt-ai/deps/rivo.js?v={{ site.github.build_revision }}"></script>
+    <!-- 1. The Engine (Contains all logic and endpoints) -->
     <script src="https://www.ruvs.in/resos/react/min.js?v=3.1.6"></script>
     
+    <!-- 2. The UI Helper (Language, Theme, Basic Interactions) -->
+    <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
+    
+    <!-- 3. The Installer (PWA & Analytics) -->
+    <script src="/yt-ai/deps/rivo.js?v={{ site.github.build_revision }}"></script>
 
     <script async data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
     <script async data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>
