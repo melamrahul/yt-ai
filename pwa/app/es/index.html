@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Convertidor Gratuito de YouTube a MP3 y MP4 | Rápido, Seguro, Alta Calidad | YT-Ai</title>
-    <meta name="description" content="Convierte videos de YouTube a MP3 (320kbps) o MP4 (1080p/4K) de alta calidad al instante. 100% gratis, sin registro, seguro y compatible con móviles.">
-    <meta name="keywords" content="youtube a mp3, youtube a mp4, convertidor de youtube gratis, convertir youtube, ytmp3, y2mate, yt-ai, convertidor de audio youtube, mp3 youtube alta calidad, convertidor youtube seguro">
+    <title>Convertidor de YouTube a MP3 320kbps y Descargador MP4 – Gratis | YT-Ai</title>
+    <meta name="description" content="Convierte YouTube a MP3 hasta 320kbps o descarga MP4 hasta 1080p. Gratis, sin registro, funciona en móvil y escritorio. Pega un enlace, elige la calidad y descarga.">
+
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="YT-Ai">
     <meta name="generator" content="YT-Ai Github">
@@ -19,7 +19,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Convertidor YT-Ai">
+    <meta name="apple-mobile-web-app-title" content="YT-Ai Converter">
     <meta name="application-name" content="YT-Ai">
     <meta name="format-detection" content="telephone=no">
 
@@ -35,38 +35,38 @@
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="YT-Ai">
-    <meta property="og:title" content="Convertidor Gratuito de YouTube a MP3 y MP4 | Rápido, Seguro, Alta Calidad">
-    <meta property="og:description" content="Convierte videos de YouTube a MP3 o MP4 de alta calidad al instante. 100% gratis, sin registro y seguro.">
+    <meta property="og:title" content="Convertidor gratis de YouTube a MP3 y MP4 | Rápido y de alta calidad">
+    <meta property="og:description"
+        content="Convierte videos de YouTube a MP3 o MP4. Gratis y sin registro.">
     <meta property="og:url" content="https://melamrahul.github.io/yt-ai/leaf/es/">
     <meta property="og:image" content="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="YT-Ai | Convertidor Gratuito de YouTube a MP3 y MP4">
+    <meta property="og:image:alt" content="YT-Ai | Convertidor gratis de YouTube a MP3 y MP4">
     <meta property="og:locale" content="es_ES">
-    <meta property="article:modified_time" content="2026-10-14T12:00:00+00:00">
+    <meta property="article:modified_time" content="2026-10-11T12:00:00+00:00">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Convertidor Gratuito de YouTube a MP3 y MP4 | YT-Ai">
-    <meta name="twitter:description" content="Convierte YouTube a MP3 o MP4 al instante. Gratis, sin registro, seguro. Funciona en móviles.">
+    <meta name="twitter:title" content="YouTube a MP3 y MP4 | Gratis, sin registro">
+    <meta name="twitter:description" content="Convierte YouTube a MP3 o MP4. Gratis, sin registro. Funciona en móvil.">
     <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
-    <meta name="twitter:image:alt" content="YT-Ai | Convertidor Gratuito de YouTube a MP3 y MP4">
+    <meta name="twitter:image:alt" content="YT-Ai | Convertidor gratis de YouTube a MP3 y MP4">
 
     <link rel="icon" type="image/png" sizes="16x16" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
-
     <!-- Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/yt-ai/deps/icons/main-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/yt-ai/deps/icons/Icon192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/yt-ai/deps/icons/Icon512.png">
-    
+
     <!-- Manifest -->
     <link rel="manifest" href="/yt-ai/pwa/manifest-es.json">
 
-    <link rel="preconnect" href="https://mr.ruvs.in" crossorigin>
+    <!-- Backend origins used by the converter (the iframe host mr.ruvs.in is no longer needed) -->
     <link rel="preconnect" href="https://www.ruvs.in" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://abscloud.org">
@@ -74,71 +74,73 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
     <link rel="stylesheet" href="/yt-ai/deps/zora.css?v={{ site.github.build_revision }}">
+    <link rel="stylesheet" href="/yt-ai/deps/converter.css?v={{ site.github.build_revision }}">
 
     <script src="/chunk/scripts/sentinel.js?v={{ site.github.build_revision }}" defer></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3081429485965110"
+        crossorigin="anonymous"></script>
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@graph": [
-            { 
-                "@type": "Organization", 
-                "@id": "https://melamrahul.github.io/yt-ai/#organization", 
-                "name": "YT-Ai", 
-                "url": "https://melamrahul.github.io/yt-ai/", 
-                "logo": { "@type": "ImageObject", "url": "https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png", "width": 512, "height": 512 } 
+            {
+                "@type": "Organization",
+                "@id": "https://melamrahul.github.io/yt-ai/#organization",
+                "name": "YT-Ai",
+                "url": "https://melamrahul.github.io/yt-ai/",
+                "logo": { "@type": "ImageObject", "url": "https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png", "width": 512, "height": 512 }
             },
-            { 
-                "@type": "WebSite", 
-                "@id": "https://melamrahul.github.io/yt-ai/#website", 
-                "url": "https://melamrahul.github.io/yt-ai/", 
-                "name": "Convertidor YT-Ai", 
+            {
+                "@type": "WebSite",
+                "@id": "https://melamrahul.github.io/yt-ai/#website",
+                "url": "https://melamrahul.github.io/yt-ai/",
+                "name": "YT-Ai Converter",
                 "publisher": { "@id": "https://melamrahul.github.io/yt-ai/#organization" },
                 "potentialAction": {
                     "@type": "SearchAction",
-                    "target": { "@type": "EntryPoint", "urlTemplate": "https://melamrahul.github.io/yt-ai/?url={search_term_string}" },
+                    "target": { "@type": "EntryPoint", "urlTemplate": "https://melamrahul.github.io/yt-ai/leaf/es/?url={search_term_string}" },
                     "query-input": "required name=search_term_string"
                 }
             },
-            { 
-                "@type": "WebPage", 
-                "@id": "https://melamrahul.github.io/yt-ai/leaf/es/#webpage", 
-                "url": "https://melamrahul.github.io/yt-ai/leaf/es/", 
-                "name": "Convertidor Gratuito de YouTube a MP3 y MP4 | Rápido, Seguro, Alta Calidad | YT-Ai", 
-                "description": "Convierte videos de YouTube a MP3 (320kbps) o MP4 (1080p/4K) de alta calidad al instante. 100% gratis, sin registro, seguro y compatible con móviles.", 
-                "isPartOf": { "@id": "https://melamrahul.github.io/yt-ai/#website" }, 
-                "about": { "@id": "https://melamrahul.github.io/yt-ai/#organization" }, 
-                "datePublished": "2026-04-20", 
-                "dateModified": "2026-10-14", 
-                "inLanguage": "es", 
-                "breadcrumb": { 
-                    "@type": "BreadcrumbList", 
-                    "itemListElement": [ 
-                        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://melamrahul.github.io/yt-ai/" },
-                        { "@type": "ListItem", "position": 2, "name": "Español", "item": "https://melamrahul.github.io/yt-ai/leaf/es/" }
-                    ] 
-                } 
+            {
+                "@type": "WebPage",
+                "@id": "https://melamrahul.github.io/yt-ai/leaf/es/#webpage",
+                "url": "https://melamrahul.github.io/yt-ai/leaf/es/",
+                "name": "Convertidor de YouTube a MP3 y MP4 | Gratis, sin registro",
+                "description": "Convierte videos de YouTube a MP3 (hasta 320kbps) o MP4 (hasta 1080p/4K cuando esté disponible). Gratis, sin registro.",
+                "isPartOf": { "@id": "https://melamrahul.github.io/yt-ai/#website" },
+                "about": { "@id": "https://melamrahul.github.io/yt-ai/#organization" },
+                "datePublished": "2026-04-20",
+                "dateModified": "2026-10-11",
+                "inLanguage": "es",
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://melamrahul.github.io/yt-ai/leaf/es/" }
+                    ]
+                }
             },
-            { 
-                "@type": "WebApplication", 
-                "@id": "https://melamrahul.github.io/yt-ai/#app", 
-                "name": "Convertidor YT-Ai de YouTube a MP3/MP4", 
-                "url": "https://melamrahul.github.io/yt-ai/", 
-                "description": "Convertidor gratuito, seguro y de alta calidad para videos y audio de YouTube.", 
-                "applicationCategory": "MultimediaApplication", 
-                "operatingSystem": "Any", 
-                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } 
+            {
+                "@type": "WebApplication",
+                "@id": "https://melamrahul.github.io/yt-ai/leaf/es/#app",
+                "name": "YT-Ai Convertidor de YouTube a MP3/MP4",
+                "url": "https://melamrahul.github.io/yt-ai/leaf/es/",
+                "description": "Convertidor gratuito de video y audio de YouTube.",
+                "applicationCategory": "MultimediaApplication",
+                "operatingSystem": "Any",
+                "inLanguage": "es",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
             },
-            { 
-                "@type": "FAQPage", 
-                "@id": "https://melamrahul.github.io/yt-ai/#faq", 
+            {
+                "@type": "FAQPage",
+                "@id": "https://melamrahul.github.io/yt-ai/leaf/es/#faq",
                 "mainEntity": [
-                    { "@type": "Question", "name": "¿Es realmente gratis este convertidor de YouTube a MP3?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, YT-Ai es 100% gratis de usar, sin registro, tarifas ocultas ni límites de uso." } },
-                    { "@type": "Question", "name": "¿Cuál es la máxima calidad de MP3 disponible?", "acceptedAnswer": { "@type": "Answer", "text": "Puedes convertir audio de YouTube hasta 320kbps, garantizando un sonido cristalino perfecto para música y podcasts." } },
-                    { "@type": "Question", "name": "¿Puedo convertir videos de YouTube en HD (MP4)?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Simplemente selecciona la opción de Video y elige tu resolución preferida, hasta 1080p Full HD o 4K." } },
-                    { "@type": "Question", "name": "¿Funciona este convertidor de YouTube en móviles?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutamente. YT-Ai es totalmente responsivo y funciona perfectamente en Safari, Chrome y Firefox en Android e iOS sin necesidad de instalar aplicaciones." } },
-                    { "@type": "Question", "name": "¿Es seguro usar este convertidor de YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Nuestro proceso de conversión es seguro y está protegido. No almacenamos tus archivos convertidos ni rastreamos tus datos personales." } }
+                    { "@type": "Question", "name": "¿Este convertidor de YouTube a MP3 es realmente gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, YT-Ai es gratis, sin registro ni cargos ocultos." } },
+                    { "@type": "Question", "name": "¿Cuál es la calidad MP3 máxima disponible?", "acceptedAnswer": { "@type": "Answer", "text": "Puedes convertir el audio de YouTube hasta 320kbps." } },
+                    { "@type": "Question", "name": "¿Puedo convertir videos de YouTube en HD (MP4)?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Selecciona la opción Video y elige la resolución que prefieras, hasta 1080p Full HD o 4K cuando el video original lo ofrezca." } },
+                    { "@type": "Question", "name": "¿Este convertidor de YouTube funciona en el móvil?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. YT-Ai es totalmente adaptable y funciona en Safari, Chrome y Firefox en Android e iOS sin instalar ninguna aplicación." } },
+                    { "@type": "Question", "name": "¿Es seguro usar este convertidor de YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "No pedimos cuenta ni datos personales. El sitio utiliza servicios de analítica y publicidad, así que consulta la Política de Privacidad para saber qué se recopila." } }
                 ]
             }
         ]
@@ -156,154 +158,254 @@
         <header class="header">
             <div class="header-row">
                 <div class="logo">
-                    <img src="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png" alt="Logo de YT-Ai" width="50" height="50">
+                    <img src="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png" alt="Logo de YT-Ai" width="50"
+                        height="50">
                 </div>
                 <div class="header-text">
-                    <h1>Convertidor YT-Ai</h1>
-                    <p>Conversiones rápidas, seguras y de alta fidelidad</p>
+                    <h1>Convertidor de YouTube a MP3 (320kbps) &amp; Descargador MP4</h1>
+                    <p>Descargas rápidas, sencillas y de alta calidad</p>
                 </div>
             </div>
 
             <div class="lang-selector" id="langSelector">
-                <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Seleccionar idioma">
+                <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false"
+                    aria-label="Seleccionar idioma">
                     <span id="langFlag"><span class="fi fi-es"></span></span>
                     <span id="langCode">ES</span>
                     <span class="lang-arrow" aria-hidden="true">▾</span>
                 </button>
                 <ul class="lang-menu" id="langMenu" role="listbox">
-                    <li data-code="en" data-flagclass="fi-us" data-href="/yt-ai/"><span class="fi fi-us"></span> English</li>
-                    <li data-code="es" data-flagclass="fi-es" data-href="/yt-ai/leaf/es/"><span class="fi fi-es"></span> Español</li>
-                    <li data-code="de" data-flagclass="fi-de" data-href="/yt-ai/leaf/de/"><span class="fi fi-de"></span> Deutsch</li>
-                    <li data-code="fr" data-flagclass="fi-fr" data-href="/yt-ai/leaf/fr/"><span class="fi fi-fr"></span> Français</li>
-                    <li data-code="pt" data-flagclass="fi-pt" data-href="/yt-ai/leaf/pt/"><span class="fi fi-pt"></span> Português</li>
-                    <li data-code="ja" data-flagclass="fi-jp" data-href="/yt-ai/leaf/ja/"><span class="fi fi-jp"></span> 日本語</li>
-                    <li data-code="zh" data-flagclass="fi-cn" data-href="/yt-ai/leaf/zh/"><span class="fi fi-cn"></span> 中文</li>
+                    <li data-code="en" data-flagclass="fi-us" data-href="/yt-ai/"><span class="fi fi-us"></span> English
+                    </li>
+                    <li data-code="es" data-flagclass="fi-es" data-href="/yt-ai/leaf/es/"><span class="fi fi-es"></span>
+                        Español</li>
+                    <li data-code="de" data-flagclass="fi-de" data-href="/yt-ai/leaf/de/"><span class="fi fi-de"></span>
+                        Deutsch</li>
+                    <li data-code="fr" data-flagclass="fi-fr" data-href="/yt-ai/leaf/fr/"><span class="fi fi-fr"></span>
+                        Français</li>
+                    <li data-code="pt" data-flagclass="fi-pt" data-href="/yt-ai/leaf/pt/"><span class="fi fi-pt"></span>
+                        Português</li>
+                    <li data-code="ja" data-flagclass="fi-jp" data-href="/yt-ai/leaf/ja/"><span class="fi fi-jp"></span>
+                        日本語</li>
+                    <li data-code="zh" data-flagclass="fi-cn" data-href="/yt-ai/leaf/zh/"><span class="fi fi-cn"></span>
+                        中文</li>
                 </ul>
             </div>
         </header>
 
         <main class="content-card">
             <div class="card-header">
-                <h2 style="margin: 0; font-size: 1.25rem; color: #fff; text-align: center;">Inicia tu conversión</h2>
+                <h2 style="margin: 0; font-size: 1.25rem; color: #fff; text-align: center;">Inicia tu descarga</h2>
             </div>
-            <div class="iframe-wrap" id="iframeWrap">
-                <div class="loader-container" id="loader">
-                    <div class="loader"></div>
-                    <p style="margin-top:12px; color:#888;">Cargando convertidor seguro...</p>
-                    <button id="insload" class="format-btn" style="margin-top: 12px; margin-bottom: 18px; background-color: #238636; border: 2px solid #238636; color: #fff; cursor: pointer;">Cargar al instante</button>
-                </div>
-                <div class="zoom">
-                    <iframe id="converterFrame" src="https://mr.ruvs.in" scrolling="no" loading="lazy" title="Herramienta de conversión de YouTube a MP3/MP4"></iframe>
-                </div>
-            </div>
-            <p class="helper-text">Usa las opciones de abajo para especificar tu formato y calidad preferidos.</p>
-        </main>
 
-        <div class="button-row">
-            <button class="format-btn" id="qualityBtn">Tasa de bits / Calidad</button>
-            <button class="format-btn" id="formatBtn">MP3 / MP4</button>
-        </div>
+            <!-- Convertidor integrado. Los IDs son obligatorios para /yt-ai/deps/min.js -->
+            <div class="converter">
+                <div id="clipboardBackdrop"></div>
+                <div id="clipboardDialog" role="dialog" aria-modal="true" aria-labelledby="cd-title">
+                    <div class="cd-header" id="cd-title">Permiso del portapapeles</div>
+                    <div class="cd-body">
+                        <p id="cd-message">Necesitamos permiso para leer tu portapapeles.<br>Tu navegador te lo preguntará. Haz clic en
+                            <strong>Permitir</strong>.</p>
+                        <p id="cd-help" style="display:none">El acceso al portapapeles está denegado.<br><br>1. Haz clic en el icono de ajustes junto a la barra de direcciones<br>2. Abre Configuración del sitio → Permitir portapapeles<br>3. Actualiza la página</p>
+                        <div class="cd-actions">
+                            <button id="cd-cancel" type="button">Cancelar</button>
+                            <button id="cd-continue" type="button">Continuar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="main-card">
+                    <div class="options-row">
+                        <div class="opt-group">
+                            <label>Formato</label>
+                            <div class="custom-select" id="format-select">
+                                <div class="select-selected">Audio (MP3)</div>
+                                <div class="select-items">
+                                    <div data-value="mp3">Audio (MP3)</div>
+                                    <div data-value="mp4">Video (MP4)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="opt-group" id="audio-options">
+                            <label>Calidad</label>
+                            <div class="custom-select" id="audio-quality-select">
+                                <div class="select-selected">192 kbps</div>
+                                <div class="select-items">
+                                    <div data-value="64kbps">64 kbps</div>
+                                    <div data-value="128kbps">128 kbps</div>
+                                    <div data-value="192kbps">192 kbps</div>
+                                    <div data-value="256kbps">256 kbps</div>
+                                    <div data-value="320kbps">320 kbps</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="opt-group" id="video-options" style="display:none">
+                            <label>Resolución</label>
+                            <div class="custom-select" id="video-quality-select">
+                                <div class="select-selected">720p</div>
+                                <div class="select-items">
+                                    <div data-value="360p">360p</div>
+                                    <div data-value="480p">480p</div>
+                                    <div data-value="720p">720p</div>
+                                    <div data-value="1080p">1080p</div>
+                                    <div data-value="1440p">1440p (2K)</div>
+                                    <div data-value="2160p">2160p (4K)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <input type="text" id="yt-url" placeholder="Pega el enlace de YouTube…" autocomplete="off"
+                                spellcheck="false" aria-label="Enlace de YouTube">
+                            <button id="paste-btn" type="button" aria-label="Pegar desde el portapapeles">Pegar</button>
+                        </div>
+                        <button class="btn-go" id="btn-go" type="button">Descargar MP3</button>
+                    </div>
+                </div>
+
+                <div class="card" id="rahul-container" style="display:none">
+                    <div id="video-preview">
+                        <img id="video-thumb" alt="Miniatura del video" src="">
+                        <div class="video-meta">
+                            <div class="video-title" translate="no" id="video-title"></div>
+                            <div class="video-channel" id="video-channel"></div>
+                        </div>
+                    </div>
+                    <div id="status-box" role="status" aria-live="polite">
+                        <div class="infinity-loader" id="infinity-loader"></div>
+                        <div id="status-label"></div>
+                    </div>
+                    <div id="progress-track">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <button id="download-btn" type="button">Descargar archivo</button>
+                <span id="user-known">Tarda más de lo habitual. Por favor, mantén esta página abierta.</span>
+
+                <div id="success-view">
+                    <div class="success-title">¡Descarga iniciada! 🎉</div>
+                    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+                        <button class="format-btn" type="button" onclick="resetUI()">↺ Convertir otro</button>
+                        <button class="format-btn" type="button"
+                            onclick="window.location.href='/yt-ai/donation'">Donar</button>
+                    </div>
+                </div>
+                <div id="after-download-section" style="display:none"></div>
+            </div>
+
+            <p class="helper-text">Elige un formato y una calidad, pega un enlace y descarga.</p>
+        </main>
 
         <section class="support-card promo-card" id="installCardStandard" style="display: none;">
             <div class="support-top">
-                <h2>Instala YT-Ai como App (solo &lt;1mb de tamaño)</h2>
+                <h2>Instala YT-Ai como app (solo &lt;1 MB)</h2>
                 <button id="installBtn" class="promo-btn" style="background: #1EA547; color: #ffffff; border: none; cursor: pointer;">
-                    Añadir a pantalla de inicio
+                    Añadir a la pantalla de inicio
                 </button>
             </div>
             <p>
-                Instala YT-Ai en tu dispositivo para obtener acceso instantáneo, una experiencia a pantalla completa 
-                y tiempos de carga más rápidos sin necesidad de abrir tu navegador.
+                Instala YT-Ai en tu dispositivo para acceder al instante, usar pantalla completa
+                y cargar más rápido sin abrir el navegador.
             </p>
         </section>
 
         <section class="support-card promo-card" id="installCardIOS" style="display: none;">
             <div class="support-top">
-                <h2>Instala YT-Ai como App (solo &lt;1mb de tamaño)</h2>
-                <!-- Using a span styled exactly like the button for iOS instructions -->
+                <h2>Instala YT-Ai como app (solo &lt;1 MB)</h2>
                 <span class="promo-btn" style="background: #1EA547; color: #ffffff; pointer-events: none; cursor: default;">
-                    Toca Compartir ➔ Añadir a pantalla de inicio
+                    Toca Compartir ➔ Añadir a inicio
                 </span>
             </div>
             <p>
-                Toca el icono de <strong>Compartir</strong> en la parte inferior de Safari, 
-                y luego selecciona <strong>"Añadir a pantalla de inicio"</strong> para instalar.
+                Toca el icono <strong>Compartir</strong> en la parte inferior de Safari
+                y luego selecciona <strong>"Añadir a la pantalla de inicio"</strong> para instalar.
             </p>
         </section>
 
         <section class="support-card promo-card">
             <div class="support-top">
-                <h2>Experimenta la mejor plataforma de conversión</h2>
-                <a href="https://www.ruvs.in/?utm_campaign=yt-ai" class="promo-btn" target="_blank" rel="noopener noreferrer">
-                    Prueba el convertidor rápido, limpio y sin anuncios ↗
+                <h2>Prueba la plataforma de descargas definitiva</h2>
+                <a href="https://www.ruvs.in/?utm_campaign=yt-ai" class="promo-btn" target="_blank"
+                    rel="noopener noreferrer">
+                    Prueba el descargador rápido, limpio y sin anuncios ↗
                 </a>
             </div>
             <p>
-                ¿Buscas una experiencia más rápida, limpia y completamente sin anuncios?
-                Visita nuestra plataforma premium diseñada para una conversión de medios
-                fluida y a alta velocidad, sin interrupciones ni desorden.
+                ¿Buscas una experiencia más rápida, limpia y totalmente sin anuncios?
+                Visita nuestra plataforma premium, diseñada para descargar contenido multimedia
+                a alta velocidad, sin interrupciones ni elementos molestos.
             </p>
         </section>
 
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                        </path>
                     </svg>
-                    ¿Por qué elegir YT-Ai para tus conversiones?
+                    ¿Por qué elegir YT-Ai para tus descargas?
                 </h3>
             </div>
-            <p class="intro-text">En un panorama digital saturado de anuncios intrusivos y botones de conversión engañosos, YT-Ai se construyó con un enfoque singular: <strong>respetar al usuario</strong>. Diseñamos esta plataforma para ser el convertidor de medios más confiable y sin fricciones disponible.</p>
+            <p class="intro-text">YT-Ai se creó con un objetivo único: <strong>mantener las descargas sencillas</strong>.
+                Pega un enlace, elige un formato y guarda el archivo, sin cuenta y sin instalar software.</p>
 
             <div class="feature-grid">
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 18V5l12-2v13"></path>
                             <circle cx="6" cy="18" r="3"></circle>
                             <circle cx="18" cy="16" r="3"></circle>
                         </svg>
                     </div>
                     <div class="feature-content">
-                        <h4>Audio de calidad de estudio</h4>
-                        <p>Convierte audio cristalino en formato MP3 de hasta 320kbps, preservando la profundidad de la pista original.</p>
+                        <h4>Audio de alta calidad</h4>
+                        <p>Descarga audio en MP3 de hasta 320kbps, conservando la profundidad del tema original.</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                             <line x1="8" y1="21" x2="16" y2="21"></line>
                             <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg>
                     </div>
                     <div class="feature-content">
-                        <h4>Soporte real para video HD</h4>
-                        <p>Convierte tu contenido favorito en formatos MP4 de 720p, 1080p e incluso 4K sin degradación de calidad.</p>
+                        <h4>Soporte HD para video</h4>
+                        <p>Descarga tu contenido favorito en MP4 de 720p, 1080p y 4K cuando el video original lo permita.</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
                             <line x1="12" y1="18" x2="12.01" y2="18"></line>
                         </svg>
                     </div>
                     <div class="feature-content">
                         <h4>Compatibilidad universal</h4>
-                        <p>Funciona perfectamente en Windows, macOS, Android o iOS directamente en tu navegador. No se necesita software.</p>
+                        <p>Funciona en Windows, macOS, Android o iOS directamente en el navegador. No necesitas software.</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                         </svg>
                     </div>
                     <div class="feature-content">
-                        <h4>Optimizado para Shorts</h4>
-                        <p>Nuestro motor de análisis maneja perfectamente URL estándar, enlaces cortos de <code>youtu.be</code> y compartidos desde móviles.</p>
+                        <h4>Compatible con Shorts</h4>
+                        <p>Nuestro analizador acepta URL estándar, enlaces cortos <code>youtu.be</code> y los enlaces compartidos desde el móvil.</p>
                     </div>
                 </div>
             </div>
@@ -312,31 +414,35 @@
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Cómo convertir en 3 sencillos pasos
+                    Cómo descargar en 3 pasos sencillos
                 </h3>
             </div>
             <ol class="steps-list">
                 <li class="step-item">
                     <span class="step-number">1</span>
                     <div class="step-content">
-                        <strong>Copia el enlace del video:</strong> Abre YouTube, encuentra el video, pista musical o Short deseado y copia la URL desde la barra de direcciones de tu navegador o el menú "Compartir".
+                        <strong>Copia el enlace del video:</strong> Abre YouTube, busca el video, la pista musical o el Short
+                        que quieres, y copia la URL de la barra de direcciones del navegador o del menú "Compartir".
                     </div>
                 </li>
                 <li class="step-item">
                     <span class="step-number">2</span>
                     <div class="step-content">
-                        <strong>Pega y selecciona el formato:</strong> Pega la URL en la herramienta de conversión de arriba. Elige <em>Audio (MP3)</em> para escuchar o <em>Video (MP4)</em> para contenido visual.
+                        <strong>Pega y elige el formato:</strong> Pega la URL en el convertidor de arriba. Elige
+                        <em>Audio (MP3)</em> para escuchar o <em>Video (MP4)</em> para contenido visual.
                     </div>
                 </li>
                 <li class="step-item">
                     <span class="step-number">3</span>
                     <div class="step-content">
-                        <strong>Convierte y guarda:</strong> Haz clic en el botón de conversión, selecciona tu tasa de bits o resolución preferida entre las opciones generadas y guarda el archivo directamente en tu dispositivo.
+                        <strong>Descarga y guarda:</strong> Haz clic en el botón de descarga y guarda el archivo
+                        directamente en tu dispositivo.
                     </div>
                 </li>
             </ol>
@@ -345,42 +451,53 @@
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                     La evolución de YouTube
                 </h3>
             </div>
-            <p>La historia de YouTube es uno de los giros más notables en la historia de internet. Fundada en febrero de 2005 por tres ex empleados de PayPal—Chad Hurley, Steve Chen y Jawed Karim—la plataforma fue concebida inicialmente como un servicio de citas basado en video. Cuando ese concepto no logró ganar tracción, los fundadores cambiaron sabiamente su enfoque a una plataforma general de intercambio de videos.</p>
-            <p style="margin-top: 12px;">El primer video subido, "Me at the zoo", presentaba al cofundador Jawed Karim en el Zoológico de San Diego y duraba solo 18 segundos. A pesar de su simplicidad, sentó las bases de una revolución. Reconociendo el potencial explosivo de la plataforma, Google adquirió YouTube en noviembre de 2006 por 1.650 millones de dólares en acciones. En las últimas dos décadas, YouTube ha evolucionado de ser un repositorio de clips granulados generados por usuarios a convertirse en el segundo motor de búsqueda más grande del mundo y la columna vertebral de la economía moderna de los creadores.</p>
+            <p>La historia de YouTube es uno de los giros más notables en la historia de internet. Fundada en febrero de 2005
+                por tres ex empleados de PayPal (Chad Hurley, Steve Chen y Jawed Karim), la plataforma se concibió
+                inicialmente como un servicio de citas basado en video. Cuando esa idea no logró atraer usuarios, los
+                fundadores enfocaron el proyecto en una plataforma general para compartir videos.</p>
+            <p style="margin-top: 12px;">El primer video subido, "Me at the zoo", mostraba al cofundador Jawed Karim en el
+                zoológico de San Diego y duraba solo 18 segundos. A pesar de su sencillez, sentó las bases de una revolución.
+                Al reconocer el enorme potencial de la plataforma, Google adquirió YouTube en noviembre de 2006 por
+                1.650 millones de dólares en acciones. En las últimas dos décadas, YouTube ha pasado de ser un repositorio
+                de clips granulados creados por usuarios a convertirse en el segundo motor de búsqueda más grande del mundo
+                y en el pilar de la economía de creadores moderna.</p>
         </section>
 
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="20" x2="18" y2="10"></line>
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                     </svg>
-                    YouTube en números
+                    YouTube en cifras
                 </h3>
             </div>
-            <p>Comprender la escala de YouTube destaca por qué las herramientas de conversión confiables y de alta calidad tienen tanta demanda. El ecosistema de la plataforma es vasto y se expande continuamente:</p>
+            <p>Entender la escala de YouTube explica por qué las herramientas de descarga fiables y de alta calidad tienen
+                tanta demanda. El ecosistema de la plataforma es enorme y sigue creciendo:</p>
 
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">2.700M+</div>
-                    <div class="stat-label">Usuarios activos mensuales a nivel mundial</div>
+                    <div class="stat-number">2.700 M+</div>
+                    <div class="stat-label">Usuarios activos mensuales en todo el mundo</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">500+</div>
                     <div class="stat-label">Horas de video subidas cada minuto</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">70.000M+</div>
-                    <div class="stat-label">Visualizaciones diarias en YouTube Shorts</div>
+                    <div class="stat-number">70.000 M+</div>
+                    <div class="stat-label">Visualizaciones diarias de YouTube Shorts</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">100+</div>
@@ -392,20 +509,28 @@
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
-                    La singularidad de YT-Ai
+                    Lo que hace único a YT-Ai
                 </h3>
             </div>
-            <p>La mayoría de los sitios de conversión gratuitos operan con "patrones oscuros", utilizando botones de conversión falsos, extensiones de navegador forzadas y anuncios emergentes agresivos para generar ingresos. YT-Ai rechaza este modelo por completo.</p>
-            <p style="margin-top: 12px;">Nuestra singularidad radica en nuestra <strong>transparencia y minimalismo</strong>. Proporcionamos una interfaz limpia, con modo oscuro por defecto, que no estorba. No registramos tu dirección IP, no almacenamos los medios que conviertes en nuestros servidores y no inyectamos píxeles de rastreo en tu sesión de navegación. Cuando usas YT-Ai, estás utilizando una herramienta creada por desarrolladores que priorizan la privacidad del usuario y la elegancia del software sobre la monetización explotadora.</p>
+            <p>Muchos convertidores gratuitos recurren a botones de descarga falsos, extensiones de navegador obligatorias
+                y ventanas emergentes agresivas. YT-Ai intenta evitar esas prácticas.</p>
+            <p style="margin-top: 12px;">Nuestro enfoque es la <strong>transparencia y la sencillez</strong>. Ofrecemos una
+                interfaz limpia, pensada primero para el modo oscuro, que no interfiere con lo que necesitas. No exigimos
+                cuenta ni pedimos datos personales. Para mantener el servicio, esta página utiliza servicios de analítica y
+                publicidad, que pueden recopilar datos de uso como tu dirección IP. Consulta nuestra
+                <a href="/yt-ai/privacy">Política de Privacidad</a> para más detalles. Si quieres una versión sin anuncios,
+                prueba <a href="https://www.ruvs.in/?utm_campaign=yt-ai" target="_blank" rel="noopener noreferrer">ruvs.in</a>.</p>
         </section>
 
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                         <line x1="12" y1="17" x2="12.01" y2="17"></line>
@@ -417,61 +542,72 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Es realmente gratis este convertidor de YouTube a MP3?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span>¿Este convertidor de YouTube a MP3 es realmente gratis?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Sí, YT-Ai es 100% gratis de usar. No requerimos registro, tarifas ocultas ni imponemos límites de uso diario. Nuestro objetivo es proporcionar una experiencia de conversión sin fricciones para todos.</p>
+                        <p>Sí, YT-Ai es gratis. No requerimos registro ni cobramos cargos ocultos. Nuestro objetivo es
+                            ofrecer una experiencia de descarga sencilla para todos.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Cuál es la máxima calidad de MP3 disponible?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span>¿Cuál es la calidad MP3 máxima disponible?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Puedes convertir audio de YouTube hasta 320kbps. Esta es la tasa de bits estándar más alta disponible, garantizando un sonido cristalino perfecto para música, podcasts y audiolibros.</p>
+                        <p>Puedes convertir el audio de YouTube hasta 320kbps, la tasa de bits MP3 estándar más alta. La
+                            calidad real también depende del audio original.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Puedo convertir videos de YouTube en HD (MP4)?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span>¿Puedo descargar videos de YouTube en HD (MP4)?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Absolutamente. Simplemente selecciona la opción de Video en el convertidor y elige tu resolución preferida. Admitimos conversiones hasta 1080p Full HD y 4K, dependiendo de la disponibilidad del video de origen.</p>
+                        <p>Sí. Selecciona Video (MP4) y elige la resolución que prefieras. Admitimos hasta 1080p Full HD y
+                            4K, según la disponibilidad del video original.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Funciona este convertidor de YouTube en móviles?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span>¿Este convertidor de YouTube funciona en el móvil?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Sí. YT-Ai es totalmente responsivo y funciona perfectamente en Safari, Chrome y Firefox en dispositivos Android e iOS. No necesitas instalar aplicaciones sospechosas de terceros.</p>
+                        <p>Sí. YT-Ai es totalmente adaptable y funciona en Safari, Chrome y Firefox, tanto en Android como
+                            en iOS. No necesitas instalar ninguna aplicación.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
                         <span>¿Es seguro usar este convertidor de YouTube?</span>
-                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Sí. Nuestro proceso de conversión es seguro y está protegido. No almacenamos tus archivos convertidos, no rastreamos tus datos personales ni mostramos anuncios maliciosos. Tu privacidad es nuestra máxima prioridad.</p>
+                        <p>No pedimos cuenta ni datos personales, y no distribuimos malware a sabiendas. El sitio sí utiliza
+                            servicios de analítica y publicidad, por lo que esos proveedores recopilan algunos datos de uso.
+                            Lee nuestra Política de Privacidad para más detalles.</p>
                     </div>
                 </div>
             </div>
@@ -480,58 +616,81 @@
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         <path d="M9 12l2 2 4-4"></path>
                     </svg>
-                    Pautas de uso legal y ético
+                    Normas de uso legal y ético
                 </h3>
             </div>
-            <p>YT-Ai está diseñado estrictamente para el archivo de uso personal y justo, y la accesibilidad sin conexión. Animamos encarecidamente a todos los usuarios a respetar los derechos de propiedad intelectual y los <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">Términos de Servicio de YouTube</a>.</p>
-            <p style="margin-top: 12px;">Esta herramienta solo debe usarse para convertir contenido que te pertenezca, contenido que resida en el dominio público, o medios distribuidos bajo una <a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">licencia Creative Commons</a> que permita explícitamente la descarga. YT-Ai no aloja, almacena ni distribuye ningún material con derechos de autor en sus servidores.</p>
+            <p>YT-Ai está pensado para el archivo personal bajo uso legítimo y para el acceso sin conexión. Animamos a todos
+                los usuarios a respetar los derechos de propiedad intelectual y las <a
+                    href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">Condiciones del
+                    Servicio de YouTube</a>.</p>
+            <p style="margin-top: 12px;">Esta herramienta solo debe usarse para descargar contenido que sea de tu propiedad,
+                contenido de dominio público o material distribuido bajo una <a href="https://creativecommons.org/"
+                    target="_blank" rel="noopener noreferrer">licencia Creative Commons</a> que permita la descarga. Tú eres
+                responsable del uso que hagas de los archivos descargados.</p>
         </section>
 
         <section class="support-card">
             <div class="support-top">
                 <h3>
-                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                         <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                     </svg>
-                    Enlaces y recursos oficiales
+                    Enlaces oficiales y recursos
                 </h3>
             </div>
             <p>Acceso rápido a nuestras plataformas oficiales, documentación y recursos de confianza:</p>
             <ul class="resource-list">
                 <li>
-                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                        </path>
                         <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                     </svg>
                     <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube - Plataforma oficial</a>
                 </li>
                 <li>
-                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
                     </svg>
                     <a href="https://google.com" target="_blank" rel="noopener noreferrer">Google - Búsqueda y servicios</a>
                 </li>
                 <li>
-                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
                     </svg>
-                    <a href="https://github.com/melamrahul/youtube-to-mp3-converter/" target="_blank" rel="noopener noreferrer">GitHub - Convertidor de YouTube a MP3</a>
+                    <a href="https://github.com/melamrahul/youtube-to-mp3-converter/" target="_blank"
+                        rel="noopener noreferrer">GitHub - Convertidor de YouTube a MP3</a>
                 </li>
                 <li>
-                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
                     </svg>
-                    <a href="https://github.com/melamrahul/yt-ai" target="_blank" rel="noopener noreferrer">GitHub - Repositorio de YT-Ai</a>
+                    <a href="https://github.com/melamrahul/yt-ai" target="_blank" rel="noopener noreferrer">GitHub -
+                        Repositorio de YT-Ai</a>
                 </li>
                 <li>
-                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
                     <a href="https://www.ruvs.in" target="_blank" rel="noopener noreferrer">RUVS - Plataforma premium</a>
@@ -541,20 +700,20 @@
 
         <footer class="site-footer">
             <div class="footer-links">
-                <a href="/yt-ai/">Inicio</a>
-                <a href="/yt-ai/privacy">Política de privacidad</a>
-                <a href="/yt-ai/terms">Términos de servicio</a>
+                <a href="/yt-ai/leaf/es/">Inicio</a>
+                <a href="/yt-ai/privacy">Política de Privacidad</a>
+                <a href="/yt-ai/terms">Condiciones del Servicio</a>
                 <a href="/yt-ai/dmca">DMCA / Derechos de autor</a>
-                <a href="https://www.ruvs.in/contact-us" target="_blank" rel="noopener noreferrer">Contáctanos</a>
+                <a href="https://www.ruvs.in/contact-us" target="_blank" rel="noopener noreferrer">Contacto</a>
             </div>
             <div class="footer-copy">
                 &copy; 2026 <b>YT-Ai</b>. Todos los derechos reservados. <br>
-                Diseñado para velocidad, privacidad y simplicidad.
+                Diseñado para la velocidad y la sencillez.
             </div>
         </footer>
 
         <p class="last-updated-tag">
-            Última actualización del sistema: <time datetime="2026-10-07">7 de octubre de 2026</time>
+            Última actualización del sistema: <time datetime="2026-10-12">12 de octubre de 2026</time>
         </p><br>
         <div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>
 
@@ -562,6 +721,7 @@
 
     <script src="/yt-ai/deps/nexa.js?v={{ site.github.build_revision }}"></script>
     <script src="/yt-ai/deps/rivo.js?v={{ site.github.build_revision }}"></script>
+    <script src="/yt-ai/deps/min.js?v={{ site.github.build_revision }}"></script>
 
     <script async data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
     <script async data-cfasync="false" src="https://abscloud.org/1/443b42c34d2f923bcaedf407008b098c"></script>
