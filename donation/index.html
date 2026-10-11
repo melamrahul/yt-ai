@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Support YT-Ai YouTube to MP3 Converter ❤️</title>
+    <meta name="description" content="YT-Ai is a free YouTube to MP3 & MP4 converter. If it has helped you, a small donation helps cover server costs and keeps it running.">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- One robots tag only. The original had eight conflicting ones, which search engines resolve to the most restrictive (noindex). -->
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="canonical" href="https://melamrahul.github.io/yt-ai/donation/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="YT-Ai">
+    <meta property="og:title" content="Support YT-Ai YouTube to MP3 Converter ❤️">
+    <meta property="og:description" content="YT-Ai is free to use. If it has helped you, consider donating. Even ₹49 or $5 helps cover server costs.">
+    <meta property="og:url" content="https://melamrahul.github.io/yt-ai/donation/">
+    <meta property="og:image" content="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
+    <meta property="og:image:alt" content="Support YT-Ai YouTube to MP3 Converter">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:modified_time" content="2026-10-11T12:00:00+00:00">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png">
+    <link rel="manifest" href="/yt-ai/pwa/manifest-en.json">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            padding: env(safe-area-inset-top, 0) 0 calc(24px + env(safe-area-inset-bottom, 0));
+        }
+
+        .page-wrap { max-width: 520px; margin: 0 auto; padding: 16px; }
+
+        a { color: inherit; }
+
+        /* Brand */
+        .brand {
+            background: linear-gradient(145deg, #111, #0a0a0a);
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .logo-area { display: flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; }
+        .logo-area img { width: 50px; height: 50px; border-radius: 12px; }
+        .logo-area span { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
+        .brand h1 { font-size: 1.15rem; margin-top: 16px; }
+        .brand p { color: #bdbdbd; font-size: 14px; line-height: 1.6; margin-top: 8px; }
+
+        .secure-tag {
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            font-size: 12px; color: #4ade80; margin-bottom: 14px;
+        }
+
+        /* Card + tabs */
+        .card { background: #0E1113; border: 1px solid #2a2a2a; border-radius: 16px; overflow: hidden; }
+
+        .tabs { display: flex; border-bottom: 1px solid #2a2a2a; }
+        .tab {
+            flex: 1; background: none; border: none; color: #888;
+            padding: 14px 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+            border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+        }
+        .tab:hover { color: #fff; }
+        .tab.active { color: #fff; border-bottom-color: #3d9dff; }
+
+        .panel { display: none; }
+        .panel.active { display: block; }
+        .panel-inner { padding: 18px 18px 6px; }
+
+        .field-label { font-size: 14px; color: #bdbdbd; margin-bottom: 12px; }
+        .field-label b { color: #3d9dff; }
+
+        /* Amount chips */
+        .chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .chip {
+            background: #111; border: 1px solid #333; border-radius: 12px; color: #fff;
+            padding: 12px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+            cursor: pointer; font: inherit; transition: border-color .2s, background .2s;
+        }
+        .chip:hover { border-color: #555; }
+        .chip.active { border-color: #3d9dff; background: rgba(61, 157, 255, .1); }
+        .chip:focus-visible, .tab:focus-visible, .method-btn:focus-visible { outline: 2px solid #3d9dff; outline-offset: 2px; }
+        .chip .amt { font-size: 15px; font-weight: 700; }
+        .chip small { font-size: 11px; color: #9ca3af; text-align: center; line-height: 1.3; }
+
+        /* Pay buttons */
+        .methods-wrap { padding: 14px 18px 8px; }
+        .method-btn {
+            display: flex; align-items: center; gap: 12px;
+            background: #111; border: 1px solid #333; border-radius: 12px;
+            padding: 12px 14px; text-decoration: none; transition: border-color .2s, transform .2s;
+        }
+        .method-btn:hover { border-color: #3d9dff; transform: translateY(-1px); }
+        .method-btn img { width: 35px; height: 35px; object-fit: contain; flex-shrink: 0; }
+        .method-info { flex: 1; min-width: 0; }
+        .method-name { font-size: 14px; font-weight: 600; }
+        .method-desc { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+        .method-arrow { flex-shrink: 0; }
+
+        .or-sep { display: flex; align-items: center; gap: 10px; margin: 12px 0; }
+        .or-line { flex: 1; height: 1px; background: #2a2a2a; }
+        .or-text { font-size: 11px; color: #666; }
+
+        .badge-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; padding: 8px 18px 18px; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 11px; color: #4ade80; border: 1px solid #14532d; border-radius: 99px; padding: 3px 9px;
+        }
+
+        .trust-row {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px;
+            padding: 14px 18px; border-top: 1px solid #2a2a2a; font-size: 12px; color: #9ca3af;
+        }
+        .trust-item { display: flex; align-items: center; gap: 5px; }
+
+        .seal { padding: 0 18px 16px; text-align: center; font-size: 12px; color: #888; }
+        .seal strong { color: #bdbdbd; }
+
+        .bottom-note { text-align: center; color: #bdbdbd; font-size: 13px; line-height: 1.6; margin-top: 18px; }
+        .btn-back {
+            display: inline-block; margin-top: 12px; padding: 8px 14px; border-radius: 10px;
+            background: #111; border: 1px solid #333; color: #fff; text-decoration: none; font-size: 13px;
+        }
+        .btn-back:hover { border-color: #3d9dff; }
+
+        @media (max-width: 380px) { .chips { grid-template-columns: repeat(2, 1fr); } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrap">
+        <div class="brand">
+            <a class="logo-area" href="/yt-ai/">
+                <img src="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png" alt="YT-Ai logo" width="50" height="50">
+                <span translate="no">YT-Ai</span>
+            </a>
+            <h1>Support the YouTube to MP3 Converter ❤️</h1>
+            <p>YT-Ai is free to use. Donations help pay for servers and keep the converter online.</p>
+        </div>
+
+        <div class="secure-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+            Secure payments through trusted providers
+        </div>
+
+        <div class="card">
+            <div class="tabs" role="tablist">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-inr" id="tab-inr" type="button" onclick="switchTab('inr')">🇮🇳 India (₹)</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-usd" id="tab-usd" type="button" onclick="switchTab('usd')">🌍 International ($)</button>
+            </div>
+
+            <!-- INR -->
+            <div class="panel active" id="panel-inr" role="tabpanel" aria-labelledby="tab-inr">
+                <div class="panel-inner">
+                    <div class="field-label">🧑‍💻 <b>Developer:</b> What would you like to buy me?</div>
+                    <div class="chips" id="inr-chips">
+
+                        <button type="button" class="chip" data-url="https://payments.cashfree.com/forms/ruvs-donation-49">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><circle cx="32" cy="32" r="26" fill="#d4a055" stroke="#a0703a" stroke-width="2" /><circle cx="22" cy="24" r="4" fill="#a0703a" opacity=".7" /><circle cx="38" cy="20" r="3" fill="#a0703a" opacity=".7" /><circle cx="28" cy="38" r="3.5" fill="#a0703a" opacity=".7" /><circle cx="42" cy="34" r="4" fill="#a0703a" opacity=".7" /><circle cx="20" cy="40" r="2.5" fill="#a0703a" opacity=".7" /></svg>
+                            <span class="amt">₹49</span><small>A biscuit 🍪</small>
+                        </button>
+
+                        <button type="button" class="chip active" data-url="https://payments.cashfree.com/forms/ruvs-donation-99">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><rect x="14" y="28" width="32" height="22" rx="4" fill="#f5e6c8" stroke="#c49a3a" stroke-width="2" /><path d="M46 34 Q58 34 58 42 Q58 50 46 50" fill="none" stroke="#c49a3a" stroke-width="2.5" stroke-linecap="round" /><ellipse cx="30" cy="28" rx="16" ry="4" fill="#e0c97a" stroke="#c49a3a" stroke-width="1.5" /><path d="M22 22 Q24 17 22 12" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" /><path d="M30 20 Q32 15 30 10" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" /><path d="M38 22 Q40 17 38 12" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" /></svg>
+                            <span class="amt">₹99</span><small>A cup of chai ☕</small>
+                        </button>
+
+                        <button type="button" class="chip" data-url="https://payments.cashfree.com/forms/ruvs-donation-199">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><polygon points="32,6 58,54 6,54" fill="#e8a840" stroke="#b07328" stroke-width="2" /><polygon points="32,14 52,50 12,50" fill="#f2c46a" /><line x1="32" y1="14" x2="20" y2="44" stroke="#b07328" stroke-width="1.2" opacity=".5" /><line x1="32" y1="14" x2="44" y2="44" stroke="#b07328" stroke-width="1.2" opacity=".5" /><line x1="22" y1="38" x2="42" y2="38" stroke="#b07328" stroke-width="1.2" opacity=".5" /></svg>
+                            <span class="amt">₹199</span><small>A samosa 🥪</small>
+                        </button>
+
+                        <button type="button" class="chip" data-url="https://payments.cashfree.com/forms/ruvs-donation-399">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><ellipse cx="32" cy="36" rx="26" ry="8" fill="#e8e0c8" stroke="#b0a080" stroke-width="2" /><ellipse cx="32" cy="32" rx="26" ry="8" fill="#f5f0e0" stroke="#b0a080" stroke-width="2" /><ellipse cx="24" cy="31" rx="3" ry="1.5" fill="#fff" opacity=".9" /><ellipse cx="32" cy="29" rx="3" ry="1.5" fill="#fff" opacity=".9" /><ellipse cx="40" cy="31" rx="3" ry="1.5" fill="#fff" opacity=".9" /><ellipse cx="28" cy="33" rx="3" ry="1.5" fill="#fff" opacity=".9" /><ellipse cx="36" cy="33" rx="3" ry="1.5" fill="#fff" opacity=".9" /><ellipse cx="32" cy="28" rx="8" ry="3" fill="#f0c060" opacity=".7" /></svg>
+                            <span class="amt">₹399</span><small>A full meal 🍛</small>
+                        </button>
+
+                        <button type="button" class="chip" data-url="https://payments.cashfree.com/forms/ruvs-donation-499">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><ellipse cx="32" cy="48" rx="22" ry="8" fill="#c47a35" stroke="#8a5220" stroke-width="1.5" /><rect x="10" y="24" width="44" height="26" rx="6" fill="#d4893a" stroke="#8a5220" stroke-width="1.5" /><ellipse cx="32" cy="24" rx="22" ry="7" fill="#e8a84a" stroke="#8a5220" stroke-width="1.5" /><ellipse cx="22" cy="23" rx="3.5" ry="1.5" fill="#fff8e8" opacity=".9" /><ellipse cx="32" cy="21" rx="3.5" ry="1.5" fill="#fff8e8" opacity=".9" /><ellipse cx="42" cy="23" rx="3.5" ry="1.5" fill="#fff8e8" opacity=".9" /><rect x="26" y="14" width="12" height="6" rx="3" fill="#8a5220" stroke="#5a3210" stroke-width="1.5" /></svg>
+                            <span class="amt">₹499</span><small>Biryani treat 🍲</small>
+                        </button>
+
+                        <button type="button" class="chip" data-url="https://payments.cashfree.com/forms/ruvs-donation" data-custom="1">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><path d="M32 54 C32 54 8 38 8 22 C8 14 14 10 20 10 C25 10 29 13 32 17 C35 13 39 10 44 10 C50 10 56 14 56 22 C56 38 32 54 32 54Z" fill="#e84040" stroke="#b02020" stroke-width="1.5" /><line x1="26" y1="20" x2="26" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".8" /><line x1="23" y1="20" x2="23" y2="25" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".8" /><line x1="29" y1="20" x2="29" y2="25" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".8" /><ellipse cx="38" cy="22" rx="4" ry="3" fill="#fff" opacity=".8" /><line x1="38" y1="25" x2="38" y2="38" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".8" /></svg>
+                            <span class="amt">Custom</span><small>Make my day! 🎉</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="methods-wrap">
+                    <div class="field-label">Click below to donate 👇</div>
+                    <a id="inr-pay-btn" href="https://payments.cashfree.com/forms/ruvs-donation-99" target="_blank" rel="noopener" class="method-btn">
+                        <img src="https://www.ruvs.in/resos/common/assets/cashfree-icon.png" alt="Cashfree">
+                        <div class="method-info">
+                            <div class="method-name" id="inr-btn-label">₹99 · A cup of chai ☕ via Cashfree</div>
+                            <div class="method-desc">UPI · Cards · Net Banking · Wallets</div>
+                        </div>
+                        <div class="method-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d9dff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
+                    </a>
+                </div>
+
+                <div class="badge-row">
+                    <span class="badge">✓ UPI</span><span class="badge">✓ Debit Card</span><span class="badge">✓ Credit Card</span><span class="badge">✓ Net Banking</span><span class="badge">✓ Wallets</span>
+                </div>
+            </div>
+
+            <!-- USD -->
+            <div class="panel" id="panel-usd" role="tabpanel" aria-labelledby="tab-usd">
+                <div class="panel-inner">
+                    <div class="field-label">🧑‍💻 <b>Developer:</b> What would you like to buy me?</div>
+                    <div class="chips" id="usd-chips">
+
+                        <button type="button" class="chip active" data-kofi="https://ko-fi.com/ruvsin/5" data-paypal="https://www.paypal.com/paypalme/melamrahul/5">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><rect x="14" y="26" width="30" height="24" rx="4" fill="#f5e6c8" stroke="#c49a3a" stroke-width="2" /><path d="M44 32 Q56 32 56 40 Q56 48 44 48" fill="none" stroke="#c49a3a" stroke-width="2.5" stroke-linecap="round" /><ellipse cx="29" cy="26" rx="15" ry="4" fill="#6f3e1e" stroke="#4a2810" stroke-width="1.5" /><ellipse cx="29" cy="26" rx="10" ry="2.5" fill="#d4a97a" opacity=".7" /><path d="M22 20 Q24 15 22 10" fill="none" stroke="#bbb" stroke-width="2" stroke-linecap="round" /><path d="M29 18 Q31 13 29 8" fill="none" stroke="#bbb" stroke-width="2" stroke-linecap="round" /><path d="M36 20 Q38 15 36 10" fill="none" stroke="#bbb" stroke-width="2" stroke-linecap="round" /></svg>
+                            <span class="amt">$5</span><small>A coffee ☕</small>
+                        </button>
+
+                        <button type="button" class="chip" data-kofi="https://ko-fi.com/ruvsin/10" data-paypal="https://www.paypal.com/paypalme/melamrahul/10">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><ellipse cx="32" cy="18" rx="22" ry="10" fill="#e8a840" stroke="#b07328" stroke-width="1.5" /><ellipse cx="32" cy="14" rx="22" ry="8" fill="#f2c46a" /><ellipse cx="24" cy="12" rx="2.5" ry="1.2" fill="#fff8e0" opacity=".9" /><ellipse cx="34" cy="10" rx="2.5" ry="1.2" fill="#fff8e0" opacity=".9" /><ellipse cx="42" cy="13" rx="2.5" ry="1.2" fill="#fff8e0" opacity=".9" /><ellipse cx="32" cy="28" rx="24" ry="5" fill="#6abf5e" stroke="#4a9e40" /><ellipse cx="32" cy="34" rx="22" ry="5" fill="#7a3e1e" stroke="#5a2e10" stroke-width="1.5" /><ellipse cx="32" cy="38" rx="23" ry="4" fill="#f5c030" stroke="#d4a020" /><ellipse cx="32" cy="46" rx="22" ry="7" fill="#e8a840" stroke="#b07328" stroke-width="1.5" /></svg>
+                            <span class="amt">$10</span><small>A burger 🍔</small>
+                        </button>
+
+                        <button type="button" class="chip" data-kofi="https://ko-fi.com/ruvsin/15" data-paypal="https://www.paypal.com/paypalme/melamrahul/15">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><polygon points="32,6 58,54 6,54" fill="#e8513a" stroke="#c03020" stroke-width="1.5" /><polygon points="32,12 54,50 10,50" fill="#f5c84a" /><path d="M6,54 Q32,62 58,54" fill="#e8a840" stroke="#b07328" stroke-width="1.5" /><circle cx="32" cy="30" r="5" fill="#c03020" stroke="#8a1a10" /><circle cx="22" cy="42" r="4" fill="#c03020" stroke="#8a1a10" /><circle cx="42" cy="42" r="4" fill="#c03020" stroke="#8a1a10" /></svg>
+                            <span class="amt">$15</span><small>A pizza slice 🍕</small>
+                        </button>
+
+                        <button type="button" class="chip" data-kofi="https://ko-fi.com/ruvsin/25" data-paypal="https://www.paypal.com/paypalme/melamrahul/25">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><path d="M8,28 Q8,56 32,56 Q56,56 56,28 Z" fill="#f0e8d8" stroke="#b0a080" stroke-width="2" /><ellipse cx="32" cy="28" rx="24" ry="8" fill="#e8d5b0" stroke="#b0a080" stroke-width="2" /><ellipse cx="32" cy="28" rx="20" ry="6" fill="#d4883a" opacity=".85" /><path d="M16,28 Q24,22 32,28 Q40,34 48,28" fill="none" stroke="#f5f0d8" stroke-width="2.5" stroke-linecap="round" /><circle cx="38" cy="24" r="6" fill="#fff8e0" stroke="#d4c080" /><circle cx="38" cy="24" r="3" fill="#f5a020" /><line x1="24" y1="4" x2="20" y2="28" stroke="#8a5c2a" stroke-width="2.5" stroke-linecap="round" /><line x1="32" y1="4" x2="28" y2="28" stroke="#8a5c2a" stroke-width="2.5" stroke-linecap="round" /></svg>
+                            <span class="amt">$25</span><small>A soup bowl 🍜</small>
+                        </button>
+
+                        <button type="button" class="chip" data-kofi="https://ko-fi.com/ruvsin/30" data-paypal="https://www.paypal.com/paypalme/melamrahul/30">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><ellipse cx="32" cy="48" rx="26" ry="8" fill="#e8e0d0" stroke="#c0b090" stroke-width="2" /><ellipse cx="32" cy="44" rx="26" ry="8" fill="#f0ece0" stroke="#c0b090" stroke-width="2" /><ellipse cx="32" cy="38" rx="18" ry="10" fill="#7a2e10" stroke="#5a1e08" stroke-width="1.5" /><ellipse cx="32" cy="36" rx="14" ry="7" fill="#c04020" opacity=".7" /><line x1="22" y1="32" x2="26" y2="44" stroke="#4a1808" stroke-width="2" stroke-linecap="round" opacity=".6" /><line x1="30" y1="30" x2="34" y2="44" stroke="#4a1808" stroke-width="2" stroke-linecap="round" opacity=".6" /><line x1="38" y1="32" x2="40" y2="44" stroke="#4a1808" stroke-width="2" stroke-linecap="round" opacity=".6" /><line x1="10" y1="20" x2="10" y2="50" stroke="#c0c0c0" stroke-width="2.5" stroke-linecap="round" /><line x1="54" y1="20" x2="54" y2="50" stroke="#c0c0c0" stroke-width="2.5" stroke-linecap="round" /></svg>
+                            <span class="amt">$30</span><small>A steak dinner 🥩</small>
+                        </button>
+
+                        <button type="button" class="chip" data-kofi="https://ko-fi.com/ruvsin" data-paypal="https://www.paypal.com/paypalme/melamrahul/" data-custom="1">
+                            <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><path d="M32 54 C32 54 8 38 8 22 C8 14 14 10 20 10 C25 10 29 13 32 17 C35 13 39 10 44 10 C50 10 56 14 56 22 C56 38 32 54 32 54Z" fill="#e84040" stroke="#b02020" stroke-width="1.5" /><line x1="26" y1="20" x2="26" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".85" /><line x1="23" y1="20" x2="23" y2="26" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".85" /><line x1="29" y1="20" x2="29" y2="26" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".85" /><ellipse cx="38" cy="22" rx="4" ry="3" fill="#fff" opacity=".85" /><line x1="38" y1="25" x2="38" y2="38" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".85" /></svg>
+                            <span class="amt">Custom</span><small>Make my day! 🎉</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="methods-wrap">
+                    <div class="field-label">Click below to donate 👇</div>
+
+                    <a id="kofi-btn" href="https://ko-fi.com/ruvsin/5" target="_blank" rel="noopener" class="method-btn">
+                        <img src="https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/670f5a01229bf8a18f97a3c1_favion.png" alt="Ko-fi">
+                        <div class="method-info">
+                            <div class="method-name" id="kofi-label">$5 · A coffee ☕ via Ko-fi</div>
+                            <div class="method-desc">Credit Card · One-time · Instant</div>
+                        </div>
+                        <div class="method-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d9dff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
+                    </a>
+
+                    <div class="or-sep"><div class="or-line"></div><div class="or-text">OR</div><div class="or-line"></div></div>
+
+                    <a id="paypal-btn" href="https://www.paypal.com/paypalme/melamrahul/5" target="_blank" rel="noopener" class="method-btn">
+                        <img src="https://www.ruvs.in/resos/common/assets/paypal-icon.png" alt="PayPal">
+                        <div class="method-info">
+                            <div class="method-name" id="paypal-label">$5 · A coffee ☕ via PayPal</div>
+                            <div class="method-desc">PayPal Balance · Cards · USD / EUR / GBP</div>
+                        </div>
+                        <div class="method-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d9dff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
+                    </a>
+                </div>
+
+                <div class="badge-row">
+                    <span class="badge">✓ Ko-fi</span><span class="badge">✓ PayPal</span><span class="badge">✓ Credit Card</span><span class="badge">✓ USD / EUR / GBP</span>
+                </div>
+            </div>
+
+            <div class="trust-row">
+                <div class="trust-item">🔒 Encrypted checkout</div>
+                <div class="trust-item">🛡️ Handled by payment providers</div>
+                <div class="trust-item">✓ We never see your card details</div>
+                <div class="trust-item">🧾 Receipt from provider</div>
+            </div>
+            <div class="seal">Payments processed by <strong>Cashfree</strong>, <strong>Ko-fi</strong> &amp; <strong>PayPal</strong></div>
+        </div>
+
+        <div class="bottom-note">
+            Every rupee or dollar helps improve YT-Ai and pay server costs.<br>
+            <a href="/yt-ai/" class="btn-back">← Back to YT-Ai</a>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            ['inr', 'usd'].forEach(function (t) {
+                var on = t === tab;
+                document.getElementById('tab-' + t).classList.toggle('active', on);
+                document.getElementById('tab-' + t).setAttribute('aria-selected', on);
+                document.getElementById('panel-' + t).classList.toggle('active', on);
+            });
+        }
+
+        // Builds "₹99 · A cup of chai ☕" (or "Custom amount") from the chip's own parts.
+        function chipLabel(chip) {
+            if (chip.dataset.custom) return 'Custom amount';
+            return chip.querySelector('.amt').textContent.trim() + ' · ' + chip.querySelector('small').textContent.trim();
+        }
+
+        function bindChips(groupId, onSelect) {
+            var chips = document.querySelectorAll('#' + groupId + ' .chip');
+            chips.forEach(function (chip) {
+                chip.addEventListener('click', function () {
+                    chips.forEach(function (c) { c.classList.remove('active'); });
+                    chip.classList.add('active');
+                    onSelect(chip, chipLabel(chip));
+                });
+            });
+        }
+
+        bindChips('inr-chips', function (chip, label) {
+            document.getElementById('inr-pay-btn').href = chip.dataset.url;
+            document.getElementById('inr-btn-label').textContent = label + ' via Cashfree';
+        });
+
+        bindChips('usd-chips', function (chip, label) {
+            document.getElementById('kofi-btn').href = chip.dataset.kofi;
+            document.getElementById('kofi-label').textContent = label + ' via Ko-fi';
+            document.getElementById('paypal-btn').href = chip.dataset.paypal;
+            document.getElementById('paypal-label').textContent = label + ' via PayPal';
+        });
+
+        // Pick the default tab without a backend call (the old /tools/geo endpoint doesn't exist on GitHub Pages).
+        // Override with ?cur=inr or ?cur=usd.
+        (function () {
+            var param = new URLSearchParams(location.search).get('cur');
+            var tz = '';
+            try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { }
+            var inIndia = /^Asia\/(Kolkata|Calcutta)$/.test(tz);
+            switchTab(param === 'usd' ? 'usd' : param === 'inr' ? 'inr' : (inIndia ? 'inr' : 'usd'));
+        })();
+    </script>
+    <script src="/yt-ai/deps/rivo.js" defer></script>
+</body>
+
+</html>
