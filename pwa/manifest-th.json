@@ -1,0 +1,17 @@
+{
+  "name": "YT-Ai ตัวแปลง YouTube เป็น MP3/MP4",
+  "short_name": "YT-Ai",
+  "description": "แปลง YouTube เป็น MP3 สูงสุด 320kbps หรือดาวน์โหลด MP4 สูงสุด 1080p ฟรี ไม่ต้องสมัครสมาชิก ใช้ได้ทั้งบนโทรศัพท์และคอมพิวเตอร์",
+  "lang": "th",
+  "start_url": "/yt-ai/th/",
+  "scope": "/yt-ai/",
+  "id": "/yt-ai/th/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

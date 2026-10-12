@@ -1,0 +1,17 @@
+{
+  "name": "YT-Ai YouTube MP3/MP4 변환기",
+  "short_name": "YT-Ai",
+  "description": "YouTube를 최대 320kbps MP3로 변환하거나 최대 1080p MP4로 다운로드하세요. 무료, 회원가입 필요 없음, 휴대폰과 PC에서 작동합니다.",
+  "lang": "ko",
+  "start_url": "/yt-ai/ko/",
+  "scope": "/yt-ai/",
+  "id": "/yt-ai/ko/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

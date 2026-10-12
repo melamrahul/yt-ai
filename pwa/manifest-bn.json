@@ -1,0 +1,17 @@
+{
+  "name": "YT-Ai YouTube থেকে MP3/MP4 কনভার্টার",
+  "short_name": "YT-Ai",
+  "description": "YouTube কে 320kbps পর্যন্ত MP3 তে রূপান্তর করুন বা 1080p পর্যন্ত MP4 ডাউনলোড করুন। বিনামূল্যে, সাইনআপ ছাড়া, ফোন ও ডেস্কটপ উভয়েই কাজ করে।",
+  "lang": "bn",
+  "start_url": "/yt-ai/bn/",
+  "scope": "/yt-ai/",
+  "id": "/yt-ai/bn/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

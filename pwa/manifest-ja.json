@@ -1,26 +1,17 @@
 {
-  "name": "YT-Ai 変換ツール",
+  "name": "YT-Ai YouTube MP3/MP4 変換ツール",
   "short_name": "YT-Ai",
-  "description": "YouTube動画と音声のための無料、安全、高品質な変換ツール。",
-  "start_url": "/yt-ai/pwa/app/ja/",
+  "description": "YouTube を最大 320kbps の MP3 に変換、または最大 1080p の MP4 をダウンロード。無料、登録不要、スマホとパソコンの両方で使えます。",
+  "lang": "ja",
+  "start_url": "/yt-ai/ja/",
   "scope": "/yt-ai/",
+  "id": "/yt-ai/ja/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
-  "lang": "ja",
   "icons": [
-    {
-      "src": "/yt-ai/deps/icons/Icon192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/yt-ai/deps/icons/Icon512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }

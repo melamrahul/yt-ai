@@ -1,0 +1,17 @@
+{
+  "name": "YT-Ai YouTube'dan MP3/MP4 Dönüştürücü",
+  "short_name": "YT-Ai",
+  "description": "YouTube'u 320kbps'ye kadar MP3'e dönüştürün veya 1080p'ye kadar MP4 indirin. Ücretsiz, kayıt gerektirmez, telefonda ve bilgisayarda çalışır.",
+  "lang": "tr",
+  "start_url": "/yt-ai/tr/",
+  "scope": "/yt-ai/",
+  "id": "/yt-ai/tr/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

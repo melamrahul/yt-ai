@@ -1,0 +1,17 @@
+{
+  "name": "YT-Ai Konverter YouTube ke MP3/MP4",
+  "short_name": "YT-Ai",
+  "description": "Konversi YouTube ke MP3 hingga 320kbps atau unduh MP4 hingga 1080p. Gratis, tanpa daftar, berfungsi di ponsel dan komputer.",
+  "lang": "id",
+  "start_url": "/yt-ai/id/",
+  "scope": "/yt-ai/",
+  "id": "/yt-ai/id/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

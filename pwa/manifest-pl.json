@@ -1,0 +1,17 @@
+{
+  "name": "YT-Ai Konwerter YouTube na MP3/MP4",
+  "short_name": "YT-Ai",
+  "description": "Konwertuj YouTube na MP3 do 320kbps lub pobieraj MP4 do 1080p. Za darmo, bez rejestracji, działa na telefonie i komputerze.",
+  "lang": "pl",
+  "start_url": "/yt-ai/pl/",
+  "scope": "/yt-ai/",
+  "id": "/yt-ai/pl/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

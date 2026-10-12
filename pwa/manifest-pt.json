@@ -1,26 +1,17 @@
 {
-  "name": "YT-Ai Conversor",
+  "name": "YT-Ai Conversor de YouTube para MP3/MP4",
   "short_name": "YT-Ai",
-  "description": "Conversor gratuito, seguro e de alta qualidade para vídeos e áudio do YouTube.",
-  "start_url": "/yt-ai/pwa/app/pt/",
+  "description": "Converta YouTube para MP3 em até 320kbps ou baixe MP4 em até 1080p. Grátis, sem cadastro, funciona no celular e no computador.",
+  "lang": "pt",
+  "start_url": "/yt-ai/pt/",
   "scope": "/yt-ai/",
+  "id": "/yt-ai/pt/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
-  "lang": "pt",
   "icons": [
-    {
-      "src": "/yt-ai/deps/icons/Icon192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/yt-ai/deps/icons/Icon512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }

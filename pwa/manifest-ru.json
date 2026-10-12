@@ -1,0 +1,17 @@
+{
+  "name": "YT-Ai Конвертер YouTube в MP3/MP4",
+  "short_name": "YT-Ai",
+  "description": "Конвертируйте YouTube в MP3 до 320kbps или скачивайте MP4 до 1080p. Бесплатно, без регистрации, работает на телефоне и компьютере.",
+  "lang": "ru",
+  "start_url": "/yt-ai/ru/",
+  "scope": "/yt-ai/",
+  "id": "/yt-ai/ru/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    { "src": "/yt-ai/deps/icons/Icon192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/yt-ai/deps/icons/Icon512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
