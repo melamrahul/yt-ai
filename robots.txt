@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://melamrahul.github.io/yt-ai/sitemap.xml
