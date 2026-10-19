@@ -18,13 +18,13 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Update
+      - name: Check 4-day gap
         id: guard
         run: |
           LAST=$(git log -1 --format=%ct -- .github/state/cycle.json 2>/dev/null || echo 0)
@@ -42,23 +42,23 @@ jobs:
             fi
           fi
 
-      - name: Update
+      - name: Skip (too soon)
         if: steps.guard.outputs.skip == 'true'
         run: |
           echo "Less than 96h since last update. Skipping to keep 4-day cadence."
           exit 0
 
-      - name: Update
+      - name: Set up Python 3.11
         if: steps.guard.outputs.skip == 'false'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Update
+      - name: Apply next content update
         if: steps.guard.outputs.skip == 'false'
         run: python .github/scripts/update.py
 
-      - name: Update
+      - name: Commit and push as melamrahul
         if: steps.guard.outputs.skip == 'false'
         env:
           COMMIT_PAT: ${{ secrets.COMMIT_PAT }}
