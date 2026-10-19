@@ -1,47 +1,76 @@
-name: Replace YT-AI Icon URL
+name: Update
 
 on:
-  workflow_dispatch:
+  # Daily check; the guard step enforces >= 96h since last real update,
+  # giving a true 4-day cadence (more reliable than cron '*/4').
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch: {}
 
 permissions:
   contents: write
 
+concurrency:
+  group: homepage-refresh
+  cancel-in-progress: false
+
 jobs:
-  replace-icon-url:
+  refresh:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
-      - name: Replace old icon URL
+      - name: Update
+        id: guard
         run: |
-          OLD_URL="https://melamrahul.github.io/yt-ai/yt-ai-icon.png"
-          NEW_URL="https://melamrahul.github.io/yt-ai/deps/icons/main-icon.png"
-
-          find . \
-            -type f \
-            -not -path './.git/*' \
-            -not -path './.github/workflows/*' \
-            -print0 |
-          xargs -0 grep -Il "$OLD_URL" |
-          xargs -r sed -i "s|$OLD_URL|$NEW_URL|g"
-
-      - name: Check for changes
-        run: |
-          git diff --stat
-          git diff
-
-      - name: Commit and push changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          if git diff --quiet; then
-            echo "No changes found."
-            exit 0
+          LAST=$(git log -1 --format=%ct -- .github/state/cycle.json 2>/dev/null || echo 0)
+          NOW=$(date +%s)
+          if [ "$LAST" -eq 0 ]; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "No prior state file; first run allowed."
+          else
+            DIFF=$(( (NOW - LAST) / 3600 ))
+            echo "hours_since_last=$DIFF"
+            if [ "$DIFF" -lt 96 ]; then
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "skip=false" >> "$GITHUB_OUTPUT"
+            fi
           fi
 
-          git add .
-          git commit -m "Replace YT-AI icon URL"
-          git push
+      - name: Update
+        if: steps.guard.outputs.skip == 'true'
+        run: |
+          echo "Less than 96h since last update. Skipping to keep 4-day cadence."
+          exit 0
+
+      - name: Update
+        if: steps.guard.outputs.skip == 'false'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Update
+        if: steps.guard.outputs.skip == 'false'
+        run: python .github/scripts/update.py
+
+      - name: Update
+        if: steps.guard.outputs.skip == 'false'
+        env:
+          COMMIT_PAT: ${{ secrets.COMMIT_PAT }}
+        run: |
+          git config user.name  "melamrahul"
+          git config user.email "138295694+melamrahul@users.noreply.github.com"
+          git add index.html .github/state/cycle.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          CYCLE=$(python -c "import json;print(json.load(open('.github/state/cycle.json'))['next_index'])")
+          git commit -m "content: cycle ${CYCLE} homepage refresh (real edits + dateModified)"
+          git remote set-url origin "https://x-access-token:${COMMIT_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin HEAD:${GITHUB_REF_NAME}
