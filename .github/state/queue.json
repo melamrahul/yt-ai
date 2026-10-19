@@ -1,0 +1,152 @@
+[
+  {
+    "id": "bitrate-guide",
+    "title": "How to Choose the Right MP3 Bitrate",
+    "html": "<p>64 kbps is fine for spoken-word content, 128 kbps suits casual listening, and 192 kbps is a good balance of size and quality for music. 256 and 320 kbps are best for good headphones or speakers.</p><p style=\"margin-top: 12px;\">Keep in mind that YouTube already compresses its audio. Choosing 320 kbps will not add detail that is missing from the source, it only makes the file larger.</p>"
+  },
+  {
+    "id": "mp3-vs-mp4",
+    "title": "MP3 vs MP4: Which Format Should You Pick?",
+    "html": "<p>Choose MP3 when you only need the sound: music, podcasts, lectures, or audio you want to play on any device. Files are small and almost every player supports them.</p><p style=\"margin-top: 12px;\">Choose MP4 when the picture matters, such as tutorials, recipes, or presentations. Expect larger files, especially at 1080p and above.</p>"
+  },
+  {
+    "id": "shorts-guide",
+    "title": "Downloading YouTube Shorts: What to Expect",
+    "html": "<p>Shorts are vertical videos, so MP4 downloads will keep the tall 9:16 shape. Paste the Shorts link just like a normal video link.</p><p style=\"margin-top: 12px;\">Shorts are brief and often use licensed music, so the audio-only option is mostly useful for original sounds you have permission to keep.</p>"
+  },
+  {
+    "id": "resolution-limits",
+    "title": "Why Some Videos Only Offer Lower Resolutions",
+    "html": "<p>The resolution list shows what is possible, but each video is limited by how it was uploaded. A video uploaded at 720p cannot be converted to a true 1080p or 4K file.</p><p style=\"margin-top: 12px;\">Very new uploads may also take a while before YouTube finishes processing the higher resolutions.</p>"
+  },
+  {
+    "id": "iphone-saving",
+    "title": "Where Downloads Go on iPhone and iPad",
+    "html": "<p>In Safari, tap the download icon in the address bar to see your file, then open it in the Files app under Downloads. From there you can move it to another folder or share it.</p><p style=\"margin-top: 12px;\">Audio and video files can be previewed in Files and saved to Photos for videos if you wish.</p>"
+  },
+  {
+    "id": "android-saving",
+    "title": "Where Downloads Go on Android",
+    "html": "<p>Chrome and most Android browsers save files to the Downloads folder. Open the Files or My Files app, or tap the notification after the download finishes.</p><p style=\"margin-top: 12px;\">If a music app does not find your MP3, move the file into your Music folder and rescan the library in that app.</p>"
+  },
+  {
+    "id": "slow-conversion",
+    "title": "What to Do If a Conversion Is Slow or Fails",
+    "html": "<p>Keep the page open while the file is being prepared, and avoid switching to another app for long periods on mobile. Long videos naturally take more time.</p><p style=\"margin-top: 12px;\">If it fails, check that the link is public and not age-restricted or private, refresh the page, and try again with a lower quality setting.</p>"
+  },
+  {
+    "id": "cc-content",
+    "title": "Finding Videos You Are Allowed to Download",
+    "html": "<p>You can safely download your own uploads, public-domain material, and videos with a Creative Commons license that allows reuse. On YouTube, use Filters and choose Creative Commons to find them.</p><p style=\"margin-top: 12px;\">Always check the license terms and credit the creator when required.</p>"
+  },
+  {
+    "id": "copy-link",
+    "title": "How to Copy a YouTube Link on Phone and Desktop",
+    "html": "<p>On a computer, copy the address from your browser bar while the video is open. In the YouTube app, tap Share, then Copy link.</p><p style=\"margin-top: 12px;\">Links from the Share menu (youtu.be) and normal watch links both work. If you copied a link already, use the Paste button next to the input box.</p>"
+  },
+  {
+    "id": "audio-formats",
+    "title": "MP3, AAC and Opus: Why Audio Formats Differ",
+    "html": "<p>YouTube stores audio in its own compressed formats, commonly AAC or Opus. MP3 is a separate, older format that nearly every device and car stereo can play.</p><p style=\"margin-top: 12px;\">Converting to MP3 makes the file widely compatible, but each conversion step is lossy, so the result can never be better than the original stream.</p>"
+  },
+  {
+    "id": "resolution-explained",
+    "title": "Video Resolutions Explained: 360p to 4K",
+    "html": "<p>360p and 480p give small files that suit slow connections or small screens. 720p is a good everyday choice, and 1080p is full HD for larger screens.</p><p style=\"margin-top: 12px;\">1440p (2K) and 2160p (4K) look sharpest on big or high-resolution displays, but files are much larger and need a capable device to play smoothly.</p>"
+  },
+  {
+    "id": "file-size-guide",
+    "title": "How Big Will My MP3 Be? A Simple Size Guide",
+    "html": "<p>As a rough guide, MP3 audio uses about 1 MB per minute at 128 kbps, about 1.4 MB per minute at 192 kbps, and about 2.4 MB per minute at 320 kbps.</p><p style=\"margin-top: 12px;\">A one-hour podcast at 64 kbps is only around 29 MB, while the same hour at 320 kbps is closer to 144 MB. Pick the lowest quality that still sounds good to you.</p>"
+  },
+  {
+    "id": "offline-trip",
+    "title": "Preparing Audio for Offline Listening on a Trip",
+    "html": "<p>Download your audio before you travel, when you have a stable connection and enough storage. Check free space first, since long playlists add up quickly.</p><p style=\"margin-top: 12px;\">Use 128 or 192 kbps for long trips to save space, then test a few files in your music player before you leave.</p>"
+  },
+  {
+    "id": "fair-use-basics",
+    "title": "Fair Use and Copyright: The Basics",
+    "html": "<p>Copyright law differs from country to country, and fair use is a legal concept that depends on the situation. Downloading something is not automatically allowed just because it is public.</p><p style=\"margin-top: 12px;\">The safest content is your own uploads, public-domain works, and videos with a license that permits reuse. This is general information, not legal advice.</p>"
+  },
+  {
+    "id": "podcasts-lectures",
+    "title": "Saving Podcasts and Lectures as MP3",
+    "html": "<p>Spoken-word audio does not need a high bitrate. 64 or 128 kbps keeps voices clear while producing small files that are easy to store and transfer.</p><p style=\"margin-top: 12px;\">Remember to follow the creator's terms. Many lectures and talks are published under licenses that allow offline use, and some are free to share.</p>"
+  },
+  {
+    "id": "free-up-storage",
+    "title": "Freeing Up Phone Storage After Downloads",
+    "html": "<p>Check your Downloads folder regularly and delete files you have already moved or listened to. Videos take far more space than audio.</p><p style=\"margin-top: 12px;\">Copy files you want to keep to a computer, external drive, or cloud storage, then remove them from your phone.</p>"
+  },
+  {
+    "id": "play-anywhere",
+    "title": "Playing Your MP3 Files in the Car, on a Speaker or Laptop",
+    "html": "<p>Most car stereos read MP3 files from a USB drive. Copy the files to the drive's main folder or a simple folder and avoid very long file names.</p><p style=\"margin-top: 12px;\">Bluetooth speakers play whatever your phone plays, and laptops open MP3 files in any standard media player.</p>"
+  },
+  {
+    "id": "add-to-library",
+    "title": "Adding Downloaded MP3s to Your Music Library",
+    "html": "<p>On a Mac, drag the files into the Music app. On Windows, place them in your Music folder and open them with your preferred media player.</p><p style=\"margin-top: 12px;\">On Android, move files into the Music folder so your player can find them. On iPhone, files saved in the Files app can be played from there.</p>"
+  },
+  {
+    "id": "slow-connection",
+    "title": "Using YT-Ai on a Slow Connection",
+    "html": "<p>On a slow connection, choose a lower quality such as 128 kbps audio or 360p video. Smaller files finish faster and are less likely to be interrupted.</p><p style=\"margin-top: 12px;\">Keep the page open until the download starts, and avoid switching networks while it is working.</p>"
+  },
+  {
+    "id": "browser-troubleshooting",
+    "title": "Browser Troubleshooting for Failed Downloads",
+    "html": "<p>If a download will not start, first refresh the page and try again. Make sure your browser is up to date.</p><p style=\"margin-top: 12px;\">Next, try a different browser, turn off extensions that block downloads, and check that you have free storage on your device.</p>"
+  },
+  {
+    "id": "cant-convert",
+    "title": "Why Some Videos Cannot Be Converted",
+    "html": "<p>Private videos, age-restricted videos, region-blocked videos and videos removed by the uploader cannot be fetched by any converter.</p><p style=\"margin-top: 12px;\">If a link fails, open it in a private browser window. If it plays there without signing in, it is public and you can try again later.</p>"
+  },
+  {
+    "id": "live-premieres",
+    "title": "Live Streams and Premieres: Wait Until They End",
+    "html": "<p>A live stream is not a finished file yet. Wait until it ends and YouTube finishes processing the recording before trying to convert it.</p><p style=\"margin-top: 12px;\">The same goes for premieres. Once the video is a normal upload, paste the link as usual.</p>"
+  },
+  {
+    "id": "is-it-really-320",
+    "title": "Is That MP3 Really 320kbps?",
+    "html": "<p>A 320 kbps setting describes how the MP3 is encoded, not how good the original audio was. If the source stream is lower quality, the MP3 will not gain detail.</p><p style=\"margin-top: 12px;\">File size is not proof of quality either. Use a good pair of headphones and compare a few settings to hear the actual difference.</p>"
+  },
+  {
+    "id": "headphones-vs-speakers",
+    "title": "Does Bitrate Matter for Headphones and Speakers?",
+    "html": "<p>On earbuds or a phone speaker, the difference between 192 and 320 kbps is hard to notice for most people. Higher bitrates matter more on good headphones or a quality sound system.</p><p style=\"margin-top: 12px;\">If you cannot hear a difference, choose the smaller file and save storage.</p>"
+  },
+  {
+    "id": "organize-downloads",
+    "title": "Keeping Your Downloads Organized",
+    "html": "<p>Create folders by type, such as Music, Podcasts and Lectures, and rename files so titles are easy to search. Short, clear names also display better in car stereos.</p><p style=\"margin-top: 12px;\">Delete duplicates and keep one copy of each file you want to keep.</p>"
+  },
+  {
+    "id": "avoid-fake-buttons",
+    "title": "Avoiding Fake Download Buttons and Pop-ups",
+    "html": "<p>Be careful on any download site that shows several large buttons or asks you to install an extension. Real downloads should not require installing software.</p><p style=\"margin-top: 12px;\">Close unexpected pop-ups, never enter personal details to get a file, and keep your browser and antivirus up to date.</p>"
+  },
+  {
+    "id": "install-home-screen",
+    "title": "Adding YT-Ai to Your Home Screen",
+    "html": "<p>On iPhone, open the page in Safari, tap Share, then choose Add to Home Screen. On Android, use the Add to Home Screen button on the page or the browser menu.</p><p style=\"margin-top: 12px;\">It opens like an app in full screen without installing anything large from an app store.</p>"
+  },
+  {
+    "id": "creators-backup",
+    "title": "For Creators: Backing Up Your Own Videos",
+    "html": "<p>If you upload videos, keep the original files in a safe place. Downloading from a platform is not a replacement for a proper backup of your source files.</p><p style=\"margin-top: 12px;\">Store masters on an external drive or cloud service, and keep project files and exports organized by date.</p>"
+  },
+  {
+    "id": "learning-offline",
+    "title": "Offline Learning: Saving Lectures You May Reuse",
+    "html": "<p>Many universities and open-education projects publish lectures under licenses that allow reuse. Look for Creative Commons labels on the video page.</p><p style=\"margin-top: 12px;\">Save audio-only versions for commutes, and always credit the creator when the license asks you to.</p>"
+  },
+  {
+    "id": "mp3-tags",
+    "title": "Fixing Titles and Artist Names in MP3 Files",
+    "html": "<p>MP3 files can store information such as title, artist and album as tags. Downloaded files may have only basic details, so you may want to add the rest yourself.</p><p style=\"margin-top: 12px;\">Free tag editors on Windows, Mac and Android let you edit these fields and change the cover image so your music app sorts files correctly.</p>"
+  }
+]

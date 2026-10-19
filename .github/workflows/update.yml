@@ -1,11 +1,14 @@
 name: Update
 
 on:
-  # Daily check; the guard step enforces >= 96h since last real update,
-  # giving a true 4-day cadence (more reliable than cron '*/4').
   schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch: {}
+    - cron: '0 6 * * *'   # daily check; guard enforces >= 96h between real updates
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Ignore the 4-day gap"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -26,29 +29,21 @@ jobs:
 
       - name: Check 4-day gap
         id: guard
+        env:
+          FORCE: ${{ github.event.inputs.force }}
         run: |
+          COUNT=$(python3 -c "import json;print(len(json.load(open('.github/state/cycle.json')).get('history',[])))" 2>/dev/null || echo 0)
           LAST=$(git log -1 --format=%ct -- .github/state/cycle.json 2>/dev/null || echo 0)
           NOW=$(date +%s)
-          if [ "$LAST" -eq 0 ]; then
+          HOURS=$(( (NOW - LAST) / 3600 ))
+          if [ "$FORCE" = "true" ] || [ "$COUNT" -eq 0 ] || [ "$HOURS" -ge 96 ]; then
             echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "No prior state file; first run allowed."
           else
-            DIFF=$(( (NOW - LAST) / 3600 ))
-            echo "hours_since_last=$DIFF"
-            if [ "$DIFF" -lt 96 ]; then
-              echo "skip=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "skip=false" >> "$GITHUB_OUTPUT"
-            fi
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Only ${HOURS}h since last update. Skipping."
           fi
 
-      - name: Skip (too soon)
-        if: steps.guard.outputs.skip == 'true'
-        run: |
-          echo "Less than 96h since last update. Skipping to keep 4-day cadence."
-          exit 0
-
-      - name: Set up Python 3.11
+      - name: Set up Python
         if: steps.guard.outputs.skip == 'false'
         uses: actions/setup-python@v5
         with:
@@ -61,7 +56,7 @@ jobs:
       - name: Commit and push as melamrahul
         if: steps.guard.outputs.skip == 'false'
         env:
-          COMMIT_PAT: ${{ secrets.COMMIT_PAT }}
+          TOKEN: ${{ secrets.COMMIT_PAT || secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "melamrahul"
           git config user.email "138295694+melamrahul@users.noreply.github.com"
@@ -70,7 +65,6 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          CYCLE=$(python -c "import json;print(json.load(open('.github/state/cycle.json'))['next_index'])")
-          git commit -m "content: cycle ${CYCLE} homepage refresh (real edits + dateModified)"
-          git remote set-url origin "https://x-access-token:${COMMIT_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          git commit -F /tmp/commit_msg
+          git remote set-url origin "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push origin HEAD:${GITHUB_REF_NAME}
