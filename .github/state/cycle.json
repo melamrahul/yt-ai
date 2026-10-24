@@ -1,10 +1,15 @@
 {
-  "next_index": 1,
+  "next_index": 2,
   "history": [
     {
       "date": "2026-10-19T19:36:41+00:00",
       "id": "bitrate-guide",
       "title": "How to Choose the Right MP3 Bitrate"
+    },
+    {
+      "date": "2026-10-24T10:23:36+00:00",
+      "id": "mp3-vs-mp4",
+      "title": "MP3 vs MP4: Which Format Should You Pick?"
     }
   ]
 }
