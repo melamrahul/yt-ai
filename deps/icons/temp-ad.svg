@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 383">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000000"/>
+      <stop offset="0.35" stop-color="#03112e"/>
+      <stop offset="0.7" stop-color="#1457d6"/>
+      <stop offset="1" stop-color="#9fd0f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="680" height="383" fill="url(#bg)"/>
+
+  <!-- phone mockup -->
+  <rect x="24" y="40" width="140" height="303" rx="20" fill="#fff" fill-opacity="0.12" stroke="#fff" stroke-opacity="0.45"/>
+  <rect x="40" y="62" width="70" height="8" rx="4" fill="#fff" fill-opacity="0.55"/>
+  <rect x="40" y="80" width="108" height="6" rx="3" fill="#fff" fill-opacity="0.3"/>
+  <rect x="40" y="94" width="90" height="6" rx="3" fill="#fff" fill-opacity="0.3"/>
+  <rect x="40" y="125" width="108" height="72" rx="8" fill="#fff" fill-opacity="0.18" stroke="#ffd84d" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="94" y="167" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">Your ad</text>
+  <rect x="40" y="218" width="108" height="6" rx="3" fill="#fff" fill-opacity="0.3"/>
+  <rect x="40" y="232" width="85" height="6" rx="3" fill="#fff" fill-opacity="0.3"/>
+  <rect x="40" y="258" width="108" height="6" rx="3" fill="#fff" fill-opacity="0.3"/>
+  <rect x="40" y="272" width="95" height="6" rx="3" fill="#fff" fill-opacity="0.3"/>
+
+  <!-- text -->
+  <text x="188" y="70" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="300" fill="#fff">Grow your <tspan font-weight="700">presence.</tspan></text>
+  <text x="188" y="146" font-family="Helvetica, Arial, sans-serif" font-size="46" font-weight="300" fill="#fff">Place your</text>
+  <text x="188" y="198" font-family="Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#fff">Ads Here.</text>
+  <text x="188" y="242" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#fff">Reach <tspan font-weight="700" fill="#ffd84d">70,000+</tspan> monthly visitors</text>
+
+  <!-- button -->
+  <rect x="188" y="270" width="240" height="52" rx="26" fill="#fff"/>
+  <text x="308" y="302" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0a2e8a">Click here to advertise</text>
+
+  <!-- desktop mockup -->
+  <rect x="466" y="100" width="196" height="170" rx="10" fill="#fff" fill-opacity="0.12" stroke="#fff" stroke-opacity="0.45"/>
+  <circle cx="480" cy="112" r="3" fill="#fff" fill-opacity="0.6"/>
+  <circle cx="490" cy="112" r="3" fill="#fff" fill-opacity="0.6"/>
+  <circle cx="500" cy="112" r="3" fill="#fff" fill-opacity="0.6"/>
+  <rect x="512" y="107" width="136" height="10" rx="5" fill="#fff" fill-opacity="0.25"/>
+  <line x1="466" y1="124" x2="662" y2="124" stroke="#fff" stroke-opacity="0.3"/>
+  <rect x="482" y="136" width="70" height="6" rx="3" fill="#fff" fill-opacity="0.55"/>
+  <rect x="482" y="150" width="164" height="5" rx="2.5" fill="#fff" fill-opacity="0.3"/>
+  <rect x="482" y="164" width="164" height="72" rx="8" fill="#fff" fill-opacity="0.18" stroke="#ffd84d" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="564" y="205" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">Your ad</text>
+  <rect x="482" y="246" width="164" height="5" rx="2.5" fill="#fff" fill-opacity="0.3"/>
+  <rect x="482" y="257" width="120" height="5" rx="2.5" fill="#fff" fill-opacity="0.3"/>
+</svg>
