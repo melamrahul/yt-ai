@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 600">
+  <defs>
+    <linearGradient id="rg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000000"/>
+      <stop offset="0.35" stop-color="#03112e"/>
+      <stop offset="0.7" stop-color="#1457d6"/>
+      <stop offset="1" stop-color="#9fd0f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="600" fill="url(#rg)"/>
+  <g font-family="Helvetica, Arial, sans-serif" fill="#ffffff">
+    <text x="16" y="44" font-size="16" font-weight="300">Grow your</text>
+    <text x="16" y="64" font-size="16" font-weight="700">presence.</text>
+    <text x="16" y="130" font-size="26" font-weight="300">Place your</text>
+    <text x="16" y="164" font-size="28" font-weight="700">Ads Here.</text>
+
+    <rect x="12" y="200" width="136" height="180" rx="14" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.45"/>
+    <rect x="26" y="216" width="60" height="6" rx="3" fill-opacity="0.55"/>
+    <rect x="26" y="230" width="104" height="5" rx="2.5" fill-opacity="0.3"/>
+    <rect x="26" y="246" width="108" height="84" rx="8" fill-opacity="0.18" stroke="#ffd84d" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="80" y="294" text-anchor="middle" font-size="14" font-weight="700">Your ad</text>
+    <rect x="26" y="346" width="104" height="5" rx="2.5" fill-opacity="0.3"/>
+    <rect x="26" y="358" width="80" height="5" rx="2.5" fill-opacity="0.3"/>
+
+    <text x="80" y="428" text-anchor="middle" font-size="14">Reach</text>
+    <text x="80" y="462" text-anchor="middle" font-size="30" font-weight="700" fill="#ffd84d">70,000+</text>
+    <text x="80" y="486" text-anchor="middle" font-size="14">monthly visitors</text>
+
+    <rect x="16" y="520" width="128" height="48" rx="24"/>
+    <text x="80" y="550" text-anchor="middle" font-size="17" font-weight="700" fill="#0a2e8a">Click here</text>
+  </g>
+</svg>
