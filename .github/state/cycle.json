@@ -1,5 +1,5 @@
 {
-  "next_index": 2,
+  "next_index": 3,
   "history": [
     {
       "date": "2026-10-19T19:36:41+00:00",
@@ -10,6 +10,11 @@
       "date": "2026-10-24T10:23:36+00:00",
       "id": "mp3-vs-mp4",
       "title": "MP3 vs MP4: Which Format Should You Pick?"
+    },
+    {
+      "date": "2026-10-28T12:13:07+00:00",
+      "id": "shorts-guide",
+      "title": "Downloading YouTube Shorts: What to Expect"
     }
   ]
 }
