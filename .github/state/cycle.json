@@ -1,5 +1,5 @@
 {
-  "next_index": 4,
+  "next_index": 5,
   "history": [
     {
       "date": "2026-10-19T19:36:41+00:00",
@@ -20,6 +20,11 @@
       "date": "2026-11-01T12:45:45+00:00",
       "id": "resolution-limits",
       "title": "Why Some Videos Only Offer Lower Resolutions"
+    },
+    {
+      "date": "2026-11-05T14:05:46+00:00",
+      "id": "iphone-saving",
+      "title": "Where Downloads Go on iPhone and iPad"
     }
   ]
 }
