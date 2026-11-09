@@ -148,5 +148,220 @@
     "id": "mp3-tags",
     "title": "Fixing Titles and Artist Names in MP3 Files",
     "html": "<p>MP3 files can store information such as title, artist and album as tags. Downloaded files may have only basic details, so you may want to add the rest yourself.</p><p style=\"margin-top: 12px;\">Free tag editors on Windows, Mac and Android let you edit these fields and change the cover image so your music app sorts files correctly.</p>"
+  },
+  {
+    "id": "volume-differs",
+    "title": "Why Your MP3 Sounds Quieter Than the Video",
+    "html": "<p>Audio levels can differ between a video and its extracted audio, especially when the original mix was made quietly. The MP3 keeps the level it was recorded at, so it may sound softer than what you hear on YouTube.</p><p>Use your device's volume control or a player with a volume boost to compensate. Many players also offer a normalize setting that evens out loudness between tracks.</p>"
+  },
+  {
+    "id": "sample-rate",
+    "title": "Audio Sample Rates: 44.1 kHz vs 48 kHz",
+    "html": "<p>Sample rate describes how many times per second the sound is measured. 44.1 kHz is the standard for music CDs, while 48 kHz is common in video and film.</p><p>For everyday listening, you will not notice a difference between the two. Most players handle both without any problem.</p>"
+  },
+  {
+    "id": "cbr-vs-vbr",
+    "title": "Constant vs Variable Bitrate Explained",
+    "html": "<p>Constant bitrate (CBR) uses the same amount of data every second, which makes file sizes predictable. Variable bitrate (VBR) uses more data for complex passages and less for quiet ones.</p><p>VBR often gives better quality at a similar file size, though CBR is more reliable with some older hardware and streaming devices.</p>"
+  },
+  {
+    "id": "720-vs-1080-phone",
+    "title": "Choosing Between 720p and 1080p on a Small Phone Screen",
+    "html": "<p>On a phone with a screen under six inches, 720p often looks almost as sharp as 1080p. The smaller file downloads faster and uses less storage.</p><p>Pick 1080p if you plan to watch on a tablet, connect to a TV, or zoom in on fine details like text in a tutorial.</p>"
+  },
+  {
+    "id": "4k-size",
+    "title": "Why 4K Downloads Can Be Huge and Slow",
+    "html": "<p>A 4K video has about four times as many pixels as 1080p, so the file can be several gigabytes for a longer video. Downloading and saving it takes time and storage space.</p><p>Unless your screen can show 4K and you plan to watch on it, a 1080p file is usually the better everyday choice.</p>"
+  },
+  {
+    "id": "subtitles-included",
+    "title": "Do Subtitles Come With the Download?",
+    "html": "<p>Video downloads typically include only the picture and sound, not the separate subtitle tracks. Burned-in captions that appear as part of the picture will be included.</p><p>If you need subtitles as a separate file, check whether the video offers them in its caption settings and save them separately where the creator permits.</p>"
+  },
+  {
+    "id": "playlist-downloads",
+    "title": "Downloading Playlists One Link at a Time",
+    "html": "<p>Paste one video link at a time for the most reliable results. Playlist links may not work the same way as single video links on every converter.</p><p>For a long playlist, download a few tracks first to confirm your settings, then continue with the rest in small batches.</p>"
+  },
+  {
+    "id": "file-naming",
+    "title": "Naming Your Downloaded Files for Easy Searching",
+    "html": "<p>Downloaded files usually take the video's title as their name. Long titles with emojis or symbols can be hard to read on some devices.</p><p>Rename files to something short and clear, such as the topic and date, so they are easy to find in your music or file app.</p>"
+  },
+  {
+    "id": "batch-folder",
+    "title": "Using a Dedicated Folder for Batch Downloads",
+    "html": "<p>When you download several files, save them to one dedicated folder. This keeps them separate from your other documents and makes them easy to review.</p><p>On a computer, create a folder named by project or date before you start. On a phone, the Downloads folder works, but moving files afterward keeps things tidy.</p>"
+  },
+  {
+    "id": "check-complete",
+    "title": "Checking a Download Is Complete Before Playing",
+    "html": "<p>A file that stops partway can look normal in a folder but fail when played. Check that the size is close to what you expected and that the duration matches the original video.</p><p>If playback cuts off early or shows an error, delete the file and download it again on a stable connection.</p>"
+  },
+  {
+    "id": "corrupted-mp3",
+    "title": "What a Corrupted MP3 Looks Like and How to Fix It",
+    "html": "<p>A corrupted MP3 may play with crackles, skip sections, or refuse to open. Some players report an error about an invalid frame or unexpected end of file.</p><p>Try a different player first. If the problem remains, download the file again, since the first attempt was probably interrupted.</p>"
+  },
+  {
+    "id": "smart-tv-mp4",
+    "title": "Playing MP4 Files on Smart TVs",
+    "html": "<p>Most smart TVs can play MP4 files saved to a USB drive. H.264 video with AAC audio is the most widely supported combination.</p><p>Copy the file to the root of the drive or a simple folder, then open it with the TV's media player. Very large files may load more slowly.</p>"
+  },
+  {
+    "id": "older-devices",
+    "title": "Playing Downloads on Older Devices",
+    "html": "<p>Older phones, tablets, and media players may struggle with high-resolution video or unusual audio formats. A 360p or 480p file is the safest choice for these devices.</p><p>If a file will not play, test a lower-quality download before assuming the file itself is damaged.</p>"
+  },
+  {
+    "id": "video-editing",
+    "title": "Preparing Downloads for Video Editing Software",
+    "html": "<p>Editing programs prefer files they can import without conversion. MP4 is widely accepted, though some editors work better with specific codecs.</p><p>Remember that a file already compressed for downloading has less room for quality adjustments during editing. Start with the highest quality you have the rights to use.</p>"
+  },
+  {
+    "id": "own-recordings",
+    "title": "Extracting Audio From Your Own Recordings",
+    "html": "<p>If you uploaded a video of your own, you can save its audio as MP3 for podcasts, voice notes, or backups. This is one of the most straightforward uses of the converter.</p><p>Keep the original recording as well, since each conversion step reduces quality slightly.</p>"
+  },
+  {
+    "id": "backing-tracks",
+    "title": "Saving Backing Tracks You Have Rights To",
+    "html": "<p>Musicians often want backing tracks for practice. Only save tracks that you have created, that the artist has released for practice use, or that carry a license permitting reuse.</p><p>Many artists and teachers publish practice tracks specifically for this purpose, so look for those first.</p>"
+  },
+  {
+    "id": "language-practice",
+    "title": "Saving Audio for Language Practice",
+    "html": "<p>Listening practice works well with short audio clips you can replay on a commute. Choose 128 kbps for speech, which keeps voices clear and files small.</p><p>Use content that is public or licensed for reuse, such as lessons published under Creative Commons, and credit the creator when required.</p>"
+  },
+  {
+    "id": "cooking-offline",
+    "title": "Saving Cooking Videos for Use in the Kitchen",
+    "html": "<p>Kitchens are often short on signal, so an offline copy of a recipe video can be helpful. A 480p or 720p MP4 is usually enough to read the steps on a tablet propped against the counter.</p><p>Save the ingredient list separately if the creator has written one, since video playback can be hard to follow with messy hands.</p>"
+  },
+  {
+    "id": "workout-audio",
+    "title": "Keeping Workout Audio Handy Without Using Data",
+    "html": "<p>Workout mixes and guided sessions are easy to save as audio. A 128 kbps MP3 is plenty for music played over gym or running noise.</p><p>Download before you leave home so the session plays without using mobile data.</p>"
+  },
+  {
+    "id": "ambient-sound",
+    "title": "Choosing a Bitrate for Ambient and Sleep Sounds",
+    "html": "<p>Ambient sounds such as rain or white noise contain steady, simple textures. A lower bitrate such as 128 kbps often sounds identical to higher settings for this kind of audio.</p><p>Loop-friendly files also play more smoothly when they are not too large, so a modest bitrate suits sleep playlists well.</p>"
+  },
+  {
+    "id": "mobile-data-usage",
+    "title": "How Much Mobile Data a Download Uses",
+    "html": "<p>A downloaded file uses about the same amount of data as its size. An MP3 of 60 MB uses roughly 60 MB of mobile data, and a 1080p video can use several hundred megabytes.</p><p>Check your plan before downloading large videos, or switch to Wi-Fi when possible.</p>"
+  },
+  {
+    "id": "wifi-vs-mobile",
+    "title": "Wi-Fi vs Mobile Data: When to Download",
+    "html": "<p>Wi-Fi is the better choice for large downloads because it is usually faster and does not count against a data allowance. Mobile data is fine for short audio files or a single video at a low resolution.</p><p>If you need a file on the go, start the download on Wi-Fi at home before leaving.</p>"
+  },
+  {
+    "id": "battery-conversion",
+    "title": "Saving Battery During Long Conversions on Phone",
+    "html": "<p>Conversions use processing power, which can warm your phone and drain the battery. Plug in your device if you are converting several long files.</p><p>Lower the screen brightness and close other heavy apps while the file is being prepared.</p>"
+  },
+  {
+    "id": "screen-lock",
+    "title": "Screen Lock and Background Tabs on Mobile",
+    "html": "<p>Locking your phone while a file is being prepared can pause the process in some browsers. Keep the screen on or the browser open in the foreground until the download starts.</p><p>If a download disappears after you switch apps, start it again and keep the page visible.</p>"
+  },
+  {
+    "id": "private-browsing",
+    "title": "Using Private Browsing Safely",
+    "html": "<p>Private or incognito windows do not save your history after you close them. They are useful on a shared computer, but downloaded files still go to the device's regular download location.</p><p>Remember to delete any files you no longer need, since private browsing does not remove them.</p>"
+  },
+  {
+    "id": "clear-cache",
+    "title": "Clearing Your Browser Cache Without Losing Settings",
+    "html": "<p>If the converter page behaves strangely, clearing the cache can help. Choose to clear cached images and files only, so saved passwords and bookmarks stay in place.</p><p>Reload the page afterward and try the conversion again.</p>"
+  },
+  {
+    "id": "readable-text",
+    "title": "Making the Converter Page Easier to Read",
+    "html": "<p>Use your browser's zoom controls to enlarge text on the converter page. On phones, turning on a larger system font size also helps.</p><p>The page keeps its layout when zoomed, so the buttons stay easy to tap.</p>"
+  },
+  {
+    "id": "desktop-paste",
+    "title": "Pasting Links Quickly on a Computer",
+    "html": "<p>Copy the video address with Ctrl+C on Windows or Command+C on a Mac, then click the input box and press Ctrl+V or Command+V.</p><p>Keep the video tab open in another window so you can copy a new link without leaving the converter.</p>"
+  },
+  {
+    "id": "redirect-links",
+    "title": "Why Some Links Lead to a Different Video",
+    "html": "<p>Links copied while a video is playing sometimes include a timestamp or a reference to a playlist. The converter reads the video ID, so the timestamp is usually ignored.</p><p>If the wrong video comes up, copy the link again from the video page itself.</p>"
+  },
+  {
+    "id": "mix-links",
+    "title": "Mix and Playlist Links: What Gets Downloaded",
+    "html": "<p>Mix links and playlist links contain several videos. A converter usually handles only the single video at the start of the link.</p><p>To download a specific track from a playlist, open that video and copy its own link.</p>"
+  },
+  {
+    "id": "full-vs-clip",
+    "title": "Downloading a Full Video vs a Clip",
+    "html": "<p>Most converters save the entire video. Trimming to a specific start and end time is not always available, so check the options before you start.</p><p>If you only need part of a file, download the whole video and trim it in a free editing app on your device.</p>"
+  },
+  {
+    "id": "file-extensions",
+    "title": "Understanding File Extensions: MP3, MP4, M4A and WebM",
+    "html": "<p>The extension at the end of a file name tells your device what kind of file it is. MP3 is an audio file, MP4 is a video file, and M4A is an audio format often used by Apple devices.</p><p>WebM is a web video format that some older players cannot open. Converting it to MP4 usually fixes this.</p>"
+  },
+  {
+    "id": "mp4-no-sound",
+    "title": "Why an MP4 Has No Sound",
+    "html": "<p>A video file with no sound may have been saved from a source that had no audio track, or the player may not support the audio format used.</p><p>Try opening the file in a different player. If it still has no sound, download the video again or use the audio-only option.</p>"
+  },
+  {
+    "id": "album-art",
+    "title": "Why Your MP3 Has No Album Art",
+    "html": "<p>Album art is stored as a tag inside the MP3 file. Many downloads include no cover image, so music apps show a blank or generic icon.</p><p>You can add a cover image with a free tag editor, using artwork you have the right to use.</p>"
+  },
+  {
+    "id": "sharing-files",
+    "title": "Sharing Downloaded Files With Friends",
+    "html": "<p>Sharing a file you downloaded is different from sharing the original. Only share files that you own, that are public domain, or that carry a license allowing redistribution.</p><p>When in doubt, share a link to the original video instead of the file.</p>"
+  },
+  {
+    "id": "screen-reader",
+    "title": "Using YT-Ai With a Screen Reader",
+    "html": "<p>The converter page uses standard buttons and labeled fields, so screen readers can read the options and status messages. Use the Tab key to move between controls.</p><p>If something is hard to announce or find, try turning on your device's full keyboard navigation.</p>"
+  },
+  {
+    "id": "estimate-time",
+    "title": "Estimating How Long a Download Will Take",
+    "html": "<p>Download time depends on file size and connection speed. A 100 MB file on a 10 Mbps connection takes about 80 seconds, and a slower connection takes longer.</p><p>Preparation time on the converter adds to this, especially for longer videos.</p>"
+  },
+  {
+    "id": "progress-bar",
+    "title": "Reading the Progress Bar During Conversion",
+    "html": "<p>The progress bar may move quickly at first and then slow down. This is normal, because the converter often prepares the file in stages.</p><p>If the bar stops completely for several minutes, refresh the page and try again with a lower quality.</p>"
+  },
+  {
+    "id": "half-size-download",
+    "title": "Why a Download Stops at Half Its Size",
+    "html": "<p>A download that stops at about half its expected size is usually caused by a dropped connection or a device going to sleep during the transfer.</p><p>Restart the download on a steady connection and keep the screen on until it finishes.</p>"
+  },
+  {
+    "id": "link-only",
+    "title": "Only Paste Links, Never Personal Details",
+    "html": "<p>The converter needs only a video link to work. You should never be asked for a password, bank details, or other personal information to download a file.</p><p>If a page asks for these, close it and do not enter anything.</p>"
+  },
+  {
+    "id": "report-failed-link",
+    "title": "What to Include When a Video Will Not Convert",
+    "html": "<p>If a link fails after you have checked that it is public and not age-restricted, note the video link, the quality you chose, and the device and browser you were using.</p><p>Use the feedback option on the site to pass this information along, so the issue can be looked into.</p>"
+  },
+  {
+    "id": "tablet-use",
+    "title": "Using YT-Ai on a Tablet",
+    "html": "<p>The converter page adjusts to tablet screens, so buttons and text remain easy to tap. Landscape mode gives more room for the list of quality options.</p><p>Downloaded files appear in your tablet's Files or Downloads app, just as they would on a phone.</p>"
+  },
+  {
+    "id": "audiobook-quality",
+    "title": "Choosing Quality for Audiobook-Style Recordings",
+    "html": "<p>Long spoken recordings such as audiobooks and talks sound clear at 64 or 96 kbps. Music-style bitrates add size without making speech noticeably better.</p><p>Only convert recordings you are allowed to keep, such as public-domain readings or content released under a suitable license.</p>"
   }
 ]
