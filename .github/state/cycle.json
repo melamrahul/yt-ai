@@ -1,5 +1,5 @@
 {
-  "next_index": 5,
+  "next_index": 6,
   "history": [
     {
       "date": "2026-10-19T19:36:41+00:00",
@@ -25,6 +25,11 @@
       "date": "2026-11-05T14:05:46+00:00",
       "id": "iphone-saving",
       "title": "Where Downloads Go on iPhone and iPad"
+    },
+    {
+      "date": "2026-11-09T15:22:32+00:00",
+      "id": "android-saving",
+      "title": "Where Downloads Go on Android"
     }
   ]
 }
