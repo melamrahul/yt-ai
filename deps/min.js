@@ -30,4 +30,4 @@ var savedFmt=localStorage.getItem('selectedFormat')||'mp3';formatChange(savedFmt
 document.addEventListener('click',function(){document.querySelectorAll('.custom-select').forEach(function(el){el.classList.remove('active')})});
 if(els.btnGo)els.btnGo.addEventListener('click',startFlow);if(els.urlInput){els.urlInput.addEventListener('keydown',function(e){if(e.key==='Enter')startFlow()})}
 })();
-// min.js
+//min.js code
