@@ -1,5 +1,5 @@
 {
-  "next_index": 6,
+  "next_index": 7,
   "history": [
     {
       "date": "2026-10-19T19:36:41+00:00",
@@ -30,6 +30,11 @@
       "date": "2026-11-09T15:22:32+00:00",
       "id": "android-saving",
       "title": "Where Downloads Go on Android"
+    },
+    {
+      "date": "2026-11-13T04:43:03+00:00",
+      "id": "slow-conversion",
+      "title": "What to Do If a Conversion Is Slow or Fails"
     }
   ]
 }
