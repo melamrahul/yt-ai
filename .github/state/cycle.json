@@ -1,5 +1,5 @@
 {
-  "next_index": 7,
+  "next_index": 8,
   "history": [
     {
       "date": "2026-10-19T19:36:41+00:00",
@@ -35,6 +35,11 @@
       "date": "2026-11-13T04:43:03+00:00",
       "id": "slow-conversion",
       "title": "What to Do If a Conversion Is Slow or Fails"
+    },
+    {
+      "date": "2026-11-17T15:34:47+00:00",
+      "id": "cc-content",
+      "title": "Finding Videos You Are Allowed to Download"
     }
   ]
 }
