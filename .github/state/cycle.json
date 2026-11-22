@@ -1,5 +1,5 @@
 {
-  "next_index": 8,
+  "next_index": 9,
   "history": [
     {
       "date": "2026-10-19T19:36:41+00:00",
@@ -40,6 +40,11 @@
       "date": "2026-11-17T15:34:47+00:00",
       "id": "cc-content",
       "title": "Finding Videos You Are Allowed to Download"
+    },
+    {
+      "date": "2026-11-22T07:55:13+00:00",
+      "id": "copy-link",
+      "title": "How to Copy a YouTube Link on Phone and Desktop"
     }
   ]
 }
