@@ -342,9 +342,12 @@ a:hover { text-decoration: underline; }
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: nowrap;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
+}
+@media (max-width: 640px) {
+  .success-actions { flex-wrap: wrap; }
 }
 .format-btn {
   background: var(--surface-alt); color: var(--text);
@@ -357,7 +360,6 @@ a:hover { text-decoration: underline; }
 .format-btn:hover { background: var(--border); }
 .format-btn-donate { background: #f59e0b; color: #000; border-color: #f59e0b; font-weight: 700; }
 .format-btn-donate:hover { background: #d97706; }
-.success-manual { display: flex; justify-content: center; }
 .btn-manual {
   background: #16a34a; color: #fff; border: none;
   padding: 11px 26px; border-radius: var(--radius-sm);
