@@ -462,7 +462,6 @@ a:hover { text-decoration: underline; }
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
   .navbar { padding: 0 16px; height: 56px; }
-  .nav-inner { height: 56px; padding: 0 16px; }
   .nav-brand { margin-left: 0; }
   .nav-links { gap: 10px; font-size: 0.8rem; }
   .nav-links > a:not(.theme-toggle) { display: none; }
