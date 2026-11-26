@@ -19,6 +19,7 @@
   <!-- PWA manifest (English) -->
   <link rel="manifest" href="/yt-ai/assets/pwa/manifest/en.json">
   <meta name="theme-color" content="#1a73e8">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="YT-Ai">
@@ -90,16 +91,6 @@
     <p>Convert any YouTube video to high-quality MP3 (up to 320kbps) instantly. Free, fast, and no registration required.</p>
   </header>
 
-  <div class="bookmark-banner">
-      <div class="bookmark-inner">
-        <i class="fas fa-file-text"></i>
-        <span>System Upgrade under progress, use this website for alternative</span>
-        <span style="color: var(--border);">|</span>
-        <i class="fas fa-coffee"></i>
-        <a href="https://www.ruvs.in" target="_blank" rel="noopener noreferrer">www.ruvs.in</a>
-      </div>
-    </div>
-
   <!-- ===== CONVERTER ===== -->
   <main>
     <div class="converter-wrapper">
@@ -144,7 +135,7 @@
         </div>
       </div>
 
-      <!-- ==== min.js required result pane (hidden until conversion) ==== -->
+      <!-- ==== Conversion result pane (hidden until conversion starts) ==== -->
       <div class="converter-card" id="rahul-container" style="display:none;margin-top:20px">
         <div id="video-preview">
           <img id="video-thumb" alt="Video thumbnail" src="" style="max-width:100%;border-radius:8px">
@@ -159,6 +150,11 @@
         </div>
         <div id="progress-track" style="height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden;margin-top:10px">
           <div class="progress-fill" id="progress-fill" style="height:100%;width:0;background:var(--primary);transition:width .4s"></div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+          <button type="button" onclick="resetUI()" style="background:transparent;border:1px solid var(--border);color:var(--text-secondary);padding:8px 18px;border-radius:8px;font-size:0.85rem;cursor:pointer;font-family:inherit;">
+            Cancel &amp; start over
+          </button>
         </div>
       </div>
 
@@ -258,7 +254,7 @@
       <p>&copy; 2026 <b>YT-Ai</b>. All rights reserved. Designed for speed and simplicity.</p>
       <div class="footer-links">
         <a href="/yt-ai/legal/privacy">Privacy Policy</a>
-        <a href="/yt-ai//legal/terms">Terms of Service</a>
+        <a href="/yt-ai/legal/terms">Terms of Service</a>
         <a href="/yt-ai/legal/dmca">DMCA</a>
         <a href="/yt-ai/legal/contact">Contact</a>
       </div>
@@ -283,7 +279,6 @@
   <script src="/yt-ai/assets/native/utils.js" defer></script>
   <script src="/yt-ai/assets/native/comm/install.js" defer></script>
   <script src="/yt-ai/assets/native/comm/pulse.js" defer></script>
-  
 
   <!-- Ad slot placement -->
   <script>
@@ -302,46 +297,6 @@
   </script>
   <script async="async" data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>
   <script data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var sel = document.getElementById('audio-quality-select');
-      if (!sel) return;
-      var selected = sel.querySelector('.select-selected');
-      var items = sel.querySelectorAll('.select-items div');
-      // restore saved
-      var saved = localStorage.getItem('audioQuality');
-      if (saved) {
-        items.forEach(function (o) {
-          if (o.dataset.value === saved) {
-            selected.textContent = o.textContent;
-            items.forEach(x => x.classList.remove('active'));
-            o.classList.add('active');
-          }
-        });
-      }
-      // click handling
-      items.forEach(function (opt) {
-        opt.addEventListener('click', function () {
-          selected.textContent = opt.textContent;
-          items.forEach(x => x.classList.remove('active'));
-          opt.classList.add('active');
-          localStorage.setItem('audioQuality', opt.dataset.value);
-          sel.classList.remove('active');
-        });
-      });
-      selected.addEventListener('click', function (e) {
-        e.stopPropagation();
-        document.querySelectorAll('.custom-select').forEach(function (el) {
-          if (el !== sel) el.classList.remove('active');
-        });
-        sel.classList.toggle('active');
-      });
-      document.addEventListener('click', function () {
-        sel.classList.remove('active');
-      });
-    });
-  </script>
 
 </body>
 </html>
