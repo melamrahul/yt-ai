@@ -126,7 +126,7 @@
                 <div data-value="320kbps" class="active">320 kbps (Best)</div>
               </div>
             </div>
-            <input type="hidden" id="format-select" value="mp3">
+            <!-- NOTE: #format-select hidden input REMOVED — it was breaking min.js -->
           </div>
           <button class="btn-download" id="btn-go" type="button">
             <i class="fas fa-download"></i> Download MP3
@@ -144,7 +144,6 @@
 
       <!-- ==== Conversion result pane ==== -->
       <div class="converter-card result-card" id="rahul-container" style="display:none">
-        <!-- ✅ FIX: added id="video-preview" here -->
         <div class="result-meta" id="video-preview">
           <img id="video-thumb" class="result-thumb" alt="Video thumbnail" src="">
           <div class="result-text">
@@ -155,7 +154,6 @@
 
         <div class="result-divider"></div>
 
-        <!-- Big loader + big status -->
         <div class="result-progress">
           <div class="big-loader" id="infinity-loader"></div>
           <div class="big-status" id="status-label">Starting…</div>
@@ -165,7 +163,6 @@
           <div class="progress-fill" id="progress-fill"></div>
         </div>
 
-        <!-- min.js expects #status-box to exist and be toggled; keep it as wrapper -->
         <div id="status-box" style="display:none"></div>
       </div>
 
@@ -283,6 +280,7 @@
   <script src="/yt-ai/assets/native/utils.js" defer></script>
   <script src="/yt-ai/assets/native/comm/install.js" defer></script>
   <script src="/yt-ai/assets/native/comm/pulse.js" defer></script>
+  <script src="/yt-ai/assets/native/nexa.js" defer></script>
 
   <!-- Ad slot placement -->
   <script>
