@@ -25,7 +25,7 @@
   --transition: 0.18s ease;
 }
 
-/* --- Dark theme: deeper, richer navy/slate palette --- */
+/* --- Dark theme --- */
 [data-theme="dark"] {
   --bg: #0f1115;
   --surface: #171a21;
@@ -54,6 +54,8 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
 }
+
+main { background: var(--bg); }
 
 a { color: var(--primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -110,14 +112,19 @@ a:hover { text-decoration: underline; }
 .hero h1 span { color: var(--primary); }
 .hero p { font-size: 1.15rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
 
-/* ===== Converter card ===== */
-.converter-wrapper { display: flex; flex-direction: column; align-items: center; padding: 16px 24px 40px; }
+/* ===== Converter layout ===== */
+.converter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 24px 40px;
+  background: var(--bg);
+}
 .converter-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   box-shadow: var(--shadow-lg); padding: 36px 32px; width: 100%; max-width: 760px;
   transition: background var(--transition), border-color var(--transition);
 }
-.converter-card + .converter-card { margin-top: 20px; }
 
 /* Input row */
 .input-group {
@@ -131,17 +138,27 @@ a:hover { text-decoration: underline; }
   font-size: 1rem; font-family: inherit; outline: none; min-width: 0;
 }
 .input-group input::placeholder { color: var(--text-secondary); opacity: 0.75; }
-.paste-btn {
-  padding: 0 18px; background: var(--surface-alt); color: var(--text);
-  border: none; border-left: 1px solid var(--border); font-size: 0.85rem; font-weight: 600;
-  font-family: inherit; cursor: pointer; white-space: nowrap;
-  display: flex; align-items: center; gap: 6px;
-  transition: background var(--transition);
-}
-.paste-btn:hover { background: var(--border); }
-.paste-btn i { font-size: 0.85rem; }
 
-/* ===== Custom quality dropdown (matches min.js) ===== */
+/* Icon-only paste button (inline, right of input) */
+.paste-btn {
+  width: 48px;
+  min-width: 48px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-alt);
+  color: var(--text-secondary);
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+.paste-btn:hover { background: var(--border); color: var(--primary); }
+.paste-btn i { font-size: 1rem; }
+
+/* ===== Custom quality dropdown ===== */
 .custom-select {
   position: relative;
   cursor: pointer;
@@ -222,26 +239,60 @@ a:hover { text-decoration: underline; }
 }
 .status-message i { font-size: 0.8rem; }
 
-/* ===== Conversion result pane (used by min.js) ===== */
-#rahul-container.fade-out {
+/* ===== Captcha ===== */
+.captcha-label {
+  text-align: center;
+  margin: 16px 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.turnstile-container {
+  margin: 8px 0 14px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== Conversion result pane ===== */
+.result-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 760px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: background var(--transition), border-color var(--transition);
+}
+.result-card.fade-out {
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
-#video-preview {
+.result-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.result-thumb {
+  width: 120px;
+  height: 68px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--surface-alt);
+  flex-shrink: 0;
+}
+.result-text {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
 }
-#video-thumb {
-  width: 100%;
-  max-width: 100%;
-  border-radius: var(--radius-sm);
-  background: var(--surface-alt);
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-.video-meta { display: flex; flex-direction: column; gap: 4px; }
 .video-title {
   font-size: 1rem;
   font-weight: 600;
@@ -251,59 +302,85 @@ a:hover { text-decoration: underline; }
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 .video-channel {
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
-#status-box {
-  display: none;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.92rem;
-  color: var(--text-secondary);
+.result-divider {
+  height: 1px;
+  background: var(--border);
+  width: 100%;
 }
-#status-box.visible { display: flex; }
-.infinity-loader {
-  width: 18px;
-  height: 18px;
-  border: 2.5px solid var(--border);
+
+/* Big loader + big status (most important for users) */
+.result-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0 4px;
+}
+.big-loader {
+  width: 44px;
+  height: 44px;
+  border: 4px solid var(--border);
   border-top-color: var(--primary);
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: spin 0.8s linear infinite;
   flex-shrink: 0;
 }
-#progress-track {
+.big-status {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+.progress-track {
   height: 6px;
   background: var(--surface-alt);
   border-radius: 3px;
   overflow: hidden;
-  margin-top: 12px;
+  width: 100%;
 }
-#progress-track .progress-fill {
+.progress-fill {
   height: 100%;
-  width: 0;
+  width: 0%;
   background: var(--primary);
   border-radius: 3px;
   transition: width 0.4s ease;
 }
 
-/* ===== Success view ===== */
-#success-view {
+/* ===== Success card ===== */
+.success-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
-  padding: 28px 24px;
+  padding: 32px 24px;
   max-width: 760px;
   margin: 20px auto 0;
   text-align: center;
 }
 .success-title {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 8px;
+}
+.success-sub {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 .format-btn {
   background: var(--surface-alt);
@@ -318,12 +395,27 @@ a:hover { text-decoration: underline; }
   transition: background var(--transition), border-color var(--transition);
 }
 .format-btn:hover { background: var(--border); }
-
-/* ===== Result / progress (legacy) ===== */
-.result-area { margin-top: 22px; display: none; }
-.result-area.visible { display: block; }
-.progress-bar { height: 6px; background: var(--surface-alt); border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
-.progress-fill { height: 100%; width: 0%; background: var(--primary); border-radius: 3px; transition: width 0.4s ease; }
+.format-btn-donate {
+  background: #ffb300;
+  color: #000;
+  border-color: #ffb300;
+  font-weight: 700;
+}
+.format-btn-donate:hover { background: #ffa000; }
+.success-manual { display: flex; justify-content: center; }
+.btn-manual {
+  background: #1EA547;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.btn-manual:hover { background: #188a3c; }
 
 /* ===== Bookmark banner ===== */
 .bookmark-banner { max-width: 760px; margin: 0 auto 32px; padding: 0 24px; }
@@ -337,7 +429,7 @@ a:hover { text-decoration: underline; }
 .bookmark-inner a { font-weight: 600; white-space: nowrap; }
 
 /* ===== SEO section ===== */
-.seo-section { max-width: 980px; margin: 0 auto; padding: 48px 24px 24px; }
+.seo-section { max-width: 980px; margin: 0 auto; padding: 48px 24px 24px; background: var(--bg); }
 .seo-section h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 24px; color: var(--text); letter-spacing: -0.01em; }
 .seo-section h2 + p { color: var(--text-secondary); margin-bottom: 24px; max-width: 760px; }
 .seo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 40px; }
@@ -350,8 +442,8 @@ a:hover { text-decoration: underline; }
 .seo-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
 .seo-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
 
-/* FAQ / long-form SEO */
-.faq-block { max-width: 980px; margin: 0 auto; padding: 0 24px 48px; }
+/* FAQ */
+.faq-block { max-width: 980px; margin: 0 auto; padding: 0 24px 48px; background: var(--bg); }
 .faq-block h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; color: var(--text); }
 .faq-item {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
@@ -398,30 +490,22 @@ a:hover { text-decoration: underline; }
   animation: dialogIn 0.22s ease;
 }
 @keyframes dialogIn { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
-.dialog-header {
-  padding: 20px 24px 8px; font-size: 1.1rem; font-weight: 700; color: var(--text);
-}
+.dialog-header { padding: 20px 24px 8px; font-size: 1.1rem; font-weight: 700; color: var(--text); }
 .dialog-body { padding: 4px 24px 20px; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
 .dialog-body strong { color: var(--text); }
-.dialog-actions {
-  display: flex; justify-content: flex-end; gap: 10px;
-  padding: 0 24px 20px;
-}
+.dialog-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 0 24px 20px; }
 .dialog-btn {
   padding: 10px 20px; border-radius: var(--radius-sm);
   font-size: 0.9rem; font-weight: 600; font-family: inherit;
   cursor: pointer; border: 1px solid transparent;
   transition: background var(--transition), border-color var(--transition);
 }
-.dialog-btn.secondary {
-  background: transparent; border-color: var(--border); color: var(--text);
-}
+.dialog-btn.secondary { background: transparent; border-color: var(--border); color: var(--text); }
 .dialog-btn.secondary:hover { background: var(--surface-alt); }
 .dialog-btn.primary { background: var(--primary); color: #fff; }
 .dialog-btn.primary:hover { background: var(--primary-hover); }
 .dialog-btn.danger { background: var(--danger); color: #fff; }
 
-/* Spinner in dialog */
 .dialog-spinner {
   width: 18px; height: 18px; border: 2.5px solid var(--border);
   border-top-color: var(--primary); border-radius: 50%;
@@ -451,21 +535,52 @@ a:hover { text-decoration: underline; }
   .hero { padding: 40px 16px 24px; }
   .hero h1 { font-size: 1.8rem; }
   .hero p { font-size: 1rem; }
+
+  .converter-wrapper { padding: 12px 16px 32px; }
   .converter-card { padding: 24px 18px; }
-  .input-group { flex-wrap: wrap; }
-  .input-group input { flex-basis: 100%; border-bottom: 1px solid var(--border); }
-  .input-group .paste-btn { border-left: none; flex: 1; justify-content: center; padding: 12px; }
-  .options-row { flex-direction: column; align-items: stretch; }
+  .input-group input { padding: 14px 14px; font-size: 0.95rem; }
+  .paste-btn { width: 46px; min-width: 46px; }
+
+  .options-row { flex-direction: column; align-items: stretch; gap: 14px; }
   .quality-selector { justify-content: space-between; }
+  .custom-select { flex: 1; }
+  .custom-select .select-selected { width: 100%; min-width: 0; }
   .btn-download { width: 100%; }
-  .seo-grid { grid-template-columns: 1fr; }
+
+  /* Result pane — compact but with big status */
+  .result-card { padding: 20px 18px; gap: 16px; }
+  .result-meta { gap: 12px; }
+  .result-thumb { width: 96px; height: 54px; }
+  .video-title { font-size: 0.92rem; }
+  .video-channel { font-size: 0.8rem; }
+  .big-loader { width: 38px; height: 38px; border-width: 3.5px; }
+  .big-status { font-size: 1.05rem; }
+
+  .success-card { padding: 24px 18px; margin: 16px 16px 0; }
+  .success-title { font-size: 1.25rem; }
+  .success-actions { gap: 10px; }
+  .format-btn { padding: 10px 16px; font-size: 0.85rem; }
+
+  .bookmark-banner { padding: 0 16px; margin-bottom: 24px; }
+  .bookmark-inner { padding: 14px 18px; font-size: 0.88rem; }
+
+  .seo-section { padding: 32px 16px 16px; }
+  .seo-section h2 { font-size: 1.4rem; }
+  .seo-grid { grid-template-columns: 1fr; gap: 16px; }
+  .faq-block { padding: 0 16px 32px; }
+  .faq-block h2 { font-size: 1.3rem; }
+
   .footer-inner { flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
-  #success-view { padding: 20px 16px; }
+  .footer-links { justify-content: center; gap: 16px; }
 }
+
 @media (max-width: 400px) {
   .hero h1 { font-size: 1.5rem; }
   .converter-card { padding: 20px 14px; }
+  .result-thumb { width: 84px; height: 48px; }
+  .video-title { font-size: 0.88rem; }
+  .big-loader { width: 34px; height: 34px; border-width: 3px; }
+  .big-status { font-size: 1rem; }
 }
 
 /* Reduced motion */

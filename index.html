@@ -49,7 +49,7 @@
 </head>
 <body>
 
-  <!-- ===== NAVBAR (reusable) ===== -->
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
     <div class="nav-brand">
       <img src="/yt-ai/assets/icons/icon192.png" alt="YT-Ai Logo" width="36" height="36">
@@ -61,7 +61,6 @@
       <a href="#faq">FAQ</a>
       <a href="/yt-ai/privacy">Privacy</a>
 
-      <!-- Language selector -->
       <div class="lang-selector">
         <button class="lang-btn" id="langBtn" aria-label="Select language">
           <i class="fas fa-globe"></i> <span id="langLabel">EN</span>
@@ -91,15 +90,25 @@
     <p>Convert any YouTube video to high-quality MP3 (up to 320kbps) instantly. Free, fast, and no registration required.</p>
   </header>
 
+  <div class="bookmark-banner">
+    <div class="bookmark-inner">
+      <i style="color: var(--warning);" class="fas fa-exclamation-triangle"></i>
+      <span>System Upgrade under progress, use this website for alternative</span>
+      <span style="color: var(--border);">|</span>
+      <i class="fas fa-coffee"></i>
+      <a href="https://www.ruvs.in" target="_blank" rel="noopener noreferrer">www.ruvs.in</a>
+    </div>
+  </div>
+
   <!-- ===== CONVERTER ===== -->
   <main>
     <div class="converter-wrapper">
       <div class="converter-card" id="main-card">
-        <!-- URL row -->
+        <!-- URL row with inline icon-only paste button -->
         <div class="input-group">
           <input type="url" id="yt-url" placeholder="Paste YouTube video link here…" aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
-          <button class="paste-btn" id="paste-btn" type="button" aria-label="Paste from clipboard">
-            <i class="fas fa-paste"></i> Paste
+          <button class="paste-btn" id="paste-btn" type="button" aria-label="Paste from clipboard" title="Paste from clipboard">
+            <i class="fas fa-clipboard"></i>
           </button>
         </div>
 
@@ -124,54 +133,55 @@
           </button>
         </div>
 
-        <!-- Captcha -->
-        <div style="text-align:center;margin:16px 0 8px;font-size:14px;font-weight:600;color:var(--text)">
-          Complete the captcha to start download
-        </div>
-        <div id="turnstile-container" style="margin: 8px 0 14px; display: flex; justify-content: center;"></div>
-
         <div class="status-message" id="statusMsg">
           <i class="fas fa-shield-alt"></i> Secure &amp; anonymous
         </div>
+
+        <!-- Captcha -->
+        <div class="captcha-label">Complete the captcha to start download</div>
+        <div id="turnstile-container" class="turnstile-container"></div>
       </div>
 
-      <!-- ==== Conversion result pane (hidden until conversion starts) ==== -->
-      <div class="converter-card" id="rahul-container" style="display:none;margin-top:20px">
-        <div id="video-preview">
-          <img id="video-thumb" alt="Video thumbnail" src="" style="max-width:100%;border-radius:8px">
-          <div class="video-meta">
-            <div class="video-title" id="video-title"></div>
+      <!-- ==== Conversion result pane ==== -->
+      <div class="converter-card result-card" id="rahul-container" style="display:none">
+        <!-- Compact meta row: thumbnail left, title/channel right -->
+        <div class="result-meta">
+          <img id="video-thumb" class="result-thumb" alt="Video thumbnail" src="">
+          <div class="result-text">
+            <div class="video-title" id="video-title">—</div>
             <div class="video-channel" id="video-channel"></div>
           </div>
         </div>
-        <div id="status-box" role="status" aria-live="polite" style="margin-top:12px">
-          <div class="infinity-loader" id="infinity-loader"></div>
-          <div id="status-label"></div>
+
+        <div class="result-divider"></div>
+
+        <!-- Big loader + big status -->
+        <div class="result-progress">
+          <div class="big-loader" id="infinity-loader"></div>
+          <div class="big-status" id="status-label">Starting…</div>
         </div>
-        <div id="progress-track" style="height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden;margin-top:10px">
-          <div class="progress-fill" id="progress-fill" style="height:100%;width:0;background:var(--primary);transition:width .4s"></div>
+
+        <div id="progress-track" class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
         </div>
-        <div style="text-align:center;margin-top:16px;">
-          <button type="button" onclick="resetUI()" style="background:transparent;border:1px solid var(--border);color:var(--text-secondary);padding:8px 18px;border-radius:8px;font-size:0.85rem;cursor:pointer;font-family:inherit;">
-            Cancel &amp; start over
-          </button>
-        </div>
+
+        <!-- min.js expects #status-box to exist and be toggled; keep it as wrapper -->
+        <div id="status-box" style="display:none"></div>
       </div>
 
       <!-- Hidden controls min.js toggles -->
       <button id="download-btn" type="button" style="display:none">Didn't get? Download File</button>
-      <span id="user-known" style="display:none">Taking longer than usual. Please keep this page open.</span>
-      <div id="success-view" style="display:none">
+      <span id="user-known" style="display:none"></span>
+
+      <div id="success-view" style="display:none" class="success-card">
         <div class="success-title">Download started! 🎉</div>
-        <p style="text-align:center;font-size:14px;margin:8px 0 12px">Didn't start automatically? Use the button below.</p>
-        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+        <p class="success-sub">Didn't start automatically? Use the button below.</p>
+        <div class="success-actions">
           <button class="format-btn" type="button" onclick="resetUI()">↺ Convert another</button>
-          <button class="format-btn" type="button" onclick="window.location.href='/yt-ai/donate/en'" style="background:#ffb300;color:#000;font-weight:700">❤️ Donate</button>
+          <button class="format-btn format-btn-donate" type="button" onclick="window.location.href='/yt-ai/donate/en'">❤️ Donate</button>
         </div>
-        <div style="display:flex;justify-content:center;margin-top:12px">
-          <button id="manual-download-btn" type="button" onclick="manualDownload()" style="background:#1EA547;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:700;font-size:16px;cursor:pointer">
-            Didn't get? Download File
-          </button>
+        <div class="success-manual">
+          <button id="manual-download-btn" class="btn-manual" type="button" onclick="manualDownload()">Didn't get? Download File</button>
         </div>
       </div>
     </div>
@@ -215,7 +225,7 @@
       </div>
     </section>
 
-    <!-- ===== FAQ / Long-form SEO ===== -->
+    <!-- ===== FAQ ===== -->
     <section class="faq-block" id="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-item">
@@ -261,21 +271,15 @@
     </div>
   </footer>
 
-  <!-- Global loader -->
   <div class="global-loader" id="globalLoader">
     <div class="global-spinner"></div>
   </div>
 
-  <!-- Turnstile API first (defines window.turnstile, calls onTurnstileLoaded) -->
+  <!-- Turnstile API first -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoaded&render=explicit" async defer></script>
 
-  <!-- Then captcha bridge (defines onTurnstileLoaded, intercepts btn-go) -->
   <script src="/yt-ai/assets/native/comm/captcha.js" defer></script>
-
-  <!-- Then converter logic (attaches click handler) -->
   <script src="/yt-ai/assets/native/min.js" defer></script>
-
-  <!-- UI + PWA -->
   <script src="/yt-ai/assets/native/utils.js" defer></script>
   <script src="/yt-ai/assets/native/comm/install.js" defer></script>
   <script src="/yt-ai/assets/native/comm/pulse.js" defer></script>

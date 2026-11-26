@@ -30,6 +30,7 @@
       localStorage.setItem(this.KEY, theme);
       const btn = $('#themeToggle');
       if (btn) this.updateIcon(btn, theme);
+      document.dispatchEvent(new CustomEvent('yt-ai:theme-change', { detail: { theme } }));
     },
     toggle() {
       const cur = document.documentElement.getAttribute('data-theme');

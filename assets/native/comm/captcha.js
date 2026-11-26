@@ -1,11 +1,19 @@
-/* Simplified captcha bridge — no fetch interception, no double-fire issues */
+/* ============================================================
+   YT-Ai — Cloudflare Turnstile captcha integration
+   Path: /yt-ai/assets/native/comm/captcha.js
+   ============================================================ */
 (function () {
   'use strict';
 
   var TURNSTILE_SITE_KEY = '0x4AAAAAAGGfePks0FnUxoL3';
+  var turnstileWidgetId = null;
   var turnstileToken = '';
-  var widgetId = null;
   var pendingAction = null;
+  var isRendering = false;
+
+  function currentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
 
   function setBtnEnabled(enabled) {
     var btn = document.getElementById('btn-go');
@@ -20,18 +28,20 @@
     if (!pendingAction) return;
     var fn = pendingAction;
     pendingAction = null;
-    try { fn(); } catch (e) { console.error('[captcha] pending failed:', e); }
+    try { fn(); } catch (e) { console.error('[captcha] pending action failed:', e); }
   }
 
   function renderTurnstile() {
-    if (!window.turnstile) { setTimeout(renderTurnstile, 150); return; }
+    if (!window.turnstile) { setTimeout(renderTurnstile, 100); return; }
     var el = document.getElementById('turnstile-container');
     if (!el) { setTimeout(renderTurnstile, 200); return; }
-    if (widgetId !== null) return;
+    if (turnstileWidgetId !== null || isRendering) return;
+
+    isRendering = true;
     try {
-      widgetId = window.turnstile.render(el, {
+      turnstileWidgetId = window.turnstile.render(el, {
         sitekey: TURNSTILE_SITE_KEY,
-        theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light',
+        theme: currentTheme(),           // light or dark — matches page
         callback: function (token) {
           turnstileToken = token;
           setBtnEnabled(true);
@@ -44,23 +54,82 @@
         'error-callback': function (err) {
           turnstileToken = '';
           setBtnEnabled(false);
-          console.error('[captcha] error:', err);
+          console.error('[captcha] Turnstile error:', err);
         }
       });
     } catch (e) {
-      widgetId = null;
+      turnstileWidgetId = null;
       console.error('[captcha] render failed:', e);
+    } finally {
+      isRendering = false;
     }
   }
 
   window.onTurnstileLoaded = function () { renderTurnstile(); };
 
-  /* Intercept ONLY btn-go and paste-btn clicks — no fetch override */
+  /* Re-render when the page theme changes so the widget follows */
+  document.addEventListener('yt-ai:theme-change', function () {
+    if (turnstileWidgetId !== null && window.turnstile) {
+      try { window.turnstile.remove(turnstileWidgetId); } catch (_) {}
+      turnstileWidgetId = null;
+      turnstileToken = '';
+      setBtnEnabled(false);
+      renderTurnstile();
+    }
+  });
+
+  /* ---------- Fetch interceptor for /x/a — attach token, no 5s delay ---------- */
+  var originalFetch = window.fetch;
+  window.fetch = function (input, init) {
+    var url = typeof input === 'string' ? input : (input && input.url) || '';
+    if (url.indexOf('/x/a') === -1) return originalFetch.call(this, input, init);
+
+    var self = this;
+    var updatedInit = init ? Object.assign({}, init) : {};
+    updatedInit.headers = Object.assign({}, updatedInit.headers || {});
+
+    /* Attach token in header (works for most backends) */
+    if (turnstileToken) {
+      try {
+        if (updatedInit.headers instanceof Headers) {
+          updatedInit.headers.set('CF-Turnstile-Response', turnstileToken);
+        } else {
+          updatedInit.headers['CF-Turnstile-Response'] = turnstileToken;
+        }
+      } catch (_) {}
+    }
+
+    /* Also attach in JSON body (your current backend expects this) */
+    if (updatedInit.body && typeof updatedInit.body === 'string') {
+      try {
+        var body = JSON.parse(updatedInit.body);
+        body.turnstile_token = turnstileToken;
+        updatedInit.body = JSON.stringify(body);
+      } catch (e) {
+        console.error('[captcha] could not attach token to body:', e);
+      }
+    }
+
+    /* Fire immediately — no 5s delay — so the token is fresh */
+    return originalFetch.call(self, input, updatedInit).then(function (response) {
+      /* Clear + reset only AFTER backend responds so retries stay valid */
+      setTimeout(function () {
+        turnstileToken = '';
+        setBtnEnabled(false);
+        if (turnstileWidgetId !== null && window.turnstile) {
+          try { window.turnstile.reset(turnstileWidgetId); } catch (_) {}
+        }
+      }, 100);
+      return response;
+    });
+  };
+
+  /* ---------- Interceptors ---------- */
   function interceptBtn() {
     var btn = document.getElementById('btn-go');
     if (!btn) { setTimeout(interceptBtn, 100); return; }
     btn.addEventListener('click', function (e) {
-      if (turnstileToken) return;  // allow real handler
+      if (turnstileToken) return;
       e.stopImmediatePropagation();
       e.preventDefault();
       pendingAction = function () { btn.click(); };
