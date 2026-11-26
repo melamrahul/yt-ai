@@ -7,7 +7,7 @@
    "display":"standalone",
    "orientation":"portrait-primary",
    "background_color":"#ffffff",
-   "theme_color":"#1a73e8",
+   "theme_color":"transparent",
    "lang":"en",
    "dir":"ltr",
    "categories":[
