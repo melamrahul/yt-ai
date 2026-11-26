@@ -298,9 +298,9 @@ function startFlow() {
 
     els.mainCard.style.display = 'none';
 
-    els.btnGo.disabled = true;
-
-    els.btnGo.textContent = '…';
+    els.btnGo.disabled = false;
+    els.btnGo.textContent =
+    _st.mode === 'mp3' ? 'Download MP3' : 'Download MP4';
 
     els.preview.classList.remove('visible');
 

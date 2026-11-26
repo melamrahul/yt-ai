@@ -43,13 +43,10 @@
     if (!btn) btn = document.getElementById('btn-go');
     if (!btn) return;
 
-    btn.disabled = !enabled;
-    btn.style.opacity = enabled ? '1' : '0.55';
-    btn.style.cursor = enabled ? 'pointer' : 'not-allowed';
-
-    btn.title = enabled
-      ? ''
-      : 'Please complete the human verification first';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+    btn.title = '';
   }
 
   /* ---- Show widget ---- */
