@@ -49,6 +49,13 @@
     "description": "Free online YouTube to MP3 converter with up to 320kbps audio quality."
   }
   </script>
+
+  <!-- ===== Ad helper styles ===== -->
+  <style>
+    .ad-wrap{text-align:center;margin:15px auto;width:100%;overflow:hidden;display:flex;justify-content:center}
+    .ad-desktop{display:none}
+    @media screen and (min-width:768px){.ad-desktop{display:flex}}
+  </style>
 </head>
 <body>
 
@@ -97,6 +104,12 @@
 
   <!-- ===== CONVERTER ===== -->
   <main>
+    <!-- ===== AD: Desktop 728x90 (hidden on mobile) ===== -->
+    <div class="ad-wrap ad-desktop">
+      <script>atOptions={'key':'ed8693a073cffc9bf54dc986cd520bd4','format':'iframe','height':90,'width':728,'params':{}};</script>
+      <script async src="https://bauval.org/22/ed8693a073cffc9bf54dc986cd520bd4"></script>
+    </div>
+
     <div class="converter-wrapper">
       <div class="converter-card" id="main-card">
         <!-- URL row with inline icon-only paste button -->
@@ -135,6 +148,12 @@
         <!-- Captcha -->
         <div class="captcha-label">Complete the captcha to start download</div>
         <div id="turnstile-container" class="turnstile-container"></div>
+
+        <!-- ===== AD: Mobile 320x50 (inside converter card) ===== -->
+        <div class="ad-wrap">
+          <script>atOptions={'key':'2aa89d7b97640f8c5c2d78ea53485d73','format':'iframe','height':50,'width':320,'params':{}};</script>
+          <script async src="https://bauval.org/22/2aa89d7b97640f8c5c2d78ea53485d73"></script>
+        </div>
       </div>
 
       <!-- ==== Conversion result pane ==== -->
@@ -238,7 +257,7 @@
       </div>
     </section>
 
-    <!-- ===== Ad slots ===== -->
+    <!-- ===== Ad slots (native) ===== -->
     <div id="native-slot-top" style="max-width: 90%; margin: 0 auto; text-align: center;"></div>
     <div id="native-slot-center"></div>
     <div id="native-ad-container" style="display:none;">
@@ -267,12 +286,12 @@
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoaded&render=explicit" async defer></script>
 
   <script src="/yt-ai/assets/native/comm/captcha.js?v={{ site.build_revision }}" defer></script>
-  <script src="/yt-ai/assets/native/min.js?v={{ site.build_revision }}" defer></script>
   <script src="/yt-ai/assets/native/utils.js?v={{ site.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/min.js?v={{ site.build_revision }}" defer></script>
   <script src="/yt-ai/assets/native/comm/install.js?v={{ site.build_revision }}" defer></script>
   <script src="/yt-ai/assets/native/comm/pulse.js?v={{ site.build_revision }}" defer></script>
 
-  <!-- Ad slot placement -->
+  <!-- Ad slot placement (native) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       setTimeout(function () {
