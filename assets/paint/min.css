@@ -322,7 +322,19 @@ a:hover { text-decoration: underline; }
 .success-card.visible { display: block; }
 .success-title { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
 .success-sub { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; }
-.success-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: nowrap; 
+  margin-bottom: 16px;
+}
+
+@media (max-width: 480px) {
+  .success-actions {
+    flex-wrap: wrap;
+  }
+}
 .format-btn {
   background: var(--surface-alt); color: var(--text);
   border: 1px solid var(--border);
@@ -518,14 +530,16 @@ a:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-
 /* ===== Navbar ===== */
 .navbar {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  position: sticky; top: 0; z-index: 100;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   box-shadow: var(--shadow-sm);
 }
+
 .nav-inner {
   display: flex;
   align-items: center;
@@ -534,22 +548,55 @@ a:hover { text-decoration: underline; }
   height: 64px;
   padding: 0 24px;
 }
-.nav-brand {
-  display: flex; align-items: center; gap: 10px;
-  font-weight: 700; font-size: 1.25rem; color: var(--text);
-}
-.nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
-.nav-brand .brand-text span { color: var(--primary); }
-.nav-links {
-  display: flex; align-items: center; gap: 18px;
-  font-size: 0.9rem; font-weight: 500;
-}
-.nav-links a { color: var(--text-secondary); transition: color var(--transition); }
-.nav-links a:hover { color: var(--primary); text-decoration: none; }
 
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.nav-brand img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.nav-brand .brand-text span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Desktop */
 @media (min-width: 721px) {
   .nav-inner {
     max-width: 1200px;
     margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .nav-inner {
+    padding-left: 0;
   }
 }
