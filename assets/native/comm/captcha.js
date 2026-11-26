@@ -1,5 +1,5 @@
 /* ============================================================
-   YT-Ai — Cloudflare Turnstile (lazy, auto-run after solve)
+   YT-Ai — Cloudflare Turnstile (lazy, direct-call after solve)
    Path: /yt-ai/assets/native/comm/captcha.js
    ============================================================ */
 (function () {
@@ -8,7 +8,6 @@
   var TURNSTILE_SITE_KEY = '0x4AAAAAAGGfePks0FnUxoL3';
   var turnstileWidgetId = null;
   var turnstileToken = '';
-  var pendingAction = null;
   var isRendering = false;
   var widgetVisible = false;
 
@@ -18,10 +17,20 @@
   var urlInput = null;
   var captchaLabel = null;
 
+  /* ---- Expose token to min.js (if it ever reads it) ---- */
   Object.defineProperty(window, '__turnstileToken', {
     get: function () { return turnstileToken; },
     configurable: false
   });
+
+  /* ---- Capture min.js's startFlow by intercepting addEventListener ---- */
+  var _origAdd = EventTarget.prototype.addEventListener;
+  EventTarget.prototype.addEventListener = function (type, handler, opts) {
+    if (this && this.id === 'btn-go' && type === 'click' && typeof handler === 'function') {
+      window.__startFlow = handler;
+    }
+    return _origAdd.call(this, type, handler, opts);
+  };
 
   function getTheme() {
     return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -55,13 +64,6 @@
     widgetVisible = false;
   }
 
-  function flushPending() {
-    if (!pendingAction) return;
-    var fn = pendingAction;
-    pendingAction = null;
-    try { fn(); } catch (e) { console.error('[captcha] pending:', e); }
-  }
-
   function renderTurnstile() {
     if (!window.turnstile) { setTimeout(renderTurnstile, 120); return; }
     var el = document.getElementById('turnstile-container');
@@ -77,8 +79,13 @@
           turnstileToken = token;
           window.__turnstileToken = token;
           setBtnEnabled(true);
-          // Auto-run the conversion immediately after solve
-          flushPending();
+          // Call startFlow directly — no synthetic click, no event-phase issues
+          if (typeof window.__startFlow === 'function') {
+            try { window.__startFlow(); } catch (e) { console.error('[captcha] startFlow failed:', e); }
+          } else {
+            // Fallback: fire a synthetic click
+            setTimeout(function () { btn && btn.click(); }, 30);
+          }
         },
         'expired-callback': function () {
           turnstileToken = '';
@@ -100,7 +107,7 @@
     }
   }
 
-  window.onTurnstileLoaded = function () { /* lazy — no auto render */ };
+  window.onTurnstileLoaded = function () { /* lazy */ };
 
   document.addEventListener('yt-ai:theme-change', function () {
     if (turnstileWidgetId !== null && window.turnstile) {
@@ -123,16 +130,15 @@
     }
   });
 
-  /* ---- First Download click → show captcha, remember action ---- */
+  /* ---- Block first click (no token yet) ---- */
   function onDownloadClick(e) {
-    if (turnstileToken) return;              // token already present → let real handler run
+    if (turnstileToken) return;
     e.stopImmediatePropagation();
     e.preventDefault();
     showWidget();
-    pendingAction = function () { btn.click(); };   // re-fire once token arrives
   }
 
-  /* ---- Paste button — always works, no captcha required ---- */
+  /* ---- Paste button — always works ---- */
   function onPasteClick(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -165,15 +171,9 @@
     e.stopImmediatePropagation();
     e.preventDefault();
     showWidget();
-    pendingAction = function () {
-      if (!urlInput) urlInput = document.getElementById('yt-url');
-      if (urlInput) {
-        urlInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
-      }
-    };
   }
 
-  /* ---- Fetch interceptor (attaches token to /x/a POST) ---- */
+  /* ---- Fetch interceptor — attach token to /x/a POST ---- */
   var originalFetch = window.fetch;
   window.fetch = function (input, init) {
     var url = typeof input === 'string' ? input : (input && input.url) || '';
@@ -219,7 +219,6 @@
     if (!pasteBtn) { setTimeout(bind, 100); return; }
     if (!container) { setTimeout(bind, 100); return; }
 
-    // Hide captcha + label by default
     container.style.display = 'none';
     if (captchaLabel) captchaLabel.style.display = 'none';
 
