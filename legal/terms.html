@@ -9,6 +9,15 @@
   <meta name="description" content="Terms of Service for YT-Ai — the rules for using our free YouTube to MP3 converter.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0a0a">
+  <script>
+    (function(){
+    try {
+        var t = localStorage.getItem('yt-ai-theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+    } catch(e) { document.documentElement.setAttribute('data-theme', 'light'); }
+    })();
+  </script>
   <link rel="canonical" href="https://melamrahul.github.io/yt-ai/legal/terms">
   <link rel="icon" type="image/png" sizes="32x32" href="/yt-ai/assets/icons/icon192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/yt-ai/assets/icons/apple-touch-icon.png">
@@ -31,6 +40,7 @@
       .card { padding: 22px 18px; }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -45,6 +55,7 @@
         <a href="/yt-ai/legal/privacy">Privacy</a>
         <a href="/yt-ai/legal/terms">Terms</a>
         <a href="/yt-ai/legal/contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
       </div>
     </div>
   </nav>
@@ -108,5 +119,25 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function(){
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    var icon = btn.querySelector('i');
+    var cur = document.documentElement.getAttribute('data-theme') || 'light';
+    function setIcon(t){
+        if (!icon) return;
+        icon.classList.toggle('fa-moon', t !== 'dark');
+        icon.classList.toggle('fa-sun', t === 'dark');
+    }
+    setIcon(cur);
+    btn.addEventListener('click', function(){
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('yt-ai-theme', next); } catch(e) {}
+        setIcon(next);
+    });
+    })();
+  </script>
 </body>
 </html>
