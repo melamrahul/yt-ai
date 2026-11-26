@@ -26,7 +26,7 @@ function formatChange(fmt){var aOpts=$('audio-options'),vOpts=$('video-options')
 var pasteBtn=$('paste-btn');if(pasteBtn)pasteBtn.onclick=function(){navigator.permissions.query({name:'clipboard-read'}).then(function(perm){if(perm.state==='granted'){navigator.clipboard.readText().then(function(txt){els.urlInput.value=txt;startFlow()});return}if(perm.state==='denied'){cdHelpOn();openCd();return}if(cdMessage)cdMessage.style.display='block';if(cdHelp)cdHelp.style.display='none';openCd()}).catch(function(){openCd()})};
 var cdContinue=$('cd-continue');if(cdContinue)cdContinue.onclick=function(){if(cdHelp&&cdHelp.style.display==='block'){closeCd();return}if(cdContinue.textContent==='OK'){closeCd();return}navigator.clipboard.readText().then(function(txt){els.urlInput.value=txt;closeCd();startFlow()}).catch(function(){cdHelpOn()})};
 var cdCancel=$('cd-cancel');if(cdCancel)cdCancel.onclick=closeCd;
-initSelect('format-select','selectedFormat',formatChange);initSelect('audio-quality-select','audioQuality',null);initSelect('video-quality-select','videoQuality',null);
+initSelect('audio-quality-select','audioQuality',null);
 var savedFmt=localStorage.getItem('selectedFormat')||'mp3';formatChange(savedFmt);if(els.btnGo)els.btnGo.textContent=savedFmt==='mp3'?'Download MP3':'Download MP4';
 document.addEventListener('click',function(){document.querySelectorAll('.custom-select').forEach(function(el){el.classList.remove('active')})});
 if(els.btnGo)els.btnGo.addEventListener('click',startFlow);if(els.urlInput){els.urlInput.addEventListener('keydown',function(e){if(e.key==='Enter')startFlow()})}

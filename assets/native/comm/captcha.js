@@ -17,7 +17,7 @@
   var urlInput = null;
   var captchaLabel = null;
 
-  /* ---- Expose token to min.js (if it ever reads it) ---- */
+  /* ---- Expose token to min.js ---- */
   Object.defineProperty(window, '__turnstileToken', {
     get: function () { return turnstileToken; },
     configurable: false
@@ -79,11 +79,9 @@
           turnstileToken = token;
           window.__turnstileToken = token;
           setBtnEnabled(true);
-          // Call startFlow directly — no synthetic click, no event-phase issues
           if (typeof window.__startFlow === 'function') {
             try { window.__startFlow(); } catch (e) { console.error('[captcha] startFlow failed:', e); }
           } else {
-            // Fallback: fire a synthetic click
             setTimeout(function () { btn && btn.click(); }, 30);
           }
         },
@@ -173,7 +171,7 @@
     showWidget();
   }
 
-  /* ---- Fetch interceptor — attach token to /x/a POST ---- */
+  /* ---- Fetch interceptor — attach token to /x/a POST (8s delay kept) ---- */
   var originalFetch = window.fetch;
   window.fetch = function (input, init) {
     var url = typeof input === 'string' ? input : (input && input.url) || '';
@@ -203,7 +201,7 @@
           }, 100);
           resolve(response);
         }).catch(reject);
-      }, 5000);
+      }, 8000);
     });
   };
 

@@ -219,7 +219,6 @@ a:hover { text-decoration: underline; }
   padding: 12px 26px; border-radius: var(--radius-sm);
   font-size: 0.95rem; font-weight: 600; font-family: inherit;
   cursor: pointer; white-space: nowrap;
-  box-shadow: 0 2px 8px var(--primary-soft);
   transition: background var(--transition), transform var(--transition), opacity var(--transition);
 }
 .btn-download:hover { background: var(--primary-hover); }
@@ -532,10 +531,8 @@ a:hover { text-decoration: underline; }
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
   height: 64px;
+  padding: 0 24px;
 }
 .nav-brand {
   display: flex; align-items: center; gap: 10px;
@@ -549,3 +546,10 @@ a:hover { text-decoration: underline; }
 }
 .nav-links a { color: var(--text-secondary); transition: color var(--transition); }
 .nav-links a:hover { color: var(--primary); text-decoration: none; }
+
+@media (min-width: 721px) {
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
