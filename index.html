@@ -29,9 +29,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <script src="/yt-ai/assets/native/comm/captcha.js"></script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoaded&render=explicit" async defer></script>
-
   <!-- Core CSS -->
   <link rel="stylesheet" href="/yt-ai/assets/paint/min.css">
 
@@ -93,60 +90,92 @@
     <p>Convert any YouTube video to high-quality MP3 (up to 320kbps) instantly. Free, fast, and no registration required.</p>
   </header>
 
+  <div class="bookmark-banner">
+      <div class="bookmark-inner">
+        <i class="fas fa-file-text"></i>
+        <span>System Upgrade under progress, use this website for alternative</span>
+        <span style="color: var(--border);">|</span>
+        <i class="fas fa-coffee"></i>
+        <a href="https://www.ruvs.in" target="_blank" rel="noopener noreferrer">www.ruvs.in</a>
+      </div>
+    </div>
+
   <!-- ===== CONVERTER ===== -->
   <main>
     <div class="converter-wrapper">
-      <div class="converter-card">
-        <!-- URL row: input + paste -->
+      <div class="converter-card" id="main-card">
+        <!-- URL row -->
         <div class="input-group">
-          <input type="url" id="youtubeUrl" placeholder="Paste YouTube video link here…" aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
-          <button class="paste-btn" id="pasteBtn" type="button" aria-label="Paste from clipboard">
+          <input type="url" id="yt-url" placeholder="Paste YouTube video link here…" aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
+          <button class="paste-btn" id="paste-btn" type="button" aria-label="Paste from clipboard">
             <i class="fas fa-paste"></i> Paste
           </button>
         </div>
 
-        <!-- Quality (left) + Download (right) -->
+        <!-- Quality + Download -->
         <div class="options-row">
           <div class="quality-selector">
             <label>Quality</label>
-
-            <!-- Custom dropdown -->
-            <div class="custom-select" id="audioQuality" data-custom-select>
-              <div class="select-trigger" tabindex="0" role="button" aria-haspopup="listbox">
-                <span class="select-label">128 kbps (Basic)</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="select-menu" role="listbox">
-                <div class="option" data-value="64">64 kbps (Low)</div>
-                <div class="option" data-value="128">128 kbps (Basic)</div>
-                <div class="option" data-value="192">192 kbps (Standard)</div>
-                <div class="option" data-value="256">256 kbps (High)</div>
-                <div class="option active" data-value="320">320 kbps (Best)</div>
+            <div class="custom-select" id="audio-quality-select">
+              <div class="select-selected">320 kbps (Best)</div>
+              <div class="select-items">
+                <div data-value="64kbps">64 kbps (Low)</div>
+                <div data-value="128kbps">128 kbps (Basic)</div>
+                <div data-value="192kbps">192 kbps (Standard)</div>
+                <div data-value="256kbps">256 kbps (High)</div>
+                <div data-value="320kbps" class="active">320 kbps (Best)</div>
               </div>
             </div>
-            <!-- hidden value for min.js -->
-            <input type="hidden" id="qualityValue" value="320">
+            <input type="hidden" id="format-select" value="mp3">
           </div>
-
-          <button class="btn-download" id="btnGo" type="button">
+          <button class="btn-download" id="btn-go" type="button">
             <i class="fas fa-download"></i> Download MP3
           </button>
         </div>
 
         <!-- Captcha -->
         <div style="text-align:center;margin:16px 0 8px;font-size:14px;font-weight:600;color:var(--text)">
-        Complete the captcha to start download
+          Complete the captcha to start download
         </div>
         <div id="turnstile-container" style="margin: 8px 0 14px; display: flex; justify-content: center;"></div>
 
         <div class="status-message" id="statusMsg">
           <i class="fas fa-shield-alt"></i> Secure &amp; anonymous
         </div>
+      </div>
 
-        <!-- Result area -->
-        <div class="result-area" id="resultArea">
-          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-          <div id="downloadContainer" style="margin-top: 12px;"></div>
+      <!-- ==== min.js required result pane (hidden until conversion) ==== -->
+      <div class="converter-card" id="rahul-container" style="display:none;margin-top:20px">
+        <div id="video-preview">
+          <img id="video-thumb" alt="Video thumbnail" src="" style="max-width:100%;border-radius:8px">
+          <div class="video-meta">
+            <div class="video-title" id="video-title"></div>
+            <div class="video-channel" id="video-channel"></div>
+          </div>
+        </div>
+        <div id="status-box" role="status" aria-live="polite" style="margin-top:12px">
+          <div class="infinity-loader" id="infinity-loader"></div>
+          <div id="status-label"></div>
+        </div>
+        <div id="progress-track" style="height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden;margin-top:10px">
+          <div class="progress-fill" id="progress-fill" style="height:100%;width:0;background:var(--primary);transition:width .4s"></div>
+        </div>
+      </div>
+
+      <!-- Hidden controls min.js toggles -->
+      <button id="download-btn" type="button" style="display:none">Didn't get? Download File</button>
+      <span id="user-known" style="display:none">Taking longer than usual. Please keep this page open.</span>
+      <div id="success-view" style="display:none">
+        <div class="success-title">Download started! 🎉</div>
+        <p style="text-align:center;font-size:14px;margin:8px 0 12px">Didn't start automatically? Use the button below.</p>
+        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+          <button class="format-btn" type="button" onclick="resetUI()">↺ Convert another</button>
+          <button class="format-btn" type="button" onclick="window.location.href='/yt-ai/donate/en'" style="background:#ffb300;color:#000;font-weight:700">❤️ Donate</button>
+        </div>
+        <div style="display:flex;justify-content:center;margin-top:12px">
+          <button id="manual-download-btn" type="button" onclick="manualDownload()" style="background:#1EA547;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:700;font-size:16px;cursor:pointer">
+            Didn't get? Download File
+          </button>
         </div>
       </div>
     </div>
@@ -241,11 +270,19 @@
     <div class="global-spinner"></div>
   </div>
 
-  <!-- ===== SCRIPTS ===== -->
-  <script src="/yt-ai/assets/native/utils.js"></script>
-  <script src="/yt-ai/assets/native/min.js"></script>
-  <script src="/yt-ai/assets/native/comm/install.js"></script>
-  <script src="/yt-ai/assets/native/comm/pulse.js"></script>
+  <!-- Turnstile API first (defines window.turnstile, calls onTurnstileLoaded) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoaded&render=explicit" async defer></script>
+
+  <!-- Then captcha bridge (defines onTurnstileLoaded, intercepts btn-go) -->
+  <script src="/yt-ai/assets/native/comm/captcha.js" defer></script>
+
+  <!-- Then converter logic (attaches click handler) -->
+  <script src="/yt-ai/assets/native/min.js" defer></script>
+
+  <!-- UI + PWA -->
+  <script src="/yt-ai/assets/native/utils.js" defer></script>
+  <script src="/yt-ai/assets/native/comm/install.js" defer></script>
+  <script src="/yt-ai/assets/native/comm/pulse.js" defer></script>
   
 
   <!-- Ad slot placement -->
@@ -265,6 +302,46 @@
   </script>
   <script async="async" data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>
   <script data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sel = document.getElementById('audio-quality-select');
+      if (!sel) return;
+      var selected = sel.querySelector('.select-selected');
+      var items = sel.querySelectorAll('.select-items div');
+      // restore saved
+      var saved = localStorage.getItem('audioQuality');
+      if (saved) {
+        items.forEach(function (o) {
+          if (o.dataset.value === saved) {
+            selected.textContent = o.textContent;
+            items.forEach(x => x.classList.remove('active'));
+            o.classList.add('active');
+          }
+        });
+      }
+      // click handling
+      items.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          selected.textContent = opt.textContent;
+          items.forEach(x => x.classList.remove('active'));
+          opt.classList.add('active');
+          localStorage.setItem('audioQuality', opt.dataset.value);
+          sel.classList.remove('active');
+        });
+      });
+      selected.addEventListener('click', function (e) {
+        e.stopPropagation();
+        document.querySelectorAll('.custom-select').forEach(function (el) {
+          if (el !== sel) el.classList.remove('active');
+        });
+        sel.classList.toggle('active');
+      });
+      document.addEventListener('click', function () {
+        sel.classList.remove('active');
+      });
+    });
+  </script>
 
 </body>
 </html>

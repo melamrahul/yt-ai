@@ -343,3 +343,28 @@ a:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* min.js-compatible custom select */
+.custom-select { position: relative; cursor: pointer; }
+.custom-select .select-selected {
+  padding: 9px 32px 9px 14px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--bg); color: var(--text);
+  font-size: 0.9rem; font-weight: 500; min-width: 160px;
+  position: relative;
+}
+.custom-select .select-selected::after {
+  content: "▾"; position: absolute; right: 12px; top: 50%;
+  transform: translateY(-50%); color: var(--text-secondary); font-size: 0.7rem;
+}
+.custom-select .select-items {
+  display: none; position: absolute; top: calc(100% + 6px); left: 0;
+  min-width: 100%; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+  z-index: 200; padding: 6px; max-height: 260px; overflow-y: auto;
+}
+.custom-select.active .select-items { display: block; }
+.custom-select .select-items div {
+  padding: 10px 12px; border-radius: 6px; font-size: 0.88rem; color: var(--text);
+}
+.custom-select .select-items div:hover { background: var(--surface-alt); }
+.custom-select .select-items div.active { background: var(--primary-soft); color: var(--primary); font-weight: 600; }

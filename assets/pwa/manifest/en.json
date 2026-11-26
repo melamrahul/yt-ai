@@ -1,50 +1,53 @@
 {
-  "name": "YT-Ai — YouTube to MP3 Converter",
-  "short_name": "YT-Ai",
-  "description": "Free YouTube to MP3 converter. Fast, secure, up to 320kbps. No signup.",
-  "start_url": "/yt-ai/?utm_source=pwa",
-  "scope": "/yt-ai/",
-  "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#ffffff",
-  "theme_color": "#1a73e8",
-  "lang": "en",
-  "dir": "ltr",
-  "categories": ["utilities", "multimedia", "productivity"],
-  "icons": [
-    {
-      "src": "/yt-ai/assets/icons/icon192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/yt-ai/assets/icons/icon512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/yt-ai/assets/icons/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Convert YouTube to MP3",
-      "short_name": "Convert MP3",
-      "description": "Open the YouTube to MP3 converter",
-      "url": "/yt-ai/?action=convert",
-      "icons": [{ "src": "/yt-ai/assets/icons/icon192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Donate",
-      "short_name": "Donate",
-      "description": "Support YT-Ai",
-      "url": "/yt-ai/donate/en.html"
-    }
-  ],
-  "prefer_related_applications": false
+   "name":"YT-Ai — YouTube to MP3 Converter",
+   "short_name":"YT-Ai",
+   "description":"Free YouTube to MP3 converter. Fast, secure, up to 320kbps. No signup.",
+   "start_url":"/yt-ai/?utm_source=pwa",
+   "scope":"/yt-ai/",
+   "display":"standalone",
+   "orientation":"portrait-primary",
+   "background_color":"#ffffff",
+   "theme_color":"#1a73e8",
+   "lang":"en",
+   "dir":"ltr",
+   "categories":[
+      "utilities",
+      "multimedia",
+      "productivity"
+   ],
+   "icons":[
+      {
+         "src":"/yt-ai/assets/icons/icon192.png",
+         "sizes":"192x192",
+         "type":"image/png",
+         "purpose":"any"
+      },
+      {
+         "src":"/yt-ai/assets/icons/icon512.png",
+         "sizes":"512x512",
+         "type":"image/png",
+         "purpose":"any"
+      }
+   ],
+   "shortcuts":[
+      {
+         "name":"Convert YouTube to MP3",
+         "short_name":"Convert MP3",
+         "description":"Open the YouTube to MP3 converter",
+         "url":"/yt-ai/?action=convert",
+         "icons":[
+            {
+               "src":"/yt-ai/assets/icons/icon192.png",
+               "sizes":"192x192"
+            }
+         ]
+      },
+      {
+         "name":"Donate",
+         "short_name":"Donate",
+         "description":"Support YT-Ai",
+         "url":"/yt-ai/donate/en.html"
+      }
+   ],
+   "prefer_related_applications":false
 }
