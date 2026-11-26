@@ -324,9 +324,11 @@ a:hover { text-decoration: underline; }
 .success-sub { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; }
 .success-actions {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 12px;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
   margin-bottom: 16px;
 }
 
