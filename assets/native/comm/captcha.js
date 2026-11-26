@@ -1,5 +1,5 @@
 /* ============================================================
-   YT-Ai — Cloudflare Turnstile (lazy, theme-aware)
+   YT-Ai — Cloudflare Turnstile (lazy, auto-run after solve)
    Path: /yt-ai/assets/native/comm/captcha.js
    ============================================================ */
 (function () {
@@ -16,8 +16,8 @@
   var btn = null;
   var pasteBtn = null;
   var urlInput = null;
+  var captchaLabel = null;
 
-  /* ---- Shared token for min.js ---- */
   Object.defineProperty(window, '__turnstileToken', {
     get: function () { return turnstileToken; },
     configurable: false
@@ -38,16 +38,20 @@
 
   function showWidget() {
     if (!container) container = document.getElementById('turnstile-container');
+    if (!captchaLabel) captchaLabel = document.querySelector('.captcha-label');
     if (!container) return;
     container.style.display = 'flex';
+    if (captchaLabel) captchaLabel.style.display = 'block';
     widgetVisible = true;
     renderTurnstile();
   }
 
   function hideWidget() {
     if (!container) container = document.getElementById('turnstile-container');
+    if (!captchaLabel) captchaLabel = document.querySelector('.captcha-label');
     if (!container) return;
     container.style.display = 'none';
+    if (captchaLabel) captchaLabel.style.display = 'none';
     widgetVisible = false;
   }
 
@@ -73,6 +77,7 @@
           turnstileToken = token;
           window.__turnstileToken = token;
           setBtnEnabled(true);
+          // Auto-run the conversion immediately after solve
           flushPending();
         },
         'expired-callback': function () {
@@ -95,9 +100,8 @@
     }
   }
 
-  window.onTurnstileLoaded = function () { /* lazy — do not auto-render */ };
+  window.onTurnstileLoaded = function () { /* lazy — no auto render */ };
 
-  /* Re-render widget on theme change */
   document.addEventListener('yt-ai:theme-change', function () {
     if (turnstileWidgetId !== null && window.turnstile) {
       try { window.turnstile.remove(turnstileWidgetId); } catch (_) {}
@@ -109,7 +113,6 @@
     }
   });
 
-  /* Reset widget after conversion (dispatched by min.js) */
   document.addEventListener('yt-ai:reset-turnstile', function () {
     turnstileToken = '';
     window.__turnstileToken = '';
@@ -120,22 +123,17 @@
     }
   });
 
-  /* ---- Interceptors ---- */
-
+  /* ---- First Download click → show captcha, remember action ---- */
   function onDownloadClick(e) {
-    if (turnstileToken) return;             // token ready → allow real handler
+    if (turnstileToken) return;              // token already present → let real handler run
     e.stopImmediatePropagation();
     e.preventDefault();
-
     showWidget();
-    pendingAction = function () {
-      // Re-fire after token arrived
-      btn.click();
-    };
+    pendingAction = function () { btn.click(); };   // re-fire once token arrives
   }
 
+  /* ---- Paste button — always works, no captcha required ---- */
   function onPasteClick(e) {
-    // Paste button ALWAYS works — no captcha gating
     e.preventDefault();
     e.stopImmediatePropagation();
     try {
@@ -147,7 +145,6 @@
             urlInput.dispatchEvent(new Event('input', { bubbles: true }));
           }
         }).catch(function () {
-          // Fallback: focus input so user can paste manually
           if (!urlInput) urlInput = document.getElementById('yt-url');
           if (urlInput) urlInput.focus();
         });
@@ -161,9 +158,10 @@
     }
   }
 
+  /* ---- Enter key → same as Download ---- */
   function onEnterKey(e) {
     if (e.key !== 'Enter') return;
-    if (turnstileToken) return;             // token ready → allow
+    if (turnstileToken) return;
     e.stopImmediatePropagation();
     e.preventDefault();
     showWidget();
@@ -175,7 +173,7 @@
     };
   }
 
-  /* ---- Fetch interceptor (kept for backend token attachment) ---- */
+  /* ---- Fetch interceptor (attaches token to /x/a POST) ---- */
   var originalFetch = window.fetch;
   window.fetch = function (input, init) {
     var url = typeof input === 'string' ? input : (input && input.url) || '';
@@ -215,13 +213,15 @@
     pasteBtn = document.getElementById('paste-btn');
     urlInput = document.getElementById('yt-url');
     container = document.getElementById('turnstile-container');
+    captchaLabel = document.querySelector('.captcha-label');
 
     if (!btn) { setTimeout(bind, 100); return; }
     if (!pasteBtn) { setTimeout(bind, 100); return; }
     if (!container) { setTimeout(bind, 100); return; }
 
-    // Hide captcha by default — lazy until user clicks Download
+    // Hide captcha + label by default
     container.style.display = 'none';
+    if (captchaLabel) captchaLabel.style.display = 'none';
 
     btn.addEventListener('click', onDownloadClick, true);
     pasteBtn.addEventListener('click', onPasteClick, true);

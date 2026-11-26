@@ -1,3 +1,6 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -31,7 +34,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <!-- Core CSS -->
-  <link rel="stylesheet" href="/yt-ai/assets/paint/min.css">
+  <link rel="stylesheet" href="/yt-ai/assets/paint/min.css?v={{ site.build_revision }}">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -51,36 +54,38 @@
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
-    <div class="nav-brand">
-      <img src="/yt-ai/assets/icons/icon192.png" alt="YT-Ai Logo" width="36" height="36">
-      <div class="brand-text">YT<span>-Ai</span></div>
-    </div>
-    <div class="nav-links">
-      <a href="/yt-ai/">Home</a>
-      <a href="#features">Features</a>
-      <a href="#faq">FAQ</a>
-      <a href="/yt-ai/privacy">Privacy</a>
-
-      <div class="lang-selector">
-        <button class="lang-btn" id="langBtn" aria-label="Select language">
-          <i class="fas fa-globe"></i> <span id="langLabel">EN</span>
-        </button>
-        <div class="lang-dropdown" id="langDropdown">
-          <a href="/yt-ai/lang/en/" class="active" data-lang="en">English</a>
-          <a href="/yt-ai/lang/es/" data-lang="es">Español</a>
-          <a href="/yt-ai/lang/fr/" data-lang="fr">Français</a>
-          <a href="/yt-ai/lang/id/" data-lang="id">Bahasa Indonesia</a>
-          <a href="/yt-ai/lang/de/" data-lang="de">Deutsch</a>
-        </div>
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="/yt-ai/assets/icons/icon192.png" alt="YT-Ai Logo" width="36" height="36">
+        <div class="brand-text">YT<span>-Ai</span></div>
       </div>
+      <div class="nav-links">
+        <a href="/yt-ai/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="/yt-ai/privacy">Privacy</a>
 
-      <button class="install-btn" id="installBtn">
-        <i class="fas fa-download"></i> Install
-      </button>
+        <div class="lang-selector">
+          <button class="lang-btn" id="langBtn" aria-label="Select language">
+            <i class="fas fa-globe"></i> <span id="langLabel">EN</span>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <a href="/yt-ai/lang/en/" class="active" data-lang="en">English</a>
+            <a href="/yt-ai/lang/es/" data-lang="es">Español</a>
+            <a href="/yt-ai/lang/fr/" data-lang="fr">Français</a>
+            <a href="/yt-ai/lang/id/" data-lang="id">Bahasa Indonesia</a>
+            <a href="/yt-ai/lang/de/" data-lang="de">Deutsch</a>
+          </div>
+        </div>
 
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-      </button>
+        <button class="install-btn" id="installBtn">
+          <i class="fas fa-download"></i> Install
+        </button>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -89,16 +94,6 @@
     <h1>YouTube to <span>MP3</span> Converter</h1>
     <p>Convert any YouTube video to high-quality MP3 (up to 320kbps) instantly. Free, fast, and no registration required.</p>
   </header>
-
-  <div class="bookmark-banner">
-    <div class="bookmark-inner">
-      <i style="color: var(--warning);" class="fas fa-exclamation-triangle"></i>
-      <span>System Upgrade under progress, use this website for alternative</span>
-      <span style="color: var(--border);">|</span>
-      <i class="fas fa-external-link"></i>
-      <a href="https://www.ruvs.in" target="_blank" rel="noopener noreferrer">www.ruvs.in</a>
-    </div>
-  </div>
 
   <!-- ===== CONVERTER ===== -->
   <main>
@@ -157,10 +152,6 @@
         <div class="result-progress">
           <div class="big-loader" id="infinity-loader"></div>
           <div class="big-status" id="status-label">Starting…</div>
-        </div>
-
-        <div id="progress-track" class="progress-track">
-          <div class="progress-fill" id="progress-fill"></div>
         </div>
 
         <div id="status-box" style="display:none"></div>
@@ -275,12 +266,12 @@
   <!-- Turnstile API first -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoaded&render=explicit" async defer></script>
 
-  <script src="/yt-ai/assets/native/comm/captcha.js" defer></script>
-  <script src="/yt-ai/assets/native/min.js" defer></script>
-  <script src="/yt-ai/assets/native/utils.js" defer></script>
-  <script src="/yt-ai/assets/native/comm/install.js" defer></script>
-  <script src="/yt-ai/assets/native/comm/pulse.js" defer></script>
-  <script src="/yt-ai/assets/native/nexa.js" defer></script>
+  <script src="/yt-ai/assets/native/comm/captcha.js?v={{ site.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/min.js?v={{ site.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/utils.js?v={{ site.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/comm/install.js?v={{ site.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/comm/pulse.js?v={{ site.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/nexa.js?v={{ site.build_revision }}" defer></script>
 
   <!-- Ad slot placement -->
   <script>

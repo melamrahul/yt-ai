@@ -1,6 +1,5 @@
 /* ============================================================
-   YT-Ai — UI Utilities (theme, language, custom dropdowns,
-   custom dialogs, clipboard, install, etc.)
+   YT-Ai — UI Utilities (theme, language, dialogs, clipboard, install)
    Path: /yt-ai/assets/native/utils.js
    ============================================================ */
 (function () {
@@ -18,6 +17,11 @@
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const theme = saved || (prefersDark ? 'dark' : 'light');
       this.apply(theme);
+
+      // Re-fire after captcha.js has had a tick to bind its listener
+      setTimeout(() => {
+        document.dispatchEvent(new CustomEvent('yt-ai:theme-change', { detail: { theme } }));
+      }, 0);
 
       const btn = $('#themeToggle');
       if (btn) {
@@ -75,49 +79,6 @@
     }
   };
 
-  /* ---------- Custom dropdown (generic) ---------- */
-  class CustomSelect {
-    constructor(root, { onChange } = {}) {
-      this.root = root;
-      this.trigger = $('.select-trigger', root);
-      this.menu = $('.select-menu', root);
-      this.labelEl = $('.select-label', root) || this.trigger;
-      this.options = $$('.option', root);
-      this.onChange = onChange || (() => {});
-      this.value = null;
-      this._bind();
-      // set initial from active option or first
-      const active = this.options.find(o => o.classList.contains('active')) || this.options[0];
-      if (active) this.select(active.dataset.value, active.textContent.trim(), false);
-    }
-    _bind() {
-      this.trigger.addEventListener('click', e => {
-        e.stopPropagation();
-        document.querySelectorAll('.custom-select.open').forEach(el => { if (el !== this.root) el.classList.remove('open'); });
-        this.root.classList.toggle('open');
-      });
-      this.options.forEach(opt => {
-        opt.addEventListener('click', () => {
-          this.select(opt.dataset.value, opt.textContent.trim(), true);
-          this.root.classList.remove('open');
-        });
-      });
-      document.addEventListener('click', e => {
-        if (!this.root.contains(e.target)) this.root.classList.remove('open');
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') this.root.classList.remove('open');
-      });
-    }
-    select(value, text, fire) {
-      this.value = value;
-      if (this.labelEl) this.labelEl.textContent = text;
-      this.options.forEach(o => o.classList.toggle('active', o.dataset.value === value));
-      if (fire) this.onChange(value);
-    }
-    getValue() { return this.value; }
-  }
-
   /* ---------- Custom Dialog ---------- */
   const Dialog = {
     _el: null,
@@ -136,11 +97,6 @@
       this._el = backdrop;
       return backdrop;
     },
-    /**
-     * Show dialog.
-     * @param {Object} opts { title, body, buttons: [{text, type, value, autoClose}], dismissible }
-     * @returns {Promise<string>} resolves with button value or null
-     */
     show(opts) {
       const bd = this._build();
       $('#dlgTitle', bd).textContent = opts.title || '';
@@ -164,11 +120,14 @@
       bd.classList.add('open');
       document.body.style.overflow = 'hidden';
 
-      // backdrop click
       if (opts.dismissible !== false) {
-        bd.addEventListener('click', e => {
-          if (e.target === bd) this.close(null);
-        }, { once: true });
+        const self = this;
+        bd.addEventListener('click', function handler(e) {
+          if (e.target === bd) {
+            bd.removeEventListener('click', handler);
+            self.close(null);
+          }
+        });
       }
 
       return new Promise(res => { this._resolve = res; });
@@ -194,7 +153,7 @@
     }
   };
 
-  /* ---------- Clipboard paste helper ---------- */
+  /* ---------- Clipboard helper (for non-captcha use) ---------- */
   const Clipboard = {
     async read() {
       if (!navigator.clipboard || !navigator.clipboard.readText) {
@@ -213,7 +172,6 @@
         }
         return false;
       } catch (err) {
-        // Permission denied or unsupported
         const res = await Dialog.show({
           title: 'Clipboard Permission',
           body: `We need permission to read your clipboard.<br>Your browser will ask. Please click <strong>Allow</strong>.<br><br>
@@ -247,15 +205,9 @@
       if (!btn) return;
       let deferredPrompt = null;
       const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-      const isMobile = /android|iphone|ipad|ipod/i.test(navigator.userAgent) ||
-                       (navigator.maxTouchPoints > 1 && /Macintosh/i.test(navigator.userAgent));
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 
       if (isStandalone) { btn.style.display = 'none'; return; }
-
-      // icon hint
-      const icon = btn.querySelector('.material-symbols-outlined, i');
-      if (icon && !isIOS) icon.textContent = '';
 
       window.addEventListener('beforeinstallprompt', e => {
         e.preventDefault();
@@ -295,39 +247,10 @@
     Language.init();
     Install.init();
 
-    // Expose globally for min.js
+    // Expose globally for min.js / captcha.js
     window.YTAi = {
-      Dialog, CustomSelect, Clipboard, Loader, Theme, Language,
-      $, $$,
-      getQualitySelect: () => window.__qualitySelect || null
+      Dialog, Clipboard, Loader, Theme, Language, $, $$
     };
-
-    // Init any declarative custom selects
-    $$('[data-custom-select]').forEach(el => {
-      const id = el.id;
-      const inst = new CustomSelect(el, {
-        onChange: v => {
-          if (id === 'audioQuality') {
-            const hidden = document.getElementById('qualityValue');
-            if (hidden) hidden.value = v;
-          }
-        }
-      });
-      if (id === 'audioQuality') window.__qualitySelect = inst;
-    });
-
-    // Paste button
-    const pasteBtn = $('#pasteBtn');
-    const urlInput = $('#youtubeUrl');
-    if (pasteBtn && urlInput) {
-      pasteBtn.addEventListener('click', async () => {
-        await Clipboard.pasteInto(urlInput);
-        urlInput.focus();
-      });
-    }
-
-    // Theme toggle fallback (in case utils loaded after DOM)
-    if (!window.__themeReady) window.__themeReady = true;
   }
 
   if (document.readyState === 'loading') {
