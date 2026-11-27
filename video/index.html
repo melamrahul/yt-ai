@@ -6,18 +6,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="YT-Ai Video Downloader — Download YouTube videos in MP4 up to 4K. Free, no signup, works on all devices.">
-  <meta name="keywords" content="youtube to mp4, yt-ai video, youtube downloader, mp4 downloader, 1080p, 4k, free video downloader">
+  <meta name="description" content="YT-Ai — Free YouTube to MP4 downloader. Download videos in up to 4K resolution. Fast, secure, no registration required. Works on all devices.">
+  <meta name="keywords" content="youtube to mp4, yt-ai, youtube video downloader, mp4 downloader, 1080p, 4k, free video downloader, download youtube videos">
   <meta name="author" content="YT-Ai">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://melamrahul.github.io/yt-ai/video/">
-  <title>YouTube to MP4 Downloader (4K) — Free & Fast | YT-Ai</title>
+  <title>YouTube to MP4 Downloader (Up to 4K) — Free & Fast | YT-Ai</title>
 
+  <!-- Icons -->
   <link rel="icon" type="image/x-icon" href="/yt-ai/assets/icons/favicon.ico">
   <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/assets/icons/icon192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/assets/icons/icon512.png">
   <link rel="apple-touch-icon" href="/yt-ai/assets/icons/apple-touch-icon.png">
 
+  <!-- PWA manifest -->
   <link rel="manifest" href="/yt-ai/assets/pwa/manifest/en.json">
   <meta name="theme-color" content="transparent">
   <meta name="mobile-web-app-capable" content="yes">
@@ -25,24 +27,16 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="YT-Ai">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <link rel="stylesheet" href="/yt-ai/assets/paint/min.css?v={{ site.build_revision }}">
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="/yt-ai/assets/paint/min.css?v={{ site.github.build_revision }}">
 
-  <!-- Theme bootstrapper (matches index.html key) -->
-  <script>
-  (function(){
-    try {
-      var t = localStorage.getItem('yt-ai-theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    } catch(e) { document.documentElement.setAttribute('data-theme', 'light'); }
-  })();
-  </script>
-
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -60,6 +54,40 @@
     .ad-wrap{text-align:center;margin:15px auto;width:100%;overflow:hidden;display:flex;justify-content:center}
     .ad-desktop{display:none}
     @media screen and (min-width:768px){.ad-desktop{display:flex}}
+
+    /* MP3 / MP4 switch */
+    .fmt-switch {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .fmt-switch a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: background .15s ease, color .15s ease;
+      white-space: nowrap;
+    }
+    .fmt-switch a:hover { color: var(--text); text-decoration: none; }
+    .fmt-switch a.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    .fmt-switch a.active:hover { background: var(--primary-hover); color: #fff; }
+    @media (max-width: 720px) {
+      .fmt-switch a { padding: 5px 10px; font-size: 0.74rem; }
+      .fmt-switch a i { font-size: 0.7rem; }
+    }
   </style>
 </head>
 <body>
@@ -72,9 +100,19 @@
         <div class="brand-text">YT<span>-Ai</span></div>
       </div>
       <div class="nav-links">
-        <a href="/yt-ai/">MP3</a>
-        <a href="/yt-ai/video/" style="color:var(--primary);font-weight:600;">MP4</a>
-        <a href="/yt-ai/contact.html">Contact</a>
+        <!-- MP3 / MP4 switch -->
+        <div class="fmt-switch" role="tablist" aria-label="Format">
+          <a href="/yt-ai/" role="tab" aria-selected="false">
+            <i class="fas fa-music"></i> MP3
+          </a>
+          <a href="/yt-ai/video/" class="active" role="tab" aria-selected="true">
+            <i class="fas fa-video"></i> MP4
+          </a>
+        </div>
+
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="/yt-ai/legal/privacy">Privacy</a>
 
         <div class="lang-selector">
           <button class="lang-btn" id="langBtn" aria-label="Select language">
@@ -89,6 +127,10 @@
           </div>
         </div>
 
+        <button class="install-btn" id="installBtn">
+          <i class="fas fa-download"></i>
+        </button>
+
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
           <i class="fas fa-moon"></i>
         </button>
@@ -99,11 +141,12 @@
   <!-- ===== HERO ===== -->
   <header class="hero">
     <h1>YouTube to <span>MP4</span> Downloader</h1>
-    <p>Download YouTube videos in MP4 up to 4K. Free, fast, and no registration required.</p>
+    <p>Download YouTube videos in MP4 up to 4K resolution. Free, fast, and no registration required.</p>
   </header>
 
   <!-- ===== CONVERTER ===== -->
   <main>
+    <!-- ===== AD: Desktop 728x90 ===== -->
     <div class="ad-wrap ad-desktop">
       <script>atOptions={'key':'ed8693a073cffc9bf54dc986cd520bd4','format':'iframe','height':90,'width':728,'params':{}};</script>
       <script async src="https://bauval.org/22/ed8693a073cffc9bf54dc986cd520bd4"></script>
@@ -111,6 +154,7 @@
 
     <div class="converter-wrapper">
       <div class="converter-card" id="main-card">
+        <!-- URL row -->
         <div class="input-group">
           <input type="url" id="yt-url" placeholder="Paste YouTube video link here…" aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
           <button class="paste-btn" id="paste-btn" type="button" aria-label="Paste from clipboard" title="Paste from clipboard">
@@ -118,6 +162,7 @@
           </button>
         </div>
 
+        <!-- Resolution + Download -->
         <div class="options-row">
           <div class="quality-selector">
             <label>Resolution</label>
@@ -142,9 +187,11 @@
           <i class="fas fa-shield-alt"></i> Secure &amp; anonymous
         </div>
 
+        <!-- Captcha -->
         <div class="captcha-label">Complete the captcha to start download</div>
         <div id="turnstile-container" class="turnstile-container"></div>
 
+        <!-- ===== AD: Mobile 320x50 ===== -->
         <div class="ad-wrap">
           <script>atOptions={'key':'2aa89d7b97640f8c5c2d78ea53485d73','format':'iframe','height':50,'width':320,'params':{}};</script>
           <script async src="https://bauval.org/22/2aa89d7b97640f8c5c2d78ea53485d73"></script>
@@ -179,19 +226,20 @@
         <p class="success-sub">Didn't start automatically? Use the button below.</p>
         <div class="success-actions">
           <button class="format-btn" type="button" onclick="resetUI()">↺ Convert another</button>
-          <button class="format-btn format-btn-donate" type="button" onclick="window.location.href='/yt-ai/donate/en.html'">❤️ Donate</button>
+          <button class="format-btn format-btn-donate" type="button" onclick="window.location.href='/yt-ai/donate/en'">❤️ Donate</button>
           <button id="manual-download-btn" class="btn-manual" type="button" onclick="manualDownload()">Didn't get? Download File</button>
         </div>
       </div>
     </div>
 
+    <!-- Bookmark / Donate -->
     <div class="bookmark-banner">
       <div class="bookmark-inner">
         <i class="fas fa-bookmark"></i>
         <span>Please bookmark this page</span>
         <span style="color: var(--border);">|</span>
         <i class="fas fa-coffee"></i>
-        <a href="/yt-ai/donate/en.html" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+        <a href="/yt-ai/donate/en" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
       </div>
     </div>
 
@@ -261,10 +309,10 @@
     <div class="footer-inner">
       <p>&copy; 2026 <b>YT-Ai</b>. All rights reserved. Designed for speed and simplicity.</p>
       <div class="footer-links">
-        <a href="/yt-ai/legal/privacy.html">Privacy Policy</a>
-        <a href="/yt-ai/legal/terms.html">Terms of Service</a>
-        <a href="/yt-ai/legal/dmca.html">DMCA</a>
-        <a href="/yt-ai/legal/contact.html">Contact</a>
+        <a href="/yt-ai/legal/privacy">Privacy Policy</a>
+        <a href="/yt-ai/legal/terms">Terms of Service</a>
+        <a href="/yt-ai/legal/dmca">DMCA</a>
+        <a href="/yt-ai/legal/contact">Contact</a>
       </div>
     </div>
   </footer>
@@ -276,10 +324,10 @@
   <!-- Turnstile API -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoaded&render=explicit" async defer></script>
 
-  <script src="/yt-ai/assets/native/comm/captcha.js?v={{ site.build_revision }}" defer></script>
-  <script src="/yt-ai/assets/native/utils.js?v={{ site.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/comm/captcha.js?v={{ site.github.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/utils.js?v={{ site.github.build_revision }}" defer></script>
 
-  <!-- MP4-specific converter logic (mirrors min.js but uses format=mp4 + video-quality-select) -->
+  <!-- MP4 converter logic -->
   <script defer>
   'use strict';
   (function(){
@@ -555,31 +603,8 @@
   })();
   </script>
 
-  <script src="/yt-ai/assets/native/comm/install.js?v={{ site.build_revision }}" defer></script>
-  <script src="/yt-ai/assets/native/comm/pulse.js?v={{ site.build_revision }}" defer></script>
-
-  <!-- Theme toggle -->
-  <script defer>
-  (function(){
-    var btn = document.getElementById('themeToggle');
-    if (!btn) return;
-    var icon = btn.querySelector('i');
-    var cur = document.documentElement.getAttribute('data-theme') || 'light';
-    function setIcon(t){
-      if (!icon) return;
-      icon.classList.toggle('fa-moon', t !== 'dark');
-      icon.classList.toggle('fa-sun', t === 'dark');
-    }
-    setIcon(cur);
-    btn.addEventListener('click', function(){
-      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('yt-ai-theme', next); } catch(e) {}
-      setIcon(next);
-      document.dispatchEvent(new CustomEvent('yt-ai:theme-change',{ detail:{ theme: next } }));
-    });
-  })();
-  </script>
+  <script src="/yt-ai/assets/native/comm/install.js?v={{ site.github.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/comm/pulse.js?v={{ site.github.build_revision }}" defer></script>
 
   <!-- Ad slot placement (native) -->
   <script>
