@@ -219,7 +219,7 @@ a:hover { text-decoration: underline; }
   z-index: 200;
   padding: 6px;
   max-height: 260px;
-  overflow-y: auto;
+  overflow-y: overlay;
 }
 .custom-select.active .select-items { display: block; }
 .custom-select .select-items div {
