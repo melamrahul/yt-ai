@@ -54,40 +54,6 @@
     .ad-wrap{text-align:center;margin:15px auto;width:100%;overflow:hidden;display:flex;justify-content:center}
     .ad-desktop{display:none}
     @media screen and (min-width:768px){.ad-desktop{display:flex}}
-
-    /* MP3 / MP4 switch */
-    .fmt-switch {
-      display: inline-flex;
-      align-items: center;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 3px;
-      gap: 2px;
-    }
-    .fmt-switch a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: background .15s ease, color .15s ease;
-      white-space: nowrap;
-    }
-    .fmt-switch a:hover { color: var(--text); text-decoration: none; }
-    .fmt-switch a.active {
-      background: var(--primary);
-      color: #fff;
-    }
-    .fmt-switch a.active:hover { background: var(--primary-hover); color: #fff; }
-    @media (max-width: 720px) {
-      .fmt-switch a { padding: 5px 10px; font-size: 0.74rem; }
-      .fmt-switch a i { font-size: 0.7rem; }
-    }
   </style>
 </head>
 <body>
@@ -145,6 +111,7 @@
 
     <div class="converter-wrapper">
       <div class="converter-card" id="main-card">
+        <div class="converter-card" id="main-card">
         <!-- MP3 / MP4 switch -->
         <div class="fmt-switch" role="tablist" aria-label="Format">
           <a href="/yt-ai/audio/" class="active" role="tab" aria-selected="true">
@@ -153,7 +120,7 @@
           <a href="/yt-ai/video/" role="tab" aria-selected="false">
             <i class="fas fa-video"></i> MP4
           </a>
-        </div><br>
+        </div>
         <!-- URL row -->
         <div class="input-group">
           <input type="url" id="yt-url" placeholder="Paste YouTube video link here…" aria-label="YouTube video URL" autocomplete="off" spellcheck="false">

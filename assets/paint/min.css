@@ -564,3 +564,42 @@ a:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ===== Format switch (inside converter card) ===== */
+.fmt-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+  width: fit-content;
+  margin: 0 auto 18px;
+}
+.fmt-switch a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background .15s ease, color .15s ease;
+  white-space: nowrap;
+}
+.fmt-switch a:hover { color: var(--text); text-decoration: none; }
+.fmt-switch a.active {
+  background: var(--primary);
+  color: #fff;
+}
+.fmt-switch a.active:hover { background: var(--primary-hover); color: #fff; }
+
+@media (max-width: 720px) {
+  .fmt-switch { margin-bottom: 14px; }
+  .fmt-switch a { padding: 5px 10px; font-size: 0.74rem; }
+  .fmt-switch a i { font-size: 0.7rem; }
+}
