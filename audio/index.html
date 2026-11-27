@@ -1,0 +1,352 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="YT-Ai Audio Converter — Convert YouTube videos to MP3 audio up to 320kbps. Free, fast, no registration. Works on all devices.">
+  <meta name="keywords" content="youtube to audio, youtube to mp3, yt-ai audio, audio converter, mp3 downloader, 320kbps, free audio download">
+  <meta name="author" content="YT-Ai">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://melamrahul.github.io/yt-ai/audio/">
+  <title>YouTube Audio Converter (MP3 up to 320kbps) — Free | YT-Ai</title>
+
+  <!-- Icons -->
+  <link rel="icon" type="image/x-icon" href="/yt-ai/assets/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/assets/icons/icon192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/assets/icons/icon512.png">
+  <link rel="apple-touch-icon" href="/yt-ai/assets/icons/apple-touch-icon.png">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/yt-ai/assets/pwa/manifest/en.json">
+  <meta name="theme-color" content="transparent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="YT-Ai">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="/yt-ai/assets/paint/min.css?v={{ site.github.build_revision }}">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "YT-Ai YouTube Audio Converter",
+    "url": "https://melamrahul.github.io/yt-ai/audio/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online YouTube audio converter with up to 320kbps MP3 quality."
+  }
+  </script>
+
+  <style>
+    .ad-wrap{text-align:center;margin:15px auto;width:100%;overflow:hidden;display:flex;justify-content:center}
+    .ad-desktop{display:none}
+    @media screen and (min-width:768px){.ad-desktop{display:flex}}
+
+    /* MP3 / MP4 switch */
+    .fmt-switch {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .fmt-switch a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: background .15s ease, color .15s ease;
+      white-space: nowrap;
+    }
+    .fmt-switch a:hover { color: var(--text); text-decoration: none; }
+    .fmt-switch a.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    .fmt-switch a.active:hover { background: var(--primary-hover); color: #fff; }
+    @media (max-width: 720px) {
+      .fmt-switch a { padding: 5px 10px; font-size: 0.74rem; }
+      .fmt-switch a i { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="/yt-ai/assets/icons/icon192.png" alt="YT-Ai Logo" width="36" height="36">
+        <div class="brand-text">YT<span>-Ai</span></div>
+      </div>
+      <div class="nav-links">
+        <!-- MP3 / MP4 switch -->
+        <div class="fmt-switch" role="tablist" aria-label="Format">
+          <a href="/yt-ai/audio/" class="active" role="tab" aria-selected="true">
+            <i class="fas fa-music"></i> Audio
+          </a>
+          <a href="/yt-ai/video/" role="tab" aria-selected="false">
+            <i class="fas fa-video"></i> Video
+          </a>
+        </div>
+
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="/yt-ai/legal/privacy">Privacy</a>
+
+        <div class="lang-selector">
+          <button class="lang-btn" id="langBtn" aria-label="Select language">
+            <i class="fas fa-globe"></i> <span id="langLabel">EN</span>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <a href="/yt-ai/lang/en/" class="active" data-lang="en">English</a>
+            <a href="/yt-ai/lang/es/" data-lang="es">Español</a>
+            <a href="/yt-ai/lang/fr/" data-lang="fr">Français</a>
+            <a href="/yt-ai/lang/id/" data-lang="id">Bahasa Indonesia</a>
+            <a href="/yt-ai/lang/de/" data-lang="de">Deutsch</a>
+          </div>
+        </div>
+
+        <button class="install-btn" id="installBtn">
+          <i class="fas fa-download"></i>
+        </button>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <h1>YouTube <span>Audio</span> Converter</h1>
+    <p>Extract high-quality audio from any YouTube video. MP3 up to 320kbps — free, fast, and no registration required.</p>
+  </header>
+
+  <!-- ===== CONVERTER ===== -->
+  <main>
+    <!-- ===== AD: Desktop 728x90 ===== -->
+    <div class="ad-wrap ad-desktop">
+      <script>atOptions={'key':'ed8693a073cffc9bf54dc986cd520bd4','format':'iframe','height':90,'width':728,'params':{}};</script>
+      <script async src="https://bauval.org/22/ed8693a073cffc9bf54dc986cd520bd4"></script>
+    </div>
+
+    <div class="converter-wrapper">
+      <div class="converter-card" id="main-card">
+        <!-- URL row -->
+        <div class="input-group">
+          <input type="url" id="yt-url" placeholder="Paste YouTube video link here…" aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
+          <button class="paste-btn" id="paste-btn" type="button" aria-label="Paste from clipboard" title="Paste from clipboard">
+            <i class="fas fa-clipboard"></i>
+          </button>
+        </div>
+
+        <!-- Quality + Download -->
+        <div class="options-row">
+          <div class="quality-selector">
+            <label>Audio quality</label>
+            <div class="custom-select" id="audio-quality-select">
+              <div class="select-selected">320 kbps (Ultra)</div>
+              <div class="select-items">
+                <div data-value="64kbps">64 kbps (Low)</div>
+                <div data-value="128kbps">128 kbps (Basic)</div>
+                <div data-value="192kbps">192 kbps (Standard)</div>
+                <div data-value="256kbps">256 kbps (High)</div>
+                <div data-value="320kbps" class="active">320 kbps (Ultra)</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-download" id="btn-go" type="button">
+            <i class="fas fa-download"></i> Download Audio
+          </button>
+        </div>
+
+        <div class="status-message" id="statusMsg">
+          <i class="fas fa-shield-alt"></i> Secure &amp; anonymous
+        </div>
+
+        <!-- Captcha -->
+        <div class="captcha-label">Complete the captcha to start download</div>
+        <div id="turnstile-container" class="turnstile-container"></div>
+
+        <!-- ===== AD: Mobile 320x50 ===== -->
+        <div class="ad-wrap">
+          <script>atOptions={'key':'2aa89d7b97640f8c5c2d78ea53485d73','format':'iframe','height':50,'width':320,'params':{}};</script>
+          <script async src="https://bauval.org/22/2aa89d7b97640f8c5c2d78ea53485d73"></script>
+        </div>
+      </div>
+
+      <!-- ==== Conversion result pane ==== -->
+      <div class="converter-card result-card" id="rahul-container" style="display:none">
+        <div class="result-meta" id="video-preview">
+          <img id="video-thumb" class="result-thumb" alt="Video thumbnail" src="">
+          <div class="result-text">
+            <div class="video-title" id="video-title">—</div>
+            <div class="video-channel" id="video-channel"></div>
+          </div>
+        </div>
+
+        <br><div class="result-divider"></div>
+
+        <br><div class="result-progress">
+          <div class="big-loader" id="infinity-loader"></div>
+          <div class="big-status" id="status-label">Starting…</div>
+        </div>
+
+        <div id="status-box" style="display:none"></div>
+      </div>
+
+      <button id="download-btn" type="button" style="display:none">Didn't get? Download File</button>
+      <span id="user-known" style="display:none"></span>
+
+      <div id="success-view" class="success-card">
+        <div class="success-title">Audio download started! 🎧</div>
+        <p class="success-sub">Didn't start automatically? Use the button below.</p>
+        <div class="success-actions">
+          <button class="format-btn" type="button" onclick="resetUI()">↺ Convert another</button>
+          <button class="format-btn format-btn-donate" type="button" onclick="window.location.href='/yt-ai/donate/en'">❤️ Donate</button>
+          <button id="manual-download-btn" class="btn-manual" type="button" onclick="manualDownload()">Didn't get? Download File</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bookmark / Donate -->
+    <div class="bookmark-banner">
+      <div class="bookmark-inner">
+        <i class="fas fa-bookmark"></i>
+        <span>Please bookmark this page</span>
+        <span style="color: var(--border);">|</span>
+        <i class="fas fa-coffee"></i>
+        <a href="/yt-ai/donate/en" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+      </div>
+    </div>
+
+    <!-- ===== SEO FEATURES ===== -->
+    <section class="seo-section" id="features">
+      <h2>Why use YT-Ai for audio?</h2>
+      <p>YT-Ai extracts the audio stream from any public YouTube video and delivers it as a standard MP3 — playable on every phone, car stereo, and audio app. Perfect for music, podcasts, lectures, and audiobooks.</p>
+      <div class="seo-grid">
+        <div class="seo-card">
+          <i class="fas fa-headphones"></i>
+          <h3>Studio-Grade Quality</h3>
+          <p>Up to 320kbps MP3, the highest standard bitrate. Actual quality depends on the source stream.</p>
+        </div>
+        <div class="seo-card">
+          <i class="fas fa-bolt"></i>
+          <h3>Seconds, Not Minutes</h3>
+          <p>Most tracks convert in 10–30 seconds. Long lectures take proportionally longer, but the UI keeps you updated.</p>
+        </div>
+        <div class="seo-card">
+          <i class="fas fa-lock"></i>
+          <h3>No Account, No Trace</h3>
+          <p>No signup, no stored history. Files are transient and deleted after your download.</p>
+        </div>
+        <div class="seo-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Works Anywhere</h3>
+          <p>Android, iOS, Windows, Mac, Linux — the MP3 lands in your Downloads folder. No app required.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-block" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What audio formats are supported?</h3>
+        <p>Currently only MP3. It's the most universally compatible audio format — plays on every device, car stereo, and app.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the difference between this page and the main converter?</h3>
+        <p>None functionally — both extract MP3 audio. This page is optimized for audio-focused users who arrive from search results about "YouTube to audio" or "extract audio from YouTube".</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I extract audio from a YouTube Short?</h3>
+        <p>Yes. Paste the Shorts URL just like a normal video. Audio extraction works the same way.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why does the file sound different from YouTube?</h3>
+        <p>YouTube compresses audio on upload. Converting to MP3 adds one more compression pass. Using 320kbps minimizes quality loss, but the result can never exceed the source quality.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is downloading audio legal?</h3>
+        <p>Only for content you own or that is licensed for reuse (public domain, Creative Commons). Downloading copyrighted music may violate YouTube's Terms of Service and local copyright law.</p>
+      </div>
+    </section>
+
+    <!-- ===== Ad slots (native) ===== -->
+    <div id="native-slot-top" style="max-width: 90%; margin: 0 auto; text-align: center;"></div>
+    <div id="native-slot-center"></div>
+    <div id="native-ad-container" style="display:none;">
+      <div id="container-94bab3782cb7532f2a5ee2c403f6d27d"></div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 <b>YT-Ai</b>. All rights reserved. Designed for speed and simplicity.</p>
+      <div class="footer-links">
+        <a href="/yt-ai/legal/privacy">Privacy Policy</a>
+        <a href="/yt-ai/legal/terms">Terms of Service</a>
+        <a href="/yt-ai/legal/dmca">DMCA</a>
+        <a href="/yt-ai/legal/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="global-loader" id="globalLoader">
+    <div class="global-spinner"></div>
+  </div>
+
+  <!-- Turnstile API -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoaded&render=explicit" async defer></script>
+
+  <script src="/yt-ai/assets/native/comm/captcha.js?v={{ site.github.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/utils.js?v={{ site.github.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/min.js?v={{ site.github.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/comm/install.js?v={{ site.github.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/comm/pulse.js?v={{ site.github.build_revision }}" defer></script>
+  <script src="/yt-ai/assets/native/comm/sentinel.js?v={{ site.github.build_revision }}" defer></script>
+
+  <!-- Ad slot placement (native) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        var e = document.getElementById("native-ad-container");
+        if (!e) return;
+        var inner = document.getElementById("container-94bab3782cb7532f2a5ee2c403f6d27d");
+        if (!inner || !inner.innerHTML.trim()) return;
+        var slot = window.innerWidth < 768
+          ? document.getElementById("native-slot-center")
+          : document.getElementById("native-slot-top");
+        if (slot) { slot.appendChild(e); e.style.display = "block"; }
+      }, 1500);
+    });
+  </script>
+  <script async="async" data-cfasync="false" src="https://bauval.org/21/94bab3782cb7532f2a5ee2c403f6d27d"></script>
+  <script data-cfasync="false" src="https://bauval.org/14/32e15f2082a75880a1c2e691c2bbf8db"></script>
+
+</body>
+</html>
