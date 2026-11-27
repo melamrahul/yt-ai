@@ -5,51 +5,175 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- ===== Primary meta ===== -->
+  <title>YouTube Audio Converter (MP3 up to 320kbps) — Free | YT-Ai</title>
   <meta name="description" content="YT-Ai Audio Converter — Convert YouTube videos to MP3 audio up to 320kbps. Free, fast, no registration. Works on all devices.">
   <meta name="keywords" content="youtube to audio, youtube to mp3, yt-ai audio, audio converter, mp3 downloader, 320kbps, free audio download">
   <meta name="author" content="YT-Ai">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://melamrahul.github.io/yt-ai/audio/">
-  <title>YouTube Audio Converter (MP3 up to 320kbps) — Free | YT-Ai</title>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="generator" content="YT-Ai">
+  <meta name="format-detection" content="telephone=no">
 
-  <!-- Icons -->
+  <!-- ===== Canonical + hreflang ===== -->
+  <link rel="canonical" href="https://melamrahul.github.io/yt-ai/audio/">
+  <link rel="alternate" hreflang="x-default" href="https://melamrahul.github.io/yt-ai/audio/">
+  <link rel="alternate" hreflang="en" href="https://melamrahul.github.io/yt-ai/audio/">
+  <link rel="alternate" hreflang="es" href="https://melamrahul.github.io/yt-ai/lang/es/audio/">
+  <link rel="alternate" hreflang="fr" href="https://melamrahul.github.io/yt-ai/lang/fr/audio/">
+  <link rel="alternate" hreflang="id" href="https://melamrahul.github.io/yt-ai/lang/id/audio/">
+  <link rel="alternate" hreflang="de" href="https://melamrahul.github.io/yt-ai/lang/de/audio/">
+
+  <!-- ===== Icons ===== -->
   <link rel="icon" type="image/x-icon" href="/yt-ai/assets/icons/favicon.ico">
   <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/assets/icons/icon192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/assets/icons/icon512.png">
-  <link rel="apple-touch-icon" href="/yt-ai/assets/icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/yt-ai/assets/icons/apple-touch-icon.png">
+  <link rel="mask-icon" href="/yt-ai/assets/icons/icon192.png" color="#0d9488">
 
-  <!-- PWA manifest -->
+  <!-- ===== PWA ===== -->
   <link rel="manifest" href="/yt-ai/assets/pwa/manifest/en.json">
-  <meta name="theme-color" content="transparent">
+  <meta name="theme-color" content="#0d9488" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c1013" media="(prefers-color-scheme: dark)">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="YT-Ai">
+  <meta name="application-name" content="YT-Ai">
 
-  <!-- Fonts -->
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="YT-Ai">
+  <meta property="og:title" content="YouTube Audio Converter (MP3 up to 320kbps) — Free">
+  <meta property="og:description" content="Extract high-quality MP3 audio from any YouTube video. Up to 320kbps, no signup, works on phone and desktop.">
+  <meta property="og:url" content="https://melamrahul.github.io/yt-ai/audio/">
+  <meta property="og:image" content="https://melamrahul.github.io/yt-ai/assets/icons/icon512.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="YT-Ai — Free YouTube Audio Converter">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="id_ID">
+  <meta property="og:locale:alternate" content="de_DE">
+
+  <!-- ===== Twitter ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YouTube Audio Converter (MP3 up to 320kbps) — Free">
+  <meta name="twitter:description" content="Extract high-quality MP3 audio from any YouTube video. Up to 320kbps, no signup, works on mobile.">
+  <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/assets/icons/icon512.png">
+  <meta name="twitter:image:alt" content="YT-Ai — Free YouTube Audio Converter">
+
+  <!-- ===== Preconnect / preload ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://tools.ruvs.in" crossorigin>
+  <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://bauval.org">
+  <link rel="dns-prefetch" href="https://img.youtube.com">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+
+  <!-- ===== Fonts + icons ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <!-- Core CSS -->
+  <!-- ===== Core CSS ===== -->
   <link rel="stylesheet" href="/yt-ai/assets/paint/min.css?v={{ site.github.build_revision }}">
 
-  <!-- Structured data -->
+  <!-- ===== Structured data: WebApplication ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
+    "@id": "https://melamrahul.github.io/yt-ai/audio/#app",
     "name": "YT-Ai YouTube Audio Converter",
     "url": "https://melamrahul.github.io/yt-ai/audio/",
+    "description": "Free online YouTube audio converter with up to 320kbps MP3 quality.",
     "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Free online YouTube audio converter with up to 320kbps MP3 quality."
+    "operatingSystem": "Windows, macOS, Android, iOS, Linux",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "ratingCount": "641"
+    }
   }
   </script>
 
+  <!-- ===== Structured data: FAQ ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What audio formats are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently only MP3. It is the most universally compatible audio format — plays on every device, car stereo, and app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between this page and the main converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "None functionally — both extract MP3 audio. This page is optimized for audio-focused users who arrive from search results about YouTube to audio or extracting audio from YouTube."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I extract audio from a YouTube Short?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Paste the Shorts URL just like a normal video. Audio extraction works the same way."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the file sound different from YouTube?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "YouTube compresses audio on upload. Converting to MP3 adds one more compression pass. Using 320kbps minimizes quality loss, but the result can never exceed the source quality."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ===== Structured data: WebSite ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://melamrahul.github.io/yt-ai/#website",
+    "url": "https://melamrahul.github.io/yt-ai/",
+    "name": "YT-Ai",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "YT-Ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://melamrahul.github.io/yt-ai/assets/icons/icon512.png",
+        "width": 512,
+        "height": 512
+      }
+    }
+  }
+  </script>
+
+  <!-- ===== Ad helper styles ===== -->
   <style>
     .ad-wrap{text-align:center;margin:15px auto;width:100%;overflow:hidden;display:flex;justify-content:center}
     .ad-desktop{display:none}

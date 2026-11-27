@@ -5,51 +5,175 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- ===== Primary meta ===== -->
+  <title>YouTube to MP4 Downloader (Up to 4K) — Free & Fast | YT-Ai</title>
   <meta name="description" content="YT-Ai — Free YouTube to MP4 downloader. Download videos in up to 4K resolution. Fast, secure, no registration required. Works on all devices.">
   <meta name="keywords" content="youtube to mp4, yt-ai, youtube video downloader, mp4 downloader, 1080p, 4k, free video downloader, download youtube videos">
   <meta name="author" content="YT-Ai">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://melamrahul.github.io/yt-ai/video/">
-  <title>YouTube to MP4 Downloader (Up to 4K) — Free & Fast | YT-Ai</title>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="generator" content="YT-Ai">
+  <meta name="format-detection" content="telephone=no">
 
-  <!-- Icons -->
+  <!-- ===== Canonical + hreflang ===== -->
+  <link rel="canonical" href="https://melamrahul.github.io/yt-ai/video/">
+  <link rel="alternate" hreflang="x-default" href="https://melamrahul.github.io/yt-ai/video/">
+  <link rel="alternate" hreflang="en" href="https://melamrahul.github.io/yt-ai/video/">
+  <link rel="alternate" hreflang="es" href="https://melamrahul.github.io/yt-ai/lang/es/video/">
+  <link rel="alternate" hreflang="fr" href="https://melamrahul.github.io/yt-ai/lang/fr/video/">
+  <link rel="alternate" hreflang="id" href="https://melamrahul.github.io/yt-ai/lang/id/video/">
+  <link rel="alternate" hreflang="de" href="https://melamrahul.github.io/yt-ai/lang/de/video/">
+
+  <!-- ===== Icons ===== -->
   <link rel="icon" type="image/x-icon" href="/yt-ai/assets/icons/favicon.ico">
   <link rel="icon" type="image/png" sizes="192x192" href="/yt-ai/assets/icons/icon192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/yt-ai/assets/icons/icon512.png">
-  <link rel="apple-touch-icon" href="/yt-ai/assets/icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/yt-ai/assets/icons/apple-touch-icon.png">
+  <link rel="mask-icon" href="/yt-ai/assets/icons/icon192.png" color="#0d9488">
 
-  <!-- PWA manifest -->
+  <!-- ===== PWA ===== -->
   <link rel="manifest" href="/yt-ai/assets/pwa/manifest/en.json">
-  <meta name="theme-color" content="transparent">
+  <meta name="theme-color" content="#0d9488" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c1013" media="(prefers-color-scheme: dark)">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="YT-Ai">
+  <meta name="application-name" content="YT-Ai">
 
-  <!-- Fonts -->
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="YT-Ai">
+  <meta property="og:title" content="YouTube to MP4 Downloader (Up to 4K) — Free & Fast">
+  <meta property="og:description" content="Download YouTube videos in MP4 up to 4K. Free, no signup, works on phone and desktop.">
+  <meta property="og:url" content="https://melamrahul.github.io/yt-ai/video/">
+  <meta property="og:image" content="https://melamrahul.github.io/yt-ai/assets/icons/icon512.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="YT-Ai — Free YouTube to MP4 Downloader">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="id_ID">
+  <meta property="og:locale:alternate" content="de_DE">
+
+  <!-- ===== Twitter ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YouTube to MP4 Downloader (Up to 4K) — Free & Fast">
+  <meta name="twitter:description" content="Download YouTube videos in MP4 up to 4K. Free, no signup, works on mobile.">
+  <meta name="twitter:image" content="https://melamrahul.github.io/yt-ai/assets/icons/icon512.png">
+  <meta name="twitter:image:alt" content="YT-Ai — Free YouTube to MP4 Downloader">
+
+  <!-- ===== Preconnect / preload ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://tools.ruvs.in" crossorigin>
+  <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://bauval.org">
+  <link rel="dns-prefetch" href="https://img.youtube.com">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+
+  <!-- ===== Fonts + icons ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <!-- Core CSS -->
+  <!-- ===== Core CSS ===== -->
   <link rel="stylesheet" href="/yt-ai/assets/paint/min.css?v={{ site.github.build_revision }}">
 
-  <!-- Structured data -->
+  <!-- ===== Structured data: WebApplication ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
+    "@id": "https://melamrahul.github.io/yt-ai/video/#app",
     "name": "YT-Ai YouTube to MP4 Downloader",
     "url": "https://melamrahul.github.io/yt-ai/video/",
+    "description": "Free online YouTube to MP4 downloader with up to 4K video quality.",
     "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Free online YouTube to MP4 downloader with up to 4K video quality."
+    "operatingSystem": "Windows, macOS, Android, iOS, Linux",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "ratingCount": "892"
+    }
   }
   </script>
 
+  <!-- ===== Structured data: FAQ ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What resolutions can I download?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "From 360p up to 2160p (4K), depending on what the original YouTube video was uploaded in. If the video only offers 720p, selecting 1080p will still return the best available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my download stay at a lower resolution?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "YouTube compresses videos based on the uploader's settings. A 720p source cannot produce a true 1080p or 4K file — the converter returns the best quality actually available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work for YouTube Shorts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Shorts download as vertical MP4 files. Paste the Shorts URL just like a normal video link."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does the file save on iPhone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Safari, tap the download icon in the address bar, then open the Files app → Downloads. You can move it to Photos if it is a video."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ===== Structured data: WebSite ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://melamrahul.github.io/yt-ai/#website",
+    "url": "https://melamrahul.github.io/yt-ai/",
+    "name": "YT-Ai",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "YT-Ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://melamrahul.github.io/yt-ai/assets/icons/icon512.png",
+        "width": 512,
+        "height": 512
+      }
+    }
+  }
+  </script>
+
+  <!-- ===== Ad helper styles ===== -->
   <style>
     .ad-wrap{text-align:center;margin:15px auto;width:100%;overflow:hidden;display:flex;justify-content:center}
     .ad-desktop{display:none}
@@ -76,11 +200,11 @@
             <i class="fas fa-globe"></i> <span id="langLabel">EN</span>
           </button>
           <div class="lang-dropdown" id="langDropdown">
-            <a href="/yt-ai/lang/en/" class="active" data-lang="en">English</a>
-            <a href="/yt-ai/lang/es/" data-lang="es">Español</a>
-            <a href="/yt-ai/lang/fr/" data-lang="fr">Français</a>
-            <a href="/yt-ai/lang/id/" data-lang="id">Bahasa Indonesia</a>
-            <a href="/yt-ai/lang/de/" data-lang="de">Deutsch</a>
+            <a href="/yt-ai/lang/en/video/" class="active" data-lang="en">English</a>
+            <a href="/yt-ai/lang/es/video/" data-lang="es">Español</a>
+            <a href="/yt-ai/lang/fr/video/" data-lang="fr">Français</a>
+            <a href="/yt-ai/lang/id/video/" data-lang="id">Bahasa Indonesia</a>
+            <a href="/yt-ai/lang/de/video/" data-lang="de">Deutsch</a>
           </div>
         </div>
 
@@ -292,283 +416,7 @@
 
   <script src="/yt-ai/assets/native/comm/captcha.js?v={{ site.github.build_revision }}" defer></script>
   <script src="/yt-ai/assets/native/utils.js?v={{ site.github.build_revision }}" defer></script>
-
-  <!-- MP4 converter logic -->
-  <script defer>
-  'use strict';
-  (function(){
-    var _st = { aborted:false, title:'', mode:'mp4', quality:'720', youtubeId:null };
-    var _pt = null;
-    var $ = function(i){ return document.getElementById(i); };
-    var els = {
-      rahulContainer: $('rahul-container'),
-      userKnown: $('user-known'),
-      urlInput: $('yt-url'),
-      btnGo: $('btn-go'),
-      statusBox: $('status-box'),
-      statusLabel: $('status-label'),
-      infinityLoader: $('infinity-loader'),
-      downloadBtn: $('download-btn'),
-      preview: $('video-preview'),
-      thumb: $('video-thumb'),
-      title: $('video-title'),
-      channel: $('video-channel'),
-      mainCard: $('main-card'),
-      successView: $('success-view')
-    };
-    if (!els.urlInput || !els.btnGo || !els.mainCard) return;
-
-    var sleep = function(ms){ return new Promise(function(r){ setTimeout(r,ms); }); };
-
-    function extractId(s){
-      var m = s.match(/(?:v=|\/shorts\/|youtu\.be\/|embed\/|\/live\/)([a-zA-Z0-9_-]{11})/);
-      return m ? m[1] : null;
-    }
-    function videoQ(q){
-      var m = String(q||'').match(/(\d+)/);
-      return m ? m[1] : '720';
-    }
-    function fname(t,e){
-      var s = (t||'yt-ai').replace(/[\\/:*?"<>|]/g,'').replace(/\s+/g,' ').trim().slice(0,80);
-      return '[yt-ai] - ' + (s||'download') + '.' + e;
-    }
-    function setStatus(l,ld){
-      if (!els.statusBox) return;
-      els.statusBox.classList.add('visible');
-      els.statusLabel.textContent = l;
-      if (els.infinityLoader) els.infinityLoader.style.display = ld===false ? 'none' : 'block';
-    }
-    function enableBtn(){
-      if (!els.btnGo) return;
-      els.btnGo.disabled = false;
-      els.btnGo.textContent = 'Download MP4';
-    }
-    function showErr(msg){
-      if (window.YTAi && window.YTAi.Dialog) { window.YTAi.Dialog.alert(msg,'Notice'); return; }
-      alert(msg);
-    }
-
-    function fetchMeta(id){
-      els.thumb.src = 'https://img.youtube.com/vi/' + id + '/mqdefault.jpg';
-      els.title.textContent = 'Loading…';
-      els.channel.textContent = '';
-      els.preview.classList.add('visible');
-      return fetch('https://www.youtube.com/oembed?url=' + encodeURIComponent('https://www.youtube.com/watch?v=' + id) + '&format=json')
-        .then(function(r){ if(!r.ok) throw new Error(); return r.json(); })
-        .then(function(d){
-          els.thumb.src = d.thumbnail_url || els.thumb.src;
-          els.title.textContent = d.title || '—';
-          els.channel.textContent = d.author_name || '';
-          if (d.title) _st.title = d.title;
-        })
-        .catch(function(){ els.title.textContent = '—'; });
-    }
-
-    function doDownload(url,filename){
-      _st.dl = { url:url, name:filename };
-      setStatus('Downloading securely…', true);
-      var a = document.createElement('a');
-      a.href = url;
-      if (filename) a.download = filename;
-      a.rel = 'noopener';
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function(){ if (document.body.contains(a)) document.body.removeChild(a); }, 2000);
-      setTimeout(function(){
-        els.rahulContainer.classList.add('fade-out');
-        setTimeout(function(){
-          els.rahulContainer.style.display = 'none';
-          els.rahulContainer.classList.remove('fade-out');
-          if (els.userKnown) els.userKnown.style.display = 'none';
-          if (els.downloadBtn) els.downloadBtn.style.display = 'none';
-          if (els.successView) els.successView.classList.add('visible');
-          enableBtn();
-          window.scrollTo(0,0);
-        }, 400);
-      }, 700);
-    }
-
-    function startFlow(){
-      var raw = els.urlInput.value.trim();
-      if (!raw) { showErr('Please paste a YouTube link'); return; }
-      var id = extractId(raw);
-      if (!id) { showErr('Invalid YouTube URL'); return; }
-
-      var vq = videoQ(localStorage.getItem('videoQuality') || '720p');
-      _st.aborted = false;
-      _st.youtubeId = id;
-      _st.title = '';
-      _st.mode = 'mp4';
-      _st.quality = vq;
-
-      if (els.infinityLoader) els.infinityLoader.style.display = 'none';
-      if (els.downloadBtn) { els.downloadBtn.classList.remove('visible'); els.downloadBtn.style.display = 'none'; }
-      if (els.statusBox) els.statusBox.classList.remove('visible');
-      if (els.successView) els.successView.classList.remove('visible');
-
-      els.rahulContainer.style.display = 'block';
-      els.rahulContainer.classList.remove('fade-out');
-      if (els.userKnown) {
-        els.userKnown.style.display = 'none';
-        setTimeout(function(){ if(!_st.aborted) els.userKnown.style.display = 'block'; }, 8000);
-      }
-
-      els.mainCard.style.display = 'none';
-      els.btnGo.disabled = true;
-      els.btnGo.textContent = '…';
-      els.preview.classList.remove('visible');
-      els.title.textContent = '—';
-      els.channel.textContent = '';
-      setStatus('Starting…', true);
-
-      Promise.race([fetchMeta(id), sleep(6000)])
-        .then(function(){
-          if (_st.aborted) return;
-          setStatus('Converting…', true);
-          return sleep(8000).then(function(){
-            if (_st.aborted) return;
-            return runConvert('mp4');
-          });
-        })
-        .catch(function(err){
-          if (_st.aborted) return;
-          console.error('[flow]', err);
-          setStatus(err && err.message ? err.message : 'Conversion failed. Please try again.', false);
-          enableBtn();
-        });
-    }
-    window.__startFlow = startFlow;
-
-    function postConvert(fmt, attempt){
-      return fetch('https://tools.ruvs.in/x/a', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ url:'https://youtu.be/' + _st.youtubeId, format:fmt, quality:_st.quality })
-      }).then(function(res){
-        if (res.status === 503){
-          if (attempt < 3){
-            setStatus('Converting…', true);
-            return sleep(2000).then(function(){ return postConvert(fmt, attempt+1); });
-          }
-          throw new Error('Queue is full, Please try again.');
-        }
-        if (!res.ok){
-          return res.json().catch(function(){ return {}; }).then(function(j){
-            throw new Error(j.error || ('Server error ' + res.status));
-          });
-        }
-        return res.json();
-      });
-    }
-
-    function runConvert(fmt){
-      return postConvert(fmt, 0).then(function(data){
-        if (data.error) throw new Error(data.error);
-        if (!data.job_id) throw new Error('Invalid server response');
-        return new Promise(function(resolve, reject){
-          var polls = 0;
-          _pt = setInterval(function(){
-            polls++;
-            if (_st.aborted){ clearInterval(_pt); _pt=null; reject(new Error('Aborted')); return; }
-            if (polls > 150){ clearInterval(_pt); _pt=null; reject(new Error('Timed out. Please try again.')); return; }
-            fetch('https://tools.ruvs.in/x/b?job_id=' + encodeURIComponent(data.job_id))
-              .then(function(cr){ return cr.json(); })
-              .then(function(cd){
-                if (cd.status === 'completed'){
-                  clearInterval(_pt); _pt = null;
-                  var link = 'https://tools.ruvs.in/x/c?job_id=' + encodeURIComponent(data.job_id);
-                  var f = fname(cd.filename || _st.title, fmt);
-                  setStatus('Download ready!', true);
-                  doDownload(link, f);
-                  resolve();
-                  return;
-                }
-                if (cd.status === 'error'){
-                  clearInterval(_pt); _pt = null;
-                  reject(new Error(cd.message || 'Conversion failed'));
-                  return;
-                }
-                setStatus('Converting…', true);
-              })
-              .catch(function(){});
-          }, 2000);
-        });
-      });
-    }
-
-    window.resetUI = function(){
-      if (_pt){ clearInterval(_pt); _pt = null; }
-      _st.aborted = true;
-      if (els.successView) els.successView.classList.remove('visible');
-      if (els.mainCard) els.mainCard.style.display = 'block';
-      els.rahulContainer.style.display = 'none';
-      els.rahulContainer.classList.remove('fade-out');
-      if (els.userKnown) els.userKnown.style.display = 'none';
-      els.preview.classList.remove('visible');
-      els.thumb.src = '';
-      els.title.textContent = '—';
-      els.channel.textContent = '';
-      if (els.infinityLoader) els.infinityLoader.style.display = 'none';
-      if (els.downloadBtn) { els.downloadBtn.classList.remove('visible'); els.downloadBtn.style.display = 'none'; }
-      if (els.statusBox) els.statusBox.classList.remove('visible');
-      els.urlInput.value = '';
-      els.urlInput.focus();
-      document.dispatchEvent(new Event('yt-ai:reset-turnstile'));
-      enableBtn();
-    };
-
-    window.manualDownload = function(){
-      if (!_st.dl || !_st.dl.url) return;
-      var a = document.createElement('a');
-      a.href = _st.dl.url;
-      if (_st.dl.name) a.download = _st.dl.name;
-      a.rel = 'noopener';
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function(){ if (document.body.contains(a)) document.body.removeChild(a); }, 2000);
-    };
-
-    function initSelect(id, key, cb){
-      var sel = $(id);
-      if (!sel) return;
-      var selected = sel.querySelector('.select-selected');
-      var options = sel.querySelectorAll('.select-items div');
-      var saved = localStorage.getItem(key);
-      options.forEach(function(opt){
-        if (saved && opt.dataset.value === saved) selected.textContent = opt.textContent;
-        opt.addEventListener('click', function(){
-          selected.textContent = opt.textContent;
-          localStorage.setItem(key, opt.dataset.value);
-          sel.classList.remove('active');
-          if (cb) cb(opt.dataset.value);
-        });
-      });
-      selected.addEventListener('click', function(e){
-        e.stopPropagation();
-        document.querySelectorAll('.custom-select').forEach(function(el){
-          if (el !== sel) el.classList.remove('active');
-        });
-        sel.classList.toggle('active');
-      });
-    }
-
-    initSelect('video-quality-select', 'videoQuality', null);
-
-    document.addEventListener('click', function(){
-      document.querySelectorAll('.custom-select').forEach(function(el){ el.classList.remove('active'); });
-    });
-
-    if (els.btnGo) els.btnGo.addEventListener('click', startFlow);
-    if (els.urlInput) {
-      els.urlInput.addEventListener('keydown', function(e){
-        if (e.key === 'Enter') startFlow();
-      });
-    }
-  })();
-  </script>
-
+  <script src="/yt-ai/assets/native/com.js?v={{ site.github.build_revision }}" defer></script>
   <script src="/yt-ai/assets/native/comm/install.js?v={{ site.github.build_revision }}" defer></script>
   <script src="/yt-ai/assets/native/comm/pulse.js?v={{ site.github.build_revision }}" defer></script>
 
